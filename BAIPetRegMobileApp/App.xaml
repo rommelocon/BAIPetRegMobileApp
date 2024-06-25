@@ -5,10 +5,34 @@
              x:Class="BAIPetRegMobileApp.App">
     <Application.Resources>
         <ResourceDictionary>
+            <!-- Resource dictionaries for colors and other styles -->
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Resources/Styles/Colors.xaml" />
                 <ResourceDictionary Source="Resources/Styles/Styles.xaml" />
             </ResourceDictionary.MergedDictionaries>
+
+            <!-- Global Font Style -->
+            <Style TargetType="Label">
+                <Setter Property="FontFamily">
+                    <Setter.Value>
+                        <OnPlatform x:TypeArguments="x:String">
+                            <On Platform="Android, iOS" Value="Poppins-Regular.ttf#Poppins-Regular"/>
+                            <!-- Replace with your actual font file and font family name -->
+                        </OnPlatform>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+            <Style TargetType="Button">
+                <Setter Property="FontFamily">
+                    <Setter.Value>
+                        <OnPlatform x:TypeArguments="x:String">
+                            <On Platform="Android, iOS" Value="Poppins-Regular.ttf#Poppins-Regular"/>
+                            <!-- Replace with your actual font file and font family name -->
+                        </OnPlatform>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+            <!-- Add more styles for other text-based controls if needed -->
         </ResourceDictionary>
     </Application.Resources>
 </Application>
