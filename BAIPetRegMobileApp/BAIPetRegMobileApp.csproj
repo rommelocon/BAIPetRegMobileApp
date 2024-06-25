@@ -63,4 +63,21 @@
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <ProjectReference Include="..\BAIPetRegMobileApp.Shared\BAIPetRegMobileApp.Shared.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="Components\" />
+	  <Folder Include="Models\" />
+	  <Folder Include="Data\" />
+	  <Folder Include="ViewModels\" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiXaml Update="Views\RegisterPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	</ItemGroup>
+
 </Project>
