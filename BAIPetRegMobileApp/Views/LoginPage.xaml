@@ -80,7 +80,7 @@
             HeightRequest="60"
             WidthRequest="330"
             Margin="0,0,0,0"
-            Clicked="OnLoginButton_Clicked"
+            Command="{Binding LoginCommand}"
             />
 
         <Label x:Name="MessageLabel" TextColor="Red" />

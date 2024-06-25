@@ -1,4 +1,7 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using BAIPetRegMobileApp.ViewModels;
+using BAIPetRegMobileApp.ViewModels.Dashboard;
+using BAIPetRegMobileApp.Views.Dashboard;
+using Microsoft.Extensions.Logging;
 
 namespace BAIPetRegMobileApp
 {
@@ -15,8 +18,17 @@ namespace BAIPetRegMobileApp
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                 });
 
+            //Views
+            builder.Services.AddSingleton<LoginPage>();
+            builder.Services.AddSingleton<DashboardPage>();
+
+
+            //View Models
+            builder.Services.AddSingleton<LoginPageViewModel>();
+            builder.Services.AddSingleton<DashboardPageViewModel>();
+
 #if DEBUG
-    		builder.Logging.AddDebug();
+            builder.Logging.AddDebug();
 #endif
 
             return builder.Build();
