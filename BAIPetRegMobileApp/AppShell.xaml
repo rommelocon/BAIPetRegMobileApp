@@ -4,6 +4,7 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:BAIPetRegMobileApp"
+    xmlns:dashboard="clr-namespace:BAIPetRegMobileApp.Views.Dashboard"
     Shell.FlyoutBehavior="Disabled"
     Shell.NavBarIsVisible="False"
     Title="BAIPetRegMobileApp">
@@ -13,4 +14,10 @@
         ContentTemplate="{DataTemplate local:MainPage}"
         Route="MainPage" />
 
+    <FlyoutItem>
+        <ShellContent
+            Title="Dashboard"
+            ContentTemplate="{DataTemplate dashboard:DashboardPage}"
+            Route="Dashboard" />
+    </FlyoutItem>
 </Shell>

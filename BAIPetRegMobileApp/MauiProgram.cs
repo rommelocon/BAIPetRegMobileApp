@@ -1,5 +1,4 @@
-﻿using BAIPetRegMobileApp;
-using CommunityToolkit.Maui;
+﻿using Microsoft.Extensions.Logging;
 
 public static class MauiProgram
 {
@@ -17,7 +16,18 @@ public static class MauiProgram
                 fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
             });
 
-        // Continue initializing your .NET MAUI App here
+            //Views
+            builder.Services.AddSingleton<LoginPage>();
+            builder.Services.AddSingleton<DashboardPage>();
+
+
+            //View Models
+            builder.Services.AddSingleton<LoginPageViewModel>();
+            builder.Services.AddSingleton<DashboardPageViewModel>();
+
+#if DEBUG
+            builder.Logging.AddDebug();
+#endif
 
         return builder.Build();
     }
