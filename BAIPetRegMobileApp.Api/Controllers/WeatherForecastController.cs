@@ -1,5 +1,4 @@
 
->>>>>>> e33c9ff4cacf2bbb9b4cc68c15aeecbdd0d0d0a3
 using Microsoft.AspNetCore.Mvc;
 
 namespace BAIPetRegMobileApp.Api.Controllers
