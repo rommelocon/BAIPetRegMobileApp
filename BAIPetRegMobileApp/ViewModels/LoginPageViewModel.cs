@@ -12,9 +12,9 @@ namespace BAIPetRegMobileApp.ViewModels
     {
         #region Commands
         [RelayCommand]
-        async void Login()
+        async Task Login()
         {
-            await Shell.Current.GoToAsync($"//{nameof(DashboardPage)}");
+            await Shell.Current.GoToAsync(nameof(DashboardPage));
         }
         #endregion
     }
