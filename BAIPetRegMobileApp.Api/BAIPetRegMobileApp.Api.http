@@ -3,8 +3,5 @@
 GET {{BAIPetRegMobileApp.Api_HostAddress}}/weatherforecast/
 Accept: application/json
 
-<<<<<<< HEAD
 
-=======
->>>>>>> added fonts and routes
 ###
