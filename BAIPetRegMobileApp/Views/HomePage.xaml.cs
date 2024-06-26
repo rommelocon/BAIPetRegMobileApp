@@ -1,3 +1,5 @@
+using BAIPetRegMobileApp.Views;
+
 namespace BAIPetRegMobileApp;
 
 public partial class HomePage : ContentPage
@@ -5,6 +7,7 @@ public partial class HomePage : ContentPage
 	public HomePage()
 	{
 		InitializeComponent();
+
 	}
 
     protected override bool OnBackButtonPressed()
@@ -22,5 +25,15 @@ public partial class HomePage : ContentPage
     {
         await SecureStorage.SetAsync("hasAuth", "false");
         await Shell.Current.GoToAsync(nameof(LoginPage));
+
+    private void BtnRegisterPet_Clicked(object sender, EventArgs e)
+    {
+		Shell.Current.GoToAsync(nameof(RegisterPage));
+    }
+
+    private void BtnLogout_Clicked(object sender, EventArgs e)
+    {
+
+
     }
 }
