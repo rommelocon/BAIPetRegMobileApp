@@ -25,4 +25,10 @@ public partial class HomePage : ContentPage
         await SecureStorage.SetAsync("hasAuth", "false");
         await Shell.Current.GoToAsync(nameof(LoginPage));
     }
+
+    private async void LogoutButton_Clicked(object sender, EventArgs e)
+    {
+        await SecureStorage.SetAsync("hasAuth", "false");
+        await Shell.Current.GoToAsync(nameof(LoginPage));
+    }
 }
