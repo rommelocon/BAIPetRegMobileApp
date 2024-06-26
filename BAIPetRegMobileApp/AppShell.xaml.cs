@@ -1,4 +1,4 @@
-﻿using BAIPetRegMobileApp.Views.Dashboard;
+﻿using BAIPetRegMobileApp.Views;
 
 namespace BAIPetRegMobileApp
 {
@@ -8,7 +8,8 @@ namespace BAIPetRegMobileApp
         {
             InitializeComponent();
             Routing.RegisterRoute(nameof(LoginPage), typeof(LoginPage));
-            Routing.RegisterRoute(nameof(DashboardPage), typeof(DashboardPage));
+            Routing.RegisterRoute(nameof(HomePage), typeof(HomePage));
+            Routing.RegisterRoute(nameof(GetStartedPage), typeof(GetStartedPage));
         }
     }
 }

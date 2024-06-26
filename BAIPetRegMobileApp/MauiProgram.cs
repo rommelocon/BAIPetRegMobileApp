@@ -1,37 +1,24 @@
-﻿using BAIPetRegMobileApp.ViewModels;
-using BAIPetRegMobileApp.ViewModels.Dashboard;
-using BAIPetRegMobileApp.Views.Dashboard;
-using Microsoft.Extensions.Logging;
+﻿using BAIPetRegMobileApp;
+using CommunityToolkit.Maui;
 
-namespace BAIPetRegMobileApp
+public static class MauiProgram
 {
-    public static class MauiProgram
+    public static MauiApp CreateMauiApp()
     {
-        public static MauiApp CreateMauiApp()
-        {
-            var builder = MauiApp.CreateBuilder();
-            builder
-                .UseMauiApp<App>()
-                .ConfigureFonts(fonts =>
-                {
-                    fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
-                    fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
-                });
+        var builder = MauiApp.CreateBuilder();
+        builder
+            .UseMauiApp<App>()
+            // Initialize the .NET MAUI Community Toolkit by adding the below line of code
+            .UseMauiCommunityToolkit()
+            // After initializing the .NET MAUI Community Toolkit, optionally add additional fonts
+            .ConfigureFonts(fonts =>
+            {
+                fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
+                fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
+            });
 
-            //Views
-            builder.Services.AddSingleton<LoginPage>();
-            builder.Services.AddSingleton<DashboardPage>();
+        // Continue initializing your .NET MAUI App here
 
-
-            //View Models
-            builder.Services.AddSingleton<LoginPageViewModel>();
-            builder.Services.AddSingleton<DashboardPageViewModel>();
-
-#if DEBUG
-            builder.Logging.AddDebug();
-#endif
-
-            return builder.Build();
-        }
+        return builder.Build();
     }
 }
