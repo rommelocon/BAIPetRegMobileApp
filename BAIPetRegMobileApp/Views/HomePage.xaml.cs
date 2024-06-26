@@ -10,6 +10,22 @@ public partial class HomePage : ContentPage
 
 	}
 
+    protected override bool OnBackButtonPressed()
+    {
+        //Application.Current.Quit();
+        return true;
+    }
+
+    private void BtnRegisterPet_Clicked(object sender, EventArgs e)
+    {
+
+    }
+
+    private async void LogoutButton_Clicked(object sender, EventArgs e)
+    {
+        await SecureStorage.SetAsync("hasAuth", "false");
+        await Shell.Current.GoToAsync(nameof(LoginPage));
+
     private void BtnRegisterPet_Clicked(object sender, EventArgs e)
     {
 		Shell.Current.GoToAsync(nameof(RegisterPage));
@@ -17,6 +33,7 @@ public partial class HomePage : ContentPage
 
     private void BtnLogout_Clicked(object sender, EventArgs e)
     {
+
 
     }
 }
