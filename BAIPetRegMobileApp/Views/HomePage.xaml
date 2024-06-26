@@ -2,6 +2,87 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="BAIPetRegMobileApp.HomePage"
-             Title="HomePage">
-    
+             Shell.FlyoutBehavior="Flyout"
+             Shell.NavBarIsVisible="False">
+
+    <ContentPage.Background>
+        <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+            <GradientStop Color="#7EE175" Offset="0.0" />
+            <GradientStop Color="#ffffff" Offset="1.0" />
+        </LinearGradientBrush>
+    </ContentPage.Background>
+
+    <VerticalStackLayout Spacing="2">
+        <Image
+        Source="bai_banner.jpg"
+        VerticalOptions="Center"
+         HorizontalOptions="Center"/>
+
+        <Frame
+            BackgroundColor="White"
+            CornerRadius="20"
+            Padding="0"
+            HeightRequest="50"
+            Margin="23,30,23,0">
+            <SearchBar
+                Placeholder="Search"
+                BackgroundColor="Transparent"
+                VerticalOptions="Center"
+                Margin="10,0"/>
+        </Frame>
+      
+        <Image
+            Source="bai_logo.png"
+            Opacity="0.5"
+            WidthRequest="300"
+            HeightRequest="300"
+            Margin="0,30,0,0"
+            Aspect="AspectFit"
+            VerticalOptions="Center"
+            HorizontalOptions="Center"/>
+
+        <Label
+            Text="Welcome!"
+            TextColor="#096B00"
+            FontAttributes="Bold"
+            FontSize="33"
+            Style="{StaticResource Headline}"
+            SemanticProperties.HeadingLevel="Level1"
+            Margin="0,0,0,30"/>
+
+        <Label
+            Style="{StaticResource SubHeadline}"
+            SemanticProperties.HeadingLevel="Level2"
+            SemanticProperties.Description="Register your pet, please!" />
+
+        <Button x:Name="BtnRegisterPet"
+                FontSize="20"
+                Text="Register a Pet"
+                FontAttributes="Bold"
+                Padding="20"
+                Margin="10"
+                BackgroundColor="#096B00"
+                Clicked="BtnRegisterPet_Clicked"
+                CornerRadius="10"
+                />
+      
+        <Button x:Name="BtnLogout"
+                FontSize="20"
+                Text="Logout"
+                FontAttributes="Bold"
+                Padding="20"
+                Margin="10"
+                Background="#096B00"
+                CornerRadius="10"
+                Clicked="LogoutButton_Clicked">
+
+        </Button>
+
+    </VerticalStackLayout>
+</ContentPage>
+                Clicked="BtnLogout_Clicked">
+            
+        </Button>
+        
+    </VerticalStackLayout>
 </ContentPage>
