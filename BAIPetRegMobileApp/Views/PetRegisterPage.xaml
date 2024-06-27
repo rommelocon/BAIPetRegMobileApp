@@ -237,7 +237,7 @@
             <!--Weight Entry-->
 
             <StackLayout>
-                <Label Text="Weight(KG)"
+                <Label Text="Weight"
                        FontAttributes="Bold"
                     Margin="40,20,0,0"
                     TextColor="Black"
@@ -253,7 +253,7 @@
                     Margin="30,10"
                     HorizontalOptions="FillAndExpand">
                     <Entry
-                    Placeholder="Input Weight(KG)"
+                    Placeholder="Input Weight"
                     PlaceholderColor="Black"
                     BackgroundColor="Transparent"
                     IsTextPredictionEnabled="False"
@@ -263,7 +263,7 @@
                     HorizontalOptions="FillAndExpand"
                     FontSize="20"
                     Keyboard="Numeric"
-                    MaxLength="5"   
+                    MaxLength="2"   
                     />
                 </Frame>
             </StackLayout>

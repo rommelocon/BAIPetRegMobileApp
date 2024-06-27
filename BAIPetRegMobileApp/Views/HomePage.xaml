@@ -47,9 +47,16 @@
             FontAttributes="Bold"
             FontSize="33"
             Style="{StaticResource Headline}"
-            SemanticProperties.HeadingLevel="Level1"
-            Margin="0,0,0,30"/>
+            SemanticProperties.HeadingLevel="Level1"/>
 
+        <Label
+            Text="Bureau of Animal Industry"
+            TextColor="#096B00"
+            FontAttributes="Bold"
+            Margin="0,0,0,20"
+            Style="{StaticResource SubHeadline}"
+            SemanticProperties.HeadingLevel="Level2"
+ />
 
         <Button x:Name="BtnRegisterPet"
                 FontSize="20"
@@ -61,6 +68,7 @@
                 Clicked="BtnRegisterPet_Clicked"
                 CornerRadius="10"
                 />
+
         <Button x:Name="BtnLogout"
                 FontSize="20"
                 Text="Logout"
