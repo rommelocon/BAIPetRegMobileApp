@@ -1,5 +1,3 @@
-using BAIPetRegMobileApp.Views;
-
 namespace BAIPetRegMobileApp;
 
 public partial class HomePage : ContentPage
@@ -9,13 +7,20 @@ public partial class HomePage : ContentPage
 		InitializeComponent();
 	}
 
-    private void BtnRegisterPet_Clicked(object sender, EventArgs e)
+    protected override bool OnBackButtonPressed()
     {
-		Shell.Current.GoToAsync(nameof(PetRegisterPage));
+        //Application.Current.Quit();
+        return true;
     }
 
-    private void BtnLogout_Clicked(object sender, EventArgs e)
+    private void BtnRegisterPet_Clicked(object sender, EventArgs e)
     {
 
+    }
+
+    private async void LogoutButton_Clicked(object sender, EventArgs e)
+    {
+        await SecureStorage.SetAsync("hasAuth", "false");
+        await Shell.Current.GoToAsync(nameof(LoginPage));
     }
 }

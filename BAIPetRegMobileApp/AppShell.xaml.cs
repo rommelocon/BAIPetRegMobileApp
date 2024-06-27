@@ -12,6 +12,7 @@ namespace BAIPetRegMobileApp
             Routing.RegisterRoute(nameof(HomePage), typeof(HomePage));
             Routing.RegisterRoute(nameof(RegisterPage), typeof(RegisterPage));
             Routing.RegisterRoute(nameof(PetRegisterPage), typeof(PetRegisterPage));
+            Routing.RegisterRoute(nameof(GetStartedPage), typeof(GetStartedPage));
         }
     }
 }
