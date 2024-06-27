@@ -6,7 +6,7 @@
 
     <ScrollView>
         <VerticalStackLayout>
-            <Label  Text="Login Here" 
+            <Label  Text="Pet Registration" 
             HorizontalOptions="Center"
             TextColor="#096B00"
             FontSize="30"
@@ -39,13 +39,14 @@
             Margin="30,10"
             HorizontalOptions="FillAndExpand">
                     <Entry
-            Placeholder="Email"
+            Placeholder="Pet's Name"
             PlaceholderColor="Black"
             BackgroundColor="Transparent"
             IsTextPredictionEnabled="False"
             IsSpellCheckEnabled="False"
             FontAttributes="None"
             VerticalOptions="Center"
+            HorizontalOptions="FillAndExpand"
             FontSize="20"/>
                 </Frame>
 
@@ -176,7 +177,7 @@
                     <Picker Title="Select Sex" Style="{StaticResource NoUnderlinePicker}" 
                      TitleColor="Black"
                      FontSize="20"
-     >
+                     >
                         <!-- Add Picker items here -->
                         <Picker.Items  BackgroundColor="Transparent"    
 
@@ -189,6 +190,134 @@
                 </Frame>
             </StackLayout>
 
+            <!--Age Entry-->
+
+            <StackLayout>
+                <Label Text="Age"
+                       Margin="40,20,0,0"
+                       TextColor="Black"
+                       FontSize="20"
+   >
+
+                </Label>
+                <Frame CornerRadius="15"
+                       Padding="10"
+                       BackgroundColor="#f1f1f1"
+                       BorderColor="Transparent"
+                       HasShadow="False"
+                       Margin="30,10"
+                       HorizontalOptions="FillAndExpand">
+                       <Entry
+                       Placeholder="Age"
+                       PlaceholderColor="Black"
+                       BackgroundColor="Transparent"
+                       IsTextPredictionEnabled="False"
+                       IsSpellCheckEnabled="False"
+                       FontAttributes="None"
+                       VerticalOptions="Center"
+                       HorizontalOptions="FillAndExpand"
+                       FontSize="20"
+                       Keyboard="Numeric"   
+                       />
+                </Frame>
+
+            </StackLayout>
+
+            <!--Weight Entry-->
+
+            <StackLayout>
+                <Label Text="Weight"
+                    Margin="40,20,0,0"
+                    TextColor="Black"
+                    FontSize="20"
+>
+
+                </Label>
+                <Frame CornerRadius="15"
+                    Padding="10"
+                    BackgroundColor="#f1f1f1"
+                    BorderColor="Transparent"
+                    HasShadow="False"
+                    Margin="30,10"
+                    HorizontalOptions="FillAndExpand">
+                    <Entry
+                    Placeholder="Input Weight"
+                    PlaceholderColor="Black"
+                    BackgroundColor="Transparent"
+                    IsTextPredictionEnabled="False"
+                    IsSpellCheckEnabled="False"
+                    FontAttributes="None"
+                    VerticalOptions="Center"
+                    HorizontalOptions="FillAndExpand"
+                    FontSize="20"
+                    Keyboard="Numeric"   
+                    />
+                </Frame>
+            </StackLayout>
+
+            <!--Animal Color Entry-->
+
+            <StackLayout>
+                <Label Text="Animal Color"
+                    Margin="40,20,0,0"
+                    TextColor="Black"
+                    FontSize="20"
+>
+
+                </Label>
+                <Frame CornerRadius="15"
+                    Padding="10"
+                    BackgroundColor="#f1f1f1"
+                    BorderColor="Transparent"
+                    HasShadow="False"
+                    Margin="30,10"
+                    HorizontalOptions="FillAndExpand">
+                    <Entry
+                    Placeholder="Input Animal Color"
+                    PlaceholderColor="Black"
+                    BackgroundColor="Transparent"
+                    IsTextPredictionEnabled="False"
+                    IsSpellCheckEnabled="False"
+                    FontAttributes="None"
+                    VerticalOptions="Center"
+                    HorizontalOptions="FillAndExpand"
+                    FontSize="20"
+                    Keyboard="Text"  
+                    />
+                </Frame>
+            </StackLayout>
+
+            <!--Tag Number Entry-->
+
+            <StackLayout>
+                <Label Text="Tag Number (Optional)"
+                    Margin="40,20,0,0"
+                    TextColor="Black"
+                    FontSize="20"
+>
+
+                </Label>
+                <Frame CornerRadius="15"
+                    Padding="10"
+                    BackgroundColor="#f1f1f1"
+                    BorderColor="Transparent"
+                    HasShadow="False"
+                    Margin="30,10"
+                    HorizontalOptions="FillAndExpand">
+                    <Entry
+                    Placeholder="Micro-chip number"
+                    PlaceholderColor="Black"
+                    BackgroundColor="Transparent"
+                    IsTextPredictionEnabled="False"
+                    IsSpellCheckEnabled="False"
+                    FontAttributes="None"
+                    VerticalOptions="Center"
+                    HorizontalOptions="FillAndExpand"
+                    FontSize="20"
+                    Keyboard="Numeric"   
+                    />
+                </Frame>
+            </StackLayout>
 
 
 
