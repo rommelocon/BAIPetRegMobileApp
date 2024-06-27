@@ -41,6 +41,7 @@
                FontAttributes="None"
                VerticalOptions="Center"
                FontSize="20"
+               Keyboard="Email"
                />
         </Frame>
         <Frame CornerRadius="15"
