@@ -74,9 +74,9 @@
                 Margin="10"
                 Background="#096B00"
                 CornerRadius="10"
-                Clicked="LogoutButton_Clicked">
-
+                Clicked="BtnLogout_Clicked">
+            
         </Button>
-
+        
     </VerticalStackLayout>
 </ContentPage>
