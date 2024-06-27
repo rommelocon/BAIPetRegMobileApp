@@ -49,11 +49,6 @@
             Style="{StaticResource Headline}"
             SemanticProperties.HeadingLevel="Level1"/>
 
-
-            Style="{StaticResource SubHeadline}"
-            SemanticProperties.HeadingLevel="Level2"
-            SemanticProperties.Description="Register your pet, please!" />
-
         <Button x:Name="BtnRegisterPet"
                 FontSize="20"
                 Text="Register a Pet"

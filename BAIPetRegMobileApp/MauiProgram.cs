@@ -1,4 +1,6 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using BAIPetRegMobileApp;
+using Microsoft.Extensions.Logging;
+using CommunityToolkit.Maui;
 
 public static class MauiProgram
 {
