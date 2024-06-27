@@ -23,10 +23,6 @@ namespace BAIPetRegMobileApp
                 await SecureStorage.SetAsync("hasAuth", "true");
                 await Shell.Current.GoToAsync(nameof(HomePage));
             }
-            else if (IsCredentialCorrect(UsernameEntry.Text, PasswordEntry.Text))
-            {
-                await DisplayAlert("Login failed", "Please Input your email and password", "Try again");
-            }
             else
             {
                 await DisplayAlert("Login failed", "Username or password is invalid", "Try again");
