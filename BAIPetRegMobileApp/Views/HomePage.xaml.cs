@@ -1,5 +1,3 @@
-using BAIPetRegMobileApp.Views;
-
 namespace BAIPetRegMobileApp;
 
 public partial class HomePage : ContentPage

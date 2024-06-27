@@ -80,3 +80,9 @@
 
     </VerticalStackLayout>
 </ContentPage>
+                Clicked="BtnLogout_Clicked">
+            
+        </Button>
+        
+    </VerticalStackLayout>
+</ContentPage>
