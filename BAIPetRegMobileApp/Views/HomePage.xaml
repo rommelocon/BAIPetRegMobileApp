@@ -50,10 +50,6 @@
             SemanticProperties.HeadingLevel="Level1"
             Margin="0,0,0,30"/>
 
-        <Label
-            Style="{StaticResource SubHeadline}"
-            SemanticProperties.HeadingLevel="Level2"
-            SemanticProperties.Description="Register your pet, please!" />
 
         <Button x:Name="BtnRegisterPet"
                 FontSize="20"
@@ -65,7 +61,6 @@
                 Clicked="BtnRegisterPet_Clicked"
                 CornerRadius="10"
                 />
-
         <Button x:Name="BtnLogout"
                 FontSize="20"
                 Text="Logout"
@@ -74,9 +69,9 @@
                 Margin="10"
                 Background="#096B00"
                 CornerRadius="10"
-                Clicked="LogoutButton_Clicked">
-
+                Clicked="BtnLogout_Clicked">
+            
         </Button>
-
+        
     </VerticalStackLayout>
 </ContentPage>
