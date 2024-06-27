@@ -64,10 +64,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\BAIPetRegMobileApp.Shared\BAIPetRegMobileApp.Shared.csproj" />
-	</ItemGroup>
-
-	<ItemGroup>
 	  <Folder Include="Components\" />
 	  <Folder Include="Models\" />
 	  <Folder Include="Data\" />
