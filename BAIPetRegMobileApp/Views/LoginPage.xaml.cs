@@ -18,19 +18,21 @@ public partial class LoginPage : ContentPage
             return true;
         }
 
-        var loginResult = await AuthenticateUser(username, password);
+        private async void LoginButton_Clicked(object sender, EventArgs e)
+        {
+            if (IsCredentialCorrect(UsernameEntry.Text, PasswordEntry.Text))
+            {
+                await SecureStorage.SetAsync("hasAuth", "true");
+                await Shell.Current.GoToAsync(nameof(HomePage));
+            }
+            else
+            {
+                await DisplayAlert("Login failed", "Username or password is invalid", "Try again");
+                UsernameEntry.Text = string.Empty;
+                PasswordEntry.Text = string.Empty;
 
-        if (loginResult)
-        {
-            await DisplayAlert("Success", "Login successful!", "OK");
-            // Navigate to the next page or main application page
+            }
         }
-        else
-        {
-            ResultLabel.Text = "Login failed. Please try again.";
-            ResultLabel.IsVisible = true;
-        }
-    }
 
     private async Task<bool> AuthenticateUser(string username, string password)
     {
