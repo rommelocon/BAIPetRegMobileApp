@@ -237,7 +237,7 @@
             <!--Weight Entry-->
 
             <StackLayout>
-                <Label Text="Weight"
+                <Label Text="Weight(KG)"
                        FontAttributes="Bold"
                     Margin="40,20,0,0"
                     TextColor="Black"
@@ -262,7 +262,8 @@
                     VerticalOptions="Center"
                     HorizontalOptions="FillAndExpand"
                     FontSize="20"
-                    Keyboard="Numeric"   
+                    Keyboard="Numeric"
+                    MaxLength="5"   
                     />
                 </Frame>
             </StackLayout>

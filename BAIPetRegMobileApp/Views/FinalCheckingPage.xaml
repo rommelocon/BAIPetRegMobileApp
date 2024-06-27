@@ -28,7 +28,7 @@
             
 
 
-            <Button 
+            <Button x:Name="btnSubmit"
                     FontSize="20"
                     Text="Continue"
                     FontAttributes="Bold"
