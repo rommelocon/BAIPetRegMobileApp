@@ -10,11 +10,11 @@ namespace BAIPetRegMobileApp
             InitializeComponent();
         }
 
-        //protected override bool OnBackButtonPressed()
-        //{
-        //    Application.Current.Quit();
-        //    return true;
-        //}
+        protected override bool OnBackButtonPressed()
+        {
+            Application.Current.Quit();
+            return true;
+        }
 
         private async void LoginButton_Clicked(object sender, EventArgs e)
         {
