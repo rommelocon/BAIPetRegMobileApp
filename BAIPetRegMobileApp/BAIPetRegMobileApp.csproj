@@ -57,6 +57,10 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="Resources\AppIcon\Images\check.png" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<PackageReference Include="CommunityToolkit.Maui" Version="9.0.1" />
 		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
 		<PackageReference Include="Microsoft.Extensions.Http" Version="8.0.0" />
@@ -83,6 +87,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<MauiXaml Update="Views\FinalCheckingPage.xaml">
+		  <Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
 		<MauiXaml Update="Views\RegisterPage.xaml">
 			<Generator>MSBuild:Compile</Generator>
 		</MauiXaml>

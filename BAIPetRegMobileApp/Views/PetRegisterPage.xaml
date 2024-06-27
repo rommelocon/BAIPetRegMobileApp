@@ -28,6 +28,7 @@
                Margin="40,20,0,0"
                TextColor="Black"
                FontSize="20"
+               FontAttributes="Bold"
                >
 
                 </Label>
@@ -39,6 +40,7 @@
             Margin="30,10"
             HorizontalOptions="FillAndExpand">
                     <Entry
+                     x:Name="EntryPetName"   
             Placeholder="Pet's Name"
             PlaceholderColor="Black"
             BackgroundColor="Transparent"
@@ -59,6 +61,7 @@
                        Margin="40,20,0,0"
                        TextColor="Black"
                        FontSize="20"
+                       FontAttributes="Bold"
         />
                 <Frame CornerRadius="15"
                         Padding="10"
@@ -67,7 +70,9 @@
                         HasShadow="False"
                         Margin="30,10"
                         HorizontalOptions="FillAndExpand">
-                    <Picker Title="Type of Ownership" Style="{StaticResource NoUnderlinePicker}" 
+                    <Picker Title="Type of Ownership"
+                            x:Name="PickerTypeOfOwnership"
+                            Style="{StaticResource NoUnderlinePicker}" 
                                     TitleColor="Black"
                                     FontSize="20"
              >
@@ -85,6 +90,7 @@
 
             <StackLayout>
                 <Label Text="Species"
+                       FontAttributes="Bold"
                Margin="40,20,0,0"
                TextColor="Black"
                FontSize="20"
@@ -114,6 +120,7 @@
 
             <StackLayout>
                 <Label Text="Breed"
+                       FontAttributes="Bold"
                         Margin="40,20,0,0"
                         TextColor="Black"
                         FontSize="20"
@@ -142,6 +149,7 @@
             <!--Date Picker-->
             <StackLayout>
                 <Label Text="Date of Birth"
+                       FontAttributes="Bold"
                        Margin="40,20,0,0"
                        TextColor="Black"
                        FontSize="20"/>
@@ -163,6 +171,7 @@
 
             <StackLayout>
                 <Label Text="Sex"
+                       FontAttributes="Bold"
                  Margin="40,20,0,0"
                  TextColor="Black"
                  FontSize="20"
@@ -194,6 +203,7 @@
 
             <StackLayout>
                 <Label Text="Age"
+                       FontAttributes="Bold"
                        Margin="40,20,0,0"
                        TextColor="Black"
                        FontSize="20"
@@ -217,7 +227,8 @@
                        VerticalOptions="Center"
                        HorizontalOptions="FillAndExpand"
                        FontSize="20"
-                       Keyboard="Numeric"   
+                       Keyboard="Numeric"
+                       MaxLength="2"    
                        />
                 </Frame>
 
@@ -227,6 +238,7 @@
 
             <StackLayout>
                 <Label Text="Weight"
+                       FontAttributes="Bold"
                     Margin="40,20,0,0"
                     TextColor="Black"
                     FontSize="20"
@@ -250,7 +262,8 @@
                     VerticalOptions="Center"
                     HorizontalOptions="FillAndExpand"
                     FontSize="20"
-                    Keyboard="Numeric"   
+                    Keyboard="Numeric"
+                    MaxLength="2"   
                     />
                 </Frame>
             </StackLayout>
@@ -305,6 +318,7 @@
                     Margin="30,10"
                     HorizontalOptions="FillAndExpand">
                     <Entry
+                    x:Name="EntryTagNumber"
                     Placeholder="Micro-chip number"
                     PlaceholderColor="Black"
                     BackgroundColor="Transparent"
@@ -318,10 +332,20 @@
                     />
                 </Frame>
             </StackLayout>
+            
+            
+            <!--Button for Submit-->
 
-
-
-
+            <Button x:Name="BtnSubmit"
+                    FontSize="20"
+                    Text="Register a Pet"
+                    FontAttributes="Bold"
+                    Padding="20"
+                    Margin="60"
+                    BackgroundColor="#096B00"
+                    Clicked="BtnSubmit_Clicked"
+                    CornerRadius="10"
+                     />
         </VerticalStackLayout>
     </ScrollView>
 
