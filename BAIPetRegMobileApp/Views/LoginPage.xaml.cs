@@ -12,10 +12,11 @@ public partial class LoginPage : ContentPage
         InitializeComponent();
     }
 
-    private async void OnLoginClicked(object sender, EventArgs e)
-    {
-        var username = UsernameEntry.Text;
-        var password = PasswordEntry.Text;
+        protected override bool OnBackButtonPressed()
+        {
+            Application.Current.Quit();
+            return true;
+        }
 
         var loginResult = await AuthenticateUser(username, password);
 
