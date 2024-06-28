@@ -2,11 +2,11 @@ namespace BAIPetRegMobileApp.Views;
 
 public partial class PetRegisterPage : ContentPage
 {
-	public PetRegisterPage()
-	{
-		InitializeComponent();
+    public PetRegisterPage()
+    {
+        InitializeComponent();
 
-	}
+    }
 
     private void Picker_Focused(object sender, FocusEventArgs e)
     {

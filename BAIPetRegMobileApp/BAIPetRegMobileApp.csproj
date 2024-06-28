@@ -72,10 +72,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\BAIPetRegMobileApp.Shared\BAIPetRegMobileApp.Shared.csproj" />
-	</ItemGroup>
-
-	<ItemGroup>
 		<Folder Include="Components\" />
 	</ItemGroup>
 
@@ -88,11 +84,4 @@
 	<ItemGroup>
 	  <Folder Include="Components\" />
 	</ItemGroup>
-
-	<!--<ItemGroup>
-	  <MauiXaml Update="Views\RegisterPage.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	</ItemGroup>-->
-
 </Project>
