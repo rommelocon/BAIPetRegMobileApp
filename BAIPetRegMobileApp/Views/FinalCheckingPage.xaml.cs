@@ -7,8 +7,8 @@ public partial class FinalCheckingPage : ContentPage
         InitializeComponent();
     }
 
-    private void BtnSubmit_Clicked(object sender, EventArgs e)
+    private void BtnContinue_Clicked(object sender, EventArgs e)
     {
-
-    }
+        Shell.Current.GoToAsync(nameof(HomePage));
+;    }
 }

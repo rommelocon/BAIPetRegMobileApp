@@ -338,13 +338,13 @@
 
             <Button x:Name="BtnSubmit"
                     FontSize="20"
-                    Text="Register a Pet"
+                    Text="SUBMIT"
                     FontAttributes="Bold"
                     Padding="20"
                     Margin="60"
                     BackgroundColor="#096B00"
-                    Clicked="BtnSubmit_Clicked"
                     CornerRadius="10"
+                    Clicked="BtnSubmit_Clicked" 
                      />
         </VerticalStackLayout>
     </ScrollView>

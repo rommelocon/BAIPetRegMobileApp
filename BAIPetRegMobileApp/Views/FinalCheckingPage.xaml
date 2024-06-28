@@ -28,7 +28,7 @@
             
 
 
-            <Button x:Name="btnSubmit"
+            <Button x:Name="BtnContinue"
                     FontSize="20"
                     Text="Continue"
                     FontAttributes="Bold"
@@ -36,7 +36,7 @@
                     Padding="20"
                     Margin="0,60,0,0"
                     BackgroundColor="#096B00"
-                    Clicked="BtnSubmit_Clicked"
+                    Clicked="BtnContinue_Clicked"   
                     CornerRadius="10"/>
         </StackLayout>
     </VerticalStackLayout>
