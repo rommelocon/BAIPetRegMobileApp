@@ -1,10 +1,17 @@
-@BAIPetRegMobileApp.Api_HostAddress = http://localhost:5091
+@BAIPetRegMobileApp.Api_HostAddress = https://localhost:7107
 
 GET {{BAIPetRegMobileApp.Api_HostAddress}}/weatherforecast/
 Accept: application/json
 
-<<<<<<< HEAD
+###
 
-=======
->>>>>>> added fonts and routes
+POST {{BAIPetRegMobileApp.Api_HostAddress}}/api/users
+Content-Type: application/json
+
+{
+  "name": "John Mark Pulmano",
+  "email": "johnmarkpulmano@gmail.com",
+  "password": "123"
+}
+
 ###

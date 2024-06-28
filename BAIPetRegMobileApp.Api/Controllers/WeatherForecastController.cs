@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-
-=======
->>>>>>> added fonts and routes
 using Microsoft.AspNetCore.Mvc;
 
 namespace BAIPetRegMobileApp.Api.Controllers

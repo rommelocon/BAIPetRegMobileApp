@@ -1,6 +1,8 @@
 ﻿using BAIPetRegMobileApp;
 using Microsoft.Extensions.Logging;
 using CommunityToolkit.Maui;
+using BAIPetRegMobileApp.ViewModels;
+using BAIPetRegMobileApp.Views;
 
 public static class MauiProgram
 {
@@ -17,6 +19,14 @@ public static class MauiProgram
                 fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                 fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
             });
+
+        builder.Services.AddSingleton<HomePage>();
+        builder.Services.AddSingleton<LoginPage>();
+        builder.Services.AddSingleton<GetStartedPage>();
+        builder.Services.AddSingleton<FinalCheckingPage>();
+        builder.Services.AddSingleton<PetRegisterPage>();
+        builder.Services.AddSingleton<RegisterPage>();
+        builder.Services.AddSingleton<LoginPageViewModel>();
 
 #if DEBUG
     		builder.Logging.AddDebug();

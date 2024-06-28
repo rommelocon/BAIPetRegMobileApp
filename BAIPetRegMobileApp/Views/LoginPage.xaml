@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:BAIPetRegMobileApp.ViewModels"
              x:Class="BAIPetRegMobileApp.LoginPage"
+             x:DataType="vm:LoginPageViewModel"
              Shell.NavBarIsVisible="False"
              Title="LoginPage">
 
     <VerticalStackLayout>
+        <!--Logo Image-->
         <Image
             Source="bai_logo.png"
             WidthRequest="200"
@@ -24,6 +27,7 @@
             Margin="0,0,0,80"
             FontFamily="Poppins-Bold"/>
 
+        <!--Username Input-->
         <Frame CornerRadius="15"
                Padding="10"
                BackgroundColor="#f1f1f1"
@@ -41,8 +45,11 @@
                VerticalOptions="Center"
                FontSize="20"
                Keyboard="Email"
+               Text="{Binding Email}"
                />
         </Frame>
+        
+        <!--Password Input-->
         <Frame CornerRadius="15"
                Padding="10"
                BackgroundColor="#f1f1f1"
@@ -60,6 +67,7 @@
                 FontAttributes="None"
                 VerticalOptions="Center"
                 FontSize="20"
+                   Text="{Binding Password}"
                 />
         </Frame>
 
@@ -88,7 +96,7 @@
             WidthRequest="330"
             Margin="0,0,0,0"
             x:Name="LoginButton"
-            Clicked="LoginButton_Clicked"
+            Command="{Binding SignInCommand}"
             />
 
         <Label x:Name="MessageLabel" TextColor="Red" />
