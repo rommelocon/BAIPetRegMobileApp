@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="BAIPetRegMobileApp.LoginPage"
+             Shell.NavBarIsVisible="False"
              Title="LoginPage">
 
     <VerticalStackLayout>
@@ -39,6 +40,7 @@
                FontAttributes="None"
                VerticalOptions="Center"
                FontSize="20"
+               Keyboard="Email"
                />
         </Frame>
         <Frame CornerRadius="15"
@@ -60,18 +62,23 @@
                 FontSize="20"
                 />
         </Frame>
-        
 
-        <!-- Forgot Password Link -->
+        <!--Forgot Password Link-->
         <Label
             Text="Forgot your password?"
             TextColor="Blue"
             FontSize="12"
             HorizontalOptions="End"
             Margin="0,0,50,20"
-            />
+            >
+            <Label.GestureRecognizers>
+                <TapGestureRecognizer Tapped="ForgotPasswordLabel_Tapped"/>
+            </Label.GestureRecognizers>
+        </Label>
 
-        <!-- Sign In Button -->
+
+        <!--Sign In Button-->
+
         <Button
             Text="Sign in"
             TextColor="White"
@@ -80,23 +87,29 @@
             HeightRequest="60"
             WidthRequest="330"
             Margin="0,0,0,0"
-            Clicked="OnLoginButton_Clicked"
+            x:Name="LoginButton"
+            Clicked="LoginButton_Clicked"
             />
 
         <Label x:Name="MessageLabel" TextColor="Red" />
 
-        <!-- Sign Up Link -->
+
+        <!--Sign Up Link-->
+
         <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Margin="0,40,0,20">
             <Label Text="Don't have an account?"
                TextColor="Blue"
-               FontSize="12"/>
+               FontSize="12" />
             <Label Text="SIGN UP"
+                   x:Name="SignUpLink"
                TextColor="Blue"
                FontSize="12"
                Margin="60,0,0,0">
-                <!--<Label.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="SignUpTapped"/>
-                </Label.GestureRecognizers>-->
+
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="ClickableLabel_Tapped"/>
+                </Label.GestureRecognizers>
+
             </Label>
         </StackLayout>
 
