@@ -1,7 +1,6 @@
 ﻿using Android.App;
 using Android.Content.Res;
 using Android.Runtime;
-using Microsoft.Maui;
 using Microsoft.Maui.Controls.Compatibility.Platform.Android;
 
 namespace BAIPetRegMobileApp

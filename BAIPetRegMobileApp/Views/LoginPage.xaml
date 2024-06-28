@@ -4,114 +4,117 @@
              x:Class="BAIPetRegMobileApp.LoginPage"
              Shell.NavBarIsVisible="False"
              Title="LoginPage">
+    <ScrollView>
+        <VerticalStackLayout>
+            <Image
+        Source="bai_logo.png"
+        WidthRequest="200"
+        HeightRequest="200"
+        VerticalOptions="Center"
+        HorizontalOptions="Center"
+        Aspect="AspectFit"
+        Margin="0,20,0,0"
+        />
 
-    <VerticalStackLayout>
-        <Image
-            Source="bai_logo.png"
-            WidthRequest="200"
-            HeightRequest="200"
+            <Label  Text="Login Here" 
+        HorizontalOptions="Center"
+        TextColor="#096B00"
+        FontSize="30"
+        FontAttributes="Bold"
+        Margin="0,0,0,80"
+        FontFamily="Poppins-Bold"/>
+
+            <Frame CornerRadius="15"
+           Padding="10"
+           BackgroundColor="#f1f1f1"
+           BorderColor="Transparent"
+           HasShadow="False"
+           Margin="30,10"
+           HorizontalOptions="FillAndExpand">
+                <Entry x:Name="UsernameEntry"
+           Placeholder="Email"
+           TextColor="Black"
+           BackgroundColor="Transparent"
+           IsTextPredictionEnabled="False"
+           IsSpellCheckEnabled="False"
+           FontAttributes="None"
+           VerticalOptions="Center"
+           FontSize="20"
+           Keyboard="Email"
+           />
+            </Frame>
+            <Frame CornerRadius="15"
+           Padding="10"
+           BackgroundColor="#f1f1f1"
+           BorderColor="Transparent"
+           HasShadow="False"
+           Margin="30,10"
+           HorizontalOptions="FillAndExpand">
+                <Entry x:Name="PasswordEntry"
+            Placeholder="Password"
+            IsPassword="True"
+            TextColor="Black"
+            BackgroundColor="#f1f1f1"
+            IsTextPredictionEnabled="False"
+            IsSpellCheckEnabled="False"
+            FontAttributes="None"
             VerticalOptions="Center"
-            HorizontalOptions="Center"
-            Aspect="AspectFit"
-            Margin="0,20,0,0"
+            FontSize="20"
             />
+            </Frame>
 
-        <Label  Text="Login Here" 
-            HorizontalOptions="Center"
-            TextColor="#096B00"
-            FontSize="30"
-            FontAttributes="Bold"
-            Margin="0,0,0,80"
-            FontFamily="Poppins-Bold"/>
-
-        <Frame CornerRadius="15"
-               Padding="10"
-               BackgroundColor="#f1f1f1"
-               BorderColor="Transparent"
-               HasShadow="False"
-               Margin="30,10"
-               HorizontalOptions="FillAndExpand">
-            <Entry x:Name="UsernameEntry"
-               Placeholder="Email"
-               TextColor="Black"
-               BackgroundColor="Transparent"
-               IsTextPredictionEnabled="False"
-               IsSpellCheckEnabled="False"
-               FontAttributes="None"
-               VerticalOptions="Center"
-               FontSize="20"
-               Keyboard="Email"
-               />
-        </Frame>
-        <Frame CornerRadius="15"
-               Padding="10"
-               BackgroundColor="#f1f1f1"
-               BorderColor="Transparent"
-               HasShadow="False"
-               Margin="30,10"
-               HorizontalOptions="FillAndExpand">
-            <Entry x:Name="PasswordEntry"
-                Placeholder="Password"
-                IsPassword="True"
-                TextColor="Black"
-                BackgroundColor="#f1f1f1"
-                IsTextPredictionEnabled="False"
-                IsSpellCheckEnabled="False"
-                FontAttributes="None"
-                VerticalOptions="Center"
-                FontSize="20"
-                />
-        </Frame>
-
-        <!--Forgot Password Link-->
-        <Label
-            Text="Forgot your password?"
-            TextColor="Blue"
-            FontSize="12"
-            HorizontalOptions="End"
-            Margin="0,0,50,20"
-            >
-            <Label.GestureRecognizers>
-                <TapGestureRecognizer Tapped="ForgotPasswordLabel_Tapped"/>
-            </Label.GestureRecognizers>
-        </Label>
-
-
-        <!--Sign In Button-->
-
-        <Button
-            Text="Sign in"
-            TextColor="White"
-            BackgroundColor="Green"
-            CornerRadius="10"
-            HeightRequest="60"
-            WidthRequest="330"
-            Margin="0,0,0,0"
-            x:Name="LoginButton"
-            Clicked="LoginButton_Clicked"
-            />
-
-        <Label x:Name="MessageLabel" TextColor="Red" />
-
-
-        <!--Sign Up Link-->
-
-        <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Margin="0,40,0,20">
-            <Label Text="Don't have an account?"
-               TextColor="Blue"
-               FontSize="12" />
-            <Label Text="SIGN UP"
-                   x:Name="SignUpLink"
-               TextColor="Blue"
-               FontSize="12"
-               Margin="60,0,0,0">
-
+            <!--Forgot Password Link-->
+            <Label
+        Text="Forgot your password?"
+        TextColor="Blue"
+        FontSize="15"
+        HorizontalOptions="End"
+        Margin="0,0,50,20"
+        >
                 <Label.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="ClickableLabel_Tapped"/>
+                    <TapGestureRecognizer Tapped="ForgotPasswordLabel_Tapped"/>
                 </Label.GestureRecognizers>
-
             </Label>
-        </StackLayout>
 
-    </VerticalStackLayout>
+
+            <!--Sign In Button-->
+
+            <Button
+        Text="Sign in"
+        TextColor="White"
+        BackgroundColor="Green"
+        CornerRadius="10"
+        HeightRequest="60"
+        WidthRequest="330"
+        Margin="0,0,0,0"
+        FontSize="20"
+        FontAttributes="Bold"
+        x:Name="LoginButton"
+        Clicked="LoginButton_Clicked"
+        />
+
+
+
+            <!--Sign Up Link-->
+
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Margin="0,40,0,20">
+                <Label Text="Don't have an account?"
+           TextColor="Blue"
+           FontSize="15" />
+                <Label Text="SIGN UP"
+               x:Name="SignUpLink"
+           TextColor="Blue"
+           FontSize="15"
+           Margin="60,0,0,0">
+
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="ClickableLabel_Tapped"/>
+                    </Label.GestureRecognizers>
+
+                </Label>
+            </StackLayout>
+
+        </VerticalStackLayout>
+    </ScrollView>
+    
 </ContentPage>
