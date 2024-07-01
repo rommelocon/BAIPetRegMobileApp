@@ -12,15 +12,55 @@ public partial class PetRegisterPage : ContentPage
     {
         InitializeComponent();
 
+        List<string> listOwnership = new List<string>()
+        {
+            "Ownership001",
+            "Ownership002",
+            "Ownership003"
+        };
+        ownershipList.ItemsSource = listOwnership;
+
+        List<string> listSpecies = new List<string>()
+        {
+            "Species001",
+            "Species002",
+            "Species003"
+        };
+        speciesList.ItemsSource = listSpecies;
+
+        List<string> listBreed = new List<string>()
+        {
+            "Breed001",
+            "Breed002",
+            "Breed003"
+        };
+        breedList.ItemsSource = listBreed;
+
+        List<string> listSex = new List<string>()
+        {
+            "Male",
+            "Female"
+        };
+        sexList.ItemsSource = listSex;
+
     }
 
-   
+    private void OnOwnershipListSelectedIndexChanged(object sender, EventArgs e)
+    {
+        var picker = (Picker)sender;
+        string selectedOwnership = (string)picker.SelectedItem;
+        Console.WriteLine($"Selected Ownership: {selectedOwnership}");
+
+        // Now, selectedOwnership contains the selected value.
+    }
+
+    //private void Picker_Focused(object sender, FocusEventArgs e)
+    //{
+
+    //}
 
     private void BtnSubmit_Clicked(object sender, EventArgs e)
     {
-
-     
-        // Navigate to the final checking page
         Shell.Current.GoToAsync(nameof(FinalCheckingPage));
     }
 
