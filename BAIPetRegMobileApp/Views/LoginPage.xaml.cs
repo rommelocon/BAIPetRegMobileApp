@@ -1,6 +1,4 @@
 using BAIPetRegMobileApp.ViewModels;
-using System.Security.Cryptography;
-using System.Text;
 
 namespace BAIPetRegMobileApp
 {
@@ -11,12 +9,6 @@ namespace BAIPetRegMobileApp
             InitializeComponent();
             BindingContext = vm;
         }
-
-        //protected override bool OnBackButtonPressed()
-        //{
-        //    Application.Current.Quit();
-        //    return true;
-        //}
 
         private async void ClickableLabel_Tapped(object sender, TappedEventArgs e)
         {

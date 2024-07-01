@@ -2,19 +2,15 @@
 using Microsoft.EntityFrameworkCore;
 using BAIPetRegMobileApp.Api.Data;
 using BAIPetRegMobileApp.Api.Models;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 
 namespace BAIPetRegMobileApp.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class UsersController : ControllerBase
+    public class UsersController(AppDbContext context) : ControllerBase
     {
-        private readonly AppDbContext _context;
-
-        public UsersController(AppDbContext context)
-        {
-            _context = context;
-        }
+        private readonly AppDbContext _context = context;
 
         // GET: api/Users
         [HttpGet]
@@ -103,12 +99,13 @@ namespace BAIPetRegMobileApp.Api.Controllers
         [HttpGet("login/{email}/{password}")]
         public async Task<ActionResult<User>> Login(string email, string password)
         {
-            if(!string.IsNullOrWhiteSpace(email) && !string.IsNullOrWhiteSpace(password)) 
+            if (!string.IsNullOrWhiteSpace(email) && !string.IsNullOrWhiteSpace(password))
             {
                 var user = await _context.Users.Where(x => x.Email!.Equals(email) && x.Password == password).FirstOrDefaultAsync();
-                return user != null ? Ok(user) : NotFound();
+                return user != null ? Ok(user) : NoContent();
             }
             return BadRequest();
         }
+
     }
 }

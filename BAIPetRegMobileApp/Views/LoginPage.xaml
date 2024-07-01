@@ -67,7 +67,7 @@
                 FontAttributes="None"
                 VerticalOptions="Center"
                 FontSize="20"
-                   Text="{Binding Password}"
+                Text="{Binding Password}"
                 />
         </Frame>
 

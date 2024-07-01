@@ -1,11 +1,10 @@
 ﻿using BAIPetRegMobileApp.Models;
-using BAIPetRegMobileApp.Views;
 
 namespace BAIPetRegMobileApp
 {
     public partial class App : Application
     {
-        public static User? user;
+        public static User user;
         public App()
         {
             InitializeComponent();
