@@ -167,7 +167,7 @@
             </StackLayout>
 
 
-            <!--Breed Picker-->
+            <!--Sex Picker-->
 
             <StackLayout>
                 <Label Text="Sex"
@@ -275,6 +275,7 @@
                     Margin="40,20,0,0"
                     TextColor="Black"
                     FontSize="20"
+                    FontAttributes="Bold"
 >
 
                 </Label>
@@ -300,16 +301,18 @@
                 </Frame>
             </StackLayout>
 
-            <!--Tag Number Entry-->
+            <!--Tag number Entry-->
 
             <StackLayout>
                 <Label Text="Tag Number (Optional)"
                     Margin="40,20,0,0"
                     TextColor="Black"
                     FontSize="20"
+                    FontAttributes="Bold"
 >
 
                 </Label>
+                
                 <Frame CornerRadius="15"
                     Padding="10"
                     BackgroundColor="#f1f1f1"
@@ -334,6 +337,396 @@
             </StackLayout>
             
             
+
+            <Label  Text="Animal location" 
+                    HorizontalOptions="Start"
+                    TextColor="#096B00"
+                    FontSize="20"
+                    FontAttributes="Bold"
+                    Margin="40,50,0,0"
+                    FontFamily="Poppins-Bold"/>
+            
+            
+            
+            
+            <!--region picker-->
+
+            <StackLayout>
+                <Label Text="Region"
+                       FontAttributes="Bold"
+                 Margin="40,20,0,0"
+                 TextColor="Black"
+                 FontSize="20"
+/>
+                <Frame CornerRadius="15"
+                 Padding="10"
+                 BackgroundColor="#f1f1f1"
+                 BorderColor="Transparent"
+                 HasShadow="False"
+                 Margin="30,10"
+                 HorizontalOptions="FillAndExpand">
+                    <Picker Title="Select Region" Style="{StaticResource NoUnderlinePicker}" 
+                     TitleColor="Black"
+                     FontSize="20"
+                     >
+                        <!-- Add Picker items here -->
+                        <Picker.Items  BackgroundColor="Transparent"    
+
+                                      >
+                            <x:String>Region 1</x:String>
+                            <x:String>Region 2</x:String>
+                            <x:String>Region 3</x:String>
+                        </Picker.Items>
+                    </Picker>
+                </Frame>
+            </StackLayout>
+
+
+            <!--Province picker-->
+
+            <StackLayout>
+                <Label Text="Province"
+                       FontAttributes="Bold"
+                 Margin="40,20,0,0"
+                 TextColor="Black"
+                 FontSize="20"
+/>
+                <Frame CornerRadius="15"
+                 Padding="10"
+                 BackgroundColor="#f1f1f1"
+                 BorderColor="Transparent"
+                 HasShadow="False"
+                 Margin="30,10"
+                 HorizontalOptions="FillAndExpand">
+                    <Picker Title="Select Province" Style="{StaticResource NoUnderlinePicker}" 
+                     TitleColor="Black"
+                     FontSize="20"
+                     >
+                        <!-- Add Picker items here -->
+                        <Picker.Items  BackgroundColor="Transparent"    
+
+                                      >
+                            <x:String>Province 1</x:String>
+                            <x:String>Province 2</x:String>
+                            <x:String>Province 3</x:String>
+                        </Picker.Items>
+                    </Picker>
+                </Frame>
+            </StackLayout>
+
+            <!--Municipality picker-->
+
+            <StackLayout>
+                <Label Text="Municipality"
+                       FontAttributes="Bold"
+                 Margin="40,20,0,0"
+                 TextColor="Black"
+                 FontSize="20"
+/>
+                <Frame CornerRadius="15"
+                 Padding="10"
+                 BackgroundColor="#f1f1f1"
+                 BorderColor="Transparent"
+                 HasShadow="False"
+                 Margin="30,10"
+                 HorizontalOptions="FillAndExpand">
+                    <Picker Title="Select Municipality" Style="{StaticResource NoUnderlinePicker}" 
+                     TitleColor="Black"
+                     FontSize="20"
+                     >
+                        <!-- Add Picker items here -->
+                        <Picker.Items  BackgroundColor="Transparent"    
+
+                                      >
+                            <x:String>Municipality 1</x:String>
+                            <x:String>Municipality 2</x:String>
+                            <x:String>Municipality 3</x:String>
+                        </Picker.Items>
+                    </Picker>
+                </Frame>
+            </StackLayout>
+
+            <!--Barangay picker-->
+
+            <StackLayout>
+                <Label Text="Barangay"
+                       FontAttributes="Bold"
+                 Margin="40,20,0,0"
+                 TextColor="Black"
+                 FontSize="20"
+/>
+                <Frame CornerRadius="15"
+                 Padding="10"
+                 BackgroundColor="#f1f1f1"
+                 BorderColor="Transparent"
+                 HasShadow="False"
+                 Margin="30,10"
+                 HorizontalOptions="FillAndExpand">
+                    <Picker Title="Select Barangay" Style="{StaticResource NoUnderlinePicker}" 
+                     TitleColor="Black"
+                     FontSize="20"
+                     >
+                        <!-- Add Picker items here -->
+                        <Picker.Items  BackgroundColor="Transparent"    
+
+                                      >
+                            <x:String>Barangay  1</x:String>
+                            <x:String>Barangay 2</x:String>
+                            <x:String>Barangay 3</x:String>
+                        </Picker.Items>
+                    </Picker>
+                </Frame>
+            </StackLayout>
+
+            <!--Longitude Entry-->
+
+            <StackLayout>
+                <Label Text="Longitude"
+                    Margin="40,20,0,0"
+                    TextColor="Black"
+                    FontSize="20"
+                    FontAttributes="Bold"
+>
+
+                </Label>
+
+                <Frame
+                    CornerRadius="15"
+                    Padding="10"
+                    BackgroundColor="#f1f1f1"
+                    BorderColor="Transparent"
+                    HasShadow="False"
+                    Margin="30,10"
+                    HorizontalOptions="FillAndExpand">
+                    <Entry
+                    Placeholder="Longitude"
+                    PlaceholderColor="Black"
+                    BackgroundColor="Transparent"
+                    IsTextPredictionEnabled="False"
+                    IsSpellCheckEnabled="False"
+                    FontAttributes="None"
+                    VerticalOptions="Center"
+                    HorizontalOptions="FillAndExpand"
+                    FontSize="20"
+                    Keyboard="Numeric"   
+                    />
+                </Frame>
+            </StackLayout>
+
+            <!--Latitude Entry-->
+
+            <StackLayout>
+                <Label Text="Latitude"
+                    Margin="40,20,0,0"
+                    TextColor="Black"
+                    FontSize="20"
+                    FontAttributes="Bold"
+>
+
+                </Label>
+
+                <Frame
+                    CornerRadius="15"
+                    Padding="10"
+                    BackgroundColor="#f1f1f1"
+                    BorderColor="Transparent"
+                    HasShadow="False"
+                    Margin="30,10"
+                    HorizontalOptions="FillAndExpand">
+                    <Entry
+                    Placeholder="Latitude"
+                    PlaceholderColor="Black"
+                    BackgroundColor="Transparent"
+                    IsTextPredictionEnabled="False"
+                    IsSpellCheckEnabled="False"
+                    FontAttributes="None"
+                    VerticalOptions="Center"
+                    HorizontalOptions="FillAndExpand"
+                    FontSize="20"
+                    Keyboard="Numeric"   
+                    />
+                </Frame>
+            </StackLayout>
+
+            <Label  Text="Owner location" 
+                    HorizontalOptions="Start"
+                    TextColor="#096B00"
+                    FontSize="20"
+                    FontAttributes="Bold"
+                    Margin="40,50,0,0"
+                    FontFamily="Poppins-Bold"/>
+
+            <!--FullName Entry-->
+
+            <StackLayout>
+                <Label Text="Fullname"
+                    Margin="40,20,0,0"
+                    TextColor="Black"
+                    FontSize="20"
+                    FontAttributes="Bold"
+>
+
+                </Label>
+
+                <Frame
+                    CornerRadius="15"
+                    Padding="10"
+                    BackgroundColor="#f1f1f1"
+                    BorderColor="Transparent"
+                    HasShadow="False"
+                    Margin="30,10"
+                    HorizontalOptions="FillAndExpand">
+                    <Entry
+                    Placeholder="Firstname,Middlename,lastname"
+                    PlaceholderColor="Black"
+                    BackgroundColor="Transparent"
+                    IsTextPredictionEnabled="False"
+                    IsSpellCheckEnabled="False"
+                    FontAttributes="None"
+                    VerticalOptions="Center"
+                    HorizontalOptions="FillAndExpand"
+                    FontSize="20"
+                    Keyboard="Text"   
+                    />
+                </Frame>
+            </StackLayout>
+
+            <!--Sex Picker-->
+
+            <StackLayout>
+                <Label Text="Sex"
+                       FontAttributes="Bold"
+                 Margin="40,20,0,0"
+                 TextColor="Black"
+                 FontSize="20"
+/>
+                <Frame CornerRadius="15"
+                 Padding="10"
+                 BackgroundColor="#f1f1f1"
+                 BorderColor="Transparent"
+                 HasShadow="False"
+                 Margin="30,10"
+                 HorizontalOptions="FillAndExpand">
+                    <Picker Title="Select Sex" Style="{StaticResource NoUnderlinePicker}" 
+                     TitleColor="Black"
+                     FontSize="20"
+                     >
+                        <!-- Add Picker items here -->
+                        <Picker.Items  BackgroundColor="Transparent"    
+
+                                      >
+                            <x:String>Male</x:String>
+                            <x:String>Female</x:String>
+                            <x:String>3 times a day</x:String>
+                        </Picker.Items>
+                    </Picker>
+                </Frame>
+            </StackLayout>
+
+            <!--Contact Number Entry-->
+
+            <StackLayout>
+                <Label Text="Contact Number"
+                    Margin="40,20,0,0"
+                    TextColor="Black"
+                    FontSize="20"
+                    FontAttributes="Bold"
+>
+
+                </Label>
+
+                <Frame
+                    CornerRadius="15"
+                    Padding="10"
+                    BackgroundColor="#f1f1f1"
+                    BorderColor="Transparent"
+                    HasShadow="False"
+                    Margin="30,10"
+                    HorizontalOptions="FillAndExpand">
+                    <Entry
+                    Placeholder="Phone or Mobile Number"
+                    PlaceholderColor="Black"
+                    BackgroundColor="Transparent"
+                    IsTextPredictionEnabled="False"
+                    IsSpellCheckEnabled="False"
+                    FontAttributes="None"
+                    VerticalOptions="Center"
+                    HorizontalOptions="FillAndExpand"
+                    FontSize="20"
+                    Keyboard="Numeric"   
+                    />
+                </Frame>
+            </StackLayout>
+
+            <!--Email Address Entry-->
+
+            <StackLayout>
+                <Label Text="Email Address"
+                    Margin="40,20,0,0"
+                    TextColor="Black"
+                    FontSize="20"
+                    FontAttributes="Bold"
+>
+
+                </Label>
+
+                <Frame
+                    CornerRadius="15"
+                    Padding="10"
+                    BackgroundColor="#f1f1f1"
+                    BorderColor="Transparent"
+                    HasShadow="False"
+                    Margin="30,10"
+                    HorizontalOptions="FillAndExpand">
+                    <Entry
+                    Placeholder="Please Enter a valid email"
+                    PlaceholderColor="Black"
+                    BackgroundColor="Transparent"
+                    IsTextPredictionEnabled="False"
+                    IsSpellCheckEnabled="False"
+                    FontAttributes="None"
+                    VerticalOptions="Center"
+                    HorizontalOptions="FillAndExpand"
+                    FontSize="20"
+                    Keyboard="Email"   
+                    />
+                </Frame>
+            </StackLayout>
+
+            <!--Complete address Entry-->
+
+            <StackLayout>
+                <Label Text="Complete Address"
+                       Margin="40,20,0,0"
+                       TextColor="Black"
+                       FontAttributes="Bold"
+                       FontSize="20">
+                </Label>
+                <Frame
+                        CornerRadius="15"
+                        Padding="10"
+                        BackgroundColor="#f1f1f1"
+                        BorderColor="Transparent"
+                        HasShadow="False"
+                        Margin="30,10"
+                        HorizontalOptions="FillAndExpand">
+                    <Editor
+                            Placeholder="Lot/House/Bldg.,Street, Barangay,City/Municipality, Province"
+                            PlaceholderColor="Gray"
+                            BackgroundColor="Transparent"
+                            IsTextPredictionEnabled="False"
+                            IsSpellCheckEnabled="False"
+                            FontAttributes="None"
+                            VerticalOptions="StartAndExpand"
+                            HorizontalOptions="FillAndExpand"
+                            FontSize="20"
+                            Keyboard="Text"
+                            MaxLength="200"
+                            HeightRequest="100"
+                        />
+                    </Frame>
+            </StackLayout>
+
             <!--Button for Submit-->
 
             <Button x:Name="BtnSubmit"
@@ -346,6 +739,7 @@
                     CornerRadius="10"
                     Clicked="BtnSubmit_Clicked" 
                      />
+         
         </VerticalStackLayout>
     </ScrollView>
 
