@@ -1,55 +1,61 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="BAIPetRegMobileApp.Views.PetRegisterPage"
              Title="PetRegisterPage">
 
     <ScrollView>
         <VerticalStackLayout>
-            <Label  Text="Pet Registration" 
-            HorizontalOptions="Center"
-            TextColor="#096B00"
-            FontSize="30"
-            FontAttributes="Bold"
-            Margin="0,30,0,0"
-            FontFamily="Poppins-Bold"/>
-            <Label  Text="Animal Information" 
-            HorizontalOptions="Start"
-            TextColor="#096B00"
-            FontSize="20"
-            FontAttributes="Bold"
-            Margin="40,50,0,0"
-            FontFamily="Poppins-Bold"/>
+            <Label  Text="Pet Registration"
+                    HorizontalOptions="Center"
+                    TextColor="#096B00"
+                    FontSize="30"
+                    FontAttributes="Bold"
+                    Margin="0,30,0,0"
+                    FontFamily="Poppins-Bold" />
+            <Label  Text="Animal Information"
+                    HorizontalOptions="Start"
+                    TextColor="#096B00"
+                    FontSize="20"
+                    FontAttributes="Bold"
+                    Margin="40,50,0,0"
+                    FontFamily="Poppins-Bold" />
 
             <!--Pet's Name Entry-->
 
             <StackLayout>
                 <Label Text="Pet's Name"
-               Margin="40,20,0,0"
-               TextColor="Black"
-               FontSize="20"
-               FontAttributes="Bold"
-               >
-
-                </Label>
+                       Margin="40,20,0,0"
+                       TextColor="Black"
+                       FontSize="20"
+                       FontAttributes="Bold"></Label>
                 <Frame CornerRadius="15"
-            Padding="10"
-            BackgroundColor="#f1f1f1"
-            BorderColor="Transparent"
-            HasShadow="False"
-            Margin="30,10"
-            HorizontalOptions="FillAndExpand">
-                    <Entry
-                     x:Name="EntryPetName"   
-            Placeholder="Pet's Name"
-            PlaceholderColor="Black"
-            BackgroundColor="Transparent"
-            IsTextPredictionEnabled="False"
-            IsSpellCheckEnabled="False"
-            FontAttributes="None"
-            VerticalOptions="Center"
-            HorizontalOptions="FillAndExpand"
-            FontSize="20"/>
+                       Padding="10"
+                       BackgroundColor="#f1f1f1"
+                       BorderColor="Transparent"
+                       HasShadow="False"
+                       Margin="30,10"
+                       HorizontalOptions="FillAndExpand">
+                    <Entry x:Name="EntryPetName"
+                           Placeholder="Pet's Name"
+                           PlaceholderColor="Black"
+                           BackgroundColor="Transparent"
+                           IsTextPredictionEnabled="False"
+                           IsSpellCheckEnabled="False"
+                           FontAttributes="None"
+                           VerticalOptions="Center"
+                           HorizontalOptions="FillAndExpand"
+                           FontSize="20">
+                        <Entry.Behaviors>
+                            <toolkit:TextValidationBehavior
+                                x:Name="petNameValidator"
+                                Flags="ValidateOnAttaching,ValidateOnValueChanged"
+                                MinimumLength="1"
+                                />
+                        </Entry.Behaviors>
+
+                    </Entry>
                 </Frame>
 
             </StackLayout>
@@ -61,27 +67,21 @@
                        Margin="40,20,0,0"
                        TextColor="Black"
                        FontSize="20"
-                       FontAttributes="Bold"
-        />
+                       FontAttributes="Bold" />
                 <Frame CornerRadius="15"
-                        Padding="10"
-                        BackgroundColor="#f1f1f1"
-                        BorderColor="Transparent"
-                        HasShadow="False"
-                        Margin="30,10"
-                        HorizontalOptions="FillAndExpand">
+                       Padding="10"
+                       BackgroundColor="#f1f1f1"
+                       BorderColor="Transparent"
+                       HasShadow="False"
+                       Margin="30,10"
+                       HorizontalOptions="FillAndExpand">
                     <Picker Title="Type of Ownership"
-                            x:Name="PickerTypeOfOwnership"
-                            Style="{StaticResource NoUnderlinePicker}" 
-                                    TitleColor="Black"
-                                    FontSize="20"
-             >
-                        <!-- Add Picker items here -->
-                        <Picker.Items  BackgroundColor="Transparent">
-                            <x:String>Ownership 1</x:String>
-                            <x:String>Ownership 2</x:String>
-                            <x:String>Ownership 3</x:String>
-                        </Picker.Items>
+                            x:Name="ownershipList"
+                            Style="{StaticResource NoUnderlinePicker}"
+                            SelectedIndexChanged="OnOwnershipListSelectedIndexChanged"
+                            TitleColor="Black"
+                            FontSize="20">
+                        <!--Remove a picker and added to backend-->
                     </Picker>
                 </Frame>
             </StackLayout>
@@ -91,27 +91,22 @@
             <StackLayout>
                 <Label Text="Species"
                        FontAttributes="Bold"
-               Margin="40,20,0,0"
-               TextColor="Black"
-               FontSize="20"
-               />
+                       Margin="40,20,0,0"
+                       TextColor="Black"
+                       FontSize="20" />
                 <Frame CornerRadius="15"
-            Padding="10"
-            BackgroundColor="#f1f1f1"
-            BorderColor="Transparent"
-            HasShadow="False"
-            Margin="30,10"
-            HorizontalOptions="FillAndExpand">
-                    <Picker Title="Select Species" Style="{StaticResource NoUnderlinePicker}" 
-                    TitleColor="Black"
-                    FontSize="20"
-                    >
-                        <!-- Add Picker items here -->
-                        <Picker.Items  BackgroundColor="Transparent">
-                            <x:String>Species 1</x:String>
-                            <x:String>Species 2</x:String>
-                            <x:String>Species 3</x:String>
-                        </Picker.Items>
+                       Padding="10"
+                       BackgroundColor="#f1f1f1"
+                       BorderColor="Transparent"
+                       HasShadow="False"
+                       Margin="30,10"
+                       HorizontalOptions="FillAndExpand">
+                    <Picker Title="Select Species"
+                            Style="{StaticResource NoUnderlinePicker}"
+                            x:Name="speciesList"
+                            TitleColor="Black"
+                            FontSize="20">
+                        <!--Remove picker in UI and added it to backend-->
                     </Picker>
                 </Frame>
             </StackLayout>
@@ -121,27 +116,21 @@
             <StackLayout>
                 <Label Text="Breed"
                        FontAttributes="Bold"
-                        Margin="40,20,0,0"
-                        TextColor="Black"
-                        FontSize="20"
-       />
+                       Margin="40,20,0,0"
+                       TextColor="Black"
+                       FontSize="20" />
                 <Frame CornerRadius="15"
-                        Padding="10"
-                        BackgroundColor="#f1f1f1"
-                        BorderColor="Transparent"
-                        HasShadow="False"
-                        Margin="30,10"
-                        HorizontalOptions="FillAndExpand">
-                    <Picker Title="Select Breed" Style="{StaticResource NoUnderlinePicker}" 
+                       Padding="10"
+                       BackgroundColor="#f1f1f1"
+                       BorderColor="Transparent"
+                       HasShadow="False"
+                       Margin="30,10"
+                       HorizontalOptions="FillAndExpand">
+                    <Picker Title="Select Breed"
+                            Style="{StaticResource NoUnderlinePicker}"
+                            x:Name="breedList"
                             TitleColor="Black"
-                            FontSize="20"
-            >
-                        <!-- Add Picker items here -->
-                        <Picker.Items  BackgroundColor="Transparent">
-                            <x:String>Breed 1</x:String>
-                            <x:String>Breed 2</x:String>
-                            <x:String>Breed 3</x:String>
-                        </Picker.Items>
+                            FontSize="20">
                     </Picker>
                 </Frame>
             </StackLayout>
@@ -152,7 +141,7 @@
                        FontAttributes="Bold"
                        Margin="40,20,0,0"
                        TextColor="Black"
-                       FontSize="20"/>
+                       FontSize="20" />
                 <Frame CornerRadius="15"
                        Padding="10"
                        BackgroundColor="#f1f1f1"
@@ -162,39 +151,31 @@
                        HorizontalOptions="FillAndExpand">
                     <DatePicker Date="{Binding BirthDate}"
                                 Format="D"
-                                FontSize="20"/>
+                                FontSize="20" />
                 </Frame>
             </StackLayout>
 
 
-            <!--Breed Picker-->
+            <!--Sex-->
 
             <StackLayout>
                 <Label Text="Sex"
                        FontAttributes="Bold"
-                 Margin="40,20,0,0"
-                 TextColor="Black"
-                 FontSize="20"
-/>
+                       Margin="40,20,0,0"
+                       TextColor="Black"
+                       FontSize="20" />
                 <Frame CornerRadius="15"
-                 Padding="10"
-                 BackgroundColor="#f1f1f1"
-                 BorderColor="Transparent"
-                 HasShadow="False"
-                 Margin="30,10"
-                 HorizontalOptions="FillAndExpand">
-                    <Picker Title="Select Sex" Style="{StaticResource NoUnderlinePicker}" 
-                     TitleColor="Black"
-                     FontSize="20"
-                     >
-                        <!-- Add Picker items here -->
-                        <Picker.Items  BackgroundColor="Transparent"    
-
-                                      >
-                            <x:String>Male</x:String>
-                            <x:String>Female</x:String>
-                            <x:String>3 times a day</x:String>
-                        </Picker.Items>
+                       Padding="10"
+                       BackgroundColor="#f1f1f1"
+                       BorderColor="Transparent"
+                       HasShadow="False"
+                       Margin="30,10"
+                       HorizontalOptions="FillAndExpand">
+                    <Picker Title="Select Sex"
+                            Style="{StaticResource NoUnderlinePicker}"
+                            x:Name="sexList"
+                            TitleColor="Black"
+                            FontSize="20">
                     </Picker>
                 </Frame>
             </StackLayout>
@@ -206,8 +187,7 @@
                        FontAttributes="Bold"
                        Margin="40,20,0,0"
                        TextColor="Black"
-                       FontSize="20"
-   >
+                       FontSize="20">
 
                 </Label>
                 <Frame CornerRadius="15"
@@ -217,19 +197,17 @@
                        HasShadow="False"
                        Margin="30,10"
                        HorizontalOptions="FillAndExpand">
-                       <Entry
-                       Placeholder="Age"
-                       PlaceholderColor="Black"
-                       BackgroundColor="Transparent"
-                       IsTextPredictionEnabled="False"
-                       IsSpellCheckEnabled="False"
-                       FontAttributes="None"
-                       VerticalOptions="Center"
-                       HorizontalOptions="FillAndExpand"
-                       FontSize="20"
-                       Keyboard="Numeric"
-                       MaxLength="2"    
-                       />
+                    <Entry Placeholder="Age"
+                           PlaceholderColor="Black"
+                           BackgroundColor="Transparent"
+                           IsTextPredictionEnabled="False"
+                           IsSpellCheckEnabled="False"
+                           FontAttributes="None"
+                           VerticalOptions="Center"
+                           HorizontalOptions="FillAndExpand"
+                           FontSize="20"
+                           Keyboard="Numeric"
+                           MaxLength="2" />
                 </Frame>
 
             </StackLayout>
@@ -239,32 +217,29 @@
             <StackLayout>
                 <Label Text="Weight(KG)"
                        FontAttributes="Bold"
-                    Margin="40,20,0,0"
-                    TextColor="Black"
-                    FontSize="20"
->
+                       Margin="40,20,0,0"
+                       TextColor="Black"
+                       FontSize="20">
 
                 </Label>
                 <Frame CornerRadius="15"
-                    Padding="10"
-                    BackgroundColor="#f1f1f1"
-                    BorderColor="Transparent"
-                    HasShadow="False"
-                    Margin="30,10"
-                    HorizontalOptions="FillAndExpand">
-                    <Entry
-                    Placeholder="Input Weight(KG)"
-                    PlaceholderColor="Black"
-                    BackgroundColor="Transparent"
-                    IsTextPredictionEnabled="False"
-                    IsSpellCheckEnabled="False"
-                    FontAttributes="None"
-                    VerticalOptions="Center"
-                    HorizontalOptions="FillAndExpand"
-                    FontSize="20"
-                    Keyboard="Numeric"
-                    MaxLength="5"   
-                    />
+                       Padding="10"
+                       BackgroundColor="#f1f1f1"
+                       BorderColor="Transparent"
+                       HasShadow="False"
+                       Margin="30,10"
+                       HorizontalOptions="FillAndExpand">
+                    <Entry Placeholder="Input Weight(KG)"
+                           PlaceholderColor="Black"
+                           BackgroundColor="Transparent"
+                           IsTextPredictionEnabled="False"
+                           IsSpellCheckEnabled="False"
+                           FontAttributes="None"
+                           VerticalOptions="Center"
+                           HorizontalOptions="FillAndExpand"
+                           FontSize="20"
+                           Keyboard="Numeric"
+                           MaxLength="5" />
                 </Frame>
             </StackLayout>
 
@@ -272,31 +247,28 @@
 
             <StackLayout>
                 <Label Text="Animal Color"
-                    Margin="40,20,0,0"
-                    TextColor="Black"
-                    FontSize="20"
->
+                       Margin="40,20,0,0"
+                       TextColor="Black"
+                       FontSize="20">
 
                 </Label>
                 <Frame CornerRadius="15"
-                    Padding="10"
-                    BackgroundColor="#f1f1f1"
-                    BorderColor="Transparent"
-                    HasShadow="False"
-                    Margin="30,10"
-                    HorizontalOptions="FillAndExpand">
-                    <Entry
-                    Placeholder="Input Animal Color"
-                    PlaceholderColor="Black"
-                    BackgroundColor="Transparent"
-                    IsTextPredictionEnabled="False"
-                    IsSpellCheckEnabled="False"
-                    FontAttributes="None"
-                    VerticalOptions="Center"
-                    HorizontalOptions="FillAndExpand"
-                    FontSize="20"
-                    Keyboard="Text"  
-                    />
+                       Padding="10"
+                       BackgroundColor="#f1f1f1"
+                       BorderColor="Transparent"
+                       HasShadow="False"
+                       Margin="30,10"
+                       HorizontalOptions="FillAndExpand">
+                    <Entry Placeholder="Input Animal Color"
+                           PlaceholderColor="Black"
+                           BackgroundColor="Transparent"
+                           IsTextPredictionEnabled="False"
+                           IsSpellCheckEnabled="False"
+                           FontAttributes="None"
+                           VerticalOptions="Center"
+                           HorizontalOptions="FillAndExpand"
+                           FontSize="20"
+                           Keyboard="Text" />
                 </Frame>
             </StackLayout>
 
@@ -304,36 +276,33 @@
 
             <StackLayout>
                 <Label Text="Tag Number (Optional)"
-                    Margin="40,20,0,0"
-                    TextColor="Black"
-                    FontSize="20"
->
+                       Margin="40,20,0,0"
+                       TextColor="Black"
+                       FontSize="20">
 
                 </Label>
                 <Frame CornerRadius="15"
-                    Padding="10"
-                    BackgroundColor="#f1f1f1"
-                    BorderColor="Transparent"
-                    HasShadow="False"
-                    Margin="30,10"
-                    HorizontalOptions="FillAndExpand">
-                    <Entry
-                    x:Name="EntryTagNumber"
-                    Placeholder="Micro-chip number"
-                    PlaceholderColor="Black"
-                    BackgroundColor="Transparent"
-                    IsTextPredictionEnabled="False"
-                    IsSpellCheckEnabled="False"
-                    FontAttributes="None"
-                    VerticalOptions="Center"
-                    HorizontalOptions="FillAndExpand"
-                    FontSize="20"
-                    Keyboard="Numeric"   
-                    />
+                       Padding="10"
+                       BackgroundColor="#f1f1f1"
+                       BorderColor="Transparent"
+                       HasShadow="False"
+                       Margin="30,10"
+                       HorizontalOptions="FillAndExpand">
+                    <Entry x:Name="EntryTagNumber"
+                           Placeholder="Micro-chip number"
+                           PlaceholderColor="Black"
+                           BackgroundColor="Transparent"
+                           IsTextPredictionEnabled="False"
+                           IsSpellCheckEnabled="False"
+                           FontAttributes="None"
+                           VerticalOptions="Center"
+                           HorizontalOptions="FillAndExpand"
+                           FontSize="20"
+                           Keyboard="Numeric" />
                 </Frame>
             </StackLayout>
-            
-            
+
+
             <!--Button for Submit-->
 
             <Button x:Name="BtnSubmit"
@@ -344,15 +313,17 @@
                     Margin="60"
                     BackgroundColor="#096B00"
                     CornerRadius="10"
-                    Clicked="BtnSubmit_Clicked" 
-                     />
+                    Clicked="BtnSubmit_Clicked" />
         </VerticalStackLayout>
     </ScrollView>
 
     <ContentPage.Resources>
-        <Style x:Key="NoUnderlinePicker" TargetType="Picker">
-            <Setter Property="BackgroundColor" Value="Transparent" />
-            <Setter Property="FontSize" Value="20"/>
+        <Style x:Key="NoUnderlinePicker"
+               TargetType="Picker">
+            <Setter Property="BackgroundColor"
+                    Value="Transparent" />
+            <Setter Property="FontSize"
+                    Value="20" />
         </Style>
     </ContentPage.Resources>
 
