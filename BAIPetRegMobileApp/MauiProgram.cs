@@ -27,9 +27,10 @@ public static class MauiProgram
         builder.Services.AddSingleton<PetRegisterPage>();
         builder.Services.AddSingleton<RegisterPage>();
         builder.Services.AddSingleton<LoginPageViewModel>();
+        builder.Services.AddSingleton<HomePageViewModel>();
 
 #if DEBUG
-    		builder.Logging.AddDebug();
+        builder.Logging.AddDebug();
 #endif
 
         return builder.Build();
