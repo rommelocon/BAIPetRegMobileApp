@@ -1,7 +1,13 @@
+using SQLite;
+
 namespace BAIPetRegMobileApp.Views;
 
 public partial class PetRegisterPage : ContentPage
 {
+ 
+
+
+
     public PetRegisterPage()
     {
         InitializeComponent();
@@ -39,14 +45,7 @@ public partial class PetRegisterPage : ContentPage
 
     }
 
-    private void OnOwnershipListSelectedIndexChanged(object sender, EventArgs e)
-    {
-        var picker = (Picker)sender;
-        string selectedOwnership = (string)picker.SelectedItem;
-        Console.WriteLine($"Selected Ownership: {selectedOwnership}");
-
-        // Now, selectedOwnership contains the selected value.
-    }
+   
 
     //private void Picker_Focused(object sender, FocusEventArgs e)
     //{
@@ -55,15 +54,9 @@ public partial class PetRegisterPage : ContentPage
 
     private void BtnSubmit_Clicked(object sender, EventArgs e)
     {
-        if (petNameValidator.IsNotValid)
-        {
-            DisplayAlert("Error", "Name is required", "OK");
-            return;
-        }
-        //Store on a new variable input or Selected data
-
-        //string PetName = EntryPetName.Text;
-        //Console.WriteLine(PetName);
         Shell.Current.GoToAsync(nameof(FinalCheckingPage));
     }
+
+
+  
 }

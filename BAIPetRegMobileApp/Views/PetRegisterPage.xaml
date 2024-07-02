@@ -156,7 +156,7 @@
             </StackLayout>
 
 
-            <!--Sex-->
+            <!--Sex Picker-->
 
             <StackLayout>
                 <Label Text="Sex"
@@ -247,9 +247,10 @@
 
             <StackLayout>
                 <Label Text="Animal Color"
-                       Margin="40,20,0,0"
-                       TextColor="Black"
-                       FontSize="20">
+                    Margin="40,20,0,0"
+                    TextColor="Black"
+                    FontSize="20"
+>
 
                 </Label>
                 <Frame CornerRadius="15"
@@ -272,37 +273,116 @@
                 </Frame>
             </StackLayout>
 
-            <!--Tag Number Entry-->
+            <!--Tag number Entry-->
 
             <StackLayout>
                 <Label Text="Tag Number (Optional)"
-                       Margin="40,20,0,0"
-                       TextColor="Black"
-                       FontSize="20">
+                    Margin="40,20,0,0"
+                    TextColor="Black"
+                    FontSize="20"
+>
 
                 </Label>
+                
                 <Frame CornerRadius="15"
-                       Padding="10"
-                       BackgroundColor="#f1f1f1"
-                       BorderColor="Transparent"
-                       HasShadow="False"
-                       Margin="30,10"
-                       HorizontalOptions="FillAndExpand">
-                    <Entry x:Name="EntryTagNumber"
-                           Placeholder="Micro-chip number"
-                           PlaceholderColor="Black"
-                           BackgroundColor="Transparent"
-                           IsTextPredictionEnabled="False"
-                           IsSpellCheckEnabled="False"
-                           FontAttributes="None"
-                           VerticalOptions="Center"
-                           HorizontalOptions="FillAndExpand"
-                           FontSize="20"
-                           Keyboard="Numeric" />
+                    Padding="10"
+                    BackgroundColor="#f1f1f1"
+                    BorderColor="Transparent"
+                    HasShadow="False"
+                    Margin="30,10"
+                    HorizontalOptions="FillAndExpand">
+                    <Entry
+                    x:Name="EntryTagNumber"
+                    Placeholder="Micro-chip number"
+                    PlaceholderColor="Black"
+                    BackgroundColor="Transparent"
+                    IsTextPredictionEnabled="False"
+                    IsSpellCheckEnabled="False"
+                    FontAttributes="None"
+                    VerticalOptions="Center"
+                    HorizontalOptions="FillAndExpand"
+                    FontSize="20"
+                    Keyboard="Numeric"   
+                    />
                 </Frame>
             </StackLayout>
 
+            <Label  Text="Owner location" 
+                    HorizontalOptions="Start"
+                    TextColor="#096B00"
+                    FontSize="20"
+                    FontAttributes="Bold"
+                    Margin="40,50,0,0"
+                    FontFamily="Poppins-Bold"/>
 
+            <!--FullName Entry-->
+
+            <StackLayout>
+                <Label Text="Fullname"
+                    Margin="40,20,0,0"
+                    TextColor="Black"
+                    FontSize="20"
+                    FontAttributes="Bold"
+>
+
+                </Label>
+
+                <Frame
+                    CornerRadius="15"
+                    Padding="10"
+                    BackgroundColor="#f1f1f1"
+                    BorderColor="Transparent"
+                    HasShadow="False"
+                    Margin="30,10"
+                    HorizontalOptions="FillAndExpand">
+                    <Entry
+                    Placeholder="Firstname,Middlename,lastname"
+                    PlaceholderColor="Black"
+                    BackgroundColor="Transparent"
+                    IsTextPredictionEnabled="False"
+                    IsSpellCheckEnabled="False"
+                    FontAttributes="None"
+                    VerticalOptions="Center"
+                    HorizontalOptions="FillAndExpand"
+                    FontSize="20"
+                    Keyboard="Text"   
+                    />
+                </Frame>
+            </StackLayout>
+
+            <!--Sex Picker-->
+
+            <StackLayout>
+                <Label Text="Sex"
+                       FontAttributes="Bold"
+                 Margin="40,20,0,0"
+                 TextColor="Black"
+                 FontSize="20"
+/>
+                <Frame CornerRadius="15"
+                 Padding="10"
+                 BackgroundColor="#f1f1f1"
+                 BorderColor="Transparent"
+                 HasShadow="False"
+                 Margin="30,10"
+                 HorizontalOptions="FillAndExpand">
+                    <Picker Title="Select Sex" Style="{StaticResource NoUnderlinePicker}" 
+                     TitleColor="Black"
+                     FontSize="20"
+                     >
+                        <!-- Add Picker items here -->
+                        <Picker.Items  BackgroundColor="Transparent"    
+
+                                      >
+                            <x:String>Male</x:String>
+                            <x:String>Female</x:String>
+                            <x:String>3 times a day</x:String>
+                        </Picker.Items>
+                    </Picker>
+                </Frame>
+            </StackLayout>
+            
+            
             <!--Button for Submit-->
 
             <Button x:Name="BtnSubmit"
@@ -313,7 +393,8 @@
                     Margin="60"
                     BackgroundColor="#096B00"
                     CornerRadius="10"
-                    Clicked="BtnSubmit_Clicked" />
+                    Clicked="BtnSubmit_Clicked" 
+                     />
         </VerticalStackLayout>
     </ScrollView>
 
