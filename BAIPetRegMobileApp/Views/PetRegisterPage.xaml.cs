@@ -43,8 +43,48 @@ public partial class PetRegisterPage : ContentPage
         };
         sexList.ItemsSource = listSex;
 
+        List<string> listRegion = new List<string>()
+        {
+            "Region001",
+            "Region002",
+            "Region003"
+        };
+        regionList.ItemsSource = listRegion;
+
+        List<string> listProvince = new List<string>()
+        {
+            "Province001",
+            "Province002",
+            "Province003"
+        };
+        provinceList.ItemsSource = listProvince;
+
+        List<string> listMunicipality = new List<string>()
+        {
+            "Municipality001",
+            "Municipality002",
+            "Municipality003"
+        };
+        municipalityList.ItemsSource = listMunicipality;
+
+        List<string> listOwnerSex = new List<string>()
+        {
+            "Male",
+            "Female"
+        };
+        ownerSexList.ItemsSource = listOwnerSex;
+
     }
 
+    private void BtnSubmitError(object sender, EventArgs e)
+    {
+        if (petNameValidator.IsNotValid)
+        {
+            DisplayAlert("Error", "Name is required", "OK");
+            return;
+        }
+    }
+    
     private void OnOwnershipListSelectedIndexChanged(object sender, EventArgs e)
     {
         var picker = (Picker)sender;
@@ -63,7 +103,5 @@ public partial class PetRegisterPage : ContentPage
     {
         Shell.Current.GoToAsync(nameof(FinalCheckingPage));
     }
-
-
   
 }
