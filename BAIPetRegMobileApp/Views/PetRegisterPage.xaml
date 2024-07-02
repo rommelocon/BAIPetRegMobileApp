@@ -196,6 +196,7 @@
                        Margin="30,10"
                        HorizontalOptions="FillAndExpand">
                     <Entry Placeholder="Age"
+                           x:Name="PetAge"
                            PlaceholderColor="Black"
                            BackgroundColor="Transparent"
                            IsTextPredictionEnabled="False"
@@ -228,6 +229,7 @@
                        Margin="30,10"
                        HorizontalOptions="FillAndExpand">
                     <Entry Placeholder="Input Weight(KG)"
+                           x:Name="PetWeight"
                            PlaceholderColor="Black"
                            BackgroundColor="Transparent"
                            IsTextPredictionEnabled="False"
@@ -460,6 +462,16 @@
 
             </StackLayout>
 
+            <Label  Text="Owner Information"
+                    HorizontalOptions="Start"
+                    TextColor="#096B00"
+                    FontSize="20"
+                    FontAttributes="Bold"
+                    Margin="40,50,0,0"
+                    FontFamily="Poppins-Bold" />
+
+
+
             <!--Owner's Full Name Entry-->
 
             <StackLayout>
@@ -567,7 +579,7 @@
                        Margin="30,10"
                        HorizontalOptions="FillAndExpand">
                     <Entry x:Name="EntryEmailAdd"
-                           Placeholder="nigga@gmail.com"
+                           Placeholder="@gmail.com"
                            PlaceholderColor="Black"
                            BackgroundColor="Transparent"
                            IsTextPredictionEnabled="False"
@@ -621,12 +633,6 @@
                     </Editor>
                 </Frame>
             </StackLayout>
-
-
-
-
-
-
 
             <!--Button for Submit-->
 
