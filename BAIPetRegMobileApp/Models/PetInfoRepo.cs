@@ -1,12 +1,6 @@
+﻿
 namespace BAIPetRegMobileApp.Models;
-
-public static class PetInfoRepo : ContentPage
+public partial class PetInfoRepo
 {
-	public PetInfoRepo()
-	{
-		public static List<PetInfo> petInfo = new List<PetInfo>()
-		{
-
-		}
-	}
+    public static List<PetInfo> petInfo = new List<PetInfo>();
 }

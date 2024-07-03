@@ -12,7 +12,7 @@
     VerticalOptions="Center"
      HorizontalOptions="Center"/>
 
-            <Frame
+            <!--<Frame
         BackgroundColor="White"
         CornerRadius="20"
         Padding="0"
@@ -23,7 +23,17 @@
             BackgroundColor="Transparent"
             VerticalOptions="Center"
             Margin="10,0"/>
-            </Frame>
+            </Frame>-->
+
+
+            <Label
+        Text="Welcome!"
+        TextColor="#096B00"
+        FontAttributes="Bold"
+        FontSize="33"
+        Margin="0,20,0,0"
+        Style="{StaticResource Headline}"
+        SemanticProperties.HeadingLevel="Level1"/>
 
             <Image
         Source="bai_logo.png"
@@ -35,13 +45,6 @@
         VerticalOptions="Center"
         HorizontalOptions="Center"/>
 
-            <Label
-        Text="Welcome!"
-        TextColor="#096B00"
-        FontAttributes="Bold"
-        FontSize="33"
-        Style="{StaticResource Headline}"
-        SemanticProperties.HeadingLevel="Level1"/>
 
             <Button x:Name="BtnRegisterPet"
             FontSize="20"
