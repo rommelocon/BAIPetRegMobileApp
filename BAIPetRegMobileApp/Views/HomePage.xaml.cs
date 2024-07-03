@@ -31,4 +31,9 @@ public partial class HomePage : ContentPage
         await SecureStorage.SetAsync("hasAuth", "false");
         await Shell.Current.GoToAsync(nameof(LoginPage));
     }
+
+    private void BtnViewPet_Clicked(object sender, EventArgs e)
+    {
+        Shell.Current.GoToAsync(nameof(PetListPage));
+    }
 }

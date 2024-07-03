@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BAIPetRegMobileApp.Views.DataViewPage"
+             Title="DataViewPage">
+    
+
+    <ScrollView>
+
+        <VerticalStackLayout>
+            <!-- Your existing layout -->
+
+            <!-- TableView for displaying data -->
+            <TableView x:Name="petTableView">
+                <TableRoot>
+                    <TableSection Title="Pet Information">
+                        <TextCell Text="Pet Name:" Detail="{Binding PetName}" TextColor="Black"/>
+                        <TextCell Text="Ownership Type:" Detail="{Binding OwnershipType}" TextColor="Black" />
+                        <TextCell Text="Species:" Detail="{Binding Species}" TextColor="Black"/>
+                        <TextCell Text="Breed:" Detail="{Binding Breed}" TextColor="Black"/>
+                        <TextCell Text="Birth Date:" Detail="{Binding BirthDate}" TextColor="Black"/>
+                        <TextCell Text="Sex:" Detail="{Binding Sex}" TextColor="Black"/>
+                        <TextCell Text="Age:" Detail="{Binding Age}" TextColor="Black"/>
+                        <TextCell Text="Weight:" Detail="{Binding Weight}" TextColor="Black"/>
+                        <TextCell Text="Color:" Detail="{Binding Color}" TextColor="Black"/>
+                        <TextCell Text="Tag Number:" Detail="{Binding TagNumber}" TextColor="Black"/>
+                        <TextCell Text="Region:" Detail="{Binding Region}" TextColor="Black"/>
+                        <TextCell Text="Province:" Detail="{Binding Province}" TextColor="Black"/>
+                        <TextCell Text="Municipality:" Detail="{Binding Municipality}" TextColor="Black"/>
+                        <TextCell Text="Longitude:" Detail="{Binding Longitude}" TextColor="Black"/>
+                        <TextCell Text="Latitude:" Detail="{Binding Latitude}" TextColor="Black"/>
+                    </TableSection>
+                    <TableSection Title="Owner Information">
+                        <TextCell Text="Owner Full Name:" Detail="{Binding OwnerFullName}" TextColor="Black"/>
+                        <TextCell Text="Owner Sex:" Detail="{Binding OwnerSex}" TextColor="Black"/>
+                        <TextCell Text="Contact Number:" Detail="{Binding ContactNumber}" TextColor="Black"/>
+                        <TextCell Text="Email:" Detail="{Binding Email}" TextColor="Black" />
+                        <TextCell Text="Complete Address:" Detail="{Binding CompleteAddress}" TextColor="Black"/>
+                    </TableSection>
+                </TableRoot>
+            </TableView>
+
+            <Button x:Name="BtnPetListPage"
+                       FontSize="20"
+                        Text="Go Back Pet List Page"
+                        FontAttributes="Bold"
+                        Padding="20"
+                        Margin="60"
+                        
+                        BackgroundColor="#096B00"
+                        Clicked="BtnPetListPage_Clicked"
+                        CornerRadius="10"
+                        />
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

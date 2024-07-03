@@ -13,7 +13,7 @@
         VerticalOptions="Center"
         HorizontalOptions="Center"
         Aspect="AspectFit"
-        Margin="0,20,0,0"
+        Margin="0,40,0,0"
         />
 
             <Label  Text="Login Here" 

@@ -46,7 +46,7 @@
         <ResourceDictionary>
             <LinearGradientBrush x:Key="GradientBackround" StartPoint="0,0" EndPoint="0,1">
                 <GradientStop Color="#7EE175" Offset="0.1" />
-                <GradientStop Color="#FFFFFF" Offset="0.9" />
+                <GradientStop Color="#7EE175" Offset="0.9" />
             </LinearGradientBrush>
         </ResourceDictionary>
     </ContentPage.Resources>
