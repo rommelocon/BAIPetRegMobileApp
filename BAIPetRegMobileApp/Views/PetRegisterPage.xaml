@@ -48,9 +48,11 @@
                            HorizontalOptions="FillAndExpand"
                            FontSize="20">
                         <Entry.Behaviors>
-                            <toolkit:TextValidationBehavior x:Name="petNameValidator"
-                                                            Flags="ValidateOnAttaching,ValidateOnValueChanged"
-                                                            MinimumLength="1" />
+                            <toolkit:TextValidationBehavior
+                                x:Name="petNameValidator"
+                                Flags="ValidateOnAttaching,ValidateOnValueChanged"
+                                MinimumLength="1"
+                                />
                         </Entry.Behaviors>
 
                     </Entry>
@@ -250,7 +252,6 @@
                        Margin="40,20,0,0"
                        TextColor="Black"
                        FontSize="20">
-
                 </Label>
                 <Frame CornerRadius="15"
                        Padding="10"
@@ -279,7 +280,6 @@
                        Margin="40,20,0,0"
                        TextColor="Black"
                        FontSize="20">
-
                 </Label>
 
                 <Frame CornerRadius="15"
@@ -302,7 +302,6 @@
                            Keyboard="Numeric" />
                 </Frame>
             </StackLayout>
-
 
             <Label  Text="Animal Location"
                     HorizontalOptions="Start"
@@ -645,6 +644,7 @@
                     BackgroundColor="#096B00"
                     CornerRadius="10"
                     Clicked="BtnSubmit_Clicked"/>
+
         </VerticalStackLayout>
     </ScrollView>
 
@@ -657,6 +657,4 @@
                     Value="20" />
         </Style>
     </ContentPage.Resources>
-
-
 </ContentPage>
