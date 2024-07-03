@@ -1,15 +1,12 @@
 namespace BAIPetRegMobileApp.Models;
 
-public class PetInfoRepo : ContentPage
+public static class PetInfoRepo : ContentPage
 {
 	public PetInfoRepo()
 	{
-		Content = new VerticalStackLayout
+		public static List<PetInfo> petInfo = new List<PetInfo>()
 		{
-			Children = {
-				new Label { HorizontalOptions = LayoutOptions.Center, VerticalOptions = LayoutOptions.Center, Text = "Welcome to .NET MAUI!"
-				}
-			}
-		};
+
+		}
 	}
 }
