@@ -58,7 +58,6 @@
                 Padding="20"
                 Margin="10"
                 BackgroundColor="#096B00"
-                Clicked="BtnRegisterPet_Clicked"
                 CornerRadius="10"
                 />
 

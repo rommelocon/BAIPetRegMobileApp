@@ -3,7 +3,6 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:vm="clr-namespace:BAIPetRegMobileApp.ViewModels"
              x:Class="BAIPetRegMobileApp.LoginPage"
-             x:DataType="vm:LoginPageViewModel"
              Shell.NavBarIsVisible="False"
              Title="LoginPage">
 
@@ -36,7 +35,7 @@
                Margin="30,10"
                HorizontalOptions="FillAndExpand">
             <Entry x:Name="UsernameEntry"
-               Placeholder="Email"
+               Placeholder="Username"
                TextColor="Black"
                BackgroundColor="Transparent"
                IsTextPredictionEnabled="False"
@@ -44,8 +43,8 @@
                FontAttributes="None"
                VerticalOptions="Center"
                FontSize="20"
-               Keyboard="Email"
-               Text="{Binding Email}"
+               Keyboard="Username"
+               Text="{Binding LoginModel.UserName}"
                />
         </Frame>
         
@@ -67,7 +66,7 @@
                 FontAttributes="None"
                 VerticalOptions="Center"
                 FontSize="20"
-                Text="{Binding Password}"
+                Text="{Binding LoginModel.Password}"
                 />
         </Frame>
 
@@ -96,7 +95,7 @@
             WidthRequest="330"
             Margin="0,0,0,0"
             x:Name="LoginButton"
-            Command="{Binding SignInCommand}"
+            Command="{Binding LoginCommand}"
             />
 
         <Label x:Name="MessageLabel" TextColor="Red" />

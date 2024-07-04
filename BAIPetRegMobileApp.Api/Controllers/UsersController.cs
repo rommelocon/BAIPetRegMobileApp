@@ -1,29 +1,38 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using BAIPetRegMobileApp.Api.Data;
 using BAIPetRegMobileApp.Api.Models;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
 
 namespace BAIPetRegMobileApp.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class UsersController(AppDbContext context) : ControllerBase
+    public class UsersController : ControllerBase
     {
-        private readonly AppDbContext _context = context;
+        private readonly AppDbContext _context;
+
+        public UsersController(AppDbContext context)
+        {
+            _context = context;
+        }
 
         // GET: api/Users
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<User>>> GetUsers()
+        public async Task<ActionResult<IEnumerable<User>>> GetUser()
         {
-            return await _context.Users.ToListAsync();
+            return await _context.User.ToListAsync();
         }
 
         // GET: api/Users/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<User>> GetUser(int id)
+        public async Task<ActionResult<User>> GetUser(string id)
         {
-            var user = await _context.Users.FindAsync(id);
+            var user = await _context.User.FindAsync(id);
 
             if (user == null)
             {
@@ -36,9 +45,9 @@ namespace BAIPetRegMobileApp.Api.Controllers
         // PUT: api/Users/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutUser(int id, User user)
+        public async Task<IActionResult> PutUser(string id, User user)
         {
-            if (id != user.UserId)
+            if (id != user.Id)
             {
                 return BadRequest();
             }
@@ -69,43 +78,56 @@ namespace BAIPetRegMobileApp.Api.Controllers
         [HttpPost]
         public async Task<ActionResult<User>> PostUser(User user)
         {
-            _context.Users.Add(user);
-            await _context.SaveChangesAsync();
+            _context.User.Add(user);
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateException)
+            {
+                if (UserExists(user.Id))
+                {
+                    return Conflict();
+                }
+                else
+                {
+                    throw;
+                }
+            }
 
-            return CreatedAtAction("GetUser", new { id = user.UserId }, user);
+            return CreatedAtAction("GetUser", new { id = user.Id }, user);
         }
 
         // DELETE: api/Users/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteUser(int id)
+        public async Task<IActionResult> DeleteUser(string id)
         {
-            var user = await _context.Users.FindAsync(id);
+            var user = await _context.User.FindAsync(id);
             if (user == null)
             {
                 return NotFound();
             }
 
-            _context.Users.Remove(user);
+            _context.User.Remove(user);
             await _context.SaveChangesAsync();
 
             return NoContent();
         }
 
-        private bool UserExists(int id)
+        private bool UserExists(string id)
         {
-            return _context.Users.Any(e => e.UserId == id);
+            return _context.User.Any(e => e.Id == id);
         }
 
-        [HttpGet("login/{email}/{password}")]
-        public async Task<ActionResult<User>> Login(string email, string password)
+        [HttpGet("login/{username}/{password}")]
+        public async Task<ActionResult<User>> Login(string username, string password)
         {
-            if (!string.IsNullOrWhiteSpace(email) && !string.IsNullOrWhiteSpace(password))
+            if (!string.IsNullOrWhiteSpace(username) && !string.IsNullOrWhiteSpace(password))
             {
-                var user = await _context.Users.Where(x => x.Email!.Equals(email) && x.Password == password).FirstOrDefaultAsync();
+                var user = await _context.Users.Where(x => x.UserName!.Equals(username) && x.PasswordHash == password).FirstOrDefaultAsync();
                 return user != null ? Ok(user) : NoContent();
             }
             return BadRequest();
         }
-
     }
 }

@@ -5,7 +5,7 @@ VisualStudioVersion = 17.9.34607.119
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BAIPetRegMobileApp", "BAIPetRegMobileApp\BAIPetRegMobileApp.csproj", "{9B9F461B-477C-4168-B95D-5D77511792C2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BAIPetRegMobileApp.Api", "BAIPetRegMobileApp.Api\BAIPetRegMobileApp.Api.csproj", "{42322F4F-C9B9-4B43-A973-F19B7602528C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BAIPetRegMobileApp.Api", "BAIPetRegMobileApp.Api\BAIPetRegMobileApp.Api.csproj", "{42322F4F-C9B9-4B43-A973-F19B7602528C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

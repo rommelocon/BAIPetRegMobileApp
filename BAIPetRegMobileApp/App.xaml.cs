@@ -1,10 +1,7 @@
-﻿using BAIPetRegMobileApp.Models;
-
-namespace BAIPetRegMobileApp
+﻿namespace BAIPetRegMobileApp
 {
     public partial class App : Application
     {
-        public static User user;
         public App()
         {
             InitializeComponent();
