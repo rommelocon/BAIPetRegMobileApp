@@ -3,7 +3,30 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="BAIPetRegMobileApp.HomePage"
              Shell.FlyoutBehavior="Flyout"
-             Shell.NavBarIsVisible="False">
+             FlyoutItem.IsVisible="False"
+             Shell.BackgroundColor="#57C84D"
+             Shell.NavBarIsVisible="True"       
+        
+             >
+    <!-- Define Flyout Header -->
+  
+    <!--nav bar design-->
+    
+    <Shell.BackButtonBehavior>
+        <BackButtonBehavior IsVisible="False" IsEnabled="False" />
+    </Shell.BackButtonBehavior>
+    <Shell.TitleView>
+        <HorizontalStackLayout VerticalOptions="Fill">
+            <Button x:Name="MenuBtnClicked"
+            FontFamily="MaterialIconsOutlined-Regular"
+            Text="menu"
+            BackgroundColor="Transparent"
+            FontSize="30"
+            Clicked="MenuBtnClicked_Clicked"/>
+            <Label/>
+        </HorizontalStackLayout>
+    </Shell.TitleView>
+
 
     <ScrollView>
         <VerticalStackLayout Spacing="2">
@@ -45,16 +68,6 @@
         VerticalOptions="Center"
         HorizontalOptions="Center"/>
 
-            <Button x:Name="BtnViewPet"
-            FontSize="20"
-            Text="View Pet"
-            FontAttributes="Bold"
-            Padding="20"
-            Margin="10"
-            BackgroundColor="#096B00"
-            Clicked="BtnViewPet_Clicked"
-            CornerRadius="10"
-            />
 
             <Button x:Name="BtnRegisterPet"
             FontSize="20"
@@ -67,17 +80,8 @@
             CornerRadius="10"
             />
 
-            <Button x:Name="BtnLogout"
-            FontSize="20"
-            Text="Logout"
-            FontAttributes="Bold"
-            Padding="20"
-            Margin="10"
-            Background="#096B00"
-            CornerRadius="10"
-            Clicked="LogoutButton_Clicked">
 
-            </Button>
+
 
         </VerticalStackLayout>
 

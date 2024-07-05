@@ -9,6 +9,8 @@ public partial class HomePage : ContentPage
         InitializeComponent();
     }
 
+
+
     protected override bool OnBackButtonPressed()
     {
         //Application.Current.Quit();
@@ -20,20 +22,21 @@ public partial class HomePage : ContentPage
         Shell.Current.GoToAsync(nameof(PetRegisterPage));
     }
 
-    private async void BtnLogout_Clicked(object sender, EventArgs e)
-    {
-        await SecureStorage.SetAsync("hasAuth", "false");
-        await Shell.Current.GoToAsync(nameof(LoginPage));
-    }
+    //private async void BtnLogout_Clicked(object sender, EventArgs e)
+    //{
+    //    await SecureStorage.SetAsync("hasAuth", "false");
+    //    await Shell.Current.GoToAsync(nameof(LoginPage));
+    //}
 
-    private async void LogoutButton_Clicked(object sender, EventArgs e)
-    {
-        await SecureStorage.SetAsync("hasAuth", "false");
-        await Shell.Current.GoToAsync(nameof(LoginPage));
-    }
+    //private async void LogoutButton_Clicked(object sender, EventArgs e)
+    //{
+    //    await SecureStorage.SetAsync("hasAuth", "false");
+    //    await Shell.Current.GoToAsync(nameof(LoginPage));
+    //}
 
-    private void BtnViewPet_Clicked(object sender, EventArgs e)
+
+    private void MenuBtnClicked_Clicked(object sender, EventArgs e)
     {
-        Shell.Current.GoToAsync(nameof(PetListPage));
+        Shell.Current.FlyoutIsPresented = true;
     }
 }
