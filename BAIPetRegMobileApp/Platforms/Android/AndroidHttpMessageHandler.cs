@@ -1,5 +1,4 @@
-﻿
-using BAIPetRegMobileApp.Handlers;
+﻿using BAIPetRegMobileApp.Handlers;
 using System.Net.Security;
 using Xamarin.Android.Net;
 

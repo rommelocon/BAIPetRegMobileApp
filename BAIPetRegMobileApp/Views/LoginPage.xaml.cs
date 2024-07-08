@@ -4,9 +4,10 @@ namespace BAIPetRegMobileApp
 {
     public partial class LoginPage : ContentPage
     {
-        public LoginPage()
+        public LoginPage(LoginPageViewModel vm)
         {
             InitializeComponent();
+            BindingContext = vm;
         }
 
         private async void ClickableLabel_Tapped(object sender, TappedEventArgs e)

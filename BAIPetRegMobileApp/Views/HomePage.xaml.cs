@@ -4,9 +4,8 @@ namespace BAIPetRegMobileApp;
 
 public partial class HomePage : ContentPage
 {
-	public HomePage(HomePageViewModel homePageViewModel)
+	public HomePage()
 	{
 		InitializeComponent();
-        BindingContext = homePageViewModel;
 	}
 }

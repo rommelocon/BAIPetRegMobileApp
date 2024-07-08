@@ -25,14 +25,34 @@ public class ClientService
 
     public async Task Login(LoginModel model)
     {
+        Console.WriteLine("Login Method Called");// Logginf
         var httpClient = httpClientFactory.CreateClient("custom-httpclient");
         var result = await httpClient.PostAsJsonAsync("/login", model);
-        var response = await result.Content.ReadFromJsonAsync<LoginResponse>();
-        if (result is not null)
+        if (result.IsSuccessStatusCode)
         {
-            var serializedResponse = JsonSerializer.Serialize(
-                new LoginResponse() { AccessToken = response.AccessToken, RefreshToken = response.RefreshToken, UserName = model.UserName });
-            await SecureStorage.Default.SetAsync("Authentication", serializedResponse);
+            var response = await result.Content.ReadFromJsonAsync<LoginResponse>();
+            if (response is not null)
+            {
+                var serializedResponse = JsonSerializer.Serialize(new LoginResponse() 
+                    { 
+                        AccessToken = response.AccessToken, 
+                        RefreshToken = response.RefreshToken, 
+                        UserName = model.Email 
+                    });
+
+                await SecureStorage.Default.SetAsync("Authentication", serializedResponse);
+
+                // Navigate to the main page
+                await Shell.Current.GoToAsync(nameof(HomePage));
+            }
+            else
+            {
+                await Shell.Current.DisplayAlert("Alert", "Login failed. Please try again.", "Ok");
+            }
+        }
+        else
+        {
+            await Shell.Current.DisplayAlert("Alert", "Login failed. Please try again.", "Ok");
         }
     }
 }

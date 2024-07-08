@@ -4,6 +4,7 @@ using CommunityToolkit.Maui;
 using BAIPetRegMobileApp.ViewModels;
 using BAIPetRegMobileApp.Views;
 using BAIPetRegMobileApp.Handlers;
+using BAIPetRegMobileApp.Services;
 
 public static class MauiProgram
 {
@@ -23,7 +24,7 @@ public static class MauiProgram
         builder.Services.AddSingleton<IPlatformHttpMessageHandler>(sp =>
         {
 #if ANDROID
-            return new AndroidHttpMessageHandler();
+            return new BAIPetRegMobileApp.Platforms.Android.AndroidHttpMessageHandler();
 #else
             return null;
 #endif
@@ -39,14 +40,18 @@ public static class MauiProgram
             return platformMessageHandler.GetHttpMessageHandler();
         });
 
+        // View
         builder.Services.AddSingleton<HomePage>();
         builder.Services.AddSingleton<LoginPage>();
-        builder.Services.AddSingleton<GetStartedPage>();
         builder.Services.AddSingleton<FinalCheckingPage>();
         builder.Services.AddSingleton<PetRegisterPage>();
         builder.Services.AddSingleton<RegisterPage>();
-        builder.Services.AddSingleton<HomePageViewModel>();
 
+        // View Models
+        builder.Services.AddSingleton<LoginPageViewModel>();
+
+        // Services
+        builder.Services.AddSingleton<ClientService>();
 #if DEBUG
         builder.Logging.AddDebug();
 #endif

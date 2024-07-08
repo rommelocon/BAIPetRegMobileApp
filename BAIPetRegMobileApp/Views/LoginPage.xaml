@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:vm="clr-namespace:BAIPetRegMobileApp.ViewModels"
              x:Class="BAIPetRegMobileApp.LoginPage"
              Shell.NavBarIsVisible="False"
              Title="LoginPage">
@@ -34,8 +33,8 @@
                HasShadow="False"
                Margin="30,10"
                HorizontalOptions="FillAndExpand">
-            <Entry x:Name="UsernameEntry"
-               Placeholder="Username"
+            <Entry x:Name="EmailEntry"
+               Placeholder="Email"
                TextColor="Black"
                BackgroundColor="Transparent"
                IsTextPredictionEnabled="False"
@@ -43,8 +42,7 @@
                FontAttributes="None"
                VerticalOptions="Center"
                FontSize="20"
-               Keyboard="Username"
-               Text="{Binding LoginModel.UserName}"
+               Text="{Binding LoginModel.Email}"
                />
         </Frame>
         
