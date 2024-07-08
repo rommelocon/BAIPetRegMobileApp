@@ -6,36 +6,35 @@
              FlyoutItem.IsVisible="False"
              Shell.BackgroundColor="#57C84D"
              Shell.NavBarIsVisible="True"       
-        
-             >
-    <!-- Define Flyout Header -->
-  
-    <!--nav bar design-->
+ >
+ 
     
     <Shell.BackButtonBehavior>
         <BackButtonBehavior IsVisible="False" IsEnabled="False" />
     </Shell.BackButtonBehavior>
     <Shell.TitleView>
-        <HorizontalStackLayout VerticalOptions="Fill">
+        <HorizontalStackLayout>
             <Button x:Name="MenuBtnClicked"
             FontFamily="MaterialIconsOutlined-Regular"
             Text="menu"
             BackgroundColor="Transparent"
             FontSize="30"
             Clicked="MenuBtnClicked_Clicked"/>
-            <Label/>
+
+
         </HorizontalStackLayout>
+
     </Shell.TitleView>
-
-
     <ScrollView>
         <VerticalStackLayout Spacing="2">
-            <Image
-    Source="bai_banner.jpg"
-    VerticalOptions="Center"
-     HorizontalOptions="Center"/>
+            
+           
+                <Image
+        Source="bai_banner.jpg"
+        VerticalOptions="Center"
+        HorizontalOptions="Center"/>
 
-            <!--<Frame
+            <Frame
         BackgroundColor="White"
         CornerRadius="20"
         Padding="0"
@@ -46,7 +45,8 @@
             BackgroundColor="Transparent"
             VerticalOptions="Center"
             Margin="10,0"/>
-            </Frame>-->
+            </Frame>
+
 
 
             <Label
@@ -79,12 +79,98 @@
             Clicked="BtnRegisterPet_Clicked"
             CornerRadius="10"
             />
+        
+            <!--Pet Gallery - 1-->
+            <StackLayout Padding="10">
+                <Frame BackgroundColor="#98FB98" 
+                      CornerRadius="30" 
+                      Padding="15">
+                    <StackLayout>
+                        <!-- Image -->
+                        <Image Source="dog_img.png" 
+                              HeightRequest="250" 
+                              HorizontalOptions="Center" 
+                              Margin="0,0,0,40"/>
+
+                        <!-- Labels -->
+                        <Label Text="REG ID: 01022023 JUDELA CRUZBLACKIENO" FontAttributes="Bold"/>
+                        <Label Text="Date Registered: 22/03/2024" />
+                        <Label Text="Date Of Birth: 02/01/2023" />
+                        <Label Text="Alias: Jaguar" />
+
+                        <!-- Button -->
+                        <Button Text="Show Full Information" 
+                               BackgroundColor="#008000" 
+                               TextColor="White"
+                               Margin="0,40,0,0"
+                               Padding="20"
+                               CornerRadius="20" />
+                    </StackLayout>
+                </Frame>
+            </StackLayout>
+
+            <!--Pet Gallery - 2-->
+            <StackLayout Padding="10">
+                <Frame BackgroundColor="#98FB98" 
+                      CornerRadius="30" 
+                      Padding="15">
+                    <StackLayout>
+                        <!-- Image -->
+                        <Image Source="dog_img.png" 
+                              HeightRequest="250" 
+                              HorizontalOptions="Center" 
+                              Margin="0,0,0,40"/>
+
+                        <!-- Labels -->
+                        <Label Text="REG ID: 01022023 JUDELA CRUZBLACKIENO" FontAttributes="Bold"/>
+                        <Label Text="Date Registered: 22/03/2024" />
+                        <Label Text="Date Of Birth: 02/01/2023" />
+                        <Label Text="Alias: Jaguar" />
+
+                        <!-- Button -->
+                        <Button Text="Show Full Information" 
+                               BackgroundColor="#008000" 
+                               TextColor="White"
+                               Margin="0,40,0,0"
+                               Padding="20"
+                               CornerRadius="20" />
+                    </StackLayout>
+                </Frame>
+            </StackLayout>
+
+            <!--Pet Gallery - 3-->
+            <StackLayout Padding="10">
+                <Frame BackgroundColor="#98FB98" 
+                      CornerRadius="30" 
+                      Padding="15">
+                    <StackLayout>
+                        <!-- Image -->
+                        <Image Source="dog_img.png" 
+                              HeightRequest="250" 
+                              HorizontalOptions="Center" 
+                              Margin="0,0,0,40"/>
+
+                        <!-- Labels -->
+                        <Label Text="REG ID: 01022023 JUDELA CRUZBLACKIENO" FontAttributes="Bold"/>
+                        <Label Text="Date Registered: 22/03/2024" />
+                        <Label Text="Date Of Birth: 02/01/2023" />
+                        <Label Text="Alias: Jaguar" />
+
+                        <!-- Button -->
+                        <Button Text="Show Full Information" 
+                               BackgroundColor="#008000" 
+                               TextColor="White"
+                               Margin="0,40,0,0"
+                               Padding="20"
+                               CornerRadius="20" />
+                    </StackLayout>
+                </Frame>
+            </StackLayout>
 
 
 
 
         </VerticalStackLayout>
-
     </ScrollView>
 
     <ContentPage.Background>

@@ -4,6 +4,7 @@
              x:Class="BAIPetRegMobileApp.LoginPage"
              Shell.NavBarIsVisible="False"
              Shell.FlyoutBehavior="Disabled"
+             Padding="0"
              Title="LoginPage">
     <ScrollView>
         <VerticalStackLayout>
