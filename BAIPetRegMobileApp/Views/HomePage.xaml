@@ -7,10 +7,8 @@
              Shell.FlyoutBehavior="Flyout"
              FlyoutItem.IsVisible="False"
              Shell.BackgroundColor="#57C84D"
-             Shell.NavBarIsVisible="True"       
- >
- 
-    
+             Shell.NavBarIsVisible="True">
+
     <Shell.BackButtonBehavior>
         <BackButtonBehavior IsVisible="False" IsEnabled="False" />
     </Shell.BackButtonBehavior>
@@ -22,16 +20,13 @@
             BackgroundColor="Transparent"
             FontSize="30"
             Clicked="MenuBtnClicked_Clicked"/>
-
-
         </HorizontalStackLayout>
-
     </Shell.TitleView>
     <ScrollView>
         <VerticalStackLayout Spacing="2">
-            
-           
-                <Image
+
+
+            <Image
         Source="bai_banner.jpg"
         VerticalOptions="Center"
         HorizontalOptions="Center"/>
@@ -81,7 +76,7 @@
             Clicked="BtnRegisterPet_Clicked"
             CornerRadius="10"
             />
-        
+
             <!--Pet Gallery - 1-->
             <StackLayout Padding="10">
                 <Frame BackgroundColor="#98FB98" 

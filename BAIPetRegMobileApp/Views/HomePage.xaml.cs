@@ -1,4 +1,4 @@
-using BAIPetRegMobileApp.ViewModels;
+using BAIPetRegMobileApp.Views;
 
 namespace BAIPetRegMobileApp;
 
@@ -15,23 +15,10 @@ public partial class HomePage : ContentPage
         return true;
     }
 
-    private void BtnRegisterPet_Clicked(object sender, EventArgs e)
+    private async void BtnRegisterPet_Clicked(object sender, EventArgs e)
     {
-        Shell.Current.GoToAsync(nameof(PetRegisterPage));
+        await Shell.Current.GoToAsync(nameof(PetRegisterPage));
     }
-
-    //private async void BtnLogout_Clicked(object sender, EventArgs e)
-    //{
-    //    await SecureStorage.SetAsync("hasAuth", "false");
-    //    await Shell.Current.GoToAsync(nameof(LoginPage));
-    //}
-
-    //private async void LogoutButton_Clicked(object sender, EventArgs e)
-    //{
-    //    await SecureStorage.SetAsync("hasAuth", "false");
-    //    await Shell.Current.GoToAsync(nameof(LoginPage));
-    //}
-
 
     private void MenuBtnClicked_Clicked(object sender, EventArgs e)
     {

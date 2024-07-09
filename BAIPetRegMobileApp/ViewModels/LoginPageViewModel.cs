@@ -14,7 +14,7 @@ namespace BAIPetRegMobileApp.ViewModels
         private LoginModel loginModel;
 
         [ObservableProperty]
-        private string userName;
+        private string? userName;
         [ObservableProperty]
         private bool isAuthenticated;
 
@@ -43,9 +43,18 @@ namespace BAIPetRegMobileApp.ViewModels
             GetUserNameFromSecuredStorage();
         }
 
+        [RelayCommand]
+        private async Task Logout()
+        {
+            SecureStorage.Default.Remove("Authentication");
+            IsAuthenticated = false;
+            UserName = "Guest";
+            await Shell.Current.GoToAsync(nameof(LoginPage));
+        }
+
         private async void GetUserNameFromSecuredStorage()
         {
-            if (!string.IsNullOrEmpty(UserName) && userName! != "Guest")
+            if (!string.IsNullOrEmpty(UserName) && UserName! != "Guest")
             {
                 IsAuthenticated = true;
                 return;
@@ -55,10 +64,19 @@ namespace BAIPetRegMobileApp.ViewModels
             {
                 UserName = JsonSerializer.Deserialize<LoginResponse>(serializedLoginResponseInStorage)!.UserName!;
                 IsAuthenticated = true;
-                return;
+                await Shell.Current.GoToAsync(nameof(HomePage));
             }
             UserName = "Guest";
             IsAuthenticated = false;
+        }
+
+        public async void IsUserAuthenticated()
+        {
+            var serializedLoginResponseInStorage = await SecureStorage.Default.GetAsync("Authentication");
+            if (serializedLoginResponseInStorage != null)
+            {
+                await Shell.Current.GoToAsync(nameof(HomePage));
+            }
         }
     }
 }

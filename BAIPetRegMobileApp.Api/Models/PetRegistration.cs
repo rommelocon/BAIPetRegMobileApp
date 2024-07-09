@@ -1,9 +1,9 @@
-using System.Security.Cryptography.X509Certificates;
-
-namespace BAIPetRegMobileApp.Models
+﻿namespace BAIPetRegMobileApp.Api.Models;
+public class PetRegistration
 {
-    public class PetInfo
-    {
+    public int Id { get; set; }
+    public string? User { get; set; }
+    public string? UserId { get; set; }
     public string? EntryPetname { get; set; }
     public string? ownershipList { get; set; }
     public string? speciesList { get; set; }
@@ -12,5 +12,4 @@ namespace BAIPetRegMobileApp.Models
     public string? sexList { get; set; }
     public int PetAge { get; set; }
     public int PetCount { get; set; }
-    }
 }

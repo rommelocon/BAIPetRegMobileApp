@@ -5,6 +5,8 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:BAIPetRegMobileApp"
     xmlns:views="clr-namespace:BAIPetRegMobileApp.Views"
+    xmlns:viewmodels="clr-namespace:BAIPetRegMobileApp.ViewModels"
+    x:DataType="viewmodels:LoginPageViewModel"
     Shell.FlyoutBehavior="Disabled"
     Shell.NavBarIsVisible="False"
     Title="BAIPetRegMobileApp">
@@ -87,17 +89,14 @@
                          Margin="30,0,0,0"
                          TextColor="#096B00"/>
                 <Button x:Name="BtnLogOut"
-                        Clicked="BtnLogOut_Clicked"
                         BackgroundColor="#096B00"
                         Margin="30,0,30,0"
                         WidthRequest="180"
                         CornerRadius="50"
                         TextColor="White"
-                        Text="LogOut"/>
+                        Text="LogOut"
+                        Command="{Binding LogoutCommand}"/>
             </StackLayout>
         </VerticalStackLayout>
-
     </Shell.FlyoutFooter>
-
-
 </Shell>

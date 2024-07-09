@@ -19,7 +19,7 @@
         />
 
 
-        <Label  Text="Login Here" 
+            <Label  Text="Login Here" 
         HorizontalOptions="Center"
         TextColor="#096B00"
         FontSize="30"
@@ -43,7 +43,7 @@
            FontAttributes="None"
            VerticalOptions="Center"
            FontSize="20"
-           Keyboard="Email"
+                       Text="{Binding LoginModel.Email}"
            />
             </Frame>
             <Frame CornerRadius="15"
@@ -63,6 +63,7 @@
             FontAttributes="None"
             VerticalOptions="Center"
             FontSize="20"
+                       Text="{Binding LoginModel.Password}"
             />
             </Frame>
             <!--Forgot Password Link-->
@@ -92,7 +93,7 @@
         FontSize="20"
         FontAttributes="Bold"
         x:Name="LoginButton"
-        Clicked="LoginButton_Clicked"
+        Command="{Binding LoginCommand}"
         />
 
 
@@ -118,5 +119,5 @@
 
         </VerticalStackLayout>
     </ScrollView>
-    
+
 </ContentPage>

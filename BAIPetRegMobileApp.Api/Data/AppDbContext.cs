@@ -6,9 +6,9 @@ namespace BAIPetRegMobileApp.Api.Data
 {
     public class AppDbContext : IdentityDbContext
     {
+        public DbSet<PetRegistration> PetRegistration { get; set; }
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
         {
         }
-        public DbSet<BAIPetRegMobileApp.Api.Models.User> User { get; set; } = default!;
     }
 }
