@@ -1,4 +1,5 @@
-﻿using BAIPetRegMobileApp.Views;
+﻿using BAIPetRegMobileApp.Services;
+using BAIPetRegMobileApp.ViewModels;
 
 namespace BAIPetRegMobileApp
 {
@@ -10,31 +11,26 @@ namespace BAIPetRegMobileApp
         {
             InitializeComponent();
 
-            // Set the initial MainPage to AppShell
-            MainPage = new AppShell();
+            // Initiate HomePage view
+            var view = new HomePage();
 
-            // Check if the user is already logged in
-            CheckIfUserIsLoggedIn();
-
-
-        }
-
-
-
-        private async void CheckIfUserIsLoggedIn()
-        {
-            var hasAuth = await SecureStorage.GetAsync("hasAuth");
-            if (hasAuth == "true")
+            if (IsUserAuthenticated())
             {
-                // Navigate to HomePage if user is authenticated
-                await Shell.Current.GoToAsync(nameof(HomePage));
+                MainPage = new NavigationPage(view);
             }
             else
             {
-                // Navigate to GetStartedPage if user is not authenticated
-                await Shell.Current.GoToAsync(nameof(GetStartedPage));
+                // Set the initial MainPage to AppShell
+                MainPage = new AppShell();
             }
         }
+
+        private bool IsUserAuthenticated()
+        {
+            var serializedLoginResponseInStorage = SecureStorage.Default.GetAsync("Authentication").Result;
+
+            // Check if token exists and valid
+            return !string.IsNullOrEmpty(serializedLoginResponseInStorage);
 
         private void CloseButton_Clicked(object sender, EventArgs e)
         {

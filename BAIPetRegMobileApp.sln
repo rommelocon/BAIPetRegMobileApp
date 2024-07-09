@@ -5,6 +5,8 @@ VisualStudioVersion = 17.9.34607.119
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BAIPetRegMobileApp", "BAIPetRegMobileApp\BAIPetRegMobileApp.csproj", "{9B9F461B-477C-4168-B95D-5D77511792C2}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BAIPetRegMobileApp.Api", "BAIPetRegMobileApp.Api\BAIPetRegMobileApp.Api.csproj", "{42322F4F-C9B9-4B43-A973-F19B7602528C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -17,6 +19,10 @@ Global
 		{9B9F461B-477C-4168-B95D-5D77511792C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9B9F461B-477C-4168-B95D-5D77511792C2}.Release|Any CPU.Build.0 = Release|Any CPU
 		{9B9F461B-477C-4168-B95D-5D77511792C2}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{42322F4F-C9B9-4B43-A973-F19B7602528C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{42322F4F-C9B9-4B43-A973-F19B7602528C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{42322F4F-C9B9-4B43-A973-F19B7602528C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{42322F4F-C9B9-4B43-A973-F19B7602528C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

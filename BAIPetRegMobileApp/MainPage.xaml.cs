@@ -1,14 +1,13 @@
 ﻿namespace BAIPetRegMobileApp;
-public partial class MainPage : ContentPage
-{
-    public MainPage()
+    public partial class MainPage : ContentPage
     {
-        InitializeComponent();
-    }
+        public MainPage()
+        {
+            InitializeComponent();
+        }
 
-    private void BtnGetStarted_Clicked(object sender, EventArgs e)
-    {
-        Shell.Current.GoToAsync(nameof(LoginPage));
+        private  async void BtnGetStarted_Clicked(object sender, EventArgs e)
+        {
+            await Shell.Current.GoToAsync(nameof(LoginPage));
+        }
     }
-
-}

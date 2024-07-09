@@ -18,7 +18,8 @@
         Margin="0,40,0,0"
         />
 
-            <Label  Text="Login Here" 
+
+        <Label  Text="Login Here" 
         HorizontalOptions="Center"
         TextColor="#096B00"
         FontSize="30"
@@ -64,7 +65,6 @@
             FontSize="20"
             />
             </Frame>
-
             <!--Forgot Password Link-->
             <Label
         Text="Forgot your password?"

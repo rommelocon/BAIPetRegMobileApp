@@ -1,4 +1,4 @@
-using BAIPetRegMobileApp.Views;
+using BAIPetRegMobileApp.ViewModels;
 
 namespace BAIPetRegMobileApp;
 
@@ -8,8 +8,6 @@ public partial class HomePage : ContentPage
     {
         InitializeComponent();
     }
-
-
 
     protected override bool OnBackButtonPressed()
     {

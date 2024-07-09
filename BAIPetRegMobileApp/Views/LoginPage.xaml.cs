@@ -1,55 +1,13 @@
-using System.Security.Cryptography;
-using System.Text;
+using BAIPetRegMobileApp.ViewModels;
 
 namespace BAIPetRegMobileApp
 {
     public partial class LoginPage : ContentPage
     {
-        public LoginPage()
+        public LoginPage(LoginPageViewModel vm)
         {
             InitializeComponent();
-        }
-
-        //protected override bool OnBackButtonPressed()
-        //{
-        //    Application.Current.Quit();
-        //    return true;
-        //}
-
-        private async void LoginButton_Clicked(object sender, EventArgs e)
-        {
-            if (IsCredentialCorrect(UsernameEntry.Text, PasswordEntry.Text))
-            {
-                await SecureStorage.SetAsync("hasAuth", "true");
-                await Shell.Current.GoToAsync(nameof(HomePage));
-            }
-            else
-            {
-                await DisplayAlert("Login failed", "Username or password is invalid", "Try again");
-            }
-        }
-
-        bool IsCredentialCorrect(string username, string password)
-        {
-            // Hash the input password
-            var hashedInputPassword = HashPassword(password);
-
-            // Compare the hashed input password with the stored hashed password
-            return username == "admin" && password == "1234";
-        }
-
-        string HashPassword(string password)
-        {
-            using (var sha256 = SHA256.Create())
-            {
-                var bytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(password));
-                var builder = new StringBuilder();
-                foreach (var b in bytes)
-                {
-                    builder.Append(b.ToString("x2"));
-                }
-                return builder.ToString();
-            }
+            BindingContext = vm;
         }
 
         private async void ClickableLabel_Tapped(object sender, TappedEventArgs e)
