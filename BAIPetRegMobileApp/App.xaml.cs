@@ -5,6 +5,8 @@ namespace BAIPetRegMobileApp
 {
     public partial class App : Application
     {
+
+
         public App()
         {
             InitializeComponent();
@@ -29,6 +31,10 @@ namespace BAIPetRegMobileApp
 
             // Check if token exists and valid
             return !string.IsNullOrEmpty(serializedLoginResponseInStorage);
+
+        private void CloseButton_Clicked(object sender, EventArgs e)
+        {
+            Shell.Current.FlyoutIsPresented = false;
         }
     }
 }

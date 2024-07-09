@@ -57,7 +57,10 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <None Remove="Platforms\Android\Resources\xml\network_security_config.xml" />
+		<None Remove="Platforms\Android\Resources\xml\network_security_config.xml" />
+		<None Remove="Resources\AppIcon\Images\dog_img.png" />
+		<None Remove="Resources\Fonts\MaterialIcons-Regular.ttf" />
+		<None Remove="Resources\Fonts\MaterialIconsOutlined-Regular.otf" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -83,9 +86,23 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiXaml Update="Views\RegisterPage.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
+		<MauiXaml Update="Views\ProfilePage.xaml">
+		  <Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
+		<MauiXaml Update="Views\RegisterPage.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
+	</ItemGroup>
+
+	<ItemGroup>
+		<Folder Include="Components\" />
+		<Folder Include="UserControls\" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<AndroidResource Update="Platforms\Android\Resources\xml\network_security_config.xml">
+			<Generator>MSBuild:UpdateGeneratedFiles</Generator>
+		</AndroidResource>
 	</ItemGroup>
 
 	<ItemGroup>

@@ -1,5 +1,4 @@
-﻿namespace BAIPetRegMobileApp
-{
+﻿namespace BAIPetRegMobileApp;
     public partial class MainPage : ContentPage
     {
         public MainPage()
@@ -12,4 +11,3 @@
             await Shell.Current.GoToAsync(nameof(LoginPage));
         }
     }
-}

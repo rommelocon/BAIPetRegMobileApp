@@ -1,7 +1,6 @@
 ﻿using Android.App;
 using Android.Content.Res;
 using Android.Runtime;
-using Microsoft.Maui;
 using Microsoft.Maui.Controls.Compatibility.Platform.Android;
 
 namespace BAIPetRegMobileApp
@@ -19,6 +18,15 @@ namespace BAIPetRegMobileApp
             Microsoft.Maui.Handlers.EntryHandler.Mapper.AppendToMapping(nameof(Entry), (handler, view) =>
             {
                 if (view is Entry)
+                {
+                    // Remove underline
+                    handler.PlatformView.BackgroundTintList = ColorStateList.ValueOf(Android.Graphics.Color.Transparent);
+                }
+            });
+
+            Microsoft.Maui.Handlers.EditorHandler.Mapper.AppendToMapping(nameof(Editor), (handler, view) =>
+            {
+                if (view is Editor)
                 {
                     // Remove underline
                     handler.PlatformView.BackgroundTintList = ColorStateList.ValueOf(Android.Graphics.Color.Transparent);

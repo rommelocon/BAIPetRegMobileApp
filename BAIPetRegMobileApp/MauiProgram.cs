@@ -1,10 +1,10 @@
 ﻿using BAIPetRegMobileApp;
-using Microsoft.Extensions.Logging;
 using CommunityToolkit.Maui;
 using BAIPetRegMobileApp.ViewModels;
 using BAIPetRegMobileApp.Views;
 using BAIPetRegMobileApp.Handlers;
 using BAIPetRegMobileApp.Services;
+using Microsoft.Extensions.Logging;
 
 public static class MauiProgram
 {
@@ -20,6 +20,10 @@ public static class MauiProgram
             {
                 fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                 fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
+                fonts.AddFont("Poppins-Regular.ttf", "PoppinsRegular");
+                fonts.AddFont("Poppins-Bold.ttf", "PoppinsBold");
+                fonts.AddFont("MaterialIconsOutlined-Regular.otf", "MaterialIconsOutlined-Regular");
+                fonts.AddFont("MaterialIcons-Regular.ttf", "MaterialIcons-Regular");
             });
         builder.Services.AddSingleton<IPlatformHttpMessageHandler>(sp =>
         {
@@ -52,6 +56,7 @@ public static class MauiProgram
 
         // Services
         builder.Services.AddSingleton<ClientService>();
+
 #if DEBUG
         builder.Logging.AddDebug();
 #endif
