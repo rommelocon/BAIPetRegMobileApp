@@ -35,5 +35,15 @@ namespace BAIPetRegMobileApp
             await Shell.Current.GoToAsync(nameof(LoginPage));
             Shell.Current.FlyoutIsPresented = false;
         }
+
+        private void BtnRegisterPet_Clicked(object sender, EventArgs e)
+        {
+            Shell.Current.GoToAsync(nameof(PetRegisterPage));
+        }
+
+        private void RegisterPetPage_Clicked(object sender, EventArgs e)
+        {
+
+        }
     }
 }

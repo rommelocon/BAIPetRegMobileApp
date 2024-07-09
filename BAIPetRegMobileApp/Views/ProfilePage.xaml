@@ -3,10 +3,132 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="BAIPetRegMobileApp.Views.ProfilePage"
              Title="ProfilePage">
+   <ScrollView>
     <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+            <VerticalStackLayout Spacing="2">
+                <Image
+                    Source="bai_banner.jpg"
+                    VerticalOptions="Center"
+                     HorizontalOptions="Center"/>
+
+                <!-- Profile Picture with Circular Border -->
+                <Frame CornerRadius="100"
+                   BorderColor="DarkGreen"
+                   BackgroundColor="Transparent"
+                   Padding="5"
+                   WidthRequest="200"
+                   HeightRequest="200"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center">
+                    <Frame CornerRadius="100"
+                       BorderColor="LightGreen"
+                       BackgroundColor="LightGreen"
+                       Padding="5"
+                       WidthRequest="190"
+                       HeightRequest="190"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center">
+                        <Image Source="bai_logo.png" 
+                                Aspect="AspectFill"
+                                WidthRequest="180"
+                                HeightRequest="180"/>
+                    </Frame>
+                </Frame>
+
+                <Label
+                     Text="JUAN DELA CRUZ"
+                     TextColor="#096B00"
+                     FontAttributes="Bold"
+                     FontSize="40"
+                     Margin="0,5,0,0"
+                     Style="{StaticResource Headline}"
+                     SemanticProperties.HeadingLevel="Level4"/>
+
+                <Label
+                        Text="Pet Owner"
+                        FontAttributes="Bold"
+                        TextColor="Black"
+                        FontSize="20"
+                        Margin="0,20,0,0"
+                        Style="{StaticResource Headline}"
+                        SemanticProperties.HeadingLevel="Level1"/>
+
+                
+                <Label 
+                         Text="REGISTERED PETS"
+                         FontSize="24"
+                         TextColor="White"
+                         FontAttributes="Bold"
+                         Padding="20"
+                         BackgroundColor="#12DC00"
+                         HorizontalTextAlignment="Center" 
+                         />
+
+                
+                <HorizontalStackLayout HorizontalOptions="Center" Spacing="20">
+                    <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center">
+
+                        <Frame BackgroundColor="#7FFF7F" 
+                               CornerRadius="20" 
+                               WidthRequest="150" 
+                               HeightRequest="150" 
+                               Padding="10" 
+                               Margin="0,30,20,0"
+                               HasShadow="True">
+
+                            <Label Text="5" 
+                                   TextColor="White"
+                                   FontSize="96" 
+                                   FontAttributes="Bold" 
+                                   HorizontalTextAlignment="Center" 
+                                   VerticalOptions="Center"/>
+
+                        </Frame>
+                        <Label Text="Dogs" 
+                               TextColor="Green"
+                               FontSize="20" 
+                               FontAttributes="Bold" 
+                               HorizontalTextAlignment="Center" 
+                               VerticalOptions="Center"/>
+
+                    </VerticalStackLayout>
+                    <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center">
+                        <Frame BackgroundColor="#7FFF7F" 
+                               CornerRadius="20" 
+                               WidthRequest="150" 
+                               HeightRequest="150" 
+                               Padding="10" 
+                               Margin="0,30,0,0"
+                               HasShadow="True">
+
+                            <Label Text="8" 
+                                   TextColor="White"
+                                   FontSize="96" 
+                                   FontAttributes="Bold" 
+                                   HorizontalTextAlignment="Center" 
+                                   VerticalOptions="Center"/>
+                        </Frame>
+                        <Label Text="Cats" 
+                               TextColor="Green"
+                               FontSize="20" 
+                               FontAttributes="Bold" 
+                               HorizontalTextAlignment="Center" 
+                               VerticalOptions="Center"/>
+                        
+                    </VerticalStackLayout>
+                </HorizontalStackLayout>
+
+                          <Button 
+                                FontSize="24"
+                                Text="Register a Pet"
+                                FontAttributes="Bold"
+                                Padding="20"
+                                Margin="30"
+                                BackgroundColor="#096B00"
+                                CornerRadius="50"
+                                />
+
+            </VerticalStackLayout>
+        </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>
