@@ -1,6 +1,4 @@
-﻿using BAIPetRegMobileApp;
-
-namespace BAIPetRegMobileApp;
+﻿namespace BAIPetRegMobileApp;
 public partial class MainPage : ContentPage
 {
     public MainPage()

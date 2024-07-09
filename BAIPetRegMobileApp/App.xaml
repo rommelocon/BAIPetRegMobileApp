@@ -35,6 +35,23 @@
                 </Setter>
             </Style>
             <!-- Add more styles for other text-based controls if needed -->
+
+
+            <ControlTemplate x:Key="CustomFlyoutItemTemplate">
+                <Grid>
+                    <!-- Your content here -->
+                    <StackLayout>
+                        <!-- Content of the flyout item -->
+                    </StackLayout>
+
+                    <!-- Close button -->
+                    <Button Text="close" Clicked="CloseButton_Clicked"
+                            HorizontalOptions="End"
+                            FontFamily="MaterialIconsOutlined-Regular"
+                            VerticalOptions="Center"
+                            Margin="10"/>
+                </Grid>
+            </ControlTemplate>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

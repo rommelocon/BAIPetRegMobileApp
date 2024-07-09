@@ -4,6 +4,8 @@ namespace BAIPetRegMobileApp
 {
     public partial class App : Application
     {
+
+
         public App()
         {
             InitializeComponent();
@@ -13,7 +15,11 @@ namespace BAIPetRegMobileApp
 
             // Check if the user is already logged in
             CheckIfUserIsLoggedIn();
+
+
         }
+
+
 
         private async void CheckIfUserIsLoggedIn()
         {
@@ -28,6 +34,11 @@ namespace BAIPetRegMobileApp
                 // Navigate to GetStartedPage if user is not authenticated
                 await Shell.Current.GoToAsync(nameof(GetStartedPage));
             }
+        }
+
+        private void CloseButton_Clicked(object sender, EventArgs e)
+        {
+            Shell.Current.FlyoutIsPresented = false;
         }
     }
 }

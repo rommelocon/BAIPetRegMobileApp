@@ -3,7 +3,175 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="BAIPetRegMobileApp.HomePage"
              Shell.FlyoutBehavior="Flyout"
-             Shell.NavBarIsVisible="False">
+             FlyoutItem.IsVisible="False"
+             Shell.BackgroundColor="#57C84D"
+             Shell.NavBarIsVisible="True"       
+ >
+ 
+    
+    <Shell.BackButtonBehavior>
+        <BackButtonBehavior IsVisible="False" IsEnabled="False" />
+    </Shell.BackButtonBehavior>
+    <Shell.TitleView>
+        <HorizontalStackLayout>
+            <Button x:Name="MenuBtnClicked"
+            FontFamily="MaterialIconsOutlined-Regular"
+            Text="menu"
+            BackgroundColor="Transparent"
+            FontSize="30"
+            Clicked="MenuBtnClicked_Clicked"/>
+
+
+        </HorizontalStackLayout>
+
+    </Shell.TitleView>
+    <ScrollView>
+        <VerticalStackLayout Spacing="2">
+            
+           
+                <Image
+        Source="bai_banner.jpg"
+        VerticalOptions="Center"
+        HorizontalOptions="Center"/>
+
+            <Frame
+        BackgroundColor="White"
+        CornerRadius="20"
+        Padding="0"
+        HeightRequest="50"
+        Margin="23,30,23,0">
+                <SearchBar
+            Placeholder="Search"
+            BackgroundColor="Transparent"
+            VerticalOptions="Center"
+            Margin="10,0"/>
+            </Frame>
+
+
+
+            <Label
+        Text="Welcome!"
+        TextColor="#096B00"
+        FontAttributes="Bold"
+        FontSize="33"
+        Margin="0,20,0,0"
+        Style="{StaticResource Headline}"
+        SemanticProperties.HeadingLevel="Level1"/>
+
+            <Image
+        Source="bai_logo.png"
+        Opacity="0.5"
+        WidthRequest="300"
+        HeightRequest="300"
+        Margin="0,30,0,0"
+        Aspect="AspectFit"
+        VerticalOptions="Center"
+        HorizontalOptions="Center"/>
+
+
+            <Button x:Name="BtnRegisterPet"
+            FontSize="20"
+            Text="Register a Pet"
+            FontAttributes="Bold"
+            Padding="20"
+            Margin="10"
+            BackgroundColor="#096B00"
+            Clicked="BtnRegisterPet_Clicked"
+            CornerRadius="10"
+            />
+        
+            <!--Pet Gallery - 1-->
+            <StackLayout Padding="10">
+                <Frame BackgroundColor="#98FB98" 
+                      CornerRadius="30" 
+                      Padding="15">
+                    <StackLayout>
+                        <!-- Image -->
+                        <Image Source="dog_img.png" 
+                              HeightRequest="250" 
+                              HorizontalOptions="Center" 
+                              Margin="0,0,0,40"/>
+
+                        <!-- Labels -->
+                        <Label Text="REG ID: 01022023 JUDELA CRUZBLACKIENO" FontAttributes="Bold"/>
+                        <Label Text="Date Registered: 22/03/2024" />
+                        <Label Text="Date Of Birth: 02/01/2023" />
+                        <Label Text="Alias: Jaguar" />
+
+                        <!-- Button -->
+                        <Button Text="Show Full Information" 
+                               BackgroundColor="#008000" 
+                               TextColor="White"
+                               Margin="0,40,0,0"
+                               Padding="20"
+                               CornerRadius="20" />
+                    </StackLayout>
+                </Frame>
+            </StackLayout>
+
+            <!--Pet Gallery - 2-->
+            <StackLayout Padding="10">
+                <Frame BackgroundColor="#98FB98" 
+                      CornerRadius="30" 
+                      Padding="15">
+                    <StackLayout>
+                        <!-- Image -->
+                        <Image Source="dog_img.png" 
+                              HeightRequest="250" 
+                              HorizontalOptions="Center" 
+                              Margin="0,0,0,40"/>
+
+                        <!-- Labels -->
+                        <Label Text="REG ID: 01022023 JUDELA CRUZBLACKIENO" FontAttributes="Bold"/>
+                        <Label Text="Date Registered: 22/03/2024" />
+                        <Label Text="Date Of Birth: 02/01/2023" />
+                        <Label Text="Alias: Jaguar" />
+
+                        <!-- Button -->
+                        <Button Text="Show Full Information" 
+                               BackgroundColor="#008000" 
+                               TextColor="White"
+                               Margin="0,40,0,0"
+                               Padding="20"
+                               CornerRadius="20" />
+                    </StackLayout>
+                </Frame>
+            </StackLayout>
+
+            <!--Pet Gallery - 3-->
+            <StackLayout Padding="10">
+                <Frame BackgroundColor="#98FB98" 
+                      CornerRadius="30" 
+                      Padding="15">
+                    <StackLayout>
+                        <!-- Image -->
+                        <Image Source="dog_img.png" 
+                              HeightRequest="250" 
+                              HorizontalOptions="Center" 
+                              Margin="0,0,0,40"/>
+
+                        <!-- Labels -->
+                        <Label Text="REG ID: 01022023 JUDELA CRUZBLACKIENO" FontAttributes="Bold"/>
+                        <Label Text="Date Registered: 22/03/2024" />
+                        <Label Text="Date Of Birth: 02/01/2023" />
+                        <Label Text="Alias: Jaguar" />
+
+                        <!-- Button -->
+                        <Button Text="Show Full Information" 
+                               BackgroundColor="#008000" 
+                               TextColor="White"
+                               Margin="0,40,0,0"
+                               Padding="20"
+                               CornerRadius="20" />
+                    </StackLayout>
+                </Frame>
+            </StackLayout>
+
+
+
+
+        </VerticalStackLayout>
+    </ScrollView>
 
     <ContentPage.Background>
         <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
@@ -12,65 +180,5 @@
         </LinearGradientBrush>
     </ContentPage.Background>
 
-    <VerticalStackLayout Spacing="2">
-        <Image
-        Source="bai_banner.jpg"
-        VerticalOptions="Center"
-         HorizontalOptions="Center"/>
-
-        <Frame
-            BackgroundColor="White"
-            CornerRadius="20"
-            Padding="0"
-            HeightRequest="50"
-            Margin="23,30,23,0">
-            <SearchBar
-                Placeholder="Search"
-                BackgroundColor="Transparent"
-                VerticalOptions="Center"
-                Margin="10,0"/>
-        </Frame>
-
-        <Image
-            Source="bai_logo.png"
-            Opacity="0.5"
-            WidthRequest="300"
-            HeightRequest="300"
-            Margin="0,30,0,0"
-            Aspect="AspectFit"
-            VerticalOptions="Center"
-            HorizontalOptions="Center"/>
-
-        <Label
-            Text="Welcome!"
-            TextColor="#096B00"
-            FontAttributes="Bold"
-            FontSize="33"
-            Style="{StaticResource Headline}"
-            SemanticProperties.HeadingLevel="Level1"/>
-
-        <Button x:Name="BtnRegisterPet"
-                FontSize="20"
-                Text="Register a Pet"
-                FontAttributes="Bold"
-                Padding="20"
-                Margin="10"
-                BackgroundColor="#096B00"
-                Clicked="BtnRegisterPet_Clicked"
-                CornerRadius="10"
-                />
-
-        <Button x:Name="BtnLogout"
-                FontSize="20"
-                Text="Logout"
-                FontAttributes="Bold"
-                Padding="20"
-                Margin="10"
-                Background="#096B00"
-                CornerRadius="10"
-                Clicked="LogoutButton_Clicked">
-
-        </Button>
-
-    </VerticalStackLayout>
+    
 </ContentPage>
