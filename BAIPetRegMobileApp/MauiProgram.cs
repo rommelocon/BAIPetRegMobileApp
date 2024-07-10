@@ -53,6 +53,7 @@ public static class MauiProgram
 
         // View Models
         builder.Services.AddSingleton<LoginPageViewModel>();
+        builder.Services.AddSingleton<HomePageViewModel>();
 
         // Services
         builder.Services.AddSingleton<ClientService>();

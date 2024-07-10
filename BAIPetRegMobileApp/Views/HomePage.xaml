@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="BAIPetRegMobileApp.HomePage"
              xmlns:viewmodels="clr-namespace:BAIPetRegMobileApp.ViewModels"
-             x:DataType="viewmodels:LoginPageViewModel"
+             x:DataType="viewmodels:HomePageViewModel"
              Shell.FlyoutBehavior="Flyout"
              FlyoutItem.IsVisible="False"
              Shell.BackgroundColor="#57C84D"
@@ -47,13 +47,21 @@
 
 
             <Label
-        Text="Welcome!"
+        Text="Welcome"
         TextColor="#096B00"
         FontAttributes="Bold"
         FontSize="33"
         Margin="0,20,0,0"
         Style="{StaticResource Headline}"
         SemanticProperties.HeadingLevel="Level1"/>
+            <Label
+Text="{Binding UserName}"
+TextColor="#096B00"
+FontAttributes="Bold"
+FontSize="33"
+Margin="0,20,0,0"
+Style="{StaticResource Headline}"
+SemanticProperties.HeadingLevel="Level1"/>
 
             <Image
         Source="bai_logo.png"

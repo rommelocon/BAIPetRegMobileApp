@@ -1,4 +1,5 @@
 ﻿using BAIPetRegMobileApp.Models;
+using System.Net.Http;
 using System.Net.Http.Json;
 using System.Text.Json;
 
@@ -27,18 +28,18 @@ public class ClientService
     {
         Console.WriteLine("Login Method Called");// Logginf
         var httpClient = httpClientFactory.CreateClient("custom-httpclient");
-        var result = await httpClient.PostAsJsonAsync("/login", model);
+        var result = await httpClient.PostAsJsonAsync("/Account/login", model);
         if (result.IsSuccessStatusCode)
         {
             var response = await result.Content.ReadFromJsonAsync<LoginResponse>();
             if (response is not null)
             {
-                var serializedResponse = JsonSerializer.Serialize(new LoginResponse() 
-                    { 
-                        AccessToken = response.AccessToken, 
-                        RefreshToken = response.RefreshToken, 
-                        UserName = model.Email 
-                    });
+                var serializedResponse = JsonSerializer.Serialize(new LoginResponse()
+                {
+                    AccessToken = response.AccessToken,
+                    RefreshToken = response.RefreshToken,
+                    UserName = model.UserName
+                });
 
                 await SecureStorage.Default.SetAsync("Authentication", serializedResponse);
 
@@ -54,5 +55,15 @@ public class ClientService
         {
             await Shell.Current.DisplayAlert("Alert", "Login failed. Please try again.", "Ok");
         }
+    }
+
+    public async Task<string> GetUserInfo()
+    {
+        var httpClient = httpClientFactory.CreateClient("custom-httpclient");
+        var response = await httpClient.GetAsync("/Account/userinfo"); // Replace with your API endpoint
+        response.EnsureSuccessStatusCode(); // Ensure HTTP success status code
+        Console.WriteLine("Response GetUser: ", response);
+
+        return await response.Content.ReadAsStringAsync();
     }
 }

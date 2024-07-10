@@ -1,12 +1,15 @@
+using BAIPetRegMobileApp.Services;
+using BAIPetRegMobileApp.ViewModels;
 using BAIPetRegMobileApp.Views;
 
 namespace BAIPetRegMobileApp;
 
 public partial class HomePage : ContentPage
 {
-    public HomePage()
+    public HomePage(HomePageViewModel homePageViewModel)
     {
         InitializeComponent();
+        BindingContext = homePageViewModel;
     }
 
     protected override bool OnBackButtonPressed()
