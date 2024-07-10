@@ -13,10 +13,6 @@
             ContentTemplate="{DataTemplate local:MainPage}"
             Route="MainPage"
             FlyoutItem.IsVisible="True"/>
-        <ShellContent
-            Title=""
-            ContentTemplate="{DataTemplate local:MainPage}"
-            Route="ProfilePage"/>
     </FlyoutItem>
 
     <Shell.FlyoutHeader>
@@ -24,64 +20,82 @@
                CornerRadius="0"
                Margin="0"
                Padding="10"
+               BorderColor="Transparent"
                >
             <Button x:Name="ClostMenuButton"
-            Text="close"
-            FontFamily="MaterialIconsOutlined-Regular"
-            FontSize="30"
-            TextColor="White"
-            FontAttributes="Bold"
-            BackgroundColor="Transparent"
-            HorizontalOptions="End"
-            VerticalOptions="EndAndExpand"
-            Clicked="ClostMenuButton_Clicked"/>
+                    Text="close"
+                    FontFamily="MaterialIconsOutlined-Regular"
+                    FontSize="30"
+                    TextColor="White"
+                    FontAttributes="Bold"
+                    BackgroundColor="Transparent"
+                    HorizontalOptions="End"
+                    VerticalOptions="EndAndExpand"
+                    Clicked="ClostMenuButton_Clicked"/>
         </Frame>
-        
     </Shell.FlyoutHeader>
 
     <Shell.FlyoutContent>
-        <VerticalStackLayout>
+        <VerticalStackLayout Margin="0">
             <StackLayout Orientation="Horizontal"
                          HorizontalOptions="Center"
-                         Margin="0,20,0,0"
-                       >
-
+                         Margin="0,20,0,0">
                 <Label Text="account_circle"
-                           FontFamily="MaterialIconsOutlined-Regular"
-                           FontSize="60"
-                           Margin="30,0,0,0"
-                           TextColor="#096B00"
-                            />
-
+                       FontFamily="MaterialIconsOutlined-Regular"
+                       FontSize="60"
+                       Margin="30,0,0,0"
+                       TextColor="#096B00"/>
                 <Button x:Name="ProfilePageBtn"
-                    Clicked="ProfilePageBtn_Clicked"
-                    BackgroundColor="#096B00"
-                    Margin="30,0,30,0"
-                    WidthRequest="180"
-                    CornerRadius="50"
-                    Text="Profile"
-                    />
-
-                
-                      
+                        Clicked="ProfilePageBtn_Clicked"
+                        BackgroundColor="#096B00"
+                        Margin="30,0,30,0"
+                        WidthRequest="180"
+                        CornerRadius="50"
+                        TextColor="White"
+                        Text="Profile"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal"
+                         HorizontalOptions="Center"
+                         Margin="0,20,0,0">
+                <Label Text="pets"
+                       FontFamily="MaterialIconsOutlined-Regular"
+                       FontSize="60"
+                       Margin="30,0,0,0"
+                       TextColor="#096B00"/>
+                <Button x:Name="PetRegisterBtn"
+                        Clicked="PetRegisterBtn_Clicked"
+                        BackgroundColor="#096B00"
+                        Margin="30,0,30,0"
+                        WidthRequest="180"
+                        CornerRadius="50"
+                        TextColor="White"
+                        Text="Register a Pet"/>
             </StackLayout>
         </VerticalStackLayout>
     </Shell.FlyoutContent>
 
     <Shell.FlyoutFooter>
-        <Button x:Name="BtnLogOut"
-                Clicked="BtnLogOut_Clicked"
-                Text="logout"
-                FontFamily="MaterialIconsOutlined-Regular"
-                FontSize="30"
-                TextColor="#096B00"
-                FontAttributes="Bold"
-                BackgroundColor="Transparent"
-                HorizontalOptions="End"
-                VerticalOptions="EndAndExpand"
-            />
+        <VerticalStackLayout Margin="0">
+            <StackLayout Orientation="Horizontal"
+                         HorizontalOptions="Center"
+                         Margin="0,0,0,20">
+                <Label   Text="logout"
+                         FontFamily="MaterialIconsOutlined-Regular"
+                         FontSize="60"
+                         Margin="30,0,0,0"
+                         TextColor="#096B00"/>
+                <Button x:Name="BtnLogOut"
+                        Clicked="BtnLogOut_Clicked"
+                        BackgroundColor="#096B00"
+                        Margin="30,0,30,0"
+                        WidthRequest="180"
+                        CornerRadius="50"
+                        TextColor="White"
+                        Text="LogOut"/>
+            </StackLayout>
+        </VerticalStackLayout>
+
     </Shell.FlyoutFooter>
-    
+
 
 </Shell>
-    
