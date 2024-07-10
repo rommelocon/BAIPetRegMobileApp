@@ -28,31 +28,40 @@
         <ScrollView Grid.Row="2">
             <VerticalStackLayout>
                 <VerticalStackLayout Spacing="2">
-
-
                     <!-- Profile Picture with Circular Border -->
                     <Frame CornerRadius="100"
-               BorderColor="DarkGreen"
-               BackgroundColor="Transparent"
-               Padding="5"
-               WidthRequest="200"
-               HeightRequest="200"
-               HorizontalOptions="Center"
-               VerticalOptions="Center">
-                        <Frame CornerRadius="100"
-                   BorderColor="LightGreen"
-                   BackgroundColor="LightGreen"
-                   Padding="5"
-                   WidthRequest="190"
-                   HeightRequest="190"
-                   HorizontalOptions="Center"
-                   VerticalOptions="Center">
-                            <Image Source="profile_pic.png" 
-                            Aspect="AspectFill"
-                            WidthRequest="180"
-                            HeightRequest="180"/>
-                        </Frame>
+                            BorderColor="DarkGreen"
+                            BackgroundColor="Transparent"
+                            Padding="5"
+                            WidthRequest="200"
+                            HeightRequest="200"
+                            HorizontalOptions="Center"
+                            Margin="0,40,0,0"
+                            VerticalOptions="Center">
+                        <Grid WidthRequest="190"
+                              HeightRequest="190"
+                              HorizontalOptions="Center"
+                              VerticalOptions="Center">
+                            <Ellipse WidthRequest="190"
+                              HeightRequest="190"
+                              Stroke="LightGreen"
+                              StrokeThickness="10"
+                              HorizontalOptions="Center"
+                              VerticalOptions="Center"/>
+                            <Image Source="profile_pic_1.png"
+                              Aspect="AspectFill"
+                              HorizontalOptions="FillAndExpand"
+                              VerticalOptions="FillAndExpand">
+                                <Image.Clip>
+                                    <EllipseGeometry Center="95,95"
+                                        RadiusX="90"
+                                        RadiusY="90"/>
+                                </Image.Clip>
+                            </Image>
+                        </Grid>
                     </Frame>
+
+
 
                     <Label
                  Text="JUAN DELA CRUZ"
@@ -62,6 +71,7 @@
                  Margin="0,5,0,0"
                  Style="{StaticResource Headline}"
                  SemanticProperties.HeadingLevel="Level4"/>
+                    
 
                     <Label
                     Text="Pet Owner"
