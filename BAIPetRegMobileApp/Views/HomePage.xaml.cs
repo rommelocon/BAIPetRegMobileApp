@@ -1,4 +1,5 @@
 using BAIPetRegMobileApp.Views;
+using CommunityToolkit.Maui.Views;
 
 namespace BAIPetRegMobileApp;
 
@@ -44,4 +45,12 @@ public partial class HomePage : ContentPage
     {
         Shell.Current.GoToAsync(nameof(PetInformationPage));
     }
+
+    private void HomepageBtn_Clicked(object sender, EventArgs e)
+    {
+        Shell.Current.GoToAsync(nameof(HomePage));
+ 
+;    }
+
+ 
 }

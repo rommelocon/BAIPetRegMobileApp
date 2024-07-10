@@ -3,400 +3,417 @@
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="BAIPetRegMobileApp.Views.PetRegisterPage"
-             Title="PetRegisterPage">
+             >
+    <Grid>
+        <Grid.RowDefinitions>
+            <!-- Define rows for your banner, search frame, and content -->
+            <RowDefinition Height="Auto" />
+            <!-- Banner -->
+            <RowDefinition Height="Auto" />
+            <!-- Search Frame -->
+            <RowDefinition Height="*" />
+            <!-- Content -->
+        </Grid.RowDefinitions>
+        <Image
+        Grid.Row="1"
+        Source="bai_banner.jpg"
+        VerticalOptions="Center"
+        HorizontalOptions="Center"/>
 
-    <ScrollView>
-        <VerticalStackLayout>
-            <Label  Text="Pet Registration"
-                    HorizontalOptions="Center"
-                    TextColor="#096B00"
-                    FontSize="30"
-                    FontAttributes="Bold"
-                    Margin="0,30,0,0"
-                    FontFamily="Poppins-Bold" />
-            <Label  Text="Animal Information"
-                    HorizontalOptions="Start"
-                    TextColor="#096B00"
+        <ScrollView Grid.Row="2">
+            <VerticalStackLayout>
+                <Label  Text="Pet Registration"
+                 HorizontalOptions="Center"
+                 TextColor="#096B00"
+                 FontSize="30"
+                 FontAttributes="Bold"
+                 Margin="0,30,0,0"
+                 FontFamily="Poppins-Bold" />
+                <Label  Text="Animal Information"
+                 HorizontalOptions="Start"
+                 TextColor="#096B00"
+                 FontSize="20"
+                 FontAttributes="Bold"
+                 Margin="40,50,0,0"
+                 FontFamily="Poppins-Bold" />
+
+                <!--Pet's Name Entry-->
+
+                <StackLayout>
+                    <Label Text="Pet's Name"
+                    Margin="40,20,0,0"
+                    TextColor="Black"
                     FontSize="20"
-                    FontAttributes="Bold"
-                    Margin="40,50,0,0"
-                    FontFamily="Poppins-Bold" />
+                    FontAttributes="Bold"></Label>
+                    <Frame CornerRadius="15"
+                    Padding="10"
+                    BackgroundColor="#f1f1f1"
+                    BorderColor="Transparent"
+                    HasShadow="False"
+                    Margin="30,10"
+                    HorizontalOptions="FillAndExpand">
+                        <Entry x:Name="EntryPetName"
+                        Placeholder="Pet's Name"
+                        PlaceholderColor="Black"
+                        BackgroundColor="Transparent"
+                        IsTextPredictionEnabled="False"
+                        IsSpellCheckEnabled="False"
+                        FontAttributes="None"
+                        VerticalOptions="Center"
+                        HorizontalOptions="FillAndExpand"
+                        FontSize="20">
+                            <Entry.Behaviors>
+                                <toolkit:TextValidationBehavior
+                             x:Name="petNameValidator"
+                             Flags="ValidateOnAttaching,ValidateOnValueChanged"
+                             MinimumLength="1"
+                             />
+                            </Entry.Behaviors>
 
-            <!--Pet's Name Entry-->
-
-            <StackLayout>
-                <Label Text="Pet's Name"
-                       Margin="40,20,0,0"
-                       TextColor="Black"
-                       FontSize="20"
-                       FontAttributes="Bold"></Label>
-                <Frame CornerRadius="15"
-                       Padding="10"
-                       BackgroundColor="#f1f1f1"
-                       BorderColor="Transparent"
-                       HasShadow="False"
-                       Margin="30,10"
-                       HorizontalOptions="FillAndExpand">
-                    <Entry x:Name="EntryPetName"
-                           Placeholder="Pet's Name"
-                           PlaceholderColor="Black"
-                           BackgroundColor="Transparent"
-                           IsTextPredictionEnabled="False"
-                           IsSpellCheckEnabled="False"
-                           FontAttributes="None"
-                           VerticalOptions="Center"
-                           HorizontalOptions="FillAndExpand"
-                           FontSize="20">
-                        <Entry.Behaviors>
-                            <toolkit:TextValidationBehavior
-                                x:Name="petNameValidator"
-                                Flags="ValidateOnAttaching,ValidateOnValueChanged"
-                                MinimumLength="1"
-                                />
-                        </Entry.Behaviors>
-
-                    </Entry>
-                </Frame>
-
-            </StackLayout>
-
-            <!--Type OwnerShip Picker-->
-
-            <StackLayout>
-                <Label Text="Type of Ownership"
-                       Margin="40,20,0,0"
-                       TextColor="Black"
-                       FontSize="20"
-                       FontAttributes="Bold" />
-                <Frame CornerRadius="15"
-                       Padding="10"
-                       BackgroundColor="#f1f1f1"
-                       BorderColor="Transparent"
-                       HasShadow="False"
-                       Margin="30,10"
-                       HorizontalOptions="FillAndExpand">
-                    <Picker Title="Type of Ownership"
-                            x:Name="ownershipList"
-                            Style="{StaticResource NoUnderlinePicker}"
-                            SelectedIndexChanged="OnOwnershipListSelectedIndexChanged"
-                            TitleColor="Black"
-                            FontSize="20">
-                        <!--Remove a picker and added to backend-->
-                    </Picker>
-                </Frame>
-            </StackLayout>
-
-            <!--Species Picker-->
-
-            <StackLayout>
-                <Label Text="Species"
-                       FontAttributes="Bold"
-                       Margin="40,20,0,0"
-                       TextColor="Black"
-                       FontSize="20" />
-                <Frame CornerRadius="15"
-                       Padding="10"
-                       BackgroundColor="#f1f1f1"
-                       BorderColor="Transparent"
-                       HasShadow="False"
-                       Margin="30,10"
-                       HorizontalOptions="FillAndExpand">
-                    <Picker Title="Select Species"
-                            Style="{StaticResource NoUnderlinePicker}"
-                            x:Name="speciesList"
-                            TitleColor="Black"
-                            FontSize="20">
-                        <!--Remove picker in UI and added it to backend-->
-                    </Picker>
-                </Frame>
-            </StackLayout>
-
-            <!--Breed Picker-->
-
-            <StackLayout>
-                <Label Text="Breed"
-                       FontAttributes="Bold"
-                       Margin="40,20,0,0"
-                       TextColor="Black"
-                       FontSize="20" />
-                <Frame CornerRadius="15"
-                       Padding="10"
-                       BackgroundColor="#f1f1f1"
-                       BorderColor="Transparent"
-                       HasShadow="False"
-                       Margin="30,10"
-                       HorizontalOptions="FillAndExpand">
-                    <Picker Title="Select Breed"
-                            Style="{StaticResource NoUnderlinePicker}"
-                            x:Name="breedList"
-                            TitleColor="Black"
-                            FontSize="20">
-                    </Picker>
-                </Frame>
-            </StackLayout>
-
-            <!--Date Picker-->
-            <StackLayout>
-                <Label Text="Date of Birth"
-                       FontAttributes="Bold"
-                       Margin="40,20,0,0"
-                       TextColor="Black"
-                       FontSize="20" />
-                <Frame CornerRadius="15"
-                       Padding="10"
-                       BackgroundColor="#f1f1f1"
-                       BorderColor="Transparent"
-                       HasShadow="False"
-                       Margin="30,10"
-                       HorizontalOptions="FillAndExpand">
-                    <DatePicker Date="{Binding BirthDate}"
-                                Format="D"
-                                FontSize="20" />
-                </Frame>
-            </StackLayout>
-
-
-            <!--Sex-->
-
-            <StackLayout>
-                <Label Text="Sex"
-                       FontAttributes="Bold"
-                       Margin="40,20,0,0"
-                       TextColor="Black"
-                       FontSize="20" />
-                <Frame CornerRadius="15"
-                       Padding="10"
-                       BackgroundColor="#f1f1f1"
-                       BorderColor="Transparent"
-                       HasShadow="False"
-                       Margin="30,10"
-                       HorizontalOptions="FillAndExpand">
-                    <Picker Title="Select Sex"
-                            Style="{StaticResource NoUnderlinePicker}"
-                            x:Name="sexList"
-                            TitleColor="Black"
-                            FontSize="20">
-                    </Picker>
-                </Frame>
-            </StackLayout>
-
-            <!--Age Entry-->
-
-            <StackLayout>
-                <Label Text="Age"
-                       FontAttributes="Bold"
-                       Margin="40,20,0,0"
-                       TextColor="Black"
-                       FontSize="20">
-
-                </Label>
-                <Frame CornerRadius="15"
-                       Padding="10"
-                       BackgroundColor="#f1f1f1"
-                       BorderColor="Transparent"
-                       HasShadow="False"
-                       Margin="30,10"
-                       HorizontalOptions="FillAndExpand">
-                    <Entry Placeholder="Age"
-                           x:Name="PetAge"
-                           PlaceholderColor="Black"
-                           BackgroundColor="Transparent"
-                           IsTextPredictionEnabled="False"
-                           IsSpellCheckEnabled="False"
-                           FontAttributes="None"
-                           VerticalOptions="Center"
-                           HorizontalOptions="FillAndExpand"
-                           FontSize="20"
-                           Keyboard="Numeric"
-                           MaxLength="2" />
-                </Frame>
-
-            </StackLayout>
-
-            <!--Weight Entry-->
-
-            <StackLayout>
-                <Label Text="Weight(KG)"
-                       FontAttributes="Bold"
-                       Margin="40,20,0,0"
-                       TextColor="Black"
-                       FontSize="20">
-
-                </Label>
-                <Frame CornerRadius="15"
-                       Padding="10"
-                       BackgroundColor="#f1f1f1"
-                       BorderColor="Transparent"
-                       HasShadow="False"
-                       Margin="30,10"
-                       HorizontalOptions="FillAndExpand">
-                    <Entry Placeholder="Input Weight(KG)"
-                           x:Name="PetWeight"
-                           PlaceholderColor="Black"
-                           BackgroundColor="Transparent"
-                           IsTextPredictionEnabled="False"
-                           IsSpellCheckEnabled="False"
-                           FontAttributes="None"
-                           VerticalOptions="Center"
-                           HorizontalOptions="FillAndExpand"
-                           FontSize="20"
-                           Keyboard="Numeric"
-                           MaxLength="5" />
-                </Frame>
-            </StackLayout>
-
-            <!--Animal Color Entry-->
-
-            <StackLayout>
-                <Label Text="Animal Color"
-                       Margin="40,20,0,0"
-                       TextColor="Black"
-                       FontSize="20">
-                </Label>
-                <Frame CornerRadius="15"
-                       Padding="10"
-                       BackgroundColor="#f1f1f1"
-                       BorderColor="Transparent"
-                       HasShadow="False"
-                       Margin="30,10"
-                       HorizontalOptions="FillAndExpand">
-                    <Entry Placeholder="Input Animal Color"
-                           PlaceholderColor="Black"
-                           BackgroundColor="Transparent"
-                           IsTextPredictionEnabled="False"
-                           IsSpellCheckEnabled="False"
-                           FontAttributes="None"
-                           VerticalOptions="Center"
-                           HorizontalOptions="FillAndExpand"
-                           FontSize="20"
-                           Keyboard="Text" />
-                </Frame>
-            </StackLayout>
-
-            <!--Tag number Entry-->
-
-            <StackLayout>
-                <Label Text="Tag Number (Optional)"
-                       Margin="40,20,0,0"
-                       TextColor="Black"
-                       FontSize="20">
-                </Label>
-
-                <Frame CornerRadius="15"
-                       Padding="10"
-                       BackgroundColor="#f1f1f1"
-                       BorderColor="Transparent"
-                       HasShadow="False"
-                       Margin="30,10"
-                       HorizontalOptions="FillAndExpand">
-                    <Entry x:Name="EntryTagNumber"
-                           Placeholder="Micro-chip number"
-                           PlaceholderColor="Black"
-                           BackgroundColor="Transparent"
-                           IsTextPredictionEnabled="False"
-                           IsSpellCheckEnabled="False"
-                           FontAttributes="None"
-                           VerticalOptions="Center"
-                           HorizontalOptions="FillAndExpand"
-                           FontSize="20"
-                           Keyboard="Numeric" />
-                </Frame>
-            </StackLayout>
-            
-            <!--ImagePicker-->
-            <StackLayout Padding="10">
-                <Label Text="Animal Images"
-               FontSize="Large"
-               TextColor="Green"
-               FontAttributes="Bold"
-               HorizontalOptions="Center"/>
-                <Label Text="Pet’s Image"
-               FontSize="Medium"
-               HorizontalOptions="Center"/>
-                <Grid ColumnSpacing="10" RowSpacing="10" Padding="10">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="*" />
-                        <RowDefinition Height="*" />
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="*" />
-                    </Grid.ColumnDefinitions>
-
-                    <Frame Grid.Row="0" Grid.Column="0" BorderColor="Gray" Padding="10" HasShadow="False">
-                        <StackLayout>
-                            <Image x:Name="Image1" 
-                                   Source="default_image_placeholder.png" 
-                                   Aspect="AspectFit" 
-                                   HeightRequest="100" 
-                                   WidthRequest="100" />
-                            <Button Text="Select Image 1" 
-                                    Clicked="OnSelectImage1Clicked" 
-                                    Margin="0,10,0,0" 
-                                    BackgroundColor="#096B00"
-                                    CornerRadius="10"/>
-                        </StackLayout>
+                        </Entry>
                     </Frame>
-                    <Frame Grid.Row="0" Grid.Column="1" BorderColor="Gray" Padding="10" HasShadow="False">
-                        <StackLayout>
-                            <Image x:Name="Image2" 
-                                   Source="default_image_placeholder.png" 
-                                   Aspect="AspectFit" HeightRequest="100" 
-                                   WidthRequest="100" />
-                            <Button Text="Select Image 2" 
-                                    Margin="0,10,0,0" 
-                                    BackgroundColor="#096B00"
-                                    CornerRadius="10"
-                                    Clicked="OnSelectImage2Clicked"/>
-                        </StackLayout>
-                    </Frame>
-                    <Frame Grid.Row="1" Grid.Column="0" BorderColor="Gray" Padding="10" HasShadow="False">
-                        <StackLayout>
-                            <Image x:Name="Image3" 
-                                   Source="default_image_placeholder.png" 
-                                   Aspect="AspectFit" 
-                                   HeightRequest="100" 
-                                   WidthRequest="100" />
-                            <Button Text="Select Image 3" 
-                                    Clicked="OnSelectImage3Clicked"
-                                    BackgroundColor="#096B00"
-                                    CornerRadius="10"
-                                    Margin="0,10,0,0" 
-                                    />
-                        </StackLayout>
-                    </Frame>
-                    <Frame Grid.Row="1" Grid.Column="1" BorderColor="Gray" Padding="10" HasShadow="False">
-                        <StackLayout>
-                            <Image x:Name="Image4" 
-                                   Source="default_image_placeholder.png" 
-                                   Aspect="AspectFit" 
-                                   HeightRequest="100" 
-                                   WidthRequest="100" />
-                            <Button Text="Select Image 4" 
-                                    Clicked="OnSelectImage4Clicked"
-                                    BackgroundColor="#096B00"
-                                    CornerRadius="10"
-                                    Margin="0,10,0,0" 
-                                    />
-                        </StackLayout>
-                    </Frame>
-                </Grid>
-            </StackLayout>
 
-            <!--Button for Submit-->
+                </StackLayout>
 
-            <Button x:Name="BtnSubmit"
+                <!--Type OwnerShip Picker-->
+
+                <StackLayout>
+                    <Label Text="Type of Ownership"
+                    Margin="40,20,0,0"
+                    TextColor="Black"
                     FontSize="20"
-                    Text="SUBMIT"
-                    FontAttributes="Bold"
-                    Padding="20"
-                    Margin="60"
-                    BackgroundColor="#096B00"
-                    CornerRadius="10"
-                    Clicked="BtnSubmit_Clicked"/>
+                    FontAttributes="Bold" />
+                    <Frame CornerRadius="15"
+                    Padding="10"
+                    BackgroundColor="#f1f1f1"
+                    BorderColor="Transparent"
+                    HasShadow="False"
+                    Margin="30,10"
+                    HorizontalOptions="FillAndExpand">
+                        <Picker Title="Type of Ownership"
+                         x:Name="ownershipList"
+                         Style="{StaticResource NoUnderlinePicker}"
+                         SelectedIndexChanged="OnOwnershipListSelectedIndexChanged"
+                         TitleColor="Black"
+                         FontSize="20">
+                            <!--Remove a picker and added to backend-->
+                        </Picker>
+                    </Frame>
+                </StackLayout>
 
-        </VerticalStackLayout>
-    </ScrollView>
+                <!--Species Picker-->
+
+                <StackLayout>
+                    <Label Text="Species"
+                    FontAttributes="Bold"
+                    Margin="40,20,0,0"
+                    TextColor="Black"
+                    FontSize="20" />
+                    <Frame CornerRadius="15"
+                    Padding="10"
+                    BackgroundColor="#f1f1f1"
+                    BorderColor="Transparent"
+                    HasShadow="False"
+                    Margin="30,10"
+                    HorizontalOptions="FillAndExpand">
+                        <Picker Title="Select Species"
+                         Style="{StaticResource NoUnderlinePicker}"
+                         x:Name="speciesList"
+                         TitleColor="Black"
+                         FontSize="20">
+                            <!--Remove picker in UI and added it to backend-->
+                        </Picker>
+                    </Frame>
+                </StackLayout>
+
+                <!--Breed Picker-->
+
+                <StackLayout>
+                    <Label Text="Breed"
+                    FontAttributes="Bold"
+                    Margin="40,20,0,0"
+                    TextColor="Black"
+                    FontSize="20" />
+                    <Frame CornerRadius="15"
+                    Padding="10"
+                    BackgroundColor="#f1f1f1"
+                    BorderColor="Transparent"
+                    HasShadow="False"
+                    Margin="30,10"
+                    HorizontalOptions="FillAndExpand">
+                        <Picker Title="Select Breed"
+                         Style="{StaticResource NoUnderlinePicker}"
+                         x:Name="breedList"
+                         TitleColor="Black"
+                         FontSize="20">
+                        </Picker>
+                    </Frame>
+                </StackLayout>
+
+                <!--Date Picker-->
+                <StackLayout>
+                    <Label Text="Date of Birth"
+                    FontAttributes="Bold"
+                    Margin="40,20,0,0"
+                    TextColor="Black"
+                    FontSize="20" />
+                    <Frame CornerRadius="15"
+                    Padding="10"
+                    BackgroundColor="#f1f1f1"
+                    BorderColor="Transparent"
+                    HasShadow="False"
+                    Margin="30,10"
+                    HorizontalOptions="FillAndExpand">
+                        <DatePicker Date="{Binding BirthDate}"
+                             Format="D"
+                             FontSize="20" />
+                    </Frame>
+                </StackLayout>
+
+
+                <!--Sex-->
+
+                <StackLayout>
+                    <Label Text="Sex"
+                    FontAttributes="Bold"
+                    Margin="40,20,0,0"
+                    TextColor="Black"
+                    FontSize="20" />
+                    <Frame CornerRadius="15"
+                    Padding="10"
+                    BackgroundColor="#f1f1f1"
+                    BorderColor="Transparent"
+                    HasShadow="False"
+                    Margin="30,10"
+                    HorizontalOptions="FillAndExpand">
+                        <Picker Title="Select Sex"
+                         Style="{StaticResource NoUnderlinePicker}"
+                         x:Name="sexList"
+                         TitleColor="Black"
+                         FontSize="20">
+                        </Picker>
+                    </Frame>
+                </StackLayout>
+
+                <!--Age Entry-->
+
+                <StackLayout>
+                    <Label Text="Age"
+                    FontAttributes="Bold"
+                    Margin="40,20,0,0"
+                    TextColor="Black"
+                    FontSize="20">
+
+                    </Label>
+                    <Frame CornerRadius="15"
+                    Padding="10"
+                    BackgroundColor="#f1f1f1"
+                    BorderColor="Transparent"
+                    HasShadow="False"
+                    Margin="30,10"
+                    HorizontalOptions="FillAndExpand">
+                        <Entry Placeholder="Age"
+                        x:Name="PetAge"
+                        PlaceholderColor="Black"
+                        BackgroundColor="Transparent"
+                        IsTextPredictionEnabled="False"
+                        IsSpellCheckEnabled="False"
+                        FontAttributes="None"
+                        VerticalOptions="Center"
+                        HorizontalOptions="FillAndExpand"
+                        FontSize="20"
+                        Keyboard="Numeric"
+                        MaxLength="2" />
+                    </Frame>
+
+                </StackLayout>
+
+                <!--Weight Entry-->
+
+                <StackLayout>
+                    <Label Text="Weight(KG)"
+                    FontAttributes="Bold"
+                    Margin="40,20,0,0"
+                    TextColor="Black"
+                    FontSize="20">
+
+                    </Label>
+                    <Frame CornerRadius="15"
+                    Padding="10"
+                    BackgroundColor="#f1f1f1"
+                    BorderColor="Transparent"
+                    HasShadow="False"
+                    Margin="30,10"
+                    HorizontalOptions="FillAndExpand">
+                        <Entry Placeholder="Input Weight(KG)"
+                        x:Name="PetWeight"
+                        PlaceholderColor="Black"
+                        BackgroundColor="Transparent"
+                        IsTextPredictionEnabled="False"
+                        IsSpellCheckEnabled="False"
+                        FontAttributes="None"
+                        VerticalOptions="Center"
+                        HorizontalOptions="FillAndExpand"
+                        FontSize="20"
+                        Keyboard="Numeric"
+                        MaxLength="5" />
+                    </Frame>
+                </StackLayout>
+
+                <!--Animal Color Entry-->
+
+                <StackLayout>
+                    <Label Text="Animal Color"
+                    Margin="40,20,0,0"
+                    TextColor="Black"
+                    FontSize="20">
+                    </Label>
+                    <Frame CornerRadius="15"
+                    Padding="10"
+                    BackgroundColor="#f1f1f1"
+                    BorderColor="Transparent"
+                    HasShadow="False"
+                    Margin="30,10"
+                    HorizontalOptions="FillAndExpand">
+                        <Entry Placeholder="Input Animal Color"
+                        PlaceholderColor="Black"
+                        BackgroundColor="Transparent"
+                        IsTextPredictionEnabled="False"
+                        IsSpellCheckEnabled="False"
+                        FontAttributes="None"
+                        VerticalOptions="Center"
+                        HorizontalOptions="FillAndExpand"
+                        FontSize="20"
+                        Keyboard="Text" />
+                    </Frame>
+                </StackLayout>
+
+                <!--Tag number Entry-->
+
+                <StackLayout>
+                    <Label Text="Tag Number (Optional)"
+                    Margin="40,20,0,0"
+                    TextColor="Black"
+                    FontSize="20">
+                    </Label>
+
+                    <Frame CornerRadius="15"
+                    Padding="10"
+                    BackgroundColor="#f1f1f1"
+                    BorderColor="Transparent"
+                    HasShadow="False"
+                    Margin="30,10"
+                    HorizontalOptions="FillAndExpand">
+                        <Entry x:Name="EntryTagNumber"
+                        Placeholder="Micro-chip number"
+                        PlaceholderColor="Black"
+                        BackgroundColor="Transparent"
+                        IsTextPredictionEnabled="False"
+                        IsSpellCheckEnabled="False"
+                        FontAttributes="None"
+                        VerticalOptions="Center"
+                        HorizontalOptions="FillAndExpand"
+                        FontSize="20"
+                        Keyboard="Numeric" />
+                    </Frame>
+                </StackLayout>
+
+                <!--ImagePicker-->
+                <StackLayout Padding="10">
+                    <Label Text="Animal Images"
+            FontSize="Large"
+            TextColor="Green"
+            FontAttributes="Bold"
+            HorizontalOptions="Center"/>
+                    <Label Text="Pet’s Image"
+            FontSize="Medium"
+            HorizontalOptions="Center"/>
+                    <Grid ColumnSpacing="10" RowSpacing="10" Padding="10">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <Frame Grid.Row="0" Grid.Column="0" BorderColor="Gray" Padding="10" HasShadow="False">
+                            <StackLayout>
+                                <Image x:Name="Image1" 
+                                Source="default_image_placeholder.png" 
+                                Aspect="AspectFit" 
+                                HeightRequest="100" 
+                                WidthRequest="100" />
+                                <Button Text="Select Image 1" 
+                                 Clicked="OnSelectImage1Clicked" 
+                                 Margin="0,10,0,0" 
+                                 BackgroundColor="#096B00"
+                                 CornerRadius="10"/>
+                            </StackLayout>
+                        </Frame>
+                        <Frame Grid.Row="0" Grid.Column="1" BorderColor="Gray" Padding="10" HasShadow="False">
+                            <StackLayout>
+                                <Image x:Name="Image2" 
+                                Source="default_image_placeholder.png" 
+                                Aspect="AspectFit" HeightRequest="100" 
+                                WidthRequest="100" />
+                                <Button Text="Select Image 2" 
+                                 Margin="0,10,0,0" 
+                                 BackgroundColor="#096B00"
+                                 CornerRadius="10"
+                                 Clicked="OnSelectImage2Clicked"/>
+                            </StackLayout>
+                        </Frame>
+                        <Frame Grid.Row="1" Grid.Column="0" BorderColor="Gray" Padding="10" HasShadow="False">
+                            <StackLayout>
+                                <Image x:Name="Image3" 
+                                Source="default_image_placeholder.png" 
+                                Aspect="AspectFit" 
+                                HeightRequest="100" 
+                                WidthRequest="100" />
+                                <Button Text="Select Image 3" 
+                                 Clicked="OnSelectImage3Clicked"
+                                 BackgroundColor="#096B00"
+                                 CornerRadius="10"
+                                 Margin="0,10,0,0" 
+                                 />
+                            </StackLayout>
+                        </Frame>
+                        <Frame Grid.Row="1" Grid.Column="1" BorderColor="Gray" Padding="10" HasShadow="False">
+                            <StackLayout>
+                                <Image x:Name="Image4" 
+                                Source="default_image_placeholder.png" 
+                                Aspect="AspectFit" 
+                                HeightRequest="100" 
+                                WidthRequest="100" />
+                                <Button Text="Select Image 4" 
+                                 Clicked="OnSelectImage4Clicked"
+                                 BackgroundColor="#096B00"
+                                 CornerRadius="10"
+                                 Margin="0,10,0,0" 
+                                 />
+                            </StackLayout>
+                        </Frame>
+                    </Grid>
+                </StackLayout>
+
+                <!--Button for Submit-->
+
+                <Button x:Name="BtnSubmit"
+                 FontSize="20"
+                 Text="SUBMIT"
+                 FontAttributes="Bold"
+                 Padding="20"
+                 Margin="60"
+                 BackgroundColor="#096B00"
+                 CornerRadius="10"
+                 Clicked="BtnSubmit_Clicked"/>
+
+            </VerticalStackLayout>
+        </ScrollView>
+    </Grid>
+   
 
     <ContentPage.Resources>
         <Style x:Key="NoUnderlinePicker"

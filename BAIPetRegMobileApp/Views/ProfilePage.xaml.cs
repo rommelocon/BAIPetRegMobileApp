@@ -8,8 +8,5 @@ public partial class ProfilePage : ContentPage
 	}
 
 
-    private void RegisterPetBtn_Clicked(object sender, EventArgs e)
-    {
-		Shell.Current.GoToAsync(nameof(PetRegisterPage));
-    }
+   
 }
