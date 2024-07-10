@@ -39,13 +39,7 @@ public partial class PetRegisterPage : ContentPage
             "Female"
         };
         sexList.ItemsSource = listSex;
-
-        List<string> listOwnerSex = new List<string>()
-        {   
-            "Male",
-            "Female"
-        };
-        ownerSexList.ItemsSource = listOwnerSex;
+        
     }
 
     public void OnOwnershipListSelectedIndexChanged(object sender, EventArgs e)
@@ -54,12 +48,49 @@ public partial class PetRegisterPage : ContentPage
         string selectedOwnership = (string)picker.SelectedItem;
     }
 
+    //imagepicker function
 
-    //private void Picker_Focused(object sender, FocusEventArgs e)
-    //{
+    private async void OnSelectImage1Clicked(object sender, EventArgs e)
+    {
+        await PickImageAsync(Image1);
+    }
 
-    //}
+    private async void OnSelectImage2Clicked(object sender, EventArgs e)
+    {
+        await PickImageAsync(Image2);
+    }
 
+    private async void OnSelectImage3Clicked(object sender, EventArgs e)
+    {
+        await PickImageAsync(Image3);
+    }
+
+    private async void OnSelectImage4Clicked(object sender, EventArgs e)
+    {
+        await PickImageAsync(Image4);
+    }
+
+    private async Task PickImageAsync(Image imageControl)
+    {
+        try
+        {
+            var result = await MediaPicker.PickPhotoAsync(new MediaPickerOptions
+            {
+                Title = "Please pick a photo"
+            });
+
+            if (result != null)
+            {
+                var stream = await result.OpenReadAsync();
+                imageControl.Source = ImageSource.FromStream(() => stream);
+            }
+        }
+        catch (Exception ex)
+        {
+            // Handle any exceptions that may occur
+            await DisplayAlert("Error", $"An error occurred: {ex.Message}", "OK");
+        }
+    }
     private void BtnSubmit_Clicked(object sender, EventArgs e)
     {
         Shell.Current.GoToAsync(nameof(FinalCheckingPage));

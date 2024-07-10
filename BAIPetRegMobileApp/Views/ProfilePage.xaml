@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="BAIPetRegMobileApp.Views.ProfilePage"
-             Title="ProfilePage">
-   <ScrollView>
+             x:Class="BAIPetRegMobileApp.Views.ProfilePage"           
+             Shell.FlyoutBehavior="Flyout"
+             FlyoutItem.IsVisible="False"
+             Shell.BackgroundColor="#57C84D"
+             Shell.NavBarIsVisible="True" 
+             >
+
+    
+    <ScrollView>
     <VerticalStackLayout>
             <VerticalStackLayout Spacing="2">
                 <Image
@@ -119,6 +125,8 @@
                 </HorizontalStackLayout>
 
                           <Button 
+                                x:Name="RegisterPetBtn"
+                                Clicked="RegisterPetBtn_Clicked"
                                 FontSize="24"
                                 Text="Register a Pet"
                                 FontAttributes="Bold"

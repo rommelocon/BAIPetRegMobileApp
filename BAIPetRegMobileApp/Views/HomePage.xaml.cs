@@ -39,4 +39,9 @@ public partial class HomePage : ContentPage
     {
         Shell.Current.FlyoutIsPresented = true;
     }
+
+    private void PetinfoBtn_Clicked(object sender, EventArgs e)
+    {
+        Shell.Current.GoToAsync(nameof(PetInformationPage));
+    }
 }

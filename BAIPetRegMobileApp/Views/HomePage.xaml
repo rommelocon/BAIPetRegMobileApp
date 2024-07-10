@@ -99,7 +99,11 @@
                         <Label Text="Alias: Jaguar" />
 
                         <!-- Button -->
-                        <Button Text="Show Full Information" 
+
+                        <Button 
+                               x:Name="PetinfoBtn"
+                               Clicked="PetinfoBtn_Clicked"
+                               Text="Show Full Information" 
                                BackgroundColor="#008000" 
                                TextColor="White"
                                Margin="0,40,0,0"

@@ -302,177 +302,85 @@
                            Keyboard="Numeric" />
                 </Frame>
             </StackLayout>
+            
+            <!--ImagePicker-->
+            <StackLayout Padding="10">
+                <Label Text="Animal Images"
+               FontSize="Large"
+               TextColor="Green"
+               FontAttributes="Bold"
+               HorizontalOptions="Center"/>
+                <Label Text="Pet’s Image"
+               FontSize="Medium"
+               HorizontalOptions="Center"/>
+                <Grid ColumnSpacing="10" RowSpacing="10" Padding="10">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
 
-            <Label  Text="Owner Information"
-                    HorizontalOptions="Start"
-                    TextColor="#096B00"
-                    FontSize="20"
-                    FontAttributes="Bold"
-                    Margin="40,50,0,0"
-                    FontFamily="Poppins-Bold" />
-
-
-
-            <!--Owner's Full Name Entry-->
-
-            <StackLayout>
-                <Label Text="Owner's Full Name"
-                       Margin="40,20,0,0"
-                       TextColor="Black"
-                       FontSize="20"
-                       FontAttributes="Bold"></Label>
-                <Frame CornerRadius="15"
-                       Padding="10"
-                       BackgroundColor="#f1f1f1"
-                       BorderColor="Transparent"
-                       HasShadow="False"
-                       Margin="30,10"
-                       HorizontalOptions="FillAndExpand">
-                    <Entry x:Name="EntryOwnerFullName"
-                           Placeholder="Jose P. Rizal"
-                           PlaceholderColor="Black"
-                           BackgroundColor="Transparent"
-                           IsTextPredictionEnabled="False"
-                           IsSpellCheckEnabled="False"
-                           FontAttributes="None"
-                           VerticalOptions="Center"
-                           HorizontalOptions="FillAndExpand"
-                           FontSize="20">
-                        <Entry.Behaviors>
-                            <toolkit:TextValidationBehavior x:Name="ownerFullNameValidator"
-                                                            Flags="ValidateOnAttaching,ValidateOnValueChanged"
-                                                            MinimumLength="1" />
-                        </Entry.Behaviors>
-
-                    </Entry>
-                </Frame>
-
-            </StackLayout>
-
-            <!--Owner's Sex-->
-
-            <StackLayout>
-                <Label Text="Sex"
-                       FontAttributes="Bold"
-                       Margin="40,20,0,0"
-                       TextColor="Black"
-                       FontSize="20" />
-                <Frame CornerRadius="15"
-                       Padding="10"
-                       BackgroundColor="#f1f1f1"
-                       BorderColor="Transparent"
-                       HasShadow="False"
-                       Margin="30,10"
-                       HorizontalOptions="FillAndExpand">
-                    <Picker Title="Select Sex"
-                            Style="{StaticResource NoUnderlinePicker}"
-                            x:Name="ownerSexList"
-                            TitleColor="Black"
-                            FontSize="20">
-                    </Picker>
-                </Frame>
-            </StackLayout>
-
-            <!--Phone Number Entry-->
-
-            <StackLayout>
-                <Label Text="Contact Number"
-                       FontAttributes="Bold"
-                       Margin="40,20,0,0"
-                       TextColor="Black"
-                       FontSize="20">
-
-                </Label>
-                <Frame CornerRadius="15"
-                       Padding="10"
-                       BackgroundColor="#f1f1f1"
-                       BorderColor="Transparent"
-                       HasShadow="False"
-                       Margin="30,10"
-                       HorizontalOptions="FillAndExpand">
-                    <Entry Placeholder="+639xxxxxxxxx"
-                           PlaceholderColor="Black"
-                           BackgroundColor="Transparent"
-                           IsTextPredictionEnabled="False"
-                           IsSpellCheckEnabled="False"
-                           FontAttributes="None"
-                           VerticalOptions="Center"
-                           HorizontalOptions="FillAndExpand"
-                           FontSize="20"
-                           Keyboard="Numeric"
-                           MaxLength="11" />
-                </Frame>
-            </StackLayout>
-
-            <!--Email Address Entry-->
-
-            <StackLayout>
-                <Label Text="Email Address"
-                       Margin="40,20,0,0"
-                       TextColor="Black"
-                       FontSize="20"
-                       FontAttributes="Bold"></Label>
-                <Frame CornerRadius="15"
-                       Padding="10"
-                       BackgroundColor="#f1f1f1"
-                       BorderColor="Transparent"
-                       HasShadow="False"
-                       Margin="30,10"
-                       HorizontalOptions="FillAndExpand">
-                    <Entry x:Name="EntryEmailAdd"
-                           Placeholder="@gmail.com"
-                           PlaceholderColor="Black"
-                           BackgroundColor="Transparent"
-                           IsTextPredictionEnabled="False"
-                           IsSpellCheckEnabled="False"
-                           FontAttributes="None"
-                           VerticalOptions="Center"
-                           HorizontalOptions="FillAndExpand"
-                           FontSize="20">
-                        <Entry.Behaviors>
-                            <toolkit:TextValidationBehavior x:Name="emailAddValidator"
-                                                            Flags="ValidateOnAttaching,ValidateOnValueChanged"
-                                                            MinimumLength="1" />
-                        </Entry.Behaviors>
-
-                    </Entry>
-                </Frame>
-
-            </StackLayout>
-
-            <!--Email Address Entry-->
-
-            <StackLayout>
-                <Label Text="Complete Address"
-                       Margin="40,20,0,0"
-                       TextColor="Black"
-                       FontSize="20"
-                       FontAttributes="Bold" />
-                <Frame CornerRadius="15"
-                       Padding="10"
-                       BackgroundColor="#f1f1f1"
-                       BorderColor="Transparent"
-                       HasShadow="False"
-                       Margin="30,10"
-                       HorizontalOptions="FillAndExpand">
-                    <Editor x:Name="EditorCompleteAdd"
-                            Placeholder="Lot/House/Bldg.,Street,Barangay,City/Municipality,Province"
-                            PlaceholderColor="Black"
-                            BackgroundColor="Transparent"
-                            IsTextPredictionEnabled="False"
-                            IsSpellCheckEnabled="False"
-                            FontAttributes="None"
-                            VerticalOptions="Center"
-                            HorizontalOptions="FillAndExpand"
-                            FontSize="20"
-                            AutoSize="TextChanges">
-                        <!--<Editor.Behaviors>
-                            <toolkit:TextValidationBehavior x:Name="emailAddValidator"
-                                                            Flags="ValidateOnAttaching,ValidateOnValueChanged"
-                                                            MinimumLength="1" />
-                        </Editor.Behaviors>-->
-                    </Editor>
-                </Frame>
+                    <Frame Grid.Row="0" Grid.Column="0" BorderColor="Gray" Padding="10" HasShadow="False">
+                        <StackLayout>
+                            <Image x:Name="Image1" 
+                                   Source="default_image_placeholder.png" 
+                                   Aspect="AspectFit" 
+                                   HeightRequest="100" 
+                                   WidthRequest="100" />
+                            <Button Text="Select Image 1" 
+                                    Clicked="OnSelectImage1Clicked" 
+                                    Margin="0,10,0,0" 
+                                    BackgroundColor="#096B00"
+                                    CornerRadius="10"/>
+                        </StackLayout>
+                    </Frame>
+                    <Frame Grid.Row="0" Grid.Column="1" BorderColor="Gray" Padding="10" HasShadow="False">
+                        <StackLayout>
+                            <Image x:Name="Image2" 
+                                   Source="default_image_placeholder.png" 
+                                   Aspect="AspectFit" HeightRequest="100" 
+                                   WidthRequest="100" />
+                            <Button Text="Select Image 2" 
+                                    Margin="0,10,0,0" 
+                                    BackgroundColor="#096B00"
+                                    CornerRadius="10"
+                                    Clicked="OnSelectImage2Clicked"/>
+                        </StackLayout>
+                    </Frame>
+                    <Frame Grid.Row="1" Grid.Column="0" BorderColor="Gray" Padding="10" HasShadow="False">
+                        <StackLayout>
+                            <Image x:Name="Image3" 
+                                   Source="default_image_placeholder.png" 
+                                   Aspect="AspectFit" 
+                                   HeightRequest="100" 
+                                   WidthRequest="100" />
+                            <Button Text="Select Image 3" 
+                                    Clicked="OnSelectImage3Clicked"
+                                    BackgroundColor="#096B00"
+                                    CornerRadius="10"
+                                    Margin="0,10,0,0" 
+                                    />
+                        </StackLayout>
+                    </Frame>
+                    <Frame Grid.Row="1" Grid.Column="1" BorderColor="Gray" Padding="10" HasShadow="False">
+                        <StackLayout>
+                            <Image x:Name="Image4" 
+                                   Source="default_image_placeholder.png" 
+                                   Aspect="AspectFit" 
+                                   HeightRequest="100" 
+                                   WidthRequest="100" />
+                            <Button Text="Select Image 4" 
+                                    Clicked="OnSelectImage4Clicked"
+                                    BackgroundColor="#096B00"
+                                    CornerRadius="10"
+                                    Margin="0,10,0,0" 
+                                    />
+                        </StackLayout>
+                    </Frame>
+                </Grid>
             </StackLayout>
 
             <!--Button for Submit-->
