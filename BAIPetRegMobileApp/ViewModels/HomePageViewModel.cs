@@ -1,17 +1,33 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
+﻿using BAIPetRegMobileApp.Models;
+using BAIPetRegMobileApp.Services;
+using CommunityToolkit.Mvvm.ComponentModel;
 
 namespace BAIPetRegMobileApp.ViewModels;
 public partial class HomePageViewModel : ObservableObject
 {
-    private string userName;
-    public string UserName
+    private readonly ClientService clientService;
+    private string _username;
+    public string Username
     {
-        get => userName;
-        set => SetProperty(ref userName, value);
+        get => _username;
+        set => SetProperty(ref _username, value);
+
+    }
+    public HomePageViewModel(ClientService clientService)
+    {
+        this.clientService = clientService;
     }
 
-    public HomePageViewModel()
+    public async Task LoadUserInfo()
     {
-
+        var userInfo = await clientService.GetUser();
+        if (userInfo != null)
+        {
+            Username = userInfo.UserName;
+        }
+        else
+        {
+            Username = string.Empty;
+        }
     }
 }

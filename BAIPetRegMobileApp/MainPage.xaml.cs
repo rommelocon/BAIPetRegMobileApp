@@ -15,7 +15,7 @@ public partial class MainPage : ContentPage
         base.OnAppearing();
         if (viewModel != null)
         {
-            viewModel.IsUserAuthenticated();
+            viewModel.GetUserNameFromSecuredStorage();
         }
     }
 

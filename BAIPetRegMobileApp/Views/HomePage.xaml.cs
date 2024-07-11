@@ -6,11 +6,22 @@ namespace BAIPetRegMobileApp;
 
 public partial class HomePage : ContentPage
 {
-    public HomePage(HomePageViewModel homePageViewModel)
+    private readonly HomePageViewModel _viewModel;
+    private ClientService _clientService;
+ 
+    public HomePage(HomePageViewModel viewModel, ClientService clientService)
     {
         InitializeComponent();
-        BindingContext = homePageViewModel;
+        this._clientService = clientService;
+        _viewModel = new HomePageViewModel(clientService);
+        BindingContext = _viewModel;
     }
+    //protected override async void OnAppearing()
+    //{
+    //    base.OnAppearing();
+
+    //    await _viewModel.LoadUserInfo();
+    //}
 
     protected override bool OnBackButtonPressed()
     {

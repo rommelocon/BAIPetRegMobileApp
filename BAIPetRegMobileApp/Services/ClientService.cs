@@ -1,20 +1,17 @@
 ﻿using BAIPetRegMobileApp.Models;
-using BAIPetRegMobileApp.ViewModels;
+using System.Net.Http.Headers;
+using System.Net.Http;
 using System.Net.Http.Json;
-using System.Reflection;
-using System.Text;
 using System.Text.Json;
 
 namespace BAIPetRegMobileApp.Services;
 public class ClientService
 {
     private readonly IHttpClientFactory httpClientFactory;
-    private readonly IServiceProvider serviceProvider;
 
-    public ClientService(IHttpClientFactory httpClientFactory, IServiceProvider serviceProvider)
+    public ClientService(IHttpClientFactory httpClientFactory)
     {
         this.httpClientFactory = httpClientFactory;
-        this.serviceProvider = serviceProvider;
     }
 
     public async Task Register(RegisterModel model)
@@ -32,27 +29,23 @@ public class ClientService
     {
         Console.WriteLine("Login Method Called"); // Logging
         var httpClient = httpClientFactory.CreateClient("custom-httpclient");
-        var json = JsonSerializer.Serialize(model);
-        var content = new StringContent(json, Encoding.UTF8, "application/json");
-        var response = await httpClient.PostAsync("/Account/login", content);
+        var result = await httpClient.PostAsJsonAsync("/Account/login", model);
 
-        if (response.IsSuccessStatusCode)
+        if (result.IsSuccessStatusCode)
         {
-            var responseContent = await response.Content.ReadAsStringAsync();
-            var loginResponse = JsonSerializer.Deserialize<LoginResponse>(responseContent);
+            var responseContent = await result.Content.ReadFromJsonAsync<LoginResponse>();
 
-            if (loginResponse != null)
+            if (responseContent is not null)
             {
-                var serializedResponse = JsonSerializer.Serialize(loginResponse);
+                var serializedResponse = JsonSerializer.Serialize(
+                    new LoginResponse()
+                    {
+                        TokenType = responseContent.TokenType,
+                        AccessToken = responseContent.AccessToken,
+                        ExpiresIn = responseContent.ExpiresIn,
+                        RefreshToken = responseContent.RefreshToken,
+                    });
                 await SecureStorage.SetAsync("Authentication", serializedResponse);
-
-                // Update the Username property in the view model
-                var homePageViewModel = serviceProvider.GetService(typeof(HomePageViewModel)) as HomePageViewModel;
-                if (homePageViewModel != null)
-                {
-                    homePageViewModel.UserName = loginResponse.UserName;
-                }
-
 
                 // Navigate to the main page
                 await Shell.Current.GoToAsync(nameof(HomePage));
@@ -74,7 +67,59 @@ public class ClientService
         var httpClient = httpClientFactory.CreateClient("custom-httpclient");
         var result = await httpClient.PostAsync("/Account/logout", null);
         SecureStorage.Default.Remove("Authentication");
+
         // Navigate to the login page
         await Shell.Current.GoToAsync(nameof(LoginPage));
     }
+
+    public async Task<UserModel> GetUser()
+    {
+        var httpClient = httpClientFactory.CreateClient("custom-httpclient");
+
+        try
+        {
+            var tokenJson = await SecureStorage.GetAsync("Authentication");
+
+            if (string.IsNullOrEmpty(tokenJson))
+            {
+                Console.WriteLine("Authentication token is null or empty.");
+                return null;
+            }
+
+            // Deserialize the token JSON to extract the AccessToken
+            var tokenData = JsonSerializer.Deserialize<LoginResponse>(tokenJson);
+
+            if (tokenData == null || string.IsNullOrEmpty(tokenData.AccessToken))
+            {
+                Console.WriteLine("Access token is null or empty.");
+                return null;
+            }
+
+            // Set the authorization header with the Bearer token
+            httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", tokenData.AccessToken);
+
+            var result = await httpClient.GetAsync("/Account/user"); // Replace with your actual endpoint URL
+
+            if (result.IsSuccessStatusCode)
+            {
+                var content = await result.Content.ReadAsStringAsync();
+                var userInfo = JsonSerializer.Deserialize<UserModel>(content, new JsonSerializerOptions
+                {
+                    PropertyNameCaseInsensitive = true,
+                });
+                return userInfo;
+            }
+            else
+            {
+                Console.WriteLine($"Failed to retrieve user information. Status code: {result.StatusCode}. Reason: {result.ReasonPhrase}");
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Exception occurred: {ex.Message}");
+        }
+
+        return null;
+    }
+
 }

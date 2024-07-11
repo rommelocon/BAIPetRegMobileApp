@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BAIPetRegMobileApp.Api.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240710063256_Initial")]
+    [Migration("20240711112216_Initial")]
     partial class Initial
     {
         /// <inheritdoc />

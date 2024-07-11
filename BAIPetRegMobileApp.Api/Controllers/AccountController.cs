@@ -2,6 +2,13 @@
 using BAIPetRegMobileApp.Api.ViewModels;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using System.IdentityModel.Tokens.Jwt;
+using Microsoft.IdentityModel.Tokens;
+using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Templates.BlazorIdentity.Pages.Manage;
+using System.Security.Claims;
+using System.Text;
+using System.Security.Cryptography;
+using System.Configuration;
 
 namespace BAIPetRegMobileApp.Api.Controllers
 {
@@ -14,82 +21,83 @@ namespace BAIPetRegMobileApp.Api.Controllers
         //signInManager will hold the SignInManager instance
         private readonly SignInManager<ApplicationUser> signInManager;
 
+        private readonly IConfiguration configuration;
+        private TokenService tokenService;
+
         //Both UserManager and SignInManager services are injected into the AccountController
         //using constructor injection
-        public AccountController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager)
+        public AccountController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, IConfiguration configuration)
         {
             this.userManager = userManager;
             this.signInManager = signInManager;
-        }
-
-        [HttpGet]
-        public IActionResult Register()
-        {
-            return Ok("Register endpoint is available.");
+            this.configuration = configuration;
+            tokenService = new TokenService(configuration);
         }
 
         [HttpPost("register")]
         public async Task<IActionResult> Register(RegisterViewModel model)
         {
-            if (ModelState.IsValid)
+            var user = new ApplicationUser { UserName = model.UserName, Email = model.Email };
+            var result = await userManager.CreateAsync(user, model.Password);
+            if (result.Succeeded)
             {
-                // Copy data from RegisterViewModel to IdentityUser
-                var user = new ApplicationUser
-                {
-                    UserName = model.UserName,
-                    Email = model.Email,
-                };
-
-                // Store user data in AspNetUsers database table
-                var result = await userManager.CreateAsync(user, model.Password);
-
-                if (result.Succeeded)
-                {
-                    await signInManager.SignInAsync(user, isPersistent: false);
-                }
-
-                // If there are any errors, add them to the ModelState object
-                // which will be displayed by the validation summary tag helper
-                foreach (var error in result.Errors)
-                {
-                    ModelState.AddModelError(string.Empty, error.Description);
-                }
+                return Ok("User registered successfully");
             }
-            return BadRequest(ModelState);
+            else
+            {
+                return BadRequest(result.Errors);
+            }
         }
 
         [HttpPost("login")]
         public async Task<IActionResult> Login([FromBody] LoginModel model)
         {
-            var user = await userManager.FindByNameAsync(model.UserName);
-            if (user == null)
-            {
-                return Unauthorized("Invalid username or password");
-            }
-
-            var result = await signInManager.PasswordSignInAsync(user, model.Password, model.RememberMe, lockoutOnFailure: false);
+            var result = await signInManager.PasswordSignInAsync(model.UserName, model.Password, model.RememberMe, lockoutOnFailure: false);
             if (result.Succeeded)
             {
-                return Ok(new 
-                { 
-                    message = "Login successful", 
-                    username = user.UserName 
+                var accessToken = tokenService.GenerateJwtToken(model);
+                var refreshToken = tokenService.GenerateRefreshToken();
+                var tokenExpiresIn = tokenService.GetTokenExpiration(accessToken);
+
+                return Ok(new
+                {
+                    tokenType = "Bearer", // or your token type
+                    accessToken,
+                    expiresIn = 3600,
+                    refreshToken
                 });
             }
 
             if (result.IsLockedOut)
             {
-                return Unauthorized("User Account locked out.");
+                return Unauthorized("User account locked out.");
             }
 
-            return Unauthorized("Invalid username or password.");
+            return Unauthorized("Invalid login attempt.");
         }
 
         [HttpPost("logout")]
-        public async Task<IActionResult> Logout(LoginModel model)
+        public async Task<IActionResult> Logout()
         {
-            await signInManager.SignOutAsync();
-            return Ok(new { message = "Logout successful" });
+            if (signInManager.IsSignedIn(User))
+            {
+                await signInManager.SignOutAsync();
+                return Ok("User logged out successful");
+            }
+            return BadRequest("You are not logged in");
+          
+        }
+
+        [HttpGet("user")]
+        public async Task<ActionResult<ApplicationUser>> GetUserInfo()
+        {
+            var user = await userManager.GetUserAsync(User); // Get the current authenticated user
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(user);
         }
     }
 }

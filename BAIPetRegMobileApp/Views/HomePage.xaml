@@ -56,7 +56,7 @@
         SemanticProperties.HeadingLevel="Level1"/>
                 <Label
                 x:Name="UsernameLabel"
-Text="{Binding UserName}"
+Text="{Binding Username}"
 TextColor="#096B00"
 FontAttributes="Bold"
 FontSize="33"
