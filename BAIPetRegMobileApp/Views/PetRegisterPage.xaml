@@ -148,6 +148,7 @@
                                 Title="Select Species"
                                 Grid.Column="0"
                                 FontSize="20"
+                                SelectedIndexChanged="OnSpeciesSelected"
                                 Style="{StaticResource NoUnderlinePicker}"
                                 TitleColor="Black" />
                             <Label
@@ -199,9 +200,13 @@
                                 HorizontalOptions="End"
                                 Text="arrow_drop_down"
                                 VerticalOptions="Center" />
+
                         </Grid>
                     </Frame>
+
                 </StackLayout>
+
+
 
                 <!--  Date Picker  -->
                 <StackLayout>
