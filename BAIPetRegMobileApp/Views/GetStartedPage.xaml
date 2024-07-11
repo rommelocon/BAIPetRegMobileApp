@@ -1,54 +1,57 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="BAIPetRegMobileApp.Views.GetStartedPage"
-             Title="GetStartedPage"
-             Shell.FlyoutBehavior="Disabled"
-             Padding="0"
-                
-             >
+<ContentPage
+    x:Class="BAIPetRegMobileApp.Views.GetStartedPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="GetStartedPage"
+    Padding="0"
+    Shell.FlyoutBehavior="Disabled">
     <ScrollView VerticalOptions="FillAndExpand">
-        <VerticalStackLayout Background="{StaticResource GradientBackround}"
-                             VerticalOptions="FillAndExpand"
-                             HorizontalOptions="FillAndExpand">
-            <Image Source="bai_logo.png"
-                   WidthRequest="250"
-                   HeightRequest="259"
-                   Margin="0,100,0,0"
-                   Aspect="AspectFit"
-                   VerticalOptions="Center"
-                   HorizontalOptions="Center"/>
+        <VerticalStackLayout
+            Background="{StaticResource GradientBackround}"
+            HorizontalOptions="FillAndExpand"
+            VerticalOptions="FillAndExpand">
+            <Image
+                Margin="0,100,0,0"
+                Aspect="AspectFit"
+                HeightRequest="259"
+                HorizontalOptions="Center"
+                Source="bai_logo.png"
+                VerticalOptions="Center"
+                WidthRequest="250" />
 
-            <Label Text="Pet Registration"
-                   TextColor="#096B00"
-                   FontAttributes="Bold"
-                   FontSize="39"
-                   Style="{StaticResource Headline}"
-                   SemanticProperties.HeadingLevel="Level1"
-                   Margin="0,0,0,50"/>
+            <Label
+                Margin="0,0,0,50"
+                FontAttributes="Bold"
+                FontSize="39"
+                SemanticProperties.HeadingLevel="Level1"
+                Style="{StaticResource Headline}"
+                Text="Pet Registration"
+                TextColor="#096B00" />
 
-            <Label Text="Welcome to &#10;Bureau of Animal Industry. &#10; &#10;"
-                   Style="{StaticResource SubHeadline}"
-                   SemanticProperties.HeadingLevel="Level2" />
+            <Label
+                SemanticProperties.HeadingLevel="Level2"
+                Style="{StaticResource SubHeadline}"
+                Text="Welcome to &#10;Bureau of Animal Industry. &#10; &#10;" />
 
-            <Button x:Name="BtnGetStarted"
-                    FontSize="20"
-                    Text="Get Started"
-                    FontAttributes="Bold"
-                    Padding="20"
-                    Margin="10"
-                    BackgroundColor="#096B00"
-                    Clicked="BtnGetStarted_Clicked"
-                    CornerRadius="10"
-                    />
+            <Button
+                x:Name="BtnGetStarted"
+                Margin="10"
+                Padding="20"
+                BackgroundColor="#096B00"
+                Clicked="BtnGetStarted_Clicked"
+                CornerRadius="10"
+                FontAttributes="Bold"
+                FontSize="20"
+                Text="Get Started" />
         </VerticalStackLayout>
     </ScrollView>
 
     <ContentPage.Resources>
         <ResourceDictionary>
             <LinearGradientBrush x:Key="GradientBackround" StartPoint="0,0" EndPoint="0,1">
-                <GradientStop Color="#7EE175" Offset="0.1" />
-                <GradientStop Color="#fff" Offset="0.9" />
+                <GradientStop Offset="0.1" Color="#7EE175" />
+                <GradientStop Offset="0.9" Color="#fff" />
             </LinearGradientBrush>
         </ResourceDictionary>
     </ContentPage.Resources>

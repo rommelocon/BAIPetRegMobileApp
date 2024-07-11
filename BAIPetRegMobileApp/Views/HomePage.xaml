@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="BAIPetRegMobileApp.HomePage"
-             Shell.FlyoutBehavior="Flyout"
-             FlyoutItem.IsVisible="False"
-             Shell.BackgroundColor="#57C84D"
-             Shell.NavBarIsVisible="True">
- 
-    
+<ContentPage
+    x:Class="BAIPetRegMobileApp.HomePage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    FlyoutItem.IsVisible="False"
+    Shell.BackgroundColor="#57C84D"
+    Shell.FlyoutBehavior="Flyout"
+    Shell.NavBarIsVisible="True">
+
+
     <Shell.BackButtonBehavior>
-        <BackButtonBehavior IsVisible="False" IsEnabled="False" />
+        <BackButtonBehavior IsEnabled="False" IsVisible="False" />
     </Shell.BackButtonBehavior>
 
     <Shell.TitleView>
@@ -20,184 +21,194 @@
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
-            <Button Grid.Column="0"
+            <Button
                 x:Name="MenuBtnClicked"
-                FontFamily="MaterialIconsOutlined-Regular"
-                Text="menu"
+                Grid.Column="0"
                 BackgroundColor="Transparent"
-                FontSize="30"
                 Clicked="MenuBtnClicked_Clicked"
-                HorizontalOptions="Start" />
-
-            <Button Grid.Column="2"
-                x:Name="HomepageBtn"
-                Clicked="HomepageBtn_Clicked"
-                Text="pets"
-                BackgroundColor="Transparent"
                 FontFamily="MaterialIconsOutlined-Regular"
                 FontSize="30"
+                HorizontalOptions="Start"
+                Text="menu" />
+
+            <Button
+                x:Name="HomepageBtn"
+                Grid.Column="2"
                 Margin="0,0,20,0"
-                HorizontalOptions="EndAndExpand" />
+                BackgroundColor="Transparent"
+                Clicked="HomepageBtn_Clicked"
+                FontFamily="MaterialIconsOutlined-Regular"
+                FontSize="30"
+                HorizontalOptions="EndAndExpand"
+                Text="pets" />
 
 
 
-            <!-- Empty element to fill the right column -->
-           
-            
+            <!--  Empty element to fill the right column  -->
+
+
         </Grid>
     </Shell.TitleView>
 
     <Grid>
         <Grid.RowDefinitions>
-            <!-- Define rows for your banner, search frame, and content -->
+            <!--  Define rows for your banner, search frame, and content  -->
             <RowDefinition Height="Auto" />
-            <!-- Banner -->
+            <!--  Banner  -->
             <RowDefinition Height="Auto" />
-            <!-- Search Frame -->
+            <!--  Search Frame  -->
             <RowDefinition Height="*" />
-            <!-- Content -->
+            <!--  Content  -->
         </Grid.RowDefinitions>
 
         <Image
-        Source="bai_banner.jpg"
-        VerticalOptions="Center"
-        HorizontalOptions="Center"/>
+            HorizontalOptions="Center"
+            Source="bai_banner.jpg"
+            VerticalOptions="Center" />
 
-        <Frame Grid.Row="1"
+        <Frame
+            x:Name="SearchFrame"
+            Grid.Row="1"
+            Margin="23,30,23,20"
+            Padding="0"
             BackgroundColor="White"
             CornerRadius="20"
-            Padding="0"
-            HeightRequest="50"
-            Margin="23,30,23,20"
-            x:Name="SearchFrame"
-        >
+            HeightRequest="50">
             <SearchBar
-            Placeholder="Search"
-            BackgroundColor="Transparent"
-            VerticalOptions="Center"
-            Margin="10,0"/>
-                </Frame>
+                Margin="10,0"
+                BackgroundColor="Transparent"
+                Placeholder="Search"
+                VerticalOptions="Center" />
+        </Frame>
         <ScrollView Grid.Row="2">
             <VerticalStackLayout Spacing="2">
 
                 <Label
-     Text="Welcome!"
-     TextColor="#096B00"
-     FontAttributes="Bold"
-     FontSize="33"
-     Margin="0,20,0,0"
-     Style="{StaticResource Headline}"
-     SemanticProperties.HeadingLevel="Level1"/>
+                    Margin="0,20,0,0"
+                    FontAttributes="Bold"
+                    FontSize="33"
+                    SemanticProperties.HeadingLevel="Level1"
+                    Style="{StaticResource Headline}"
+                    Text="Welcome!"
+                    TextColor="#096B00" />
 
                 <Image
-     Source="bai_logo.png"
-     Opacity="0.5"
-     WidthRequest="300"
-     HeightRequest="300"
-     Margin="0,30,0,0"
-     Aspect="AspectFit"
-     VerticalOptions="Center"
-     HorizontalOptions="Center"/>
+                    Margin="0,30,0,0"
+                    Aspect="AspectFit"
+                    HeightRequest="300"
+                    HorizontalOptions="Center"
+                    Opacity="0.5"
+                    Source="bai_logo.png"
+                    VerticalOptions="Center"
+                    WidthRequest="300" />
 
 
-                <Button x:Name="BtnRegisterPet"
-         FontSize="20"
-         Text="Register a Pet"
-         FontAttributes="Bold"
-         Padding="20"
-         Margin="10"
-         BackgroundColor="#096B00"
-         Clicked="BtnRegisterPet_Clicked"
-         CornerRadius="10"
-         />
+                <Button
+                    x:Name="BtnRegisterPet"
+                    Margin="10"
+                    Padding="20"
+                    BackgroundColor="#096B00"
+                    Clicked="BtnRegisterPet_Clicked"
+                    CornerRadius="10"
+                    FontAttributes="Bold"
+                    FontSize="20"
+                    Text="Register a Pet" />
 
-                <!--Pet Gallery - 1-->
+                <!--  Pet Gallery - 1  -->
                 <StackLayout Padding="10">
-                    <Frame BackgroundColor="#98FB98" 
-                   CornerRadius="30" 
-                   Padding="15">
+                    <Frame
+                        Padding="15"
+                        BackgroundColor="#98FB98"
+                        CornerRadius="30">
                         <StackLayout>
-                            <!-- Image -->
-                            <Image Source="profile_pic_1.png" 
-                           HeightRequest="250" 
-                           HorizontalOptions="Center" 
-                           Margin="0,0,0,40"/>
+                            <!--  Image  -->
+                            <Image
+                                Margin="0,0,0,40"
+                                HeightRequest="250"
+                                HorizontalOptions="Center"
+                                Source="profile_pic_1.png" />
 
-                            <!-- Labels -->
-                            <Label Text="REG ID: 01022023 JUDELA CRUZBLACKIENO" FontAttributes="Bold"/>
+                            <!--  Labels  -->
+                            <Label FontAttributes="Bold" Text="REG ID: 01022023 JUDELA CRUZBLACKIENO" />
                             <Label Text="Date Registered: 22/03/2024" />
                             <Label Text="Date Of Birth: 02/01/2023" />
                             <Label Text="Alias: Jaguar" />
 
-                            <!-- Button -->
+                            <!--  Button  -->
 
-                            <Button 
-                            x:Name="PetinfoBtn"
-                            Clicked="PetinfoBtn_Clicked"
-                            Text="Show Full Information" 
-                            BackgroundColor="#008000" 
-                            TextColor="White"
-                            Margin="0,40,0,0"
-                            Padding="20"
-                            CornerRadius="20" />
+                            <Button
+                                x:Name="PetinfoBtn"
+                                Margin="0,40,0,0"
+                                Padding="20"
+                                BackgroundColor="#008000"
+                                Clicked="PetinfoBtn_Clicked"
+                                CornerRadius="20"
+                                Text="Show Full Information"
+                                TextColor="White" />
                         </StackLayout>
                     </Frame>
                 </StackLayout>
 
-                <!--Pet Gallery - 2-->
+                <!--  Pet Gallery - 2  -->
                 <StackLayout Padding="10">
-                    <Frame BackgroundColor="#98FB98" 
-                   CornerRadius="30" 
-                   Padding="15">
+                    <Frame
+                        Padding="15"
+                        BackgroundColor="#98FB98"
+                        CornerRadius="30">
                         <StackLayout>
-                            <!-- Image -->
-                            <Image Source="dog_img.png" 
-                           HeightRequest="250" 
-                           HorizontalOptions="Center" 
-                           Margin="0,0,0,40"/>
+                            <!--  Image  -->
+                            <Image
+                                Margin="0,0,0,40"
+                                HeightRequest="250"
+                                HorizontalOptions="Center"
+                                Source="dog_img.png" />
 
-                            <!-- Labels -->
-                            <Label Text="REG ID: 01022023 JUDELA CRUZBLACKIENO" FontAttributes="Bold"/>
+                            <!--  Labels  -->
+                            <Label FontAttributes="Bold" Text="REG ID: 01022023 JUDELA CRUZBLACKIENO" />
                             <Label Text="Date Registered: 22/03/2024" />
                             <Label Text="Date Of Birth: 02/01/2023" />
                             <Label Text="Alias: Jaguar" />
 
-                            <!-- Button -->
-                            <Button Text="Show Full Information" 
-                            BackgroundColor="#008000" 
-                            TextColor="White"
-                            Margin="0,40,0,0"
-                            Padding="20"
-                            CornerRadius="20" />
+                            <!--  Button  -->
+                            <Button
+                                Margin="0,40,0,0"
+                                Padding="20"
+                                BackgroundColor="#008000"
+                                CornerRadius="20"
+                                Text="Show Full Information"
+                                TextColor="White" />
                         </StackLayout>
                     </Frame>
                 </StackLayout>
 
-                <!--Pet Gallery - 3-->
+                <!--  Pet Gallery - 3  -->
                 <StackLayout Padding="10">
-                    <Frame BackgroundColor="#98FB98" 
-                   CornerRadius="30" 
-                   Padding="15">
+                    <Frame
+                        Padding="15"
+                        BackgroundColor="#98FB98"
+                        CornerRadius="30">
                         <StackLayout>
-                            <!-- Image -->
-                            <Image Source="dog_img.png" 
-                           HeightRequest="250" 
-                           HorizontalOptions="Center" 
-                           Margin="0,0,0,40"/>
+                            <!--  Image  -->
+                            <Image
+                                Margin="0,0,0,40"
+                                HeightRequest="250"
+                                HorizontalOptions="Center"
+                                Source="dog_img.png" />
 
-                            <!-- Labels -->
-                            <Label Text="REG ID: 01022023 JUDELA CRUZBLACKIENO" FontAttributes="Bold"/>
+                            <!--  Labels  -->
+                            <Label FontAttributes="Bold" Text="REG ID: 01022023 JUDELA CRUZBLACKIENO" />
                             <Label Text="Date Registered: 22/03/2024" />
                             <Label Text="Date Of Birth: 02/01/2023" />
                             <Label Text="Alias: Jaguar" />
 
-                            <!-- Button -->
-                            <Button Text="Show Full Information" 
-                            BackgroundColor="#008000" 
-                            TextColor="White"
-                            Margin="0,40,0,0"
-                            Padding="20"
-                            CornerRadius="20" />
+                            <!--  Button  -->
+                            <Button
+                                Margin="0,40,0,0"
+                                Padding="20"
+                                BackgroundColor="#008000"
+                                CornerRadius="20"
+                                Text="Show Full Information"
+                                TextColor="White" />
                         </StackLayout>
                     </Frame>
                 </StackLayout>
@@ -205,14 +216,14 @@
             </VerticalStackLayout>
         </ScrollView>
     </Grid>
-   
+
 
     <ContentPage.Background>
         <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
-            <GradientStop Color="#7EE175" Offset="0.0" />
-            <GradientStop Color="#ffffff" Offset="1.0" />
+            <GradientStop Offset="0.0" Color="#7EE175" />
+            <GradientStop Offset="1.0" Color="#ffffff" />
         </LinearGradientBrush>
     </ContentPage.Background>
 
-    
+
 </ContentPage>

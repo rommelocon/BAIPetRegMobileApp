@@ -1,46 +1,49 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="BAIPetRegMobileApp.Views.FinalCheckingPage"
-             Title="FinalCheckingPage">
+<ContentPage
+    x:Class="BAIPetRegMobileApp.Views.FinalCheckingPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="FinalCheckingPage">
 
     <ScrollView>
         <VerticalStackLayout>
             <StackLayout>
                 <Image
-            Source="check.jpg"
-            WidthRequest="200"
-            Margin="0,100,0,100"
-            Aspect="AspectFit"
-            VerticalOptions="Center"
-            HorizontalOptions="Center"/>
-                <!-- Add content for final checking page -->
-                <Label  Text="Your Application is Submitted" 
-                HorizontalOptions="FillAndExpand"
-                VerticalOptions="CenterAndExpand"
-                HorizontalTextAlignment="Center"
-                VerticalTextAlignment="Center"
-                LineBreakMode="WordWrap"
-                TextColor="#096B00"
-                FontSize="40"
-                FontAttributes="Bold"
-                Margin="0,60,0,0"
-                FontFamily="Poppins-Bold"/>
+                    Margin="0,100,0,100"
+                    Aspect="AspectFit"
+                    HorizontalOptions="Center"
+                    Source="check.jpg"
+                    VerticalOptions="Center"
+                    WidthRequest="200" />
+                <!--  Add content for final checking page  -->
+                <Label
+                    Margin="0,60,0,0"
+                    FontAttributes="Bold"
+                    FontFamily="Poppins-Bold"
+                    FontSize="40"
+                    HorizontalOptions="FillAndExpand"
+                    HorizontalTextAlignment="Center"
+                    LineBreakMode="WordWrap"
+                    Text="Your Application is Submitted"
+                    TextColor="#096B00"
+                    VerticalOptions="CenterAndExpand"
+                    VerticalTextAlignment="Center" />
 
 
 
-                <Button x:Name="BtnContinue"
-                FontSize="20"
-                Text="Continue"
-                FontAttributes="Bold"
-                WidthRequest="300"
-                Padding="20"
-                Margin="0,60,0,0"
-                BackgroundColor="#096B00"
-                Clicked="BtnContinue_Clicked"   
-                CornerRadius="10"/>
+                <Button
+                    x:Name="BtnContinue"
+                    Margin="0,60,0,0"
+                    Padding="20"
+                    BackgroundColor="#096B00"
+                    Clicked="BtnContinue_Clicked"
+                    CornerRadius="10"
+                    FontAttributes="Bold"
+                    FontSize="20"
+                    Text="Continue"
+                    WidthRequest="300" />
             </StackLayout>
         </VerticalStackLayout>
     </ScrollView>
-    
+
 </ContentPage>
