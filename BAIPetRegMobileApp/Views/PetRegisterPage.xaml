@@ -79,25 +79,37 @@
 
                 <StackLayout>
                     <Label Text="Type of Ownership"
-                    Margin="40,20,0,0"
-                    TextColor="Black"
-                    FontSize="20"
-                    FontAttributes="Bold" />
+                           Margin="40,20,0,0"
+                           TextColor="Black"
+                           FontSize="20"
+                           FontAttributes="Bold" />
                     <Frame CornerRadius="15"
-                    Padding="10"
-                    BackgroundColor="#f1f1f1"
-                    BorderColor="Transparent"
-                    HasShadow="False"
-                    Margin="30,10"
-                    HorizontalOptions="FillAndExpand">
-                        <Picker Title="Type of Ownership"
-                         x:Name="ownershipList"
-                         Style="{StaticResource NoUnderlinePicker}"
-                         SelectedIndexChanged="OnOwnershipListSelectedIndexChanged"
-                         TitleColor="Black"
-                         FontSize="20">
-                            <!--Remove a picker and added to backend-->
-                        </Picker>
+                           Padding="10"
+                           BackgroundColor="#f1f1f1"
+                           BorderColor="Transparent"
+                           HasShadow="False"
+                           Margin="30,10"
+                           HorizontalOptions="FillAndExpand">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <Picker Title="Type of Ownership"
+                    x:Name="ownershipList"
+                    Style="{StaticResource NoUnderlinePicker}"
+                    SelectedIndexChanged="OnOwnershipListSelectedIndexChanged"
+                    TitleColor="Black"
+                    FontSize="20"
+                    Grid.Column="0" />
+                            <Label Text="arrow_drop_down"
+                   FontFamily="MaterialIconsOutlined-Regular"
+                   FontSize="40"
+                   VerticalOptions="Center"
+                   HorizontalOptions="End"
+                   Grid.Column="1"
+                   Margin="0,0,10,0" />
+                        </Grid>
                     </Frame>
                 </StackLayout>
 
@@ -105,24 +117,36 @@
 
                 <StackLayout>
                     <Label Text="Species"
-                    FontAttributes="Bold"
-                    Margin="40,20,0,0"
-                    TextColor="Black"
-                    FontSize="20" />
+                           Margin="40,20,0,0"
+                           TextColor="Black"
+                           FontSize="20"
+                           FontAttributes="Bold" />
                     <Frame CornerRadius="15"
-                    Padding="10"
-                    BackgroundColor="#f1f1f1"
-                    BorderColor="Transparent"
-                    HasShadow="False"
-                    Margin="30,10"
-                    HorizontalOptions="FillAndExpand">
-                        <Picker Title="Select Species"
-                         Style="{StaticResource NoUnderlinePicker}"
-                         x:Name="speciesList"
-                         TitleColor="Black"
-                         FontSize="20">
-                            <!--Remove picker in UI and added it to backend-->
-                        </Picker>
+                           Padding="10"
+                           BackgroundColor="#f1f1f1"
+                           BorderColor="Transparent"
+                           HasShadow="False"
+                           Margin="30,10"
+                           HorizontalOptions="FillAndExpand">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <Picker Title="Select Species"
+                     x:Name="speciesList"
+                     Style="{StaticResource NoUnderlinePicker}"
+                     TitleColor="Black"
+                     FontSize="20"
+                     Grid.Column="0" />
+                            <Label Text="arrow_drop_down"
+                    FontFamily="MaterialIconsOutlined-Regular"
+                    FontSize="40"
+                    VerticalOptions="Center"
+                    HorizontalOptions="End"
+                    Grid.Column="1"
+                    Margin="0,0,10,0" />
+                        </Grid>
                     </Frame>
                 </StackLayout>
 
@@ -130,23 +154,36 @@
 
                 <StackLayout>
                     <Label Text="Breed"
-                    FontAttributes="Bold"
-                    Margin="40,20,0,0"
-                    TextColor="Black"
-                    FontSize="20" />
+           Margin="40,20,0,0"
+           TextColor="Black"
+           FontSize="20"
+           FontAttributes="Bold" />
                     <Frame CornerRadius="15"
-                    Padding="10"
-                    BackgroundColor="#f1f1f1"
-                    BorderColor="Transparent"
-                    HasShadow="False"
-                    Margin="30,10"
-                    HorizontalOptions="FillAndExpand">
-                        <Picker Title="Select Breed"
-                         Style="{StaticResource NoUnderlinePicker}"
-                         x:Name="breedList"
-                         TitleColor="Black"
-                         FontSize="20">
-                        </Picker>
+           Padding="10"
+           BackgroundColor="#f1f1f1"
+           BorderColor="Transparent"
+           HasShadow="False"
+           Margin="30,10"
+           HorizontalOptions="FillAndExpand">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <Picker Title="Select Breed"
+                 x:Name="breedList"
+                 Style="{StaticResource NoUnderlinePicker}"
+                 TitleColor="Black"
+                 FontSize="20"
+                 Grid.Column="0" />
+                                        <Label Text="arrow_drop_down"
+                FontFamily="MaterialIconsOutlined-Regular"
+                FontSize="40"
+                VerticalOptions="Center"
+                HorizontalOptions="End"
+                Grid.Column="1"
+                Margin="0,0,10,0" />
+                        </Grid>
                     </Frame>
                 </StackLayout>
 
@@ -173,7 +210,7 @@
 
                 <!--Sex-->
 
-                <StackLayout>
+                <!--<StackLayout>
                     <Label Text="Sex"
                     FontAttributes="Bold"
                     Margin="40,20,0,0"
@@ -193,7 +230,43 @@
                          FontSize="20">
                         </Picker>
                     </Frame>
+                </StackLayout>-->
+
+                <StackLayout>
+                    <Label Text="Sex"
+           Margin="40,20,0,0"
+           TextColor="Black"
+           FontSize="20"
+           FontAttributes="Bold" />
+                    <Frame CornerRadius="15"
+           Padding="10"
+           BackgroundColor="#f1f1f1"
+           BorderColor="Transparent"
+           HasShadow="False"
+           Margin="30,10"
+           HorizontalOptions="FillAndExpand">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <Picker Title="Select Sex"
+     x:Name="sexList"
+     Style="{StaticResource NoUnderlinePicker}"
+     TitleColor="Black"
+     FontSize="20"
+     Grid.Column="0" />
+                            <Label Text="arrow_drop_down"
+    FontFamily="MaterialIconsOutlined-Regular"
+    FontSize="40"
+    VerticalOptions="Center"
+    HorizontalOptions="End"
+    Grid.Column="1"
+    Margin="0,0,10,0" />
+                        </Grid>
+                    </Frame>
                 </StackLayout>
+
 
                 <!--Age Entry-->
 
@@ -413,7 +486,7 @@
             </VerticalStackLayout>
         </ScrollView>
     </Grid>
-   
+
 
     <ContentPage.Resources>
         <Style x:Key="NoUnderlinePicker"

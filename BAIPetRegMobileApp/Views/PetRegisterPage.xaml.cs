@@ -94,17 +94,6 @@ public partial class PetRegisterPage : ContentPage
     private void BtnSubmit_Clicked(object sender, EventArgs e)
     {
         Shell.Current.GoToAsync(nameof(FinalCheckingPage));
-        string petName = EntryPetName.Text;
-        Console.WriteLine(petName);
-        Console.WriteLine(ownershipList);
-        //if (petNameValidator.IsNotValid)
-        //{
-        //    DisplayAlert("Error", "Name is required", "OK");
-        //    return;
-        //}
-
-
-
     }
 
    

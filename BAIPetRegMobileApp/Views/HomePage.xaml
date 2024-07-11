@@ -5,9 +5,7 @@
              Shell.FlyoutBehavior="Flyout"
              FlyoutItem.IsVisible="False"
              Shell.BackgroundColor="#57C84D"
-             Shell.NavBarIsVisible="True"
-             
- >
+             Shell.NavBarIsVisible="True">
  
     
     <Shell.BackButtonBehavior>
