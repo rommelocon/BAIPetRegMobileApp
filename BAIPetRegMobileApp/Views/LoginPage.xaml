@@ -2,6 +2,8 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="BAIPetRegMobileApp.LoginPage"
+             xmlns:viewmodels="clr-namespace:BAIPetRegMobileApp.ViewModels"
+             x:DataType="viewmodels:LoginPageViewModel"
              Shell.NavBarIsVisible="False"
              Shell.FlyoutBehavior="Disabled"
              Padding="0"
@@ -43,7 +45,7 @@
            FontAttributes="None"
            VerticalOptions="Center"
            FontSize="20"
-                       Text="{Binding LoginModel.Email}"
+                       Text="{Binding LoginModel.UserName}"
            />
             </Frame>
             <Frame CornerRadius="15"

@@ -45,16 +45,17 @@
             </Frame>
 
 
-
-            <Label
+            <HorizontalStackLayout HorizontalOptions="CenterAndExpand">
+                <Label
         Text="Welcome"
         TextColor="#096B00"
         FontAttributes="Bold"
         FontSize="33"
-        Margin="0,20,0,0"
+        Margin="0,20,10,0"
         Style="{StaticResource Headline}"
         SemanticProperties.HeadingLevel="Level1"/>
-            <Label
+                <Label
+                x:Name="UsernameLabel"
 Text="{Binding UserName}"
 TextColor="#096B00"
 FontAttributes="Bold"
@@ -62,7 +63,7 @@ FontSize="33"
 Margin="0,20,0,0"
 Style="{StaticResource Headline}"
 SemanticProperties.HeadingLevel="Level1"/>
-
+            </HorizontalStackLayout>
             <Image
         Source="bai_logo.png"
         Opacity="0.5"

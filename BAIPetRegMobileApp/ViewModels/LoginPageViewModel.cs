@@ -3,6 +3,7 @@ using BAIPetRegMobileApp.Services;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using System.Text.Json;
+using System.Windows.Input;
 
 namespace BAIPetRegMobileApp.ViewModels
 {
@@ -46,10 +47,10 @@ namespace BAIPetRegMobileApp.ViewModels
         [RelayCommand]
         private async Task Logout()
         {
-            SecureStorage.Default.Remove("Authentication");
+            Console.WriteLine("Logout command executed"); // Logging
             IsAuthenticated = false;
             UserName = "Guest";
-            await Shell.Current.GoToAsync(nameof(LoginPage));
+            await clientService.Logout();
         }
 
         private async void GetUserNameFromSecuredStorage()

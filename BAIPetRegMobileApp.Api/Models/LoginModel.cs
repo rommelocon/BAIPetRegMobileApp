@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace BAIPetRegMobileApp.Models;
+namespace BAIPetRegMobileApp.Api.Models;
 public class LoginModel
 {
     [Required]

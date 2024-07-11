@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace BAIPetRegMobileApp.Api.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     [ApiController]
     public class AccountController : ControllerBase
     {
@@ -61,11 +61,6 @@ namespace BAIPetRegMobileApp.Api.Controllers
         [HttpPost("login")]
         public async Task<IActionResult> Login([FromBody] LoginModel model)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
             var user = await userManager.FindByNameAsync(model.UserName);
             if (user == null)
             {
@@ -73,10 +68,13 @@ namespace BAIPetRegMobileApp.Api.Controllers
             }
 
             var result = await signInManager.PasswordSignInAsync(user, model.Password, model.RememberMe, lockoutOnFailure: false);
-
             if (result.Succeeded)
             {
-                return Ok("Login Successful");
+                return Ok(new 
+                { 
+                    message = "Login successful", 
+                    username = user.UserName 
+                });
             }
 
             if (result.IsLockedOut)
@@ -87,33 +85,11 @@ namespace BAIPetRegMobileApp.Api.Controllers
             return Unauthorized("Invalid username or password.");
         }
 
-        [HttpGet("userinfo")]
-        public async Task<IActionResult> GetUserInfo()
+        [HttpPost("logout")]
+        public async Task<IActionResult> Logout(LoginModel model)
         {
-            var userId = User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value;
-            if (userId == null)
-            {
-                return Unauthorized();
-            }
-
-            var user = await userManager.FindByIdAsync(userId);
-            if (user == null)
-            {
-                return NotFound("User not found");
-            }
-
-            // Return any user information you want
-            return Ok(new
-            {
-                user.UserName
-            });
+            await signInManager.SignOutAsync();
+            return Ok(new { message = "Logout successful" });
         }
-    }
-
-    public class LoginModel
-    {
-        public string? UserName { get; set; }
-        public string? Password { get; set; }
-        public bool RememberMe { get; set; }
     }
 }
