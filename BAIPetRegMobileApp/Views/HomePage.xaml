@@ -126,7 +126,7 @@
                                 Margin="0,0,0,40"
                                 HeightRequest="250"
                                 HorizontalOptions="Center"
-                                Source="profile_pic_1.png" />
+                                Source="dog1.jpeg" />
 
                             <!--  Labels  -->
                             <Label FontAttributes="Bold" Text="REG ID: 01022023 JUDELA CRUZBLACKIENO" />

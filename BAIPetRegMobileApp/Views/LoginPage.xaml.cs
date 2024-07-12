@@ -10,14 +10,10 @@ namespace BAIPetRegMobileApp
             InitializeComponent();
         }
 
-        //protected override bool OnBackButtonPressed()
-        //{
-        //    Application.Current.Quit();
-        //    return true;
-        //}
 
         private async void LoginButton_Clicked(object sender, EventArgs e)
         {
+            
             if (IsCredentialCorrect(UsernameEntry.Text, PasswordEntry.Text))
             {
                 await SecureStorage.SetAsync("hasAuth", "true");
@@ -28,6 +24,11 @@ namespace BAIPetRegMobileApp
                 await DisplayAlert("Login failed", "Username or password is invalid", "Try again");
             }
         }
+        //private void ClearEntries()
+        //{
+        //    UsernameEntry.Text = string.Empty;
+        //    PasswordEntry.Text = string.Empty;
+        //}
 
         bool IsCredentialCorrect(string username, string password)
         {
