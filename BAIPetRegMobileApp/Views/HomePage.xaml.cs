@@ -1,4 +1,3 @@
-using BAIPetRegMobileApp.Services;
 using BAIPetRegMobileApp.ViewModels;
 using BAIPetRegMobileApp.Views;
 
@@ -6,22 +5,17 @@ namespace BAIPetRegMobileApp;
 
 public partial class HomePage : ContentPage
 {
-    private readonly HomePageViewModel _viewModel;
-    private ClientService _clientService;
- 
-    public HomePage(HomePageViewModel viewModel, ClientService clientService)
+    public HomePage(HomePageViewModel viewModel)
     {
         InitializeComponent();
-        this._clientService = clientService;
-        _viewModel = new HomePageViewModel(clientService);
-        BindingContext = _viewModel;
-    }
-    //protected override async void OnAppearing()
-    //{
-    //    base.OnAppearing();
+        BindingContext = viewModel;
 
-    //    await _viewModel.LoadUserInfo();
-    //}
+        // Handle navigation parameters
+        MessagingCenter.Subscribe<HomePageViewModel, string>(this, "UserName", (sender, arg) =>
+        {
+            UsernameLabel.Text = arg;
+        });
+    }
 
     protected override bool OnBackButtonPressed()
     {

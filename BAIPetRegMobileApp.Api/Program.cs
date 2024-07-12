@@ -1,27 +1,33 @@
 using BAIPetRegMobileApp.Api.Data;
 using BAIPetRegMobileApp.Api.Models;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
+using BAIPetRegMobileApp.Api.Services;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.Filters;
-using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllers();
 
+//jwt utils
+builder.Services.AddScoped<IJwtUtils, JwtUtils>(); // Add this line
+
+builder.Services.AddTransient<IEmailSender, EmailSender>();
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 
-var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
-builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseSqlServer(connectionString));
+builder.Services.AddDbContext<UserDbContext>(options =>
+           options.UseSqlServer(builder.Configuration.GetConnectionString("UserDb")));
 
-builder.Services.AddIdentityApiEndpoints<ApplicationUser>()
-    .AddEntityFrameworkStores<AppDbContext>()
+builder.Services.AddDbContext<PetRegistrationDbContext>(options =>
+           options.UseSqlServer(builder.Configuration.GetConnectionString("PetRegistrationDb")));
+
+builder.Services.AddIdentity<UserModel, IdentityRole>()
+    .AddEntityFrameworkStores<UserDbContext>()
     .AddDefaultTokenProviders();
 
 builder.Services.AddSwaggerGen(options =>
@@ -48,26 +54,6 @@ builder.Services.AddCors(options =>
         });
 });
 
-// Add authentication services
-builder.Services.AddAuthentication(options =>
-{
-    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-})
-.AddJwtBearer(options =>
-{
-    options.TokenValidationParameters = new TokenValidationParameters
-    {
-        ValidateIssuer = true,
-        ValidateAudience = true,
-        ValidateLifetime = true,
-        ValidateIssuerSigningKey = true,
-        ValidIssuer = builder.Configuration["Jwt:Issuer"],
-        ValidAudience = builder.Configuration["Jwt:Audience"],
-        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]))
-    };
-});
-
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -76,7 +62,6 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-app.MapIdentityApi<ApplicationUser>();
 
 app.UseHttpsRedirection();
 

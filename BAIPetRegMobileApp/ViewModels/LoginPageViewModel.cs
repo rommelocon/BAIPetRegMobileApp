@@ -15,17 +15,20 @@ namespace BAIPetRegMobileApp.ViewModels
         private LoginModel loginModel;
 
         [ObservableProperty]
+        private string userName;
+        [ObservableProperty]
         private bool isAuthenticated;
 
         private readonly ClientService clientService;
+        private readonly HomePageViewModel homePageViewModel;
 
-        public LoginPageViewModel(ClientService clientService)
+        public LoginPageViewModel(ClientService clientService, HomePageViewModel homePageViewModel)
         {
             this.clientService = clientService;
+            this.homePageViewModel = homePageViewModel;
             RegisterModel = new RegisterModel();
             LoginModel = new LoginModel();
             IsAuthenticated = false;
-            GetUserNameFromSecuredStorage();
         }
 
         [RelayCommand]
@@ -37,9 +40,7 @@ namespace BAIPetRegMobileApp.ViewModels
         [RelayCommand]
         private async Task Login()
         {
-            Console.WriteLine("Login command executed"); // Logging
             await clientService.Login(LoginModel);
-            GetUserNameFromSecuredStorage();
         }
 
         [RelayCommand]
@@ -47,18 +48,8 @@ namespace BAIPetRegMobileApp.ViewModels
         {
             Console.WriteLine("Logout command executed"); // Logging
             IsAuthenticated = false;
+            LoginModel = new LoginModel();
             await clientService.Logout();
-        }
-
-        public async void GetUserNameFromSecuredStorage()
-        {
-            var serializedLoginResponseInStorage = await SecureStorage.Default.GetAsync("Authentication");
-            if (serializedLoginResponseInStorage != null)
-            {
-                IsAuthenticated = true;
-                await Shell.Current.GoToAsync(nameof(HomePage));
-            }
-            IsAuthenticated = false;
         }
     }
 }

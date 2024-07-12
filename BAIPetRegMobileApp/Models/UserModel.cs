@@ -1,93 +1,157 @@
-﻿
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System;
 using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Identity;
 
-namespace BAIPetRegMobileApp.Models;
-public class UserModel : IdentityUser
+namespace BAIPetRegMobileApp.Models
 {
-    public DateTime? DateRegistered { get; set; }
+    public class UserModel : IdentityUser
+    {
+        [PersonalData]
+        public DateTime? DateRegistered { get; set; }
 
-    public string? SecurityQuestion { get; set; }
+        [PersonalData]
+        public string SecurityQuestion { get; set; }
 
-    public string? Region { get; set; }
+        [PersonalData]
+        public string Region { get; set; }
 
-    public string? Province { get; set; }
+        [PersonalData]
+        public string Province { get; set; }
 
-    public string? Municipality { get; set; }
+        [PersonalData]
+        public string Municipality { get; set; }
 
-    public string? Barangay { get; set; }
+        [PersonalData]
+        public string Barangay { get; set; }
 
-    public string? Firstname { get; set; }
+        [PersonalData]
+        public string Firstname { get; set; }
 
-    [Column("mi")]
-    public string? MiddleInitial { get; set; }
+        [PersonalData]
+        public string mi { get; set; }
 
-    public string? Lastname { get; set; }
+        [PersonalData]
+        public string Lastname { get; set; }
 
-    public string? Extension { get; set; }
+        [PersonalData]
+        public string Extension { get; set; }
 
-    public DateTime? Birthday { get; set; }
+        [PersonalData]
+        public DateTime? Birthday { get; set; }
 
-    public string? SecurityLevel { get; set; }
+        [PersonalData]
+        public string SecurityLevel { get; set; }
 
-    public string? SystemChosen { get; set; }
+        [PersonalData]
+        public string SystemChosen { get; set; }
 
-    public int? Rcodenum { get; set; }
+        [PersonalData]
+        public int? Rcodenum { get; set; }
 
-    public int? Pcodenum { get; set; }
+        [PersonalData]
+        public int? Pcodenum { get; set; }
 
-    public int? Mcodenum { get; set; }
+        [PersonalData]
+        public int? Mcodenum { get; set; }
 
-    public int? Bcodenum { get; set; }
+        [PersonalData]
+        public int? Bcodenum { get; set; }
 
-    [Column(TypeName = "nvarchar(MAX)")]
-    public string? Street { get; set; }
+        [PersonalData]
+        public string Street { get; set; }
 
-    [Column("SexDescription", TypeName = "nvarchar(50)")]
-    public string? Gender { get; set; }
+        [PersonalData]
+        public string SexDescription { get; set; }
 
-    public int? SexId { get; set; }
+        [PersonalData]
+        public int? SexId { get; set; }
 
-    public string? Role { get; set; }
+        [PersonalData]
+        public string Role { get; set; }
 
-    public string? Position { get; set; }
+        [PersonalData]
+        public string Position { get; set; }
 
-    public bool? Active { get; set; }
+        [PersonalData]
+        public bool? Active { get; set; }
 
-    public bool? Submitted { get; set; }
+        [PersonalData]
+        public bool? Submitted { get; set; }
 
-    public DateTime? DateSubmitted { get; set; }
+        [PersonalData]
+        public DateTime? DateSubmitted { get; set; }
 
-    public byte[]? ProfilePicture { get; set; }
+        [PersonalData]
+        public byte[] ProfilePicture { get; set; }
 
-    [Column(TypeName = "nvarchar(MAX)")]
-    public string? Remarks { get; set; }
+        [PersonalData]
+        public string Remarks { get; set; }
 
-    [MaxLength(50)]
-    public string? TIN { get; set; }
+        [PersonalData]
+        public string TIN { get; set; }
 
-    [MaxLength(50)]
-    public string? Nationality { get; set; }
+        [PersonalData]
+        public string Nationality { get; set; }
 
-    public int? NationalityID { get; set; }
+        [PersonalData]
+        public int? NationalityID { get; set; }
 
-    public bool? RegisteredPhilSys { get; set; }
+        [PersonalData]
+        public bool? RegisteredPhilSys { get; set; }
 
-    [MaxLength(50)]
-    public string? PhilSysIDNumber { get; set; }
+        [PersonalData]
+        public string PhilSysIDNumber { get; set; }
 
-    public byte[]? Signature { get; set; }
+        [PersonalData]
+        public byte[] Signature { get; set; }
 
-    [MaxLength(50)]
-    public string? ClientType { get; set; }
+        [PersonalData]
+        public string ClientType { get; set; }
 
-    public int? DocumentID { get; set; }
+        [PersonalData]
+        public int? DocumentID { get; set; }
 
-    [MaxLength(150)]
-    public string? DocumentName { get; set; }
+        [PersonalData]
+        public string DocumentName { get; set; }
 
-    public byte[]? ValidID { get; set; }
+        [PersonalData]
+        public byte[] ValidID { get; set; }
 
-    public int? CivilStatusCode { get; set; }
+        [PersonalData]
+        public int? CivilStatusCode { get; set; }
+
+        // IdentityUser properties
+        [PersonalData]
+        public override string UserName { get; set; }
+
+        [PersonalData]
+        public override string NormalizedUserName { get; set; }
+
+        [PersonalData]
+        public override string Email { get; set; }
+
+        [PersonalData]
+        public override string NormalizedEmail { get; set; }
+
+        public override bool EmailConfirmed { get; set; }
+
+        public override string PasswordHash { get; set; }
+
+        public override string SecurityStamp { get; set; }
+
+        public override string ConcurrencyStamp { get; set; }
+
+        [PersonalData]
+        public override string PhoneNumber { get; set; }
+
+        public override bool PhoneNumberConfirmed { get; set; }
+
+        public override bool TwoFactorEnabled { get; set; }
+
+        public override DateTimeOffset? LockoutEnd { get; set; }
+
+        public override bool LockoutEnabled { get; set; }
+
+        public override int AccessFailedCount { get; set; }
+    }
 }

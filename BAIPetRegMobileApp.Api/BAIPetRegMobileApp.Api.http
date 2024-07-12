@@ -1,4 +1,4 @@
-@BAIPetRegMobileApp.Api_HostAddress = https://localhost:7107
+@BAIPetRegMobileApp.Api_HostAddress = https://localhost:5001
 
 GET {{BAIPetRegMobileApp.Api_HostAddress}}/weatherforecast/
 Accept: application/json

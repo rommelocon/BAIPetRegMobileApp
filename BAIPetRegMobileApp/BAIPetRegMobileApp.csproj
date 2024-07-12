@@ -68,8 +68,10 @@
 		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
 		<PackageReference Include="Microsoft.AspNet.Identity.EntityFramework" Version="2.2.4" />
 		<PackageReference Include="Microsoft.Extensions.Http" Version="8.0.0" />
-		<PackageReference Include="Microsoft.Extensions.Identity.Stores" Version="8.0.6" />
+		<PackageReference Include="Microsoft.Extensions.Identity.Stores" Version="8.0.7" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" />
+		<PackageReference Include="Microsoft.Maui.Controls" Version="8.0.21" />
+		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="8.0.21" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -98,20 +100,12 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="Components\" />
+		<Folder Include="Components\" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <AndroidResource Update="Platforms\Android\Resources\xml\network_security_config.xml">
-	    <Generator>MSBuild:UpdateGeneratedFiles</Generator>
-	  </AndroidResource>
-	</ItemGroup>
-
-	<ItemGroup>
-	  <PackageReference Update="Microsoft.Maui.Controls" Version="8.0.70" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <PackageReference Update="Microsoft.Maui.Controls.Compatibility" Version="8.0.70" />
+		<AndroidResource Update="Platforms\Android\Resources\xml\network_security_config.xml">
+			<Generator>MSBuild:UpdateGeneratedFiles</Generator>
+		</AndroidResource>
 	</ItemGroup>
 </Project>

@@ -10,9 +10,6 @@ public class LoginResponse
     [Display(Name = "refreshToken")]
     public string? RefreshToken { get; set; }
     [Required]
-    [Display(Name = "tokenType")]
-    public string? TokenType { get; set; }
-    [Required]
-    [Display(Name = "expiresIn")]
-    public int ExpiresIn { get; set; }
+    [Display(Name = "userName")]
+    public string? UserName { get; set;}
 }

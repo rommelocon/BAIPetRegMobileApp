@@ -2,13 +2,6 @@
 using BAIPetRegMobileApp.Api.ViewModels;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using System.IdentityModel.Tokens.Jwt;
-using Microsoft.IdentityModel.Tokens;
-using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Templates.BlazorIdentity.Pages.Manage;
-using System.Security.Claims;
-using System.Text;
-using System.Security.Cryptography;
-using System.Configuration;
 
 namespace BAIPetRegMobileApp.Api.Controllers
 {
@@ -17,27 +10,27 @@ namespace BAIPetRegMobileApp.Api.Controllers
     public class AccountController : ControllerBase
     {
         //userManager will hold the UserManager instance
-        private readonly UserManager<ApplicationUser> userManager;
+        private readonly UserManager<UserModel> userManager;
         //signInManager will hold the SignInManager instance
-        private readonly SignInManager<ApplicationUser> signInManager;
+        private readonly SignInManager<UserModel> signInManager;
+
+        private readonly IJwtUtils jwtUtils;
 
         private readonly IConfiguration configuration;
-        private TokenService tokenService;
-
         //Both UserManager and SignInManager services are injected into the AccountController
         //using constructor injection
-        public AccountController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, IConfiguration configuration)
+        public AccountController(UserManager<UserModel> userManager, SignInManager<UserModel> signInManager, IConfiguration configuration, IJwtUtils jwtUtils)
         {
             this.userManager = userManager;
             this.signInManager = signInManager;
             this.configuration = configuration;
-            tokenService = new TokenService(configuration);
+            this.jwtUtils = jwtUtils;
         }
 
         [HttpPost("register")]
         public async Task<IActionResult> Register(RegisterViewModel model)
         {
-            var user = new ApplicationUser { UserName = model.UserName, Email = model.Email };
+            var user = new UserModel { UserName = model.UserName, Email = model.Email };
             var result = await userManager.CreateAsync(user, model.Password);
             if (result.Succeeded)
             {
@@ -55,16 +48,15 @@ namespace BAIPetRegMobileApp.Api.Controllers
             var result = await signInManager.PasswordSignInAsync(model.UserName, model.Password, model.RememberMe, lockoutOnFailure: false);
             if (result.Succeeded)
             {
-                var accessToken = tokenService.GenerateJwtToken(model);
-                var refreshToken = tokenService.GenerateRefreshToken();
-                var tokenExpiresIn = tokenService.GetTokenExpiration(accessToken);
+                var user = await userManager.FindByNameAsync(model.UserName);
+                var accessToken = jwtUtils.GenerateToken(user);
+                var refreshToken = jwtUtils.GenerateRefreshToken();
 
                 return Ok(new
                 {
-                    tokenType = "Bearer", // or your token type
+                    refreshToken,
                     accessToken,
-                    expiresIn = 3600,
-                    refreshToken
+                    userName = model.UserName,
                 });
             }
 
@@ -89,7 +81,7 @@ namespace BAIPetRegMobileApp.Api.Controllers
         }
 
         [HttpGet("user")]
-        public async Task<ActionResult<ApplicationUser>> GetUserInfo()
+        public async Task<ActionResult<UserModel>> GetUserInfo()
         {
             var user = await userManager.GetUserAsync(User); // Get the current authenticated user
             if (user == null)
