@@ -29,6 +29,7 @@
                 FontFamily="MaterialIconsOutlined-Regular"
                 FontSize="30"
                 HorizontalOptions="Start"
+                TextColor="White"
                 Text="menu" />
 
             <Button
@@ -40,6 +41,7 @@
                 FontFamily="MaterialIconsOutlined-Regular"
                 FontSize="30"
                 HorizontalOptions="EndAndExpand"
+                TextColor="White"
                 Text="pets" />
 
 
@@ -112,6 +114,7 @@
                     CornerRadius="10"
                     FontAttributes="Bold"
                     FontSize="20"
+                    TextColor="White"
                     Text="Register a Pet" />
 
                 <!--  Pet Gallery - 1  -->

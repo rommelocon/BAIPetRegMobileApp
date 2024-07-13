@@ -78,14 +78,15 @@
                         <Label
                             FontAttributes="Bold"
                             FontSize="24"
+                            TextColor="#001400"
                             Text="Pet Information" />
-                        <Label FontSize="18" Text="Date Registered: 22/03/2024" />
-                        <Label FontSize="18" Text="Pet Origin: Local within Barangay" />
-                        <Label FontSize="18" Text="Date Of Birth: 02/01/2023" />
-                        <Label FontSize="18" Text="Habitat Description: Household" />
-                        <Label FontSize="18" Text="Animal Color: White" />
-                        <Label FontSize="18" Text="Tag Number: 000-111-2222" />
-                        <Label FontSize="18" Text="Status of Pet: Alive" />
+                        <Label FontSize="18" Text="Date Registered: 22/03/2024" TextColor="#001400"/>
+                        <Label FontSize="18" Text="Pet Origin: Local within Barangay" TextColor="#001400" />
+                        <Label FontSize="18" Text="Date Of Birth: 02/01/2023" TextColor="#001400" />
+                        <Label FontSize="18" Text="Habitat Description: Household" TextColor="#001400" />
+                        <Label FontSize="18" Text="Animal Color: White" TextColor="#001400"/>
+                        <Label FontSize="18" Text="Tag Number: 000-111-2222" TextColor="#001400"/>
+                        <Label FontSize="18" Text="Status of Pet: Alive" TextColor="#001400"/>
                     </StackLayout>
                 </Frame>
 

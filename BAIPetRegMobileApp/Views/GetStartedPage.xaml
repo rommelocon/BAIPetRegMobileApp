@@ -43,6 +43,7 @@
                 CornerRadius="10"
                 FontAttributes="Bold"
                 FontSize="20"
+                TextColor="White"
                 Text="Get Started" />
         </VerticalStackLayout>
     </ScrollView>

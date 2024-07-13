@@ -447,6 +447,7 @@
                                     BackgroundColor="#096B00"
                                     Clicked="OnSelectImage1Clicked"
                                     CornerRadius="10"
+                                    TextColor="White"
                                     Text="Select Image 1" />
                             </StackLayout>
                         </Frame>
@@ -468,6 +469,7 @@
                                     BackgroundColor="#096B00"
                                     Clicked="OnSelectImage2Clicked"
                                     CornerRadius="10"
+                                    TextColor="White"
                                     Text="Select Image 2" />
                             </StackLayout>
                         </Frame>
@@ -489,6 +491,7 @@
                                     BackgroundColor="#096B00"
                                     Clicked="OnSelectImage3Clicked"
                                     CornerRadius="10"
+                                    TextColor="White"
                                     Text="Select Image 3" />
                             </StackLayout>
                         </Frame>
@@ -510,6 +513,7 @@
                                     BackgroundColor="#096B00"
                                     Clicked="OnSelectImage4Clicked"
                                     CornerRadius="10"
+                                    TextColor="White"
                                     Text="Select Image 4" />
                             </StackLayout>
                         </Frame>
@@ -527,6 +531,7 @@
                     CornerRadius="10"
                     FontAttributes="Bold"
                     FontSize="20"
+                    TextColor="White"
                     Text="SUBMIT" />
 
             </VerticalStackLayout>
