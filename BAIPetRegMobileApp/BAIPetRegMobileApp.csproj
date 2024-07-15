@@ -105,6 +105,12 @@
 		<MauiXaml Update="SplashScreenPage.xaml">
 		  <Generator>MSBuild:Compile</Generator>
 		</MauiXaml>
+		<MauiXaml Update="Views\CatBreedPage.xaml">
+		  <Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
+		<MauiXaml Update="Views\DogBreedPage.xaml">
+		  <Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
 		<MauiXaml Update="Views\PetInformationPage.xaml">
 		  <Generator>MSBuild:Compile</Generator>
 		</MauiXaml>
