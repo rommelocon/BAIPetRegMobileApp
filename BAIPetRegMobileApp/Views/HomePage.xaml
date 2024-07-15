@@ -132,10 +132,10 @@
                                 Source="dog1.jpeg" />
 
                             <!--  Labels  -->
-                            <Label FontAttributes="Bold" Text="REG ID: 01022023 JUDELA CRUZBLACKIENO" />
-                            <Label Text="Date Registered: 22/03/2024" />
-                            <Label Text="Date Of Birth: 02/01/2023" />
-                            <Label Text="Alias: Jaguar" />
+                            <Label FontAttributes="Bold" Text="REG ID: 01022023 JUDELA CRUZBLACKIENO"  TextColor="#2E8B26"/>
+                            <Label Text="Date Registered: 22/03/2024"  TextColor="#2E8B26"/>
+                            <Label Text="Date Of Birth: 02/01/2023"  TextColor="#2E8B26"/>
+                            <Label Text="Alias: Jaguar"  TextColor="#2E8B26"/>
 
                             <!--  Button  -->
 
@@ -167,10 +167,10 @@
                                 Source="dog_img.png" />
 
                             <!--  Labels  -->
-                            <Label FontAttributes="Bold" Text="REG ID: 01022023 JUDELA CRUZBLACKIENO" />
-                            <Label Text="Date Registered: 22/03/2024" />
-                            <Label Text="Date Of Birth: 02/01/2023" />
-                            <Label Text="Alias: Jaguar" />
+                            <Label FontAttributes="Bold" Text="REG ID: 01022023 JUDELA CRUZBLACKIENO"  TextColor="#2E8B26" />
+                            <Label Text="Date Registered: 22/03/2024"  TextColor="#2E8B26" />
+                            <Label Text="Date Of Birth: 02/01/2023"  TextColor="#2E8B26"/>
+                            <Label Text="Alias: Jaguar"  TextColor="#2E8B26"/>
 
                             <!--  Button  -->
                             <Button
@@ -199,10 +199,10 @@
                                 Source="dog_img.png" />
 
                             <!--  Labels  -->
-                            <Label FontAttributes="Bold" Text="REG ID: 01022023 JUDELA CRUZBLACKIENO" />
-                            <Label Text="Date Registered: 22/03/2024" />
-                            <Label Text="Date Of Birth: 02/01/2023" />
-                            <Label Text="Alias: Jaguar" />
+                            <Label FontAttributes="Bold" Text="REG ID: 01022023 JUDELA CRUZBLACKIENO"  TextColor="#2E8B26"/>
+                            <Label Text="Date Registered: 22/03/2024"  TextColor="#2E8B26" />
+                            <Label Text="Date Of Birth: 02/01/2023"  TextColor="#2E8B26" />
+                            <Label Text="Alias: Jaguar"  TextColor="#2E8B26"/>
 
                             <!--  Button  -->
                             <Button

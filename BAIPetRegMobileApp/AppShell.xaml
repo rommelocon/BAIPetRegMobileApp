@@ -40,50 +40,65 @@
     <Shell.FlyoutContent>
 
         <VerticalStackLayout Margin="0" Background="White">
-            <Image
-                HorizontalOptions="Center"
-                Source="bai_banner.jpg"
-                VerticalOptions="Center" />
-            <StackLayout
-                Margin="0,20,0,0"
-                HorizontalOptions="Center"
-                Orientation="Horizontal">
-                <Label
-                    Margin="30,0,0,0"
-                    FontFamily="MaterialIconsOutlined-Regular"
-                    FontSize="60"
-                    Text="account_circle"
-                    TextColor="#096B00" />
-                <Button
-                    x:Name="ProfilePageBtn"
-                    Margin="30,0,30,0"
-                    BackgroundColor="#096B00"
-                    Clicked="ProfilePageBtn_Clicked"
-                    CornerRadius="50"
-                    Text="Profile"
-                    TextColor="White"
-                    WidthRequest="180" />
-            </StackLayout>
-            <StackLayout
-                Margin="0,20,0,0"
-                HorizontalOptions="Center"
-                Orientation="Horizontal">
-                <Label
-                    Margin="30,0,0,0"
-                    FontFamily="MaterialIconsOutlined-Regular"
-                    FontSize="60"
-                    Text="pets"
-                    TextColor="#096B00" />
-                <Button
-                    x:Name="PetRegisterBtn"
-                    Margin="30,0,30,0"
-                    BackgroundColor="#096B00"
-                    Clicked="PetRegisterBtn_Clicked"
-                    CornerRadius="50"
-                    Text="Register a Pet"
-                    TextColor="White"
-                    WidthRequest="180" />
-            </StackLayout>
+           
+
+            <!-- Profile Button -->
+            <Frame BackgroundColor="#12DC00"
+               Margin="12,30,12,0"
+               Padding="20,10"
+               CornerRadius="10"
+               HasShadow="False">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnProfileButtonTapped" />
+                </Frame.GestureRecognizers>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Label Text="person" 
+                       FontFamily="MaterialIcons-Regular" 
+                       TextColor="White" 
+                       FontSize="24" 
+                       VerticalOptions="Center"/>
+                    <Label Text="PROFILE" 
+                       Grid.Column="1"
+                       FontFamily="Poppins-Regular" 
+                       TextColor="White" 
+                       FontSize="24" 
+                       VerticalOptions="Center"
+                       HorizontalOptions="Center"/>
+                </Grid>
+            </Frame>
+
+            <!-- Register a Pet Button -->
+            <Frame BackgroundColor="#12DC00"
+               Margin="12,30,12,0"
+               Padding="20,10"
+               CornerRadius="10"
+               HasShadow="False">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnRegisterPetButtonTapped" />
+                </Frame.GestureRecognizers>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Label Text="pets" 
+                       FontFamily="MaterialIcons-Regular" 
+                       TextColor="White" 
+                       FontSize="24" 
+                       VerticalOptions="Center"/>
+                    <Label Text="REGISTER A PET" 
+                       Grid.Column="1"
+                       FontFamily="Poppins-Regular" 
+                       TextColor="White" 
+                       FontSize="24" 
+                       VerticalOptions="Center"
+                       HorizontalOptions="Center"/>
+                </Grid>
+            </Frame>
         </VerticalStackLayout>
     </Shell.FlyoutContent>
 

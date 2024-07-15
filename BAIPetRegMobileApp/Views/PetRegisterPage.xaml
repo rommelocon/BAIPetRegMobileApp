@@ -115,6 +115,7 @@
                                 FontFamily="MaterialIconsOutlined-Regular"
                                 FontSize="40"
                                 HorizontalOptions="End"
+                                TextColor="Black"
                                 Text="arrow_drop_down"
                                 VerticalOptions="Center" />
                         </Grid>
@@ -157,6 +158,7 @@
                                 FontFamily="MaterialIconsOutlined-Regular"
                                 FontSize="40"
                                 HorizontalOptions="End"
+                                TextColor="Black"
                                 Text="arrow_drop_down"
                                 VerticalOptions="Center" />
                         </Grid>
@@ -198,6 +200,7 @@
                                 FontFamily="MaterialIconsOutlined-Regular"
                                 FontSize="40"
                                 HorizontalOptions="End"
+                                TextColor="Black"
                                 Text="arrow_drop_down"
                                 VerticalOptions="Center" />
 
@@ -269,6 +272,7 @@
                                 FontSize="40"
                                 HorizontalOptions="End"
                                 Text="arrow_drop_down"
+                                TextColor="Black"
                                 VerticalOptions="Center" />
                         </Grid>
                     </Frame>

@@ -42,5 +42,18 @@ namespace BAIPetRegMobileApp
             Shell.Current.GoToAsync(nameof(PetRegisterPage));
             Shell.Current.FlyoutIsPresented = false;
         }
+
+        private void OnProfileButtonTapped(object sender, TappedEventArgs e)
+        {
+            Shell.Current.GoToAsync(nameof(ProfilePage));
+            Shell.Current.FlyoutIsPresented = false;
+        }
+
+        private void OnRegisterPetButtonTapped(object sender, TappedEventArgs e)
+        {
+            Shell.Current.GoToAsync(nameof(PetRegisterPage));
+            Shell.Current.FlyoutIsPresented = false;
+
+        }
     }
 }

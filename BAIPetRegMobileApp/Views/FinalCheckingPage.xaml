@@ -41,6 +41,7 @@
                     FontAttributes="Bold"
                     FontSize="20"
                     Text="Continue"
+                    TextColor="White"
                     WidthRequest="300" />
             </StackLayout>
         </VerticalStackLayout>
