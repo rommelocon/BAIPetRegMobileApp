@@ -195,6 +195,7 @@ public partial class PetRegisterPage : ContentPage
     public PetRegisterPage()
     {
         InitializeComponent();
+        Application.Current.UserAppTheme = AppTheme.Light;
 
 
 

@@ -1,6 +1,7 @@
 ﻿using Android.App;
 using Android.Content.Res;
 using Android.Runtime;
+using AndroidX.AppCompat.App;
 using Microsoft.Maui.Controls.Compatibility.Platform.Android;
 
 namespace BAIPetRegMobileApp
@@ -11,6 +12,7 @@ namespace BAIPetRegMobileApp
         public MainApplication(IntPtr handle, JniHandleOwnership ownership)
             : base(handle, ownership)
         {
+            AppCompatDelegate.DefaultNightMode = AppCompatDelegate.ModeNightNo;
             Microsoft.Maui.Handlers.EntryHandler.Mapper.AppendToMapping(nameof(Entry), (handler, view) =>
             {
                 if (view is Entry)

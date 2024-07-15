@@ -8,7 +8,8 @@ namespace BAIPetRegMobileApp
         public LoginPage()
         {
             InitializeComponent();
-            
+            Application.Current.UserAppTheme = AppTheme.Light;
+
         }
 
 

@@ -8,7 +8,8 @@ public partial class HomePage : ContentPage
     public HomePage()
     {
         InitializeComponent();
-        
+        Application.Current.UserAppTheme = AppTheme.Light;
+
     }
 
 
