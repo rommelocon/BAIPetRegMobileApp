@@ -1,5 +1,6 @@
 ﻿using BAIPetRegMobileApp.Api.Models;
 using BAIPetRegMobileApp.Api.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
@@ -10,16 +11,16 @@ namespace BAIPetRegMobileApp.Api.Controllers
     public class AccountController : ControllerBase
     {
         //userManager will hold the UserManager instance
-        private readonly UserManager<UserModel> userManager;
+        private readonly UserManager<ApplicationUser> userManager;
         //signInManager will hold the SignInManager instance
-        private readonly SignInManager<UserModel> signInManager;
+        private readonly SignInManager<ApplicationUser> signInManager;
 
         private readonly IJwtUtils jwtUtils;
 
         private readonly IConfiguration configuration;
         //Both UserManager and SignInManager services are injected into the AccountController
         //using constructor injection
-        public AccountController(UserManager<UserModel> userManager, SignInManager<UserModel> signInManager, IConfiguration configuration, IJwtUtils jwtUtils)
+        public AccountController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, IConfiguration configuration, IJwtUtils jwtUtils)
         {
             this.userManager = userManager;
             this.signInManager = signInManager;
@@ -27,11 +28,63 @@ namespace BAIPetRegMobileApp.Api.Controllers
             this.jwtUtils = jwtUtils;
         }
 
+        [HttpGet("{username}")]
+        [Authorize]
+        public async Task<IActionResult> GetProfile(string username)
+        {
+            var user = await userManager.FindByNameAsync(username);
+            if (user == null)
+            {   
+                return NotFound();
+            }
+
+            var profile = new ProfileViewModel
+            {
+                UserName = user.UserName,
+                Email = user.Email,
+                FirstName = user.Firstname,
+                LastName = user.Lastname,
+                // add other fields as needed
+            };
+
+            return Ok(profile);
+        }
+
+        [HttpPut("{username}")]
+        [Authorize]
+        public async Task<IActionResult> UpdateProfile(string username, [FromBody] ProfileViewModel model)
+        {
+            var user = await userManager.FindByNameAsync(username);
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            user.Email = model.Email;
+            user.Firstname = model.FirstName;
+            user.Lastname = model.LastName;
+            // update other fields as needed
+
+            var result = await userManager.UpdateAsync(user);
+            if (result.Succeeded)
+            {
+                return Ok();
+            }
+
+            return BadRequest(result.Errors);
+        }
+
         [HttpPost("register")]
         public async Task<IActionResult> Register(RegisterViewModel model)
         {
-            var user = new UserModel { UserName = model.UserName, Email = model.Email };
-            var result = await userManager.CreateAsync(user, model.Password);
+            var user = new ApplicationUser
+            { 
+                UserName = model.UserName, 
+                Email = model.Email,
+                DateRegistered = DateTime.UtcNow // Set the registration date
+            };
+
+            var result = await userManager.CreateAsync(user, model.Password!);
             if (result.Succeeded)
             {
                 return Ok("User registered successfully");
@@ -81,7 +134,7 @@ namespace BAIPetRegMobileApp.Api.Controllers
         }
 
         [HttpGet("user")]
-        public async Task<ActionResult<UserModel>> GetUserInfo()
+        public async Task<ActionResult<ApplicationUser>> GetUserInfo()
         {
             var user = await userManager.GetUserAsync(User); // Get the current authenticated user
             if (user == null)

@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace BAIPetRegMobileApp.Api.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialMigration : Migration
+    public partial class Initial : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -26,67 +26,66 @@ namespace BAIPetRegMobileApp.Api.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "AspNetUsers",
+                name: "TblAccessLevel",
                 columns: table => new
                 {
-                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    DateRegistered = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    RegOptID = table.Column<int>(type: "int", nullable: true),
-                    Firstname = table.Column<string>(type: "nvarchar(MAX)", nullable: false),
-                    Lastname = table.Column<string>(type: "nvarchar(MAX)", nullable: false),
-                    MiddleName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    ExtensionName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    Birthday = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    SexID = table.Column<int>(type: "int", nullable: true),
-                    SexDescription = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    CivilStatusCode = table.Column<int>(type: "int", nullable: true),
-                    Position = table.Column<string>(type: "nvarchar(250)", maxLength: 250, nullable: false),
-                    DocumentID = table.Column<int>(type: "int", nullable: true),
-                    DocumentDescription = table.Column<string>(type: "nvarchar(150)", maxLength: 150, nullable: false),
-                    UploadValidID = table.Column<byte[]>(type: "varbinary(max)", nullable: false),
-                    PhilSysYN = table.Column<bool>(type: "bit", nullable: true),
-                    PhilSysIDNumber = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    Signature = table.Column<byte[]>(type: "varbinary(max)", nullable: false),
-                    Active = table.Column<bool>(type: "bit", nullable: true),
-                    ProfilePicture = table.Column<byte[]>(type: "varbinary(max)", nullable: false),
-                    AgencyID = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: false),
-                    AgencyDescription = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    AccessLevelID = table.Column<int>(type: "int", nullable: true),
-                    AccessLevelDescription = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    RcodeNum = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    Region = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
-                    PcodeNum = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    ProvinceName = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
-                    McodeNum = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    MunicipalitiesCities = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
-                    Bcode = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    BarangayName = table.Column<string>(type: "nvarchar(150)", maxLength: 150, nullable: false),
-                    FullAddress = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    isEmailSent = table.Column<bool>(type: "bit", nullable: true),
-                    ApprovedBy = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    ApprovedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    MobileNumber = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    OTPSent = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    OTPSentAttempt = table.Column<int>(type: "int", nullable: true),
-                    OTPDateSent = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
-                    NormalizedUserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
-                    Email = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
-                    NormalizedEmail = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
-                    EmailConfirmed = table.Column<bool>(type: "bit", nullable: false),
-                    PasswordHash = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    SecurityStamp = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    ConcurrencyStamp = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    PhoneNumberConfirmed = table.Column<bool>(type: "bit", nullable: false),
-                    TwoFactorEnabled = table.Column<bool>(type: "bit", nullable: false),
-                    LockoutEnd = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true),
-                    LockoutEnabled = table.Column<bool>(type: "bit", nullable: false),
-                    AccessFailedCount = table.Column<int>(type: "int", nullable: false)
+                    AccessLevelID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_AspNetUsers", x => x.Id);
+                    table.PrimaryKey("PK_TblAccessLevel", x => x.AccessLevelID);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "TblAgencyName",
+                columns: table => new
+                {
+                    AgencyID = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_TblAgencyName", x => x.AgencyID);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "TblBarangay",
+                columns: table => new
+                {
+                    Bcode = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    BarangayName = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_TblBarangay", x => x.Bcode);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "TblRegistrationOption",
+                columns: table => new
+                {
+                    RegOptID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_TblRegistrationOption", x => x.RegOptID);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "TblSexType",
+                columns: table => new
+                {
+                    SexID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_TblSexType", x => x.SexID);
                 });
 
             migrationBuilder.CreateTable(
@@ -108,6 +107,95 @@ namespace BAIPetRegMobileApp.Api.Migrations
                         principalTable: "AspNetRoles",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "AspNetUsers",
+                columns: table => new
+                {
+                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    DateRegistered = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    RegOptID = table.Column<int>(type: "int", nullable: true),
+                    Firstname = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Lastname = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    MiddleName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
+                    ExtensionName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
+                    Birthday = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    SexID = table.Column<int>(type: "int", nullable: true),
+                    SexDescription = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
+                    CivilStatusCode = table.Column<int>(type: "int", nullable: true),
+                    Position = table.Column<string>(type: "nvarchar(250)", maxLength: 250, nullable: true),
+                    DocumentID = table.Column<int>(type: "int", nullable: true),
+                    DocumentDescription = table.Column<string>(type: "nvarchar(150)", maxLength: 150, nullable: true),
+                    UploadValidID = table.Column<byte[]>(type: "varbinary(max)", nullable: true),
+                    PhilSysYN = table.Column<bool>(type: "bit", nullable: true),
+                    PhilSysIDNumber = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
+                    Signature = table.Column<byte[]>(type: "varbinary(max)", nullable: true),
+                    Active = table.Column<bool>(type: "bit", nullable: true),
+                    ProfilePicture = table.Column<byte[]>(type: "varbinary(max)", nullable: true),
+                    AgencyID = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: true),
+                    AgencyDescription = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
+                    AccessLevelID = table.Column<int>(type: "int", nullable: true),
+                    AccessLevelDescription = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
+                    RcodeNum = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
+                    Region = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
+                    PcodeNum = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
+                    ProvinceName = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
+                    McodeNum = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
+                    MunicipalitiesCities = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
+                    Bcode = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
+                    BarangayName = table.Column<string>(type: "nvarchar(150)", maxLength: 150, nullable: true),
+                    FullAddress = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    isEmailSent = table.Column<bool>(type: "bit", nullable: true),
+                    ApprovedBy = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
+                    ApprovedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    MobileNumber = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
+                    OTPSent = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    OTPSentAttempt = table.Column<int>(type: "int", nullable: true),
+                    OTPDateSent = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
+                    NormalizedUserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
+                    Email = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
+                    NormalizedEmail = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
+                    EmailConfirmed = table.Column<bool>(type: "bit", nullable: false),
+                    PasswordHash = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    SecurityStamp = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ConcurrencyStamp = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    PhoneNumberConfirmed = table.Column<bool>(type: "bit", nullable: false),
+                    TwoFactorEnabled = table.Column<bool>(type: "bit", nullable: false),
+                    LockoutEnd = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true),
+                    LockoutEnabled = table.Column<bool>(type: "bit", nullable: false),
+                    AccessFailedCount = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AspNetUsers", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_AspNetUsers_TblAccessLevel_AccessLevelID",
+                        column: x => x.AccessLevelID,
+                        principalTable: "TblAccessLevel",
+                        principalColumn: "AccessLevelID");
+                    table.ForeignKey(
+                        name: "FK_AspNetUsers_TblAgencyName_AgencyID",
+                        column: x => x.AgencyID,
+                        principalTable: "TblAgencyName",
+                        principalColumn: "AgencyID");
+                    table.ForeignKey(
+                        name: "FK_AspNetUsers_TblBarangay_Bcode",
+                        column: x => x.Bcode,
+                        principalTable: "TblBarangay",
+                        principalColumn: "Bcode");
+                    table.ForeignKey(
+                        name: "FK_AspNetUsers_TblRegistrationOption_RegOptID",
+                        column: x => x.RegOptID,
+                        principalTable: "TblRegistrationOption",
+                        principalColumn: "RegOptID");
+                    table.ForeignKey(
+                        name: "FK_AspNetUsers_TblSexType_SexID",
+                        column: x => x.SexID,
+                        principalTable: "TblSexType",
+                        principalColumn: "SexID");
                 });
 
             migrationBuilder.CreateTable(
@@ -228,6 +316,31 @@ namespace BAIPetRegMobileApp.Api.Migrations
                 column: "NormalizedEmail");
 
             migrationBuilder.CreateIndex(
+                name: "IX_AspNetUsers_AccessLevelID",
+                table: "AspNetUsers",
+                column: "AccessLevelID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_AspNetUsers_AgencyID",
+                table: "AspNetUsers",
+                column: "AgencyID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_AspNetUsers_Bcode",
+                table: "AspNetUsers",
+                column: "Bcode");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_AspNetUsers_RegOptID",
+                table: "AspNetUsers",
+                column: "RegOptID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_AspNetUsers_SexID",
+                table: "AspNetUsers",
+                column: "SexID");
+
+            migrationBuilder.CreateIndex(
                 name: "UserNameIndex",
                 table: "AspNetUsers",
                 column: "NormalizedUserName",
@@ -258,6 +371,21 @@ namespace BAIPetRegMobileApp.Api.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
+
+            migrationBuilder.DropTable(
+                name: "TblAccessLevel");
+
+            migrationBuilder.DropTable(
+                name: "TblAgencyName");
+
+            migrationBuilder.DropTable(
+                name: "TblBarangay");
+
+            migrationBuilder.DropTable(
+                name: "TblRegistrationOption");
+
+            migrationBuilder.DropTable(
+                name: "TblSexType");
         }
     }
 }

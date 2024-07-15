@@ -1,8 +1,7 @@
 ﻿using BAIPetRegMobileApp.Models;
-using System.Net.Http.Headers;
-using System.Net.Http;
 using System.Net.Http.Json;
 using System.Text.Json;
+using BAIPetRegMobileApp.Views;
 using BAIPetRegMobileApp.ViewModels;
 
 namespace BAIPetRegMobileApp.Services;
@@ -33,19 +32,22 @@ public class ClientService
 
         if (result.IsSuccessStatusCode)
         {
-            var responseContent = await result.Content.ReadFromJsonAsync<LoginResponse>();
+            var response = await result.Content.ReadFromJsonAsync<LoginResponse>();
 
-            if (responseContent is not null)
+            if (response is not null)
             {
                 var serializedResponse = JsonSerializer.Serialize(
                     new LoginResponse()
                     {
-                        AccessToken = responseContent.AccessToken,
-                        RefreshToken = responseContent.RefreshToken,
-                        UserName = responseContent.UserName
+                        AccessToken = response.AccessToken,
+                        RefreshToken = response.RefreshToken,
+                        UserName = response.UserName
                     });
 
-                await SecureStorage.SetAsync("Authentication", serializedResponse);   
+                await SecureStorage.SetAsync("Authentication", serializedResponse);
+
+                // Navigate to HomePage
+                await Shell.Current.GoToAsync(nameof(HomePage));
             }
             else
             {
@@ -68,19 +70,13 @@ public class ClientService
         await Shell.Current.GoToAsync(nameof(LoginPage));
     }
 
-    public async Task<UserModel> GetUserInfoAsync()
+    public async Task<HomePageViewModel> GetProfileAsync(string username)
     {
         var httpClient = httpClientFactory.CreateClient("custom-httpclient");
-        if (SecureStorage.Default.GetAsync("Authentication") is null)
-        {
-            var result = await httpClient.GetAsync("/Account/user");
-            if (result.IsSuccessStatusCode)
-            {
-                var userInfo = await result.Content.ReadFromJsonAsync<UserModel>();
-                return userInfo;
-            }
-            return null;
-        }
-        return null;
+        var response = await httpClient.GetAsync($"/Account/{username}");
+        response.EnsureSuccessStatusCode();
+
+        var json = await response.Content.ReadAsStringAsync();
+        return JsonSerializer.Deserialize<HomePageViewModel>(json);
     }
 }

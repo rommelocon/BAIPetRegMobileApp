@@ -5,16 +5,19 @@ namespace BAIPetRegMobileApp;
 
 public partial class HomePage : ContentPage
 {
+    private HomePageViewModel viewModel;
+
     public HomePage(HomePageViewModel viewModel)
     {
         InitializeComponent();
+        this.viewModel = viewModel;
         BindingContext = viewModel;
+    }
 
-        // Handle navigation parameters
-        MessagingCenter.Subscribe<HomePageViewModel, string>(this, "UserName", (sender, arg) =>
-        {
-            UsernameLabel.Text = arg;
-        });
+    protected override async void OnAppearing()
+    {
+        base.OnAppearing();
+        await viewModel.LoadProfileCommand.ExecuteAsync(null); ;
     }
 
     protected override bool OnBackButtonPressed()

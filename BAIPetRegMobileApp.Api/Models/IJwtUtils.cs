@@ -7,7 +7,7 @@ namespace BAIPetRegMobileApp.Api.Models
 {
     public interface IJwtUtils
     {
-        public string GenerateToken(UserModel user);
+        public string GenerateToken(ApplicationUser user);
         public string GenerateRefreshToken();
         public ClaimsPrincipal GetPrincipalFromToken(string token);
     }
@@ -21,7 +21,7 @@ namespace BAIPetRegMobileApp.Api.Models
             _secret = configuration["Jwt:Secret"]; // Assuming Jwt:Secret is configured in appsettings.json or other configuration source
         }
 
-        public string GenerateToken(UserModel user)
+        public string GenerateToken(ApplicationUser user)
         {
             // generate token that is valid for 7 days
             var tokenHandler = new JwtSecurityTokenHandler();

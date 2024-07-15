@@ -26,7 +26,7 @@ builder.Services.AddDbContext<UserDbContext>(options =>
 builder.Services.AddDbContext<PetRegistrationDbContext>(options =>
            options.UseSqlServer(builder.Configuration.GetConnectionString("PetRegistrationDb")));
 
-builder.Services.AddIdentity<UserModel, IdentityRole>()
+builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
     .AddEntityFrameworkStores<UserDbContext>()
     .AddDefaultTokenProviders();
 
