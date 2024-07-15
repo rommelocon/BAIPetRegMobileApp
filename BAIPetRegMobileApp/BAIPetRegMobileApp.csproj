@@ -47,8 +47,8 @@
 	
 
 		<!-- Images -->
-		<MauiImage Include="Resources\AppIcon\Images\*" />
-		<MauiImage Update="Resources\AppIcon\Images\dotnet_bot.png" Resize="True" BaseSize="300,185" />
+		<MauiImage Include="Resources\Images\*" />
+		<MauiImage Update="Resources\Images\dotnet_bot.png" Resize="True" BaseSize="300,185" />
 
 		<!-- Custom Fonts -->
 		<MauiFont Include="Resources\Fonts\*" />
@@ -65,17 +65,17 @@
 
 	<ItemGroup>
 		<None Remove="Platforms\Android\Resources\xml\network_security_config.xml" />
-		<None Remove="Resources\AppIcon\Images\cat_1.jpg" />
-		<None Remove="Resources\AppIcon\Images\cat_2.jpg" />
-		<None Remove="Resources\AppIcon\Images\dog1.jpeg" />
-		<None Remove="Resources\AppIcon\Images\dog2.jpg" />
-		<None Remove="Resources\AppIcon\Images\dog3.jpg" />
-		<None Remove="Resources\AppIcon\Images\dog4.jpg" />
-		<None Remove="Resources\AppIcon\Images\dog_1.jpg" />
-		<None Remove="Resources\AppIcon\Images\dog_2.jpg" />
-		<None Remove="Resources\AppIcon\Images\dog_img.png" />
-		<None Remove="Resources\AppIcon\Images\profile_pic.png" />
-		<None Remove="Resources\AppIcon\Images\profile_pic_1.jpg" />
+		<None Remove="Resources\Images\cat_1.jpg" />
+		<None Remove="Resources\Images\cat_2.jpg" />
+		<None Remove="Resources\Images\dog1.jpeg" />
+		<None Remove="Resources\Images\dog2.jpg" />
+		<None Remove="Resources\Images\dog3.jpg" />
+		<None Remove="Resources\Images\dog4.jpg" />
+		<None Remove="Resources\Images\dog_1.jpg" />
+		<None Remove="Resources\Images\dog_2.jpg" />
+		<None Remove="Resources\Images\dog_img.png" />
+		<None Remove="Resources\Images\profile_pic.png" />
+		<None Remove="Resources\Images\profile_pic_1.jpg" />
 		<None Remove="Resources\Fonts\MaterialIcons-Regular.ttf" />
 		<None Remove="Resources\Fonts\MaterialIconsOutlined-Regular.otf" />
 	</ItemGroup>
@@ -124,6 +124,11 @@
 
 	<ItemGroup>
 		<Folder Include="Components\" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiImage Include="Resources\Images\DogBreed\affenpinscher.jpg" />
+	  <MauiImage Include="Resources\Images\DogBreed\afghan_hound.jpg" />
 	</ItemGroup>
 
 	<ItemGroup>
