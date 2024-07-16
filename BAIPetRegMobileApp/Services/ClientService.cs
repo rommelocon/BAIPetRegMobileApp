@@ -1,7 +1,6 @@
 ﻿using BAIPetRegMobileApp.Models;
 using System.Net.Http.Json;
 using System.Text.Json;
-using BAIPetRegMobileApp.Views;
 using BAIPetRegMobileApp.ViewModels;
 
 namespace BAIPetRegMobileApp.Services;
@@ -70,13 +69,25 @@ public class ClientService
         await Shell.Current.GoToAsync(nameof(LoginPage));
     }
 
-    public async Task<HomePageViewModel> GetProfileAsync(string username)
+    public async Task<HomePageViewModel> GetHomePageViewModel(string username)
     {
         var httpClient = httpClientFactory.CreateClient("custom-httpclient");
         var response = await httpClient.GetAsync($"/Account/{username}");
         response.EnsureSuccessStatusCode();
 
         var json = await response.Content.ReadAsStringAsync();
-        return JsonSerializer.Deserialize<HomePageViewModel>(json);
+        var user = JsonSerializer.Deserialize<HomePageViewModel>(json);
+        return user!;
+    }
+
+    public async Task<ProfilePageViewModel> GetProfilePageViewModel(string username)
+    {
+        var httpClient = httpClientFactory.CreateClient("custom-httpclient");
+        var response = await httpClient.GetAsync($"/Account/{username}");
+        response.EnsureSuccessStatusCode();
+
+        var json = await response.Content.ReadAsStringAsync();
+        var user = JsonSerializer.Deserialize<ProfilePageViewModel>(json);
+        return user!;
     }
 }

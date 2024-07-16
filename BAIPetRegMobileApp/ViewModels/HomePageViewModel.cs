@@ -11,6 +11,8 @@ public partial class HomePageViewModel : ObservableObject
 
     [ObservableProperty]
     private string userName;
+    [ObservableProperty]
+    private string welcomeMessage;
 
     // add other fields as needed
 
@@ -37,8 +39,15 @@ public partial class HomePageViewModel : ObservableObject
                 var refreshToken = loginResponse.RefreshToken;
                 var userName = loginResponse.UserName;
 
+                if (!string.IsNullOrEmpty(userName))
+                {
+                    // Upper case the first character and concatenate with the rest of the string
+                    userName = char.ToUpper(userName[0]) + userName.Substring(1);
+                }
+
                 // Use these properties as needed
                 UserName = userName ?? string.Empty;
+                WelcomeMessage = $"Welcome {UserName}!";
             }
             else
             {

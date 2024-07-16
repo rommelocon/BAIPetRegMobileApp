@@ -50,10 +50,15 @@ public static class MauiProgram
         builder.Services.AddSingleton<FinalCheckingPage>();
         builder.Services.AddSingleton<PetRegisterPage>();
         builder.Services.AddSingleton<RegisterPage>();
+        builder.Services.AddSingleton<ProfilePage>();
+        builder.Services.AddSingleton<DogBreedPage>();
+        builder.Services.AddSingleton<CatBreedPage>();
+        builder.Services.AddSingleton<PetInformationPage>();
 
         // View Models
         builder.Services.AddSingleton<LoginPageViewModel>();
         builder.Services.AddSingleton<HomePageViewModel>();
+        builder.Services.AddSingleton<ProfilePageViewModel>();
 
         // Services
         builder.Services.AddSingleton<ClientService>();

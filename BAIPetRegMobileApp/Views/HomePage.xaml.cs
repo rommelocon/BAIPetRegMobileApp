@@ -14,7 +14,6 @@ public partial class HomePage : ContentPage
         this.viewModel = viewModel;
         BindingContext = viewModel;
         Application.Current.UserAppTheme = AppTheme.Light;
-
     }
 
     protected override async void OnAppearing()

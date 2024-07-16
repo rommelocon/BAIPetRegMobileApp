@@ -1,14 +1,12 @@
-﻿using BAIPetRegMobileApp.ViewModels;
-using BAIPetRegMobileApp.Views;
+﻿using BAIPetRegMobileApp.Views;
 
 namespace BAIPetRegMobileApp
 {
     public partial class AppShell : Shell
     {
-        public AppShell(LoginPageViewModel loginPageViewModel)
+        public AppShell()
         {
             InitializeComponent();
-            BindingContext = loginPageViewModel;
             Routing.RegisterRoute(nameof(LoginPage), typeof(LoginPage));
             Routing.RegisterRoute(nameof(HomePage), typeof(HomePage));
             Routing.RegisterRoute(nameof(FinalCheckingPage), typeof(FinalCheckingPage));
@@ -22,12 +20,6 @@ namespace BAIPetRegMobileApp
 
         private void ClostMenuButton_Clicked(object sender, EventArgs e)
         {
-            Shell.Current.FlyoutIsPresented = false;
-        }
-
-        private void ProfilePageBtn_Clicked(object sender, EventArgs e)
-        {
-            Shell.Current.GoToAsync(nameof(ProfilePage));
             Shell.Current.FlyoutIsPresented = false;
         }
 

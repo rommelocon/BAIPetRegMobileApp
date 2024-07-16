@@ -20,12 +20,10 @@ namespace BAIPetRegMobileApp.ViewModels
         private bool isAuthenticated;
 
         private readonly ClientService clientService;
-        private readonly HomePageViewModel homePageViewModel;
 
-        public LoginPageViewModel(ClientService clientService, HomePageViewModel homePageViewModel)
+        public LoginPageViewModel(ClientService clientService)
         {
             this.clientService = clientService;
-            this.homePageViewModel = homePageViewModel;
             RegisterModel = new RegisterModel();
             LoginModel = new LoginModel();
             IsAuthenticated = false;
@@ -46,9 +44,6 @@ namespace BAIPetRegMobileApp.ViewModels
         [RelayCommand]
         private async Task Logout()
         {
-            Console.WriteLine("Logout command executed"); // Logging
-            IsAuthenticated = false;
-            LoginModel = new LoginModel();
             await clientService.Logout();
         }
     }

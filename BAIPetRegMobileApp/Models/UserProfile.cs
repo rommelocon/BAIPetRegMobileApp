@@ -1,5 +1,5 @@
 ﻿namespace BAIPetRegMobileApp.Models;
-public partial class UserInfoModel
+public class UserProfile
 {
     public string? UserName { get; set; }
 }

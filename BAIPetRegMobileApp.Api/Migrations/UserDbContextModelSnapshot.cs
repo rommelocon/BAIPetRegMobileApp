@@ -17,7 +17,7 @@ namespace BAIPetRegMobileApp.Api.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "8.0.6")
+                .HasAnnotation("ProductVersion", "8.0.7")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -61,7 +61,7 @@ namespace BAIPetRegMobileApp.Api.Migrations
 
                     b.Property<string>("Bcode")
                         .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("NVARCHAR(50)");
 
                     b.Property<DateTime?>("Birthday")
                         .HasColumnType("datetime2");
@@ -180,7 +180,7 @@ namespace BAIPetRegMobileApp.Api.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
-                    b.Property<int?>("RegOptID")
+                    b.Property<int>("RegOptID")
                         .HasColumnType("int");
 
                     b.Property<string>("Region")
@@ -245,7 +245,6 @@ namespace BAIPetRegMobileApp.Api.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("AccessLevelID"));
 
                     b.Property<string>("Description")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("AccessLevelID");
@@ -260,7 +259,6 @@ namespace BAIPetRegMobileApp.Api.Migrations
                         .HasColumnType("nvarchar(10)");
 
                     b.Property<string>("Description")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("AgencyID");
@@ -271,14 +269,41 @@ namespace BAIPetRegMobileApp.Api.Migrations
             modelBuilder.Entity("BAIPetRegMobileApp.Api.Models.TblBarangay", b =>
                 {
                     b.Property<string>("Bcode")
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("NVARCHAR(50)");
 
                     b.Property<string>("BarangayName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("NVARCHAR(150)");
+
+                    b.Property<string>("MunCode")
+                        .IsRequired()
+                        .HasColumnType("NVARCHAR(50)");
+
+                    b.Property<double?>("OldBcode")
+                        .HasColumnType("float");
+
+                    b.Property<string>("OldBryName")
+                        .IsRequired()
+                        .HasColumnType("NVARCHAR(150)");
+
+                    b.Property<string>("PSGCID")
+                        .IsRequired()
+                        .HasColumnType("NVARCHAR(50)");
+
+                    b.Property<double?>("Pop2020")
+                        .HasColumnType("float");
+
+                    b.Property<string>("ProvCode")
+                        .IsRequired()
+                        .HasColumnType("NVARCHAR(50)");
+
+                    b.Property<string>("Rcode")
+                        .IsRequired()
+                        .HasColumnType("NVARCHAR(50)");
 
                     b.HasKey("Bcode");
+
+                    b.HasIndex("MunCode");
 
                     b.ToTable("TblBarangay");
                 });
@@ -286,14 +311,12 @@ namespace BAIPetRegMobileApp.Api.Migrations
             modelBuilder.Entity("BAIPetRegMobileApp.Api.Models.TblRegistrationOption", b =>
                 {
                     b.Property<int>("RegOptID")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("RegOptID"));
-
-                    b.Property<string>("Description")
+                    b.Property<string>("RegOptDescription")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.HasKey("RegOptID");
 
@@ -450,6 +473,51 @@ namespace BAIPetRegMobileApp.Api.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("TblMunicipalities", b =>
+                {
+                    b.Property<string>("MunCode")
+                        .HasColumnType("NVARCHAR(50)");
+
+                    b.Property<string>("CityClass")
+                        .IsRequired()
+                        .HasColumnType("NVARCHAR(50)");
+
+                    b.Property<string>("GeographicLevel")
+                        .IsRequired()
+                        .HasColumnType("NVARCHAR(150)");
+
+                    b.Property<string>("IncomeClassification")
+                        .IsRequired()
+                        .HasColumnType("NVARCHAR(50)");
+
+                    b.Property<string>("MunCity")
+                        .IsRequired()
+                        .HasColumnType("NVARCHAR(150)");
+
+                    b.Property<string>("OldNames")
+                        .IsRequired()
+                        .HasColumnType("NVARCHAR(150)");
+
+                    b.Property<string>("PSGC")
+                        .IsRequired()
+                        .HasColumnType("NVARCHAR(50)");
+
+                    b.Property<double?>("Pop2020")
+                        .HasColumnType("float");
+
+                    b.Property<string>("ProvCode")
+                        .IsRequired()
+                        .HasColumnType("NVARCHAR(50)");
+
+                    b.Property<string>("Rcode")
+                        .IsRequired()
+                        .HasColumnType("NVARCHAR(50)");
+
+                    b.HasKey("MunCode");
+
+                    b.ToTable("TblMunicipalities");
+                });
+
             modelBuilder.Entity("BAIPetRegMobileApp.Api.Models.ApplicationUser", b =>
                 {
                     b.HasOne("BAIPetRegMobileApp.Api.Models.TblAccessLevel", "AccessLevel")
@@ -466,7 +534,9 @@ namespace BAIPetRegMobileApp.Api.Migrations
 
                     b.HasOne("BAIPetRegMobileApp.Api.Models.TblRegistrationOption", "RegistrationOption")
                         .WithMany("ApplicationUsers")
-                        .HasForeignKey("RegOptID");
+                        .HasForeignKey("RegOptID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("BAIPetRegMobileApp.Api.Models.TblSexType", "SexType")
                         .WithMany("ApplicationUsers")
@@ -481,6 +551,17 @@ namespace BAIPetRegMobileApp.Api.Migrations
                     b.Navigation("RegistrationOption");
 
                     b.Navigation("SexType");
+                });
+
+            modelBuilder.Entity("BAIPetRegMobileApp.Api.Models.TblBarangay", b =>
+                {
+                    b.HasOne("TblMunicipalities", "Municipality")
+                        .WithMany("Barangays")
+                        .HasForeignKey("MunCode")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Municipality");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -557,6 +638,11 @@ namespace BAIPetRegMobileApp.Api.Migrations
             modelBuilder.Entity("BAIPetRegMobileApp.Api.Models.TblSexType", b =>
                 {
                     b.Navigation("ApplicationUsers");
+                });
+
+            modelBuilder.Entity("TblMunicipalities", b =>
+                {
+                    b.Navigation("Barangays");
                 });
 #pragma warning restore 612, 618
         }

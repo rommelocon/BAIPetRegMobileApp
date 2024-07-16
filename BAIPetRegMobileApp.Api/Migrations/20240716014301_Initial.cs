@@ -31,7 +31,7 @@ namespace BAIPetRegMobileApp.Api.Migrations
                 {
                     AccessLevelID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -43,7 +43,7 @@ namespace BAIPetRegMobileApp.Api.Migrations
                 columns: table => new
                 {
                     AgencyID = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -51,24 +51,31 @@ namespace BAIPetRegMobileApp.Api.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "TblBarangay",
+                name: "TblMunicipalities",
                 columns: table => new
                 {
-                    Bcode = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    BarangayName = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    MunCode = table.Column<string>(type: "NVARCHAR(50)", nullable: false),
+                    Rcode = table.Column<string>(type: "NVARCHAR(50)", nullable: false),
+                    ProvCode = table.Column<string>(type: "NVARCHAR(50)", nullable: false),
+                    MunCity = table.Column<string>(type: "NVARCHAR(150)", nullable: false),
+                    PSGC = table.Column<string>(type: "NVARCHAR(50)", nullable: false),
+                    GeographicLevel = table.Column<string>(type: "NVARCHAR(150)", nullable: false),
+                    OldNames = table.Column<string>(type: "NVARCHAR(150)", nullable: false),
+                    CityClass = table.Column<string>(type: "NVARCHAR(50)", nullable: false),
+                    IncomeClassification = table.Column<string>(type: "NVARCHAR(50)", nullable: false),
+                    Pop2020 = table.Column<double>(type: "float", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_TblBarangay", x => x.Bcode);
+                    table.PrimaryKey("PK_TblMunicipalities", x => x.MunCode);
                 });
 
             migrationBuilder.CreateTable(
                 name: "TblRegistrationOption",
                 columns: table => new
                 {
-                    RegOptID = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    RegOptID = table.Column<int>(type: "int", nullable: false),
+                    RegOptDescription = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -110,12 +117,37 @@ namespace BAIPetRegMobileApp.Api.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "TblBarangay",
+                columns: table => new
+                {
+                    Bcode = table.Column<string>(type: "NVARCHAR(50)", nullable: false),
+                    Rcode = table.Column<string>(type: "NVARCHAR(50)", nullable: false),
+                    ProvCode = table.Column<string>(type: "NVARCHAR(50)", nullable: false),
+                    MunCode = table.Column<string>(type: "NVARCHAR(50)", nullable: false),
+                    PSGCID = table.Column<string>(type: "NVARCHAR(50)", nullable: false),
+                    BarangayName = table.Column<string>(type: "NVARCHAR(150)", nullable: false),
+                    OldBcode = table.Column<double>(type: "float", nullable: true),
+                    OldBryName = table.Column<string>(type: "NVARCHAR(150)", nullable: false),
+                    Pop2020 = table.Column<double>(type: "float", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_TblBarangay", x => x.Bcode);
+                    table.ForeignKey(
+                        name: "FK_TblBarangay_TblMunicipalities_MunCode",
+                        column: x => x.MunCode,
+                        principalTable: "TblMunicipalities",
+                        principalColumn: "MunCode",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "AspNetUsers",
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     DateRegistered = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    RegOptID = table.Column<int>(type: "int", nullable: true),
+                    RegOptID = table.Column<int>(type: "int", nullable: false),
                     Firstname = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Lastname = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     MiddleName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
@@ -143,7 +175,7 @@ namespace BAIPetRegMobileApp.Api.Migrations
                     ProvinceName = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
                     McodeNum = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
                     MunicipalitiesCities = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
-                    Bcode = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
+                    Bcode = table.Column<string>(type: "NVARCHAR(50)", maxLength: 50, nullable: true),
                     BarangayName = table.Column<string>(type: "nvarchar(150)", maxLength: 150, nullable: true),
                     FullAddress = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     isEmailSent = table.Column<bool>(type: "bit", nullable: true),
@@ -190,7 +222,8 @@ namespace BAIPetRegMobileApp.Api.Migrations
                         name: "FK_AspNetUsers_TblRegistrationOption_RegOptID",
                         column: x => x.RegOptID,
                         principalTable: "TblRegistrationOption",
-                        principalColumn: "RegOptID");
+                        principalColumn: "RegOptID",
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_AspNetUsers_TblSexType_SexID",
                         column: x => x.SexID,
@@ -346,6 +379,11 @@ namespace BAIPetRegMobileApp.Api.Migrations
                 column: "NormalizedUserName",
                 unique: true,
                 filter: "[NormalizedUserName] IS NOT NULL");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_TblBarangay_MunCode",
+                table: "TblBarangay",
+                column: "MunCode");
         }
 
         /// <inheritdoc />
@@ -386,6 +424,9 @@ namespace BAIPetRegMobileApp.Api.Migrations
 
             migrationBuilder.DropTable(
                 name: "TblSexType");
+
+            migrationBuilder.DropTable(
+                name: "TblMunicipalities");
         }
     }
 }

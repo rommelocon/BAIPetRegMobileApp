@@ -38,12 +38,20 @@ namespace BAIPetRegMobileApp.Api.Controllers
                 return NotFound();
             }
 
-            var profile = new ProfileViewModel
+            var profile = new ApplicationUser
             {
                 UserName = user.UserName,
                 Email = user.Email,
-                FirstName = user.Firstname,
-                LastName = user.Lastname,
+                Firstname = user.Firstname,
+                Lastname = user.Lastname,
+                CivilStatusCode = user.CivilStatusCode,
+                Birthday = user.Birthday,
+                SexID = user.SexID,
+                MobileNumber = user.MobileNumber,
+                Region = user.Region,
+                ProvinceName = user.ProvinceName,
+                MunicipalitiesCities = user.MunicipalitiesCities,
+                BarangayName = user.BarangayName,
                 // add other fields as needed
             };
 
@@ -61,8 +69,8 @@ namespace BAIPetRegMobileApp.Api.Controllers
             }
 
             user.Email = model.Email;
-            user.Firstname = model.FirstName;
-            user.Lastname = model.LastName;
+            user.Firstname = model.FirstName!;
+            user.Lastname = model.LastName!;
             // update other fields as needed
 
             var result = await userManager.UpdateAsync(user);
@@ -85,7 +93,7 @@ namespace BAIPetRegMobileApp.Api.Controllers
             };
 
             var result = await userManager.CreateAsync(user, model.Password!);
-            if (result.Succeeded)
+                if (result.Succeeded)
             {
                 return Ok("User registered successfully");
             }
@@ -98,11 +106,11 @@ namespace BAIPetRegMobileApp.Api.Controllers
         [HttpPost("login")]
         public async Task<IActionResult> Login([FromBody] LoginModel model)
         {
-            var result = await signInManager.PasswordSignInAsync(model.UserName, model.Password, model.RememberMe, lockoutOnFailure: false);
+            var result = await signInManager.PasswordSignInAsync(model.UserName!, model.Password!, model.RememberMe, lockoutOnFailure: false);
             if (result.Succeeded)
             {
-                var user = await userManager.FindByNameAsync(model.UserName);
-                var accessToken = jwtUtils.GenerateToken(user);
+                var user = await userManager.FindByNameAsync(model.UserName!);
+                var accessToken = jwtUtils.GenerateToken(user!);
                 var refreshToken = jwtUtils.GenerateRefreshToken();
 
                 return Ok(new

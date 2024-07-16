@@ -46,7 +46,8 @@
                     Keyboard="Email"
                     Placeholder="Email"
                     TextColor="Black"
-                    VerticalOptions="Center" />
+                    VerticalOptions="Center" 
+                    Text="{Binding LoginModel.UserName}"/>
             </Frame>
             <Frame
                 Margin="30,10"
@@ -66,7 +67,8 @@
                     IsTextPredictionEnabled="False"
                     Placeholder="Password"
                     TextColor="Black"
-                    VerticalOptions="Center" />
+                    VerticalOptions="Center" 
+                    Text="{Binding LoginModel.Password}"/>
             </Frame>
 
             <!--  Forgot Password Link  -->
@@ -87,7 +89,6 @@
 				x:Name="LoginButton"
                 Margin="0,0,0,0"
                 BackgroundColor="Green"
-                Clicked="LoginButton_Clicked"
                 CornerRadius="10"
                 FontAttributes="Bold"
                 FontSize="20"

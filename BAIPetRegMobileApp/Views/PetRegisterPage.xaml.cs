@@ -1,6 +1,3 @@
-using SQLite;
-using System.Windows.Input;
-
 namespace BAIPetRegMobileApp.Views;
 
 public partial class PetRegisterPage : ContentPage

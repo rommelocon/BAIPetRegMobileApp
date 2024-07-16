@@ -85,7 +85,7 @@
                     FontSize="33"
                     SemanticProperties.HeadingLevel="Level1"
                     Style="{StaticResource Headline}"
-                    Text="Welcome!"
+                    Text="{Binding WelcomeMessage}"
                     TextColor="#096B00" />
 
                 <Image

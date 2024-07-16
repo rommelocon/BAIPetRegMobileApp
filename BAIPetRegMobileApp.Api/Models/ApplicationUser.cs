@@ -6,12 +6,10 @@ namespace BAIPetRegMobileApp.Api.Models
 {
     public class ApplicationUser : IdentityUser
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public DateTime DateRegistered { get; set; } = DateTime.UtcNow;
-
+        public DateTime? DateRegistered { get; set; } = DateTime.UtcNow;
         public int? RegOptID { get; set; }
-        public string Firstname { get; set; } = string.Empty;
-        public string Lastname { get; set; } = string.Empty;
+        public string? Firstname { get; set; } = string.Empty;
+        public string? Lastname { get; set; } = string.Empty;
         [MaxLength(50)]
         public string? MiddleName { get; set; }
         [MaxLength(50)]
@@ -69,18 +67,18 @@ namespace BAIPetRegMobileApp.Api.Models
 
         // Navigation properties
         [ForeignKey("RegOptID")]
-        public virtual TblRegistrationOption RegistrationOption { get; set; }
+        public virtual RegistrationOption? RegistrationOption { get; set; }
 
         [ForeignKey("SexID")]
-        public virtual TblSexType SexType { get; set; }
+        public virtual SexType? SexType { get; set; }
 
         [ForeignKey("AgencyID")]
-        public virtual TblAgencyName Agency { get; set; }
+        public virtual AgencyName? Agency { get; set; }
 
         [ForeignKey("AccessLevelID")]
-        public virtual TblAccessLevel AccessLevel { get; set; }
+        public virtual AccessLevel? AccessLevel { get; set; }
 
         [ForeignKey("Bcode")]
-        public virtual TblBarangay Barangay { get; set; }
+        public virtual Barangay? Barangay { get; set; }
     }
 }

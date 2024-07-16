@@ -25,7 +25,7 @@ namespace BAIPetRegMobileApp.Api.Models
         {
             // generate token that is valid for 7 days
             var tokenHandler = new JwtSecurityTokenHandler();
-            var key = Encoding.ASCII.GetBytes(_secret);
+            var key = Encoding.ASCII.GetBytes(_secret!);
             var tokenDescriptor = new SecurityTokenDescriptor
             {
                 Subject = new ClaimsIdentity(new[] { new Claim("id", user.Id.ToString()) }),
@@ -48,7 +48,7 @@ namespace BAIPetRegMobileApp.Api.Models
         public ClaimsPrincipal GetPrincipalFromToken(string token)
         {
             var tokenHandler = new JwtSecurityTokenHandler();
-            var key = Encoding.ASCII.GetBytes(_secret);
+            var key = Encoding.ASCII.GetBytes(_secret!);
 
             try
             {
@@ -70,7 +70,7 @@ namespace BAIPetRegMobileApp.Api.Models
             }
             catch
             {
-                return null;
+                return null!;
             }
         }
     }

@@ -6,14 +6,13 @@
     xmlns:local="clr-namespace:BAIPetRegMobileApp"
     xmlns:views="clr-namespace:BAIPetRegMobileApp.Views"
     xmlns:viewmodels="clr-namespace:BAIPetRegMobileApp.ViewModels"
-    x:DataType="viewmodels:LoginPageViewModel"
     Shell.FlyoutBehavior="Disabled"
     Shell.NavBarIsVisible="False"
     Title="BAIPetRegMobileApp">
 
     <FlyoutItem FlyoutDisplayOptions="AsMultipleItems" Route="ParentRoute">
         <ShellContent
-            Title=""
+            Title="MainPage"
             ContentTemplate="{DataTemplate local:MainPage}"
             FlyoutItem.IsVisible="True"
             Route="MainPage" />
@@ -37,15 +36,11 @@
                 Text="close"
                 TextColor="White"
                 VerticalOptions="EndAndExpand" />
-
         </Frame>
     </Shell.FlyoutHeader>
 
     <Shell.FlyoutContent>
-
         <VerticalStackLayout Margin="0" Background="White">
-
-
             <!--  Profile Button  -->
             <Frame
                 Margin="12,30,12,0"
@@ -196,7 +191,7 @@
                     Text="LogOut"
                     TextColor="White"
                     WidthRequest="180" 
-					Command="{Binding LogoutCommand}/>
+					Command="{Binding LogoutCommand}" />
             </StackLayout>
         </VerticalStackLayout>
     </Shell.FlyoutFooter>
