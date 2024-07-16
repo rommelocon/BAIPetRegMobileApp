@@ -51,7 +51,7 @@
                     <Frame
                         Margin="30,10"
                         Padding="10"
-                        BackgroundColor="#f1f1f1"
+                        BackgroundColor="#DCF4DA"
                         BorderColor="Transparent"
                         CornerRadius="15"
                         HasShadow="False"
@@ -91,7 +91,7 @@
                     <Frame
                         Margin="30,10"
                         Padding="10"
-                        BackgroundColor="#f1f1f1"
+                        BackgroundColor="#DCF4DA"
                         BorderColor="Transparent"
                         CornerRadius="15"
                         HasShadow="False"
@@ -135,7 +135,7 @@
                     <Frame
                         Margin="30,10"
                         Padding="10"
-                        BackgroundColor="#f1f1f1"
+                        BackgroundColor="#DCF4DA"
                         BorderColor="Transparent"
                         CornerRadius="15"
                         HasShadow="False"
@@ -178,7 +178,7 @@
                     <Frame
                         Margin="30,10"
                         Padding="10"
-                        BackgroundColor="#f1f1f1"
+                        BackgroundColor="#DCF4DA"
                         BorderColor="Transparent"
                         CornerRadius="15"
                         HasShadow="False"
@@ -210,8 +210,6 @@
 
                 </StackLayout>
 
-
-
                 <!--  Date Picker  -->
                 <StackLayout>
                     <Label
@@ -223,7 +221,7 @@
                     <Frame
                         Margin="30,10"
                         Padding="10"
-                        BackgroundColor="#f1f1f1"
+                        BackgroundColor="#DCF4DA"
                         BorderColor="Transparent"
                         CornerRadius="15"
                         HasShadow="False"
@@ -234,7 +232,6 @@
                             Format="D" />
                     </Frame>
                 </StackLayout>
-
 
                 <!--  Sex  -->
 
@@ -248,7 +245,7 @@
                     <Frame
                         Margin="30,10"
                         Padding="10"
-                        BackgroundColor="#f1f1f1"
+                        BackgroundColor="#DCF4DA"
                         BorderColor="Transparent"
                         CornerRadius="15"
                         HasShadow="False"
@@ -290,7 +287,7 @@
                     <Frame
                         Margin="30,10"
                         Padding="10"
-                        BackgroundColor="#f1f1f1"
+                        BackgroundColor="#DCF4DA"
                         BorderColor="Transparent"
                         CornerRadius="15"
                         HasShadow="False"
@@ -323,7 +320,7 @@
                     <Frame
                         Margin="30,10"
                         Padding="10"
-                        BackgroundColor="#f1f1f1"
+                        BackgroundColor="#DCF4DA"
                         BorderColor="Transparent"
                         CornerRadius="15"
                         HasShadow="False"
@@ -355,7 +352,7 @@
                     <Frame
                         Margin="30,10"
                         Padding="10"
-                        BackgroundColor="#f1f1f1"
+                        BackgroundColor="#DCF4DA"
                         BorderColor="Transparent"
                         CornerRadius="15"
                         HasShadow="False"
@@ -381,6 +378,7 @@
                     <Frame
                         Padding="10"
                         BorderColor="Black"
+                        BackgroundColor="#DCF4DA"
                         CornerRadius="5"
                         HorizontalOptions="FillAndExpand"
                         VerticalOptions="Start">
@@ -400,7 +398,9 @@
                                 HeightRequest="100"
                                 HorizontalOptions="FillAndExpand"
                                 Placeholder="Input Remarks"
+                                PlaceholderColor="Black"
                                 TextColor="Black"
+                                
                                 VerticalOptions="Start" />
                         </StackLayout>
 
@@ -424,6 +424,7 @@
                         Padding="10"
                         BorderColor="Black"
                         CornerRadius="5"
+                        BackgroundColor="#DCF4DA"
                         HorizontalOptions="FillAndExpand"
                         VerticalOptions="Start">
                         <StackLayout>
@@ -431,8 +432,8 @@
                                 <RadioButton
                                     x:Name="LocalRadioButton"
                                     CheckedChanged="OnRadioButtonCheckedChanged"
-                                    FontSize="20"
                                     Content="Local (within the Barangay)"
+                                    FontSize="20"
                                     GroupName="PetOriginGroup"
                                     TextColor="Black" />
                             </StackLayout>
@@ -440,8 +441,8 @@
                                 <RadioButton
                                     x:Name="OtherRadioButton"
                                     CheckedChanged="OnRadioButtonCheckedChanged"
-                                    FontSize="20"
                                     Content="Other (Outside the Barangay)"
+                                    FontSize="20"
                                     GroupName="PetOriginGroup"
                                     TextColor="Black" />
                             </StackLayout>
@@ -459,11 +460,12 @@
                                     x:Name="OtherOriginEntry"
                                     Margin="10,10"
                                     AutoSize="TextChanges"
-                                    HeightRequest="100"
                                     FontSize="20"
+                                    HeightRequest="100"
                                     HorizontalOptions="FillAndExpand"
                                     Placeholder="Enter origin here"
                                     TextColor="Black"
+                                    PlaceholderColor="Black"
                                     VerticalOptions="Start" />
                             </StackLayout>
                         </StackLayout>
@@ -488,6 +490,7 @@
                         Padding="10"
                         BorderColor="Black"
                         CornerRadius="5"
+                        BackgroundColor="#DCF4DA"
                         HorizontalOptions="FillAndExpand"
                         VerticalOptions="Start">
                         <StackLayout>
@@ -509,19 +512,19 @@
                                 Margin="10,0,10,0"
                                 IsVisible="False">
                                 <Label
+                                    Margin="10,20"
                                     FontAttributes="Bold"
                                     FontSize="20"
                                     HorizontalOptions="Start"
                                     Text="Date of Death"
                                     TextColor="Black"
-                                    Margin="10,20"
                                     VerticalOptions="Start" />
                                 <DatePicker
                                     x:Name="DeathDatePicker"
-                                    HorizontalOptions="FillAndExpand"
-                                    HeightRequest="50"
                                     Margin="10,0"
                                     FontSize="20"
+                                    HeightRequest="50"
+                                    HorizontalOptions="FillAndExpand"
                                     VerticalOptions="Start" />
                             </StackLayout>
                         </StackLayout>
