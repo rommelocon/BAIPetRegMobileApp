@@ -1,12 +1,376 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="BAIPetRegMobileApp.Views.ProfilePage"
-             Title="ProfilePage">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+<ContentPage
+    x:Class="BAIPetRegMobileApp.Views.ProfilePage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Background="White"
+    FlyoutItem.IsVisible="False"
+    Shell.BackgroundColor="#57C84D"
+    Shell.FlyoutBehavior="Flyout"
+    Shell.NavBarIsVisible="True">
+
+    <Grid>
+
+        <Grid.RowDefinitions>
+            <!--  Define rows for your banner, search frame, and content  -->
+            <RowDefinition Height="Auto" />
+            <!--  Banner  -->
+            <RowDefinition Height="Auto" />
+            <!--  Search Frame  -->
+            <RowDefinition Height="*" />
+            <!--  Content  -->
+        </Grid.RowDefinitions>
+        <Image
+            Grid.Row="1"
+            HorizontalOptions="Center"
+            Source="bai_banner.jpg"
+            VerticalOptions="Center" />
+
+        <ScrollView Grid.Row="2">
+            <VerticalStackLayout>
+                <VerticalStackLayout Spacing="2">
+                    <!--  Profile Picture with Circular Border  -->
+                    <Frame
+                        Margin="0,40,0,0"
+                        Padding="5"
+                        BackgroundColor="Transparent"
+                        BorderColor="DarkGreen"
+                        CornerRadius="100"
+                        HeightRequest="200"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"
+                        WidthRequest="200">
+                        <Grid
+                            HeightRequest="190"
+                            HorizontalOptions="Center"
+                            VerticalOptions="Center"
+                            WidthRequest="190">
+                            <Ellipse
+                                HeightRequest="190"
+                                HorizontalOptions="Center"
+                                Stroke="LightGreen"
+                                StrokeThickness="10"
+                                VerticalOptions="Center"
+                                WidthRequest="190" />
+                            <Image
+                                Aspect="AspectFill"
+                                HorizontalOptions="FillAndExpand"
+                                Source="profile_pic_1.png"
+                                VerticalOptions="FillAndExpand">
+                                <Image.Clip>
+                                    <EllipseGeometry
+                                        Center="95,95"
+                                        RadiusX="90"
+                                        RadiusY="90" />
+                                </Image.Clip>
+                            </Image>
+                        </Grid>
+                    </Frame>
+
+
+
+                    <Label
+                        Margin="0,5,0,0"
+                        FontAttributes="Bold"
+                        FontSize="40"
+                        SemanticProperties.HeadingLevel="Level4"
+                        Style="{StaticResource Headline}"
+                        Text="JUAN DELA CRUZ"
+                        TextColor="#096B00" />
+
+
+                    <Label
+                        Margin="0,20,0,0"
+                        FontAttributes="Bold"
+                        FontSize="20"
+                        SemanticProperties.HeadingLevel="Level1"
+                        Style="{StaticResource Headline}"
+                        Text="Pet Owner"
+                        TextColor="Black" />
+
+
+                    <Label
+                        Padding="20"
+                        BackgroundColor="#12DC00"
+                        FontAttributes="Bold"
+                        FontSize="24"
+                        HorizontalTextAlignment="Center"
+                        Text="REGISTERED PETS"
+                        TextColor="White" />
+
+
+                    <HorizontalStackLayout HorizontalOptions="Center" Spacing="20">
+                        <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center">
+
+                            <Frame
+                                Margin="0,30,20,0"
+                                Padding="10"
+                                BackgroundColor="#7FFF7F"
+                                CornerRadius="20"
+                                HasShadow="True"
+                                HeightRequest="150"
+                                WidthRequest="150">
+
+                                <Label
+                                    FontAttributes="Bold"
+                                    FontSize="96"
+                                    HorizontalTextAlignment="Center"
+                                    Text="5"
+                                    TextColor="White"
+                                    VerticalOptions="Center" />
+
+                            </Frame>
+                            <Label
+                                FontAttributes="Bold"
+                                FontSize="20"
+                                HorizontalTextAlignment="Center"
+                                Text="Dogs"
+                                TextColor="Green"
+                                VerticalOptions="Center" />
+
+                        </VerticalStackLayout>
+                        <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center">
+                            <Frame
+                                Margin="0,30,0,0"
+                                Padding="10"
+                                BackgroundColor="#7FFF7F"
+                                CornerRadius="20"
+                                HasShadow="True"
+                                HeightRequest="150"
+                                WidthRequest="150">
+
+                                <Label
+                                    FontAttributes="Bold"
+                                    FontSize="96"
+                                    HorizontalTextAlignment="Center"
+                                    Text="8"
+                                    TextColor="White"
+                                    VerticalOptions="Center" />
+                            </Frame>
+                            <Label
+                                FontAttributes="Bold"
+                                FontSize="20"
+                                HorizontalTextAlignment="Center"
+                                Text="Cats"
+                                TextColor="Green"
+                                VerticalOptions="Center" />
+
+                        </VerticalStackLayout>
+                    </HorizontalStackLayout>
+
+                    <Label
+                        Margin="0,30,0,30"
+                        Padding="10"
+                        BackgroundColor="#12DC00"
+                        FontAttributes="Bold"
+                        FontSize="24"
+                        HorizontalTextAlignment="Center"
+                        Text="USER INFORMATION"
+                        TextColor="White"
+                        VerticalTextAlignment="Center" />
+                    <StackLayout Orientation="Vertical">
+                        <!--  email  -->
+                        <Label
+                            Margin="20,0,0,0"
+                            FontSize="20"
+                            HorizontalTextAlignment="Start"
+                            Text="Email"
+                            TextColor="Black" />
+                        <Label
+                            Margin="20,0,20,40"
+                            Padding="5"
+                            Background="#e2f2e1"
+                            BindingContext=""
+                            FontAttributes="Italic"
+                            FontSize="20"
+                            HorizontalTextAlignment="Start"
+                            Text="JuanDelaCruz@gmail.com"
+                            TextColor="Black" />
+                        <!--  Civil Status  -->
+                        <Label
+                            Margin="20,0,0,0"
+                            FontSize="20"
+                            HorizontalTextAlignment="Start"
+                            Text="Civil Status"
+                            TextColor="Black" />
+                        <Label
+                            Margin="20,0,20,40"
+                            Padding="5"
+                            Background="#e2f2e1"
+                            BindingContext=""
+                            FontAttributes="Italic"
+                            FontSize="20"
+                            HorizontalTextAlignment="Start"
+                            Text="Married"
+                            TextColor="Black" />
+
+                        <!--  BirthDay  -->
+                        <Label
+                            Margin="20,0,0,0"
+                            FontSize="20"
+                            HorizontalTextAlignment="Start"
+                            Text="BirthDay"
+                            TextColor="Black" />
+                        <Label
+                            Margin="20,0,20,40"
+                            Padding="5"
+                            Background="#e2f2e1"
+                            BindingContext=""
+                            FontAttributes="Italic"
+                            FontSize="20"
+                            HorizontalTextAlignment="Start"
+                            Text="June 22, 1998"
+                            TextColor="Black" />
+
+                        <!--  SEX  -->
+                        <Label
+                            Margin="20,0,0,0"
+                            FontSize="20"
+                            HorizontalTextAlignment="Start"
+                            Text="SEX"
+                            TextColor="Black" />
+                        <Label
+                            Margin="20,0,20,40"
+                            Padding="5"
+                            Background="#e2f2e1"
+                            BindingContext=""
+                            FontAttributes="Italic"
+                            FontSize="20"
+                            HorizontalTextAlignment="Start"
+                            Text="Male"
+                            TextColor="Black" />
+
+                        <!--  Contact Number  -->
+                        <Label
+                            Margin="20,0,0,0"
+                            FontSize="20"
+                            HorizontalTextAlignment="Start"
+                            Text="Contact Number"
+                            TextColor="Black" />
+                        <Label
+                            Margin="20,0,20,40"
+                            Padding="5"
+                            Background="#e2f2e1"
+                            BindingContext=""
+                            FontAttributes="Italic"
+                            FontSize="20"
+                            HorizontalTextAlignment="Start"
+                            Text="09123456789"
+                            TextColor="Black" />
+
+                        <!--  Nationality  -->
+                        <Label
+                            Margin="20,0,0,0"
+                            FontSize="20"
+                            HorizontalTextAlignment="Start"
+                            Text="Nationality"
+                            TextColor="Black" />
+                        <Label
+                            Margin="20,0,20,40"
+                            Padding="5"
+                            Background="#e2f2e1"
+                            BindingContext=""
+                            FontAttributes="Italic"
+                            FontSize="20"
+                            HorizontalTextAlignment="Start"
+                            Text="Filipino"
+                            TextColor="Black" />
+
+                        <!--  Region  -->
+                        <Label
+                            Margin="20,0,0,0"
+                            FontSize="20"
+                            HorizontalTextAlignment="Start"
+                            Text="Region"
+                            TextColor="Black" />
+                        <Label
+                            Margin="20,0,20,40"
+                            Padding="5"
+                            Background="#e2f2e1"
+                            BindingContext=""
+                            FontAttributes="Italic"
+                            FontSize="20"
+                            HorizontalTextAlignment="Start"
+                            Text="NCR"
+                            TextColor="Black" />
+
+                        <!--  Province  -->
+                        <Label
+                            Margin="20,0,0,0"
+                            FontSize="20"
+                            HorizontalTextAlignment="Start"
+                            Text="Province"
+                            TextColor="Black" />
+                        <Label
+                            Margin="20,0,20,40"
+                            Padding="5"
+                            Background="#e2f2e1"
+                            BindingContext=""
+                            FontAttributes="Italic"
+                            FontSize="20"
+                            HorizontalTextAlignment="Start"
+                            Text="Metro Manila"
+                            TextColor="Black" />
+
+                        <!--  Municapality  -->
+                        <Label
+                            Margin="20,0,0,0"
+                            FontSize="20"
+                            HorizontalTextAlignment="Start"
+                            Text="Municipality"
+                            TextColor="Black" />
+                        <Label
+                            Margin="20,0,20,40"
+                            Padding="5"
+                            Background="#e2f2e1"
+                            BindingContext=""
+                            FontAttributes="Italic"
+                            FontSize="20"
+                            HorizontalTextAlignment="Start"
+                            Text="Quezon City"
+                            TextColor="Black" />
+
+                        <!--  Barangay  -->
+                        <Label
+                            Margin="20,0,0,0"
+                            FontSize="20"
+                            HorizontalTextAlignment="Start"
+                            Text="Barangay"
+                            TextColor="Black" />
+                        <Label
+                            Margin="20,0,20,40"
+                            Padding="5"
+                            Background="#e2f2e1"
+                            BindingContext=""
+                            FontAttributes="Italic"
+                            FontSize="20"
+                            HorizontalTextAlignment="Start"
+                            Text="Vasra"
+                            TextColor="Black" />
+
+                        <!--  Street  -->
+                        <Label
+                            Margin="20,0,0,0"
+                            FontSize="20"
+                            HorizontalTextAlignment="Start"
+                            Text="Street"
+                            TextColor="Black" />
+                        <Label
+                            Margin="20,0,20,40"
+                            Padding="5"
+                            Background="#e2f2e1"
+                            BindingContext=""
+                            FontAttributes="Italic"
+                            FontSize="20"
+                            HorizontalTextAlignment="Start"
+                            Text="Visayas Avenue"
+                            TextColor="Black" />
+
+                    </StackLayout>
+
+                </VerticalStackLayout>
+            </VerticalStackLayout>
+        </ScrollView>
+    </Grid>
+
 </ContentPage>

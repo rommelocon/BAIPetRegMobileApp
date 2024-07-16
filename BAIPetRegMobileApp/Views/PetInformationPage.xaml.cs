@@ -1,13 +1,11 @@
 namespace BAIPetRegMobileApp.Views;
 
-public partial class ProfilePage : ContentPage
+public partial class PetInformationPage : ContentPage
 {
-	public ProfilePage()
+	public PetInformationPage()
 	{
 		InitializeComponent();
         Application.Current.UserAppTheme = AppTheme.Light;
+
     }
-
-
-
 }

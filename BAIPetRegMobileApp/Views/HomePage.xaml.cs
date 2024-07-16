@@ -1,5 +1,6 @@
 using BAIPetRegMobileApp.ViewModels;
 using BAIPetRegMobileApp.Views;
+using CommunityToolkit.Maui.Views;
 
 namespace BAIPetRegMobileApp;
 
@@ -12,6 +13,8 @@ public partial class HomePage : ContentPage
         InitializeComponent();
         this.viewModel = viewModel;
         BindingContext = viewModel;
+        Application.Current.UserAppTheme = AppTheme.Light;
+
     }
 
     protected override async void OnAppearing()
@@ -35,4 +38,17 @@ public partial class HomePage : ContentPage
     {
         Shell.Current.FlyoutIsPresented = true;
     }
+
+    private void PetinfoBtn_Clicked(object sender, EventArgs e)
+    {
+        Shell.Current.GoToAsync(nameof(PetInformationPage));
+    }
+
+    private void HomepageBtn_Clicked(object sender, EventArgs e)
+    {
+        Shell.Current.GoToAsync(nameof(HomePage));
+ 
+;    }
+
+ 
 }

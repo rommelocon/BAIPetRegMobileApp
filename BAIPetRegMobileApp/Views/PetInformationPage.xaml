@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="BAIPetRegMobileApp.Views.PetInformationPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    FlyoutItem.IsVisible="False"
+    Shell.BackgroundColor="#57C84D"
+    Shell.FlyoutBehavior="Flyout"
+    Shell.NavBarIsVisible="True">
+
+    <Grid>
+        <Grid.RowDefinitions>
+
+            <RowDefinition Height="Auto" />
+            <!--  Banner  -->
+            <RowDefinition Height="*" />
+            <!--  Content  -->
+        </Grid.RowDefinitions>
+        <Image
+            Grid.Row="0"
+            HorizontalOptions="Center"
+            Source="bai_banner.jpg"
+            VerticalOptions="Center" />
+
+        <ScrollView Grid.Row="1">
+            <StackLayout
+                Padding="20"
+                BackgroundColor="#A3EBA3"
+                Spacing="20">
+
+                <!--  Pet Card  -->
+                <Frame
+                    Padding="20"
+                    BackgroundColor="#6AE96A"
+                    CornerRadius="20"
+                    VerticalOptions="Start">
+                    <StackLayout HorizontalOptions="Center">
+                        <Image
+                            Aspect="AspectFill"
+                            HeightRequest="150"
+                            Source="dog1.jpeg"
+                            WidthRequest="150" />
+
+                        <Label
+                            Margin="20"
+                            FontFamily="MaterialIconsOutlined-Regular"
+                            FontSize="70"
+                            HorizontalOptions="Center"
+                            Text="male" />
+                        <Label
+                            FontAttributes="Bold"
+                            FontSize="24"
+                            HorizontalOptions="Center"
+                            Text="Jaguar" />
+                        <Label
+                            FontSize="18"
+                            HorizontalOptions="Center"
+                            Text="Shih Tzu" />
+
+                        <Label
+                            FontSize="18"
+                            HorizontalOptions="Center"
+                            Text="1 Year Old" />
+                        <Label
+                            FontSize="18"
+                            HorizontalOptions="Center"
+                            Text="8 Kilogram" />
+                    </StackLayout>
+                </Frame>
+                <StackLayout Orientation="Horizontal" />
+
+                <!--  Pet Information  -->
+                <Frame
+                    Padding="20"
+                    BackgroundColor="#A3EBA3"
+                    CornerRadius="20">
+                    <StackLayout Spacing="10">
+                        <Label
+                            FontAttributes="Bold"
+                            FontSize="24"
+                            TextColor="#001400"
+                            Text="Pet Information" />
+                        <Label FontSize="18" Text="Date Registered: 22/03/2024" TextColor="#001400"/>
+                        <Label FontSize="18" Text="Pet Origin: Local within Barangay" TextColor="#001400" />
+                        <Label FontSize="18" Text="Date Of Birth: 02/01/2023" TextColor="#001400" />
+                        <Label FontSize="18" Text="Habitat Description: Household" TextColor="#001400" />
+                        <Label FontSize="18" Text="Animal Color: White" TextColor="#001400"/>
+                        <Label FontSize="18" Text="Tag Number: 000-111-2222" TextColor="#001400"/>
+                        <Label FontSize="18" Text="Status of Pet: Alive" TextColor="#001400"/>
+                    </StackLayout>
+                </Frame>
+
+                <!--  Pet's Image Upload Section  -->
+                <Frame
+                    Padding="20"
+                    BackgroundColor="#6AE96A"
+                    CornerRadius="20">
+                    <StackLayout>
+                        <Label
+                            FontAttributes="Bold"
+                            FontSize="24"
+                            HorizontalOptions="Center"
+                            Text="Pet's Image" />
+                        <Grid ColumnSpacing="10" RowSpacing="10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+                            <Frame
+                                Grid.Row="0"
+                                Grid.Column="0"
+                                BackgroundColor="White"
+                                BorderColor="Gray"
+                                CornerRadius="10">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*" />
+                                        <RowDefinition Height="Auto" />
+                                    </Grid.RowDefinitions>
+                                    <Image
+                                        Grid.Row="0"
+                                        Aspect="AspectFit"
+                                        Source="dog1.jpeg" />
+                                    <Label
+                                        Grid.Row="1"
+                                        HorizontalOptions="Center"
+                                        Text="Image 1"
+                                        VerticalOptions="End" />
+                                </Grid>
+                            </Frame>
+                            <Frame
+                                Grid.Row="0"
+                                Grid.Column="1"
+                                BackgroundColor="White"
+                                BorderColor="Gray"
+                                CornerRadius="10">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*" />
+                                        <RowDefinition Height="Auto" />
+                                    </Grid.RowDefinitions>
+                                    <Image
+                                        Grid.Row="0"
+                                        Aspect="AspectFit"
+                                        Source="dog2.jpeg" />
+                                    <Label
+                                        Grid.Row="1"
+                                        HorizontalOptions="Center"
+                                        Text="Image 2"
+                                        VerticalOptions="End" />
+                                </Grid>
+                            </Frame>
+                            <Frame
+                                Grid.Row="1"
+                                Grid.Column="0"
+                                BackgroundColor="White"
+                                BorderColor="Gray"
+                                CornerRadius="10">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*" />
+                                        <RowDefinition Height="Auto" />
+                                    </Grid.RowDefinitions>
+                                    <Image
+                                        Grid.Row="0"
+                                        Aspect="AspectFit"
+                                        Source="dog3.jpeg" />
+                                    <Label
+                                        Grid.Row="1"
+                                        HorizontalOptions="Center"
+                                        Text="Image 3"
+                                        VerticalOptions="End" />
+                                </Grid>
+                            </Frame>
+                            <Frame
+                                Grid.Row="1"
+                                Grid.Column="1"
+                                BackgroundColor="White"
+                                BorderColor="Gray"
+                                CornerRadius="10">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*" />
+                                        <RowDefinition Height="Auto" />
+                                    </Grid.RowDefinitions>
+                                    <Image
+                                        Grid.Row="0"
+                                        Aspect="AspectFit"
+                                        Source="dog4.jpeg" />
+                                    <Label
+                                        Grid.Row="1"
+                                        HorizontalOptions="Center"
+                                        Text="Image 4"
+                                        VerticalOptions="End" />
+                                </Grid>
+                            </Frame>
+                        </Grid>
+                    </StackLayout>
+                </Frame>
+
+
+
+                <!--  Continue Button  --><!--
+                <Button
+                    BackgroundColor="Green"
+                    CornerRadius="20"
+                    HeightRequest="60"
+                    HorizontalOptions="FillAndExpand"
+                    Text="CONTINUE"
+                    TextColor="White" />-->
+
+            </StackLayout>
+        </ScrollView>
+    </Grid>
+
+</ContentPage>

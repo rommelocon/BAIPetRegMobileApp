@@ -1,25 +1,26 @@
-﻿<?xml version = "1.0" encoding = "UTF-8" ?>
-<Application xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:local="clr-namespace:BAIPetRegMobileApp"
-             xmlns:android="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.AndroidSpecific;assembly=Microsoft.Maui.Controls"
-             android:Application.WindowSoftInputModeAdjust="Resize"
-             x:Class="BAIPetRegMobileApp.App">
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<Application
+    x:Class="BAIPetRegMobileApp.App"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:android="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.AndroidSpecific;assembly=Microsoft.Maui.Controls"
+    xmlns:local="clr-namespace:BAIPetRegMobileApp"
+    android:Application.WindowSoftInputModeAdjust="Resize">
     <Application.Resources>
         <ResourceDictionary>
-            <!-- Resource dictionaries for colors and other styles -->
+            <!--  Resource dictionaries for colors and other styles  -->
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Resources/Styles/Colors.xaml" />
                 <ResourceDictionary Source="Resources/Styles/Styles.xaml" />
             </ResourceDictionary.MergedDictionaries>
 
-            <!-- Global Font Style -->
+            <!--  Global Font Style  -->
             <Style TargetType="Label">
                 <Setter Property="FontFamily">
                     <Setter.Value>
                         <OnPlatform x:TypeArguments="x:String">
-                            <On Platform="Android, iOS" Value="Poppins-Regular.ttf#Poppins-Regular"/>
-                            <!-- Replace with your actual font file and font family name -->
+                            <On Platform="Android, iOS" Value="Poppins-Regular.ttf#Poppins-Regular" />
+                            <!--  Replace with your actual font file and font family name  -->
                         </OnPlatform>
                     </Setter.Value>
                 </Setter>
@@ -28,28 +29,30 @@
                 <Setter Property="FontFamily">
                     <Setter.Value>
                         <OnPlatform x:TypeArguments="x:String">
-                            <On Platform="Android, iOS" Value="Poppins-Regular.ttf#Poppins-Regular"/>
-                            <!-- Replace with your actual font file and font family name -->
+                            <On Platform="Android, iOS" Value="Poppins-Regular.ttf#Poppins-Regular" />
+                            <!--  Replace with your actual font file and font family name  -->
                         </OnPlatform>
                     </Setter.Value>
                 </Setter>
             </Style>
-            <!-- Add more styles for other text-based controls if needed -->
+            <!--  Add more styles for other text-based controls if needed  -->
 
 
             <ControlTemplate x:Key="CustomFlyoutItemTemplate">
                 <Grid>
-                    <!-- Your content here -->
+                    <!--  Your content here  -->
                     <StackLayout>
-                        <!-- Content of the flyout item -->
+                        <!--  Content of the flyout item  -->
                     </StackLayout>
 
-                    <!-- Close button -->
-                    <Button Text="close" Clicked="CloseButton_Clicked"
-                            HorizontalOptions="End"
-                            FontFamily="MaterialIconsOutlined-Regular"
-                            VerticalOptions="Center"
-                            Margin="10"/>
+                    <!--  Close button  -->
+                    <Button
+                        Margin="10"
+                        Clicked="CloseButton_Clicked"
+                        FontFamily="MaterialIconsOutlined-Regular"
+                        HorizontalOptions="End"
+                        Text="close"
+                        VerticalOptions="Center" />
                 </Grid>
             </ControlTemplate>
         </ResourceDictionary>

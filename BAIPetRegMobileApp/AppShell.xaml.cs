@@ -15,6 +15,9 @@ namespace BAIPetRegMobileApp
             Routing.RegisterRoute(nameof(PetRegisterPage), typeof(PetRegisterPage));
             Routing.RegisterRoute(nameof(RegisterPage), typeof(RegisterPage));
             Routing.RegisterRoute(nameof(ProfilePage), typeof(ProfilePage));
+            Routing.RegisterRoute(nameof(PetInformationPage), typeof(PetInformationPage));
+            Routing.RegisterRoute(nameof(CatBreedPage), typeof(CatBreedPage));
+            Routing.RegisterRoute(nameof(DogBreedPage), typeof(DogBreedPage));
         }
 
         private void ClostMenuButton_Clicked(object sender, EventArgs e)
@@ -31,6 +34,32 @@ namespace BAIPetRegMobileApp
         private void PetRegisterBtn_Clicked(object sender, EventArgs e)
         {
             Shell.Current.GoToAsync(nameof(PetRegisterPage));
+            Shell.Current.FlyoutIsPresented = false;
+        }
+
+        private void OnProfileButtonTapped(object sender, TappedEventArgs e)
+        {
+            Shell.Current.GoToAsync(nameof(ProfilePage));
+            Shell.Current.FlyoutIsPresented = false;
+        }
+
+        private void OnRegisterPetButtonTapped(object sender, TappedEventArgs e)
+        {
+            Shell.Current.GoToAsync(nameof(PetRegisterPage));
+            Shell.Current.FlyoutIsPresented = false;
+
+        }
+
+
+        private void OnDogPetButtonTapped(object sender, TappedEventArgs e)
+        {
+            Shell.Current.GoToAsync(nameof(DogBreedPage));
+            Shell.Current.FlyoutIsPresented = false;
+        }
+
+        private void OnCatPetButtonTapped(object sender, TappedEventArgs e)
+        {
+            Shell.Current.GoToAsync(nameof(CatBreedPage));
             Shell.Current.FlyoutIsPresented = false;
         }
     }
