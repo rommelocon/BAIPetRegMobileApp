@@ -115,12 +115,13 @@
                                 FontFamily="MaterialIconsOutlined-Regular"
                                 FontSize="40"
                                 HorizontalOptions="End"
-                                TextColor="Black"
                                 Text="arrow_drop_down"
+                                TextColor="Black"
                                 VerticalOptions="Center" />
                         </Grid>
                     </Frame>
                 </StackLayout>
+
 
                 <!--  Species Picker  -->
 
@@ -158,8 +159,8 @@
                                 FontFamily="MaterialIconsOutlined-Regular"
                                 FontSize="40"
                                 HorizontalOptions="End"
-                                TextColor="Black"
                                 Text="arrow_drop_down"
+                                TextColor="Black"
                                 VerticalOptions="Center" />
                         </Grid>
                     </Frame>
@@ -200,8 +201,8 @@
                                 FontFamily="MaterialIconsOutlined-Regular"
                                 FontSize="40"
                                 HorizontalOptions="End"
-                                TextColor="Black"
                                 Text="arrow_drop_down"
+                                TextColor="Black"
                                 VerticalOptions="Center" />
 
                         </Grid>
@@ -236,7 +237,6 @@
 
 
                 <!--  Sex  -->
-
 
                 <StackLayout>
                     <Label
@@ -278,41 +278,6 @@
                     </Frame>
                 </StackLayout>
 
-
-                <!--  Age Entry  -->
-
-                <StackLayout>
-                    <Label
-                        Margin="40,20,0,0"
-                        FontAttributes="Bold"
-                        FontSize="20"
-                        Text="Age"
-                        TextColor="Black" />
-                    <Frame
-                        Margin="30,10"
-                        Padding="10"
-                        BackgroundColor="#f1f1f1"
-                        BorderColor="Transparent"
-                        CornerRadius="15"
-                        HasShadow="False"
-                        HorizontalOptions="FillAndExpand">
-                        <Entry
-                            x:Name="PetAge"
-                            BackgroundColor="Transparent"
-                            FontAttributes="None"
-                            FontSize="20"
-                            HorizontalOptions="FillAndExpand"
-                            IsSpellCheckEnabled="False"
-                            IsTextPredictionEnabled="False"
-                            Keyboard="Numeric"
-                            MaxLength="2"
-                            Placeholder="Age"
-                            PlaceholderColor="Black"
-                            VerticalOptions="Center" />
-                    </Frame>
-
-                </StackLayout>
-
                 <!--  Weight Entry  -->
 
                 <StackLayout>
@@ -351,6 +316,7 @@
                 <StackLayout>
                     <Label
                         Margin="40,20,0,0"
+                        FontAttributes="Bold"
                         FontSize="20"
                         Text="Animal Color"
                         TextColor="Black" />
@@ -381,6 +347,7 @@
                 <StackLayout>
                     <Label
                         Margin="40,20,0,0"
+                        FontAttributes="Bold"
                         FontSize="20"
                         Text="Tag Number (Optional)"
                         TextColor="Black" />
@@ -408,6 +375,158 @@
                     </Frame>
                 </StackLayout>
 
+                <!--  Remarks  -->
+                <StackLayout Padding="20">
+
+                    <Frame
+                        Padding="10"
+                        BorderColor="Black"
+                        CornerRadius="5"
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="Start">
+                        <StackLayout>
+                            <Label
+                                Margin="10,10"
+                                FontAttributes="Bold"
+                                FontSize="20"
+                                HorizontalOptions="Start"
+                                Text="*Remarks"
+                                TextColor="Black"
+                                VerticalOptions="Start" />
+                            <Editor
+                                Margin="10,10"
+                                AutoSize="TextChanges"
+                                FontSize="20"
+                                HeightRequest="100"
+                                HorizontalOptions="FillAndExpand"
+                                Placeholder="Input Remarks"
+                                TextColor="Black"
+                                VerticalOptions="Start" />
+                        </StackLayout>
+
+
+                    </Frame>
+
+                </StackLayout>
+
+                <!--  Pet Origin  -->
+
+                <StackLayout Padding="20">
+                    <Label
+                        FontAttributes="Bold"
+                        FontSize="Medium"
+                        HorizontalOptions="Center"
+                        Text="PET ORIGIN"
+                        TextColor="Black"
+                        VerticalOptions="Start" />
+
+                    <Frame
+                        Padding="10"
+                        BorderColor="Black"
+                        CornerRadius="5"
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="Start">
+                        <StackLayout>
+                            <StackLayout Orientation="Horizontal">
+                                <RadioButton
+                                    x:Name="LocalRadioButton"
+                                    CheckedChanged="OnRadioButtonCheckedChanged"
+                                    FontSize="20"
+                                    Content="Local (within the Barangay)"
+                                    GroupName="PetOriginGroup"
+                                    TextColor="Black" />
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal">
+                                <RadioButton
+                                    x:Name="OtherRadioButton"
+                                    CheckedChanged="OnRadioButtonCheckedChanged"
+                                    FontSize="20"
+                                    Content="Other (Outside the Barangay)"
+                                    GroupName="PetOriginGroup"
+                                    TextColor="Black" />
+                            </StackLayout>
+
+                            <StackLayout x:Name="OtherOriginEntryStack" IsVisible="False">
+                                <Label
+                                    Margin="10,10"
+                                    FontAttributes="Bold"
+                                    FontSize="20"
+                                    HorizontalOptions="Start"
+                                    Text="Indicate the Origin"
+                                    TextColor="Black"
+                                    VerticalOptions="Start" />
+                                <Editor
+                                    x:Name="OtherOriginEntry"
+                                    Margin="10,10"
+                                    AutoSize="TextChanges"
+                                    HeightRequest="100"
+                                    FontSize="20"
+                                    HorizontalOptions="FillAndExpand"
+                                    Placeholder="Enter origin here"
+                                    TextColor="Black"
+                                    VerticalOptions="Start" />
+                            </StackLayout>
+                        </StackLayout>
+                    </Frame>
+                </StackLayout>
+
+                <!--  Pet Status  -->
+
+                <StackLayout Padding="20">
+                    <!--  Existing Content  -->
+
+                    <!--  STATUS Section  -->
+                    <Label
+                        Margin="10,20,10,0"
+                        FontAttributes="Bold"
+                        FontSize="Medium"
+                        HorizontalOptions="Center"
+                        Text="STATUS"
+                        TextColor="Black"
+                        VerticalOptions="Start" />
+                    <Frame
+                        Padding="10"
+                        BorderColor="Black"
+                        CornerRadius="5"
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="Start">
+                        <StackLayout>
+                            <RadioButton
+                                x:Name="AliveRadioButton"
+                                CheckedChanged="OnStatusRadioButtonCheckedChanged"
+                                Content="Alive"
+                                FontSize="20"
+                                GroupName="StatusGroup" />
+                            <RadioButton
+                                x:Name="DeadRadioButton"
+                                CheckedChanged="OnStatusRadioButtonCheckedChanged"
+                                Content="Dead"
+                                FontSize="20"
+                                GroupName="StatusGroup" />
+
+                            <StackLayout
+                                x:Name="DatePickerStack"
+                                Margin="10,0,10,0"
+                                IsVisible="False">
+                                <Label
+                                    FontAttributes="Bold"
+                                    FontSize="20"
+                                    HorizontalOptions="Start"
+                                    Text="Date of Death"
+                                    TextColor="Black"
+                                    Margin="10,20"
+                                    VerticalOptions="Start" />
+                                <DatePicker
+                                    x:Name="DeathDatePicker"
+                                    HorizontalOptions="FillAndExpand"
+                                    HeightRequest="50"
+                                    Margin="10,0"
+                                    FontSize="20"
+                                    VerticalOptions="Start" />
+                            </StackLayout>
+                        </StackLayout>
+                    </Frame>
+                </StackLayout>
                 <!--  ImagePicker  -->
                 <StackLayout Padding="10">
                     <Label
@@ -451,8 +570,8 @@
                                     BackgroundColor="#096B00"
                                     Clicked="OnSelectImage1Clicked"
                                     CornerRadius="10"
-                                    TextColor="White"
-                                    Text="Select Image 1" />
+                                    Text="Select Image 1"
+                                    TextColor="White" />
                             </StackLayout>
                         </Frame>
                         <Frame
@@ -473,8 +592,8 @@
                                     BackgroundColor="#096B00"
                                     Clicked="OnSelectImage2Clicked"
                                     CornerRadius="10"
-                                    TextColor="White"
-                                    Text="Select Image 2" />
+                                    Text="Select Image 2"
+                                    TextColor="White" />
                             </StackLayout>
                         </Frame>
                         <Frame
@@ -495,8 +614,8 @@
                                     BackgroundColor="#096B00"
                                     Clicked="OnSelectImage3Clicked"
                                     CornerRadius="10"
-                                    TextColor="White"
-                                    Text="Select Image 3" />
+                                    Text="Select Image 3"
+                                    TextColor="White" />
                             </StackLayout>
                         </Frame>
                         <Frame
@@ -517,12 +636,14 @@
                                     BackgroundColor="#096B00"
                                     Clicked="OnSelectImage4Clicked"
                                     CornerRadius="10"
-                                    TextColor="White"
-                                    Text="Select Image 4" />
+                                    Text="Select Image 4"
+                                    TextColor="White" />
                             </StackLayout>
                         </Frame>
                     </Grid>
                 </StackLayout>
+
+
 
                 <!--  Button for Submit  -->
 
@@ -535,8 +656,8 @@
                     CornerRadius="10"
                     FontAttributes="Bold"
                     FontSize="20"
-                    TextColor="White"
-                    Text="SUBMIT" />
+                    Text="SUBMIT"
+                    TextColor="White" />
 
             </VerticalStackLayout>
         </ScrollView>

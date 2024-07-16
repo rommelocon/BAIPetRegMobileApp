@@ -211,14 +211,12 @@ public partial class PetRegisterPage : ContentPage
 
         List<string> listOwnership = new List<string>()
         {
-            "Personal Ownership",
-            "Family Ownership",
-            "Shared Ownership",
-            "Foster Ownership",
-            "Service or Assistance",
-            "Working Animals",
-            "Breeder Ownership",
-            "Rescue Organization"
+            "Community Owned",
+            "Household",
+            "No Owner",
+            "Neighborhood",
+            "Owned",
+            "Stray Animal"
 
         };
         ownershipList.ItemsSource = listOwnership;
@@ -310,8 +308,27 @@ public partial class PetRegisterPage : ContentPage
         }
     }
 
+    private void OnRadioButtonCheckedChanged(object sender, CheckedChangedEventArgs e)
+    {
+        if (OtherRadioButton.IsChecked)
+        {
+            OtherOriginEntryStack.IsVisible = true;
+        }
+        else
+        {
+            OtherOriginEntryStack.IsVisible = false;
+        }
+    }
 
-
-
-
+    private void OnStatusRadioButtonCheckedChanged(object sender, CheckedChangedEventArgs e)
+    {
+        if (DeadRadioButton.IsChecked)
+        {
+            DatePickerStack.IsVisible = true;
+        }
+        else
+        {
+            DatePickerStack.IsVisible = false;
+        }
+    }
 }
