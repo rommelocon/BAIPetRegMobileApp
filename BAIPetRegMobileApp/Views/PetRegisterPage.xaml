@@ -21,7 +21,8 @@
             VerticalOptions="Center" />
 
         <ScrollView Grid.Row="2">
-            <VerticalStackLayout>
+            <VerticalStackLayout
+                >
                 <Label
                     Margin="0,30,0,0"
                     FontAttributes="Bold"
@@ -225,7 +226,7 @@
                         HasShadow="False"
                         HorizontalOptions="FillAndExpand">
                         <DatePicker
-                            x:Name="BirtDate"
+                            Date="{Binding BirthDate}"
                             FontSize="20"
                             Format="D" />
                     </Frame>
@@ -273,48 +274,6 @@
                     </Frame>
                 </StackLayout>
 
-                <!--  Contact with Other Animals?  -->
-
-                <StackLayout>
-                    <Label
-                        Margin="40,20,0,0"
-                        FontAttributes="Bold"
-                        FontSize="20"
-                        Text="Contact with other Animals? *"
-                        TextColor="Black" />
-                    <Frame
-                        Margin="30,10"
-                        Padding="10"
-                        BackgroundColor="#DCF4DA"
-                        BorderColor="Transparent"
-                        CornerRadius="15"
-                        HasShadow="False"
-                        HorizontalOptions="FillAndExpand">
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="Auto" />
-                            </Grid.ColumnDefinitions>
-                            <Picker
-                                x:Name="ContactwOtherAnimals"
-                                Title="Select"
-                                Grid.Column="0"
-                                FontSize="20"
-                                Style="{StaticResource NoUnderlinePicker}"
-                                TitleColor="Black" />
-                            <Label
-                                Grid.Column="1"
-                                Margin="0,0,10,0"
-                                FontFamily="MaterialIconsOutlined-Regular"
-                                FontSize="40"
-                                HorizontalOptions="End"
-                                Text="arrow_drop_down"
-                                TextColor="Black"
-                                VerticalOptions="Center" />
-                        </Grid>
-                    </Frame>
-                </StackLayout>
-
                 <!--  Weight Entry  -->
 
                 <StackLayout>
@@ -322,7 +281,7 @@
                         Margin="40,20,0,0"
                         FontAttributes="Bold"
                         FontSize="20"
-                        Text="Weight(KGS) *"
+                        Text="Weight(KG)"
                         TextColor="Black" />
                     <Frame
                         Margin="30,10"
@@ -334,6 +293,38 @@
                         HorizontalOptions="FillAndExpand">
                         <Entry
                             x:Name="PetWeight"
+                            BackgroundColor="Transparent"
+                            FontAttributes="None"
+                            FontSize="20"
+                            HorizontalOptions="FillAndExpand"
+                            IsSpellCheckEnabled="False"
+                            IsTextPredictionEnabled="False"
+                            Keyboard="Numeric"
+                            MaxLength="5"
+                            Placeholder="Input Weight(KG)"
+                            PlaceholderColor="Black"
+                            VerticalOptions="Center" />
+                    </Frame>
+                </StackLayout>
+
+                <!--  Weight Entry  -->
+
+                <StackLayout>
+                    <Label
+                        Margin="40,20,0,0"
+                        FontAttributes="Bold"
+                        FontSize="20"
+                        Text="Animal Color"
+                        TextColor="Black" />
+                    <Frame
+                        Margin="30,10"
+                        Padding="10"
+                        BackgroundColor="#DCF4DA"
+                        BorderColor="Transparent"
+                        CornerRadius="15"
+                        HasShadow="False"
+                        HorizontalOptions="FillAndExpand">
+                        <Entry
                             BackgroundColor="Transparent"
                             FontAttributes="None"
                             FontSize="20"
@@ -362,8 +353,8 @@
 
                     <Frame
                         Padding="10"
-                        BackgroundColor="#DCF4DA"
                         BorderColor="Black"
+                        BackgroundColor="#DCF4DA"
                         CornerRadius="5"
                         HorizontalOptions="FillAndExpand"
                         VerticalOptions="Start">
@@ -371,56 +362,56 @@
                             <StackLayout Orientation="Vertical">
                                 <RadioButton
                                     x:Name="NoneRdBtn"
-                                    CheckedChanged="OnRadioTagButtonCheckedChanged"
+                                    CheckedChanged="OnRadioButtonTagCheckedChanged"
                                     Content="None"
                                     FontSize="20"
                                     GroupName="PetTagType"
                                     TextColor="Black" />
                                 <RadioButton
                                     x:Name="CollarTagRdBtn"
-                                    CheckedChanged="OnRadioTagButtonCheckedChanged"
+                                    CheckedChanged="OnRadioButtonTagCheckedChanged"
                                     Content="Collar Tag"
                                     FontSize="20"
                                     GroupName="PetTagType"
                                     TextColor="Black" />
                                 <RadioButton
                                     x:Name="EarTagRdBtn"
-                                    CheckedChanged="OnRadioTagButtonCheckedChanged"
+                                    CheckedChanged="OnRadioButtonTagCheckedChanged"
                                     Content="Ear Tag"
                                     FontSize="20"
                                     GroupName="PetTagType"
                                     TextColor="Black" />
                                 <RadioButton
                                     x:Name="LegBandRdBtn"
-                                    CheckedChanged="OnRadioTagButtonCheckedChanged"
+                                    CheckedChanged="OnRadioButtonTagCheckedChanged"
                                     Content="Leg Band"
                                     FontSize="20"
                                     GroupName="PetTagType"
                                     TextColor="Black" />
                                 <RadioButton
                                     x:Name="MicrochipCodeRdBtn"
-                                    CheckedChanged="OnRadioTagButtonCheckedChanged"
+                                    CheckedChanged="OnRadioButtonTagCheckedChanged"
                                     Content="Microchip Code"
                                     FontSize="20"
                                     GroupName="PetTagType"
                                     TextColor="Black" />
                                 <RadioButton
                                     x:Name="RFIDRdBtn"
-                                    CheckedChanged="OnRadioTagButtonCheckedChanged"
+                                    CheckedChanged="OnRadioButtonTagCheckedChanged"
                                     Content="Radio Frequency Identification"
                                     FontSize="20"
                                     GroupName="PetTagType"
                                     TextColor="Black" />
                                 <RadioButton
                                     x:Name="TattooCodeRdBtn"
-                                    CheckedChanged="OnRadioTagButtonCheckedChanged"
+                                    CheckedChanged="OnRadioButtonTagCheckedChanged"
                                     Content="Tattoo Code"
                                     FontSize="20"
                                     GroupName="PetTagType"
                                     TextColor="Black" />
                                 <RadioButton
                                     x:Name="WingBandRdBtn"
-                                    CheckedChanged="OnRadioTagButtonCheckedChanged"
+                                    CheckedChanged="OnRadioButtonTagCheckedChanged"
                                     Content="Wing Band"
                                     FontSize="20"
                                     GroupName="PetTagType"
@@ -436,10 +427,9 @@
                                     Text="Tag Number"
                                     TextColor="Black"
                                     VerticalOptions="Start" />
-                                <Editor
+                                <Entry
                                     x:Name="OtherTagEntry"
                                     Margin="10,10"
-                                    AutoSize="TextChanges"
                                     FontSize="20"
                                     HeightRequest="100"
                                     HorizontalOptions="FillAndExpand"
@@ -613,10 +603,6 @@
                                     HeightRequest="100"
                                     Source="default_image_placeholder.png"
                                     WidthRequest="100" />
-                                <Label
-                                    Padding="5,30,0,0"
-                                    FontSize="Medium"
-                                    Text="Image 1:*" />
                                 <Button
                                     Margin="0,10,0,0"
                                     BackgroundColor="#096B00"

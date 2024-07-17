@@ -196,9 +196,9 @@ public partial class PetRegisterPage : ContentPage
     "Mekong Bobtail",
     "Minskin",
     "Munchkin",
-    "Napoleon",
-    "Nebelung",
     "Norwegian Forest",
+    "Nebelung",
+    "Navajo Longhair",
     "Ocicat",
     "Ojos Azules",
     "Oregon Rex",
@@ -269,24 +269,14 @@ public partial class PetRegisterPage : ContentPage
             "Male",
             "Female"
         };
-        SexList.ItemsSource = listSex;
+        sexList.ItemsSource = listSex;
 
 
-
-        List<string> ContactwAnimalList = new List<string>()
-        {
-            "Frequent",
-            "Never",
-            "Seldom",
-            "Unknown"
-        };
-        ContactwOtherAnimals.ItemsSource = ContactwAnimalList;
+    public void OnOwnershipListSelectedIndexChanged(object sender, EventArgs e)
+    {
+        var picker = (Picker)sender;
+        string selectedOwnership = (string)picker.SelectedItem;
     }
-
-
-
-
-
 
     //imagepicker function
 
@@ -425,6 +415,11 @@ public partial class PetRegisterPage : ContentPage
         {
             OtherTagEntryStack.IsVisible = true;
         }
+    }
+
+    private void Label_Focused(object sender, FocusEventArgs e)
+    {
+
     }
 
     private void OnStatusRadioButtonCheckedChanged(object sender, CheckedChangedEventArgs e)
