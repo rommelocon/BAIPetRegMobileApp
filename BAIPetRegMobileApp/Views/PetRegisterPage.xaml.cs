@@ -10,15 +10,16 @@ public partial class PetRegisterPage : ContentPage
     List<string> dogBreeds = new List<string>()
 {
     "Mixed",
+    "ASPIN",
     "Affenpinscher",
     "Afghan Hound",
-    "Golden Retriever",
-    "Airedale Terrier",
+    "Airedate Terrier",
     "Akita Inu",
     "Alaskan Malamute",
-    "ASPIN",
+    "African Bulldog",
+    "American Bully",
     "Australian Cattle Dog",
-    "Australian Dingo",
+    "Australia Dingo",
     "Australian Kelpie",
     "Australian Shepherd",
     "Australian Silky Terrier",
@@ -31,6 +32,7 @@ public partial class PetRegisterPage : ContentPage
     "Belgian Malinois",
     "Bernese Mountain Dog",
     "Bichon Frise",
+    "Biewer",
     "Bloodhound",
     "Border",
     "Border Collie",
@@ -41,20 +43,26 @@ public partial class PetRegisterPage : ContentPage
     "British Bulldog",
     "Bull",
     "Bull Mastiff",
+    "Bull Terrier",
     "Cairn",
+    "Cane Corso",
     "Cavalier King Charles",
     "Chihuahua",
     "Chinese Crested Dog",
     "Chow Chow",
     "Cocker Spaniel",
+    "Cotton De Tulear",
     "Curly Coated Retriever",
     "Dachshund",
     "Dalmatian",
     "Deerhound",
     "Doberman Pinscher",
     "Dogue de Bordeaux",
+    "Dutch Shepherd",
+    "English Bulldog",
     "English Setter",
     "English Springer Spaniel",
+    "Exotic Bully",
     "Field Spaniel",
     "Finnish Spitz",
     "Foxhound",
@@ -67,22 +75,28 @@ public partial class PetRegisterPage : ContentPage
     "Gordon Setter",
     "Great Dane",
     "Greyhound",
+    "Havanese Dog",
     "Hungarian Vizsla",
-    "Irish Setter",
+    "Irish",
     "Irish Red and White Setter",
+    "Irish Setter",
     "Irish Water Spaniel",
     "Irish Wolfhound",
     "Italian Greyhound",
+    "Italian Mastiff",
     "Jack Russell",
     "Japanese Chin",
+    "Japanese Spitz",
     "Keeshond",
     "Kerry Blue",
     "Labrador Retriever",
     "Lhasa Apso",
     "Lowchen",
     "Maltese",
+    "Mexican Hairless Terrier",
     "Miniature Pinscher",
     "Miniature Poodle",
+    "Mongrel",
     "Newfoundland",
     "Norwich Terrier",
     "Old English Sheepdog",
@@ -105,7 +119,9 @@ public partial class PetRegisterPage : ContentPage
     "Scottish Terrier",
     "Shar Pei",
     "Shetland Sheepdog",
+    "Shiba Inu",
     "Shih Tzu",
+    "Shih Tzu Poddle",
     "Siberian Husky",
     "Smooth Collie",
     "St. Bernard",
@@ -124,68 +140,93 @@ public partial class PetRegisterPage : ContentPage
 {   
     "Mixed",
     "Abyssinian",
-    "American Bobtail",
+    "Aegean",
     "American Curl",
-    "Bengal",
-    "Sphynx",
     "American Shorthair",
     "American Wirehair",
+    "Arabian Mau",
     "Asian",
-    "Asian Semi-Longhair",
+    "Asian Semi-longhair",
     "Australian Mist",
-    "Aegean",
+    "Balinese",
+    "Bambino",
+    "Bengal",
     "Birman",
-    "British Shorthair",
+    "Bombay",
+    "Brazilian Shorthair",
     "British Longhair",
+    "British Semi-longhair",
+    "British Shorthair",
     "Burmese",
-    "Canadian Sphynx",
+    "Burmilla",
+    "California Spangled",
+    "Chantilly-Tiffany",
+    "Chartreux",
+    "Chausie",
+    "Cheet0h",
+    "Colorpoint Shorthair",
     "Cornish Rex",
-    "Cymric",
+    "Cymric or Manx Longhair",
+    "Cyprus",
     "Devon Rex",
-    "Donskoy",
-    "Dwarf Cat",
+    "Dragon Li",
+    "Domestic Long Hair",
+    "Domestic Short Hair",
+    "Dwarf cat or Dwelf",
     "Egyptian Mau",
+    "European Shorthair",
     "Exotic Shorthair",
-    "Foreign White",
+    "Foldex",
     "German Rex",
-    "Sokoke",
-    "Himalayan",
     "Havana Brown",
-    "Indian Bobtail",
-    "Icelandic",
+    "Highlander",
+    "Himalayan or Colorpoint Persian",
     "Japanese Bobtail",
     "Javanese",
+    "Karelian Bobtail",
     "Khao Manee",
     "Korat",
-    "Kurilian Bobtail",
-    "Kinkalow",
+    "Korean Bobtail",
+    "Korn Ja",
+    "Kurilian Bobtail or Kuril Islands Bobtail",
     "LaPerm",
+    "Lykoi",
     "Maine Coon",
     "Manx",
+    "Mekong Bobtail",
+    "Minskin",
     "Munchkin",
-    "Norwegian Forest",
+    "Napoleon",
     "Nebelung",
-    "Navajo Longhair",
+    "Norwegian Forest",
     "Ocicat",
+    "Ojos Azules",
     "Oregon Rex",
-    "Persian",
+    "Oriental Bicolor",
+    "Oriental Longhair",
+    "Oriental Shorthair",
+    "Others",
+    "PerFold (Experimental Breed - WCF)",
+    "Persian (Modern Persian Cat)",
+    "Persian (Traditional Persian Cat)",
     "Peterbald",
-    "Pixiebob",
-    "Plymouth Rock",
+    "Pixie-bob",
+    "Raas",
+    "Ragamuffin",
     "Ragdoll",
     "Russian Blue",
-    "Siberian",
+    "Russian White, Black and Tabby",
+    "Sam Sawet",
     "Savannah",
+    "Scottish Fold",
+    "Selkirk Rex",
+    "Serengeti",
+    "Serrade petit",
     "Siamese",
+    "Siberian",
     "Singapura",
-    "Somali",
-    "Turkish Angora",
-    "Turkish Van",
-    "Tonkinese",
-    "Tiffanie",
-    "Ukrainian Levkoy",
-    "Vietnamese",
-    "Wheatens"
+    "Scottish Straight",
+    "Sphynx"
 };
 
 
@@ -205,8 +246,8 @@ public partial class PetRegisterPage : ContentPage
                 "Cat"
             };
 
-        speciesList.ItemsSource = listSpecies;
-        breedList.ItemsSource = new List<string> { "Please pick a species first" };
+        SpeciesList.ItemsSource = listSpecies;
+        BreedList.ItemsSource = new List<string> { "Please pick a species first" };
 
 
         List<string> listOwnership = new List<string>()
@@ -219,7 +260,7 @@ public partial class PetRegisterPage : ContentPage
             "Stray Animal"
 
         };
-        ownershipList.ItemsSource = listOwnership;
+        OwnershipList.ItemsSource = listOwnership;
 
 
 
@@ -228,15 +269,33 @@ public partial class PetRegisterPage : ContentPage
             "Male",
             "Female"
         };
-        sexList.ItemsSource = listSex;
+        SexList.ItemsSource = listSex;
 
+
+        List<string> listHabitat = new List<string>()
+        {
+            "Household",
+            "Neigborhood",
+            "Stray Animal"
+        };
+        HabitatList.ItemsSource = listHabitat;
+
+
+        List<string> listTagTypeList = new List<string>()
+        {
+            "Collar Tag",
+            "Ear Tag",
+            "Leg Band",
+            "Microchip Code",
+
+            "None",
+            "Radio Frequency Identification",
+            "Tatto Code"
+        };
+        TagTypeList.ItemsSource = listTagTypeList;
     }
 
-    public void OnOwnershipListSelectedIndexChanged(object sender, EventArgs e)
-    {
-        var picker = (Picker)sender;
-        string selectedOwnership = (string)picker.SelectedItem;
-    }
+
 
     //imagepicker function
 
@@ -295,16 +354,16 @@ public partial class PetRegisterPage : ContentPage
         if (selectedSpecies == "Dog")
         {
 
-            breedList.ItemsSource = dogBreeds;
+            BreedList.ItemsSource = dogBreeds;
         }
         else if (selectedSpecies == "Cat")
         {
 
-            breedList.ItemsSource = catBreeds;
+            BreedList.ItemsSource = catBreeds;
         }
         else
         {
-            breedList.ItemsSource = new List<string> { "Please pick a species first" };
+            BreedList.ItemsSource = new List<string> { "Please pick a species first" };
         }
     }
 
@@ -330,5 +389,10 @@ public partial class PetRegisterPage : ContentPage
         {
             DatePickerStack.IsVisible = false;
         }
+    }
+
+    private void Label_Focused(object sender, FocusEventArgs e)
+    {
+
     }
 }

@@ -21,7 +21,8 @@
             VerticalOptions="Center" />
 
         <ScrollView Grid.Row="2">
-            <VerticalStackLayout>
+            <VerticalStackLayout
+                >
                 <Label
                     Margin="0,30,0,0"
                     FontAttributes="Bold"
@@ -46,7 +47,7 @@
                         Margin="40,20,0,0"
                         FontAttributes="Bold"
                         FontSize="20"
-                        Text="Pet's Name"
+                        Text="Pet's Name *"
                         TextColor="Black" />
                     <Frame
                         Margin="30,10"
@@ -73,7 +74,6 @@
                                     Flags="ValidateOnAttaching,ValidateOnValueChanged"
                                     MinimumLength="1" />
                             </Entry.Behaviors>
-
                         </Entry>
                     </Frame>
 
@@ -86,7 +86,7 @@
                         Margin="40,20,0,0"
                         FontAttributes="Bold"
                         FontSize="20"
-                        Text="Type of Ownership"
+                        Text="Type of Ownership *"
                         TextColor="Black" />
                     <Frame
                         Margin="30,10"
@@ -102,11 +102,10 @@
                                 <ColumnDefinition Width="Auto" />
                             </Grid.ColumnDefinitions>
                             <Picker
-                                x:Name="ownershipList"
+                                x:Name="OwnershipList"
                                 Title="Type of Ownership"
                                 Grid.Column="0"
                                 FontSize="20"
-                                SelectedIndexChanged="OnOwnershipListSelectedIndexChanged"
                                 Style="{StaticResource NoUnderlinePicker}"
                                 TitleColor="Black" />
                             <Label
@@ -130,7 +129,7 @@
                         Margin="40,20,0,0"
                         FontAttributes="Bold"
                         FontSize="20"
-                        Text="Species"
+                        Text="Species *"
                         TextColor="Black" />
                     <Frame
                         Margin="30,10"
@@ -146,7 +145,7 @@
                                 <ColumnDefinition Width="Auto" />
                             </Grid.ColumnDefinitions>
                             <Picker
-                                x:Name="speciesList"
+                                x:Name="SpeciesList"
                                 Title="Select Species"
                                 Grid.Column="0"
                                 FontSize="20"
@@ -173,7 +172,7 @@
                         Margin="40,20,0,0"
                         FontAttributes="Bold"
                         FontSize="20"
-                        Text="Breed"
+                        Text="Breed *"
                         TextColor="Black" />
                     <Frame
                         Margin="30,10"
@@ -189,7 +188,7 @@
                                 <ColumnDefinition Width="Auto" />
                             </Grid.ColumnDefinitions>
                             <Picker
-                                x:Name="breedList"
+                                x:Name="BreedList"
                                 Title="Select Breed"
                                 Grid.Column="0"
                                 FontSize="20"
@@ -216,7 +215,7 @@
                         Margin="40,20,0,0"
                         FontAttributes="Bold"
                         FontSize="20"
-                        Text="Date of Birth"
+                        Text="Date of Birth *"
                         TextColor="Black" />
                     <Frame
                         Margin="30,10"
@@ -227,6 +226,7 @@
                         HasShadow="False"
                         HorizontalOptions="FillAndExpand">
                         <DatePicker
+                            x:Name="BirtDate"
                             Date="{Binding BirthDate}"
                             FontSize="20"
                             Format="D" />
@@ -240,7 +240,7 @@
                         Margin="40,20,0,0"
                         FontAttributes="Bold"
                         FontSize="20"
-                        Text="Sex"
+                        Text="Sex *"
                         TextColor="Black" />
                     <Frame
                         Margin="30,10"
@@ -256,8 +256,92 @@
                                 <ColumnDefinition Width="Auto" />
                             </Grid.ColumnDefinitions>
                             <Picker
-                                x:Name="sexList"
+                                x:Name="SexList"
                                 Title="Select Sex"
+                                Grid.Column="0"
+                                FontSize="20"
+                                Style="{StaticResource NoUnderlinePicker}"
+                                TitleColor="Black" />
+                            <Label
+                                Grid.Column="1"
+                                Margin="0,0,10,0"
+                                FontFamily="MaterialIconsOutlined-Regular"
+                                FontSize="40"
+                                HorizontalOptions="End"
+                                Text="arrow_drop_down"
+                                TextColor="Black"
+                                VerticalOptions="Center" />
+                        </Grid>
+                    </Frame>
+                </StackLayout>
+
+                <!--  Habitat  -->
+
+                <StackLayout>
+                    <Label
+                        Margin="40,20,0,0"
+                        FontAttributes="Bold"
+                        FontSize="20"
+                        Text="Habitat *"
+                        TextColor="Black" />
+                    <Frame
+                        Margin="30,10"
+                        Padding="10"
+                        BackgroundColor="#DCF4DA"
+                        BorderColor="Transparent"
+                        CornerRadius="15"
+                        HasShadow="False"
+                        HorizontalOptions="FillAndExpand">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <Picker
+                                x:Name="HabitatList"
+                                Title="Select Habitat"
+                                Grid.Column="0"
+                                FontSize="20"
+                                Style="{StaticResource NoUnderlinePicker}"
+                                TitleColor="Black" />
+                            <Label
+                                Grid.Column="1"
+                                Margin="0,0,10,0"
+                                FontFamily="MaterialIconsOutlined-Regular"
+                                FontSize="40"
+                                HorizontalOptions="End"
+                                Text="arrow_drop_down"
+                                TextColor="Black"
+                                VerticalOptions="Center" />
+                        </Grid>
+                    </Frame>
+                </StackLayout>
+
+                <!--  Tag Type  -->
+
+                <StackLayout>
+                    <Label
+                        Margin="40,20,0,0"
+                        FontAttributes="Bold"
+                        FontSize="20"
+                        Text="Tag Type *"
+                        TextColor="Black" />
+                    <Frame
+                        Margin="30,10"
+                        Padding="10"
+                        BackgroundColor="#DCF4DA"
+                        BorderColor="Transparent"
+                        CornerRadius="15"
+                        HasShadow="False"
+                        HorizontalOptions="FillAndExpand">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <Picker
+                                x:Name="TagTypeList"
+                                Title="Select Tag Type"
                                 Grid.Column="0"
                                 FontSize="20"
                                 Style="{StaticResource NoUnderlinePicker}"
@@ -282,7 +366,7 @@
                         Margin="40,20,0,0"
                         FontAttributes="Bold"
                         FontSize="20"
-                        Text="Weight(KG)"
+                        Text="Weight(KGS) *"
                         TextColor="Black" />
                     <Frame
                         Margin="30,10"
@@ -302,7 +386,7 @@
                             IsTextPredictionEnabled="False"
                             Keyboard="Numeric"
                             MaxLength="5"
-                            Placeholder="Input Weight(KG)"
+                            Placeholder="Input Weight(KGS)"
                             PlaceholderColor="Black"
                             VerticalOptions="Center" />
                     </Frame>
@@ -315,7 +399,7 @@
                         Margin="40,20,0,0"
                         FontAttributes="Bold"
                         FontSize="20"
-                        Text="Animal Color"
+                        Text="Animal Color *"
                         TextColor="Black" />
                     <Frame
                         Margin="30,10"
@@ -326,6 +410,7 @@
                         HasShadow="False"
                         HorizontalOptions="FillAndExpand">
                         <Entry
+                            x:Name="PetColor"
                             BackgroundColor="Transparent"
                             FontAttributes="None"
                             FontSize="20"
@@ -377,8 +462,8 @@
 
                     <Frame
                         Padding="10"
-                        BorderColor="Black"
                         BackgroundColor="#DCF4DA"
+                        BorderColor="Black"
                         CornerRadius="5"
                         HorizontalOptions="FillAndExpand"
                         VerticalOptions="Start">
@@ -388,19 +473,19 @@
                                 FontAttributes="Bold"
                                 FontSize="20"
                                 HorizontalOptions="Start"
-                                Text="*Remarks"
+                                Text="Remarks "
                                 TextColor="Black"
                                 VerticalOptions="Start" />
                             <Editor
+                                x:Name="RemarksEditor"
                                 Margin="10,10"
                                 AutoSize="TextChanges"
                                 FontSize="20"
                                 HeightRequest="100"
                                 HorizontalOptions="FillAndExpand"
                                 Placeholder="Input Remarks"
-                                PlaceholderColor="Black"
+                                PlaceholderColor="#c2c2c2"
                                 TextColor="Black"
-                                
                                 VerticalOptions="Start" />
                         </StackLayout>
 
@@ -416,15 +501,15 @@
                         FontAttributes="Bold"
                         FontSize="Medium"
                         HorizontalOptions="Center"
-                        Text="PET ORIGIN"
+                        Text="PET ORIGIN *"
                         TextColor="Black"
                         VerticalOptions="Start" />
 
                     <Frame
                         Padding="10"
+                        BackgroundColor="#DCF4DA"
                         BorderColor="Black"
                         CornerRadius="5"
-                        BackgroundColor="#DCF4DA"
                         HorizontalOptions="FillAndExpand"
                         VerticalOptions="Start">
                         <StackLayout>
@@ -464,8 +549,8 @@
                                     HeightRequest="100"
                                     HorizontalOptions="FillAndExpand"
                                     Placeholder="Enter origin here"
+                                    PlaceholderColor="#c2c2c2"
                                     TextColor="Black"
-                                    PlaceholderColor="Black"
                                     VerticalOptions="Start" />
                             </StackLayout>
                         </StackLayout>
@@ -483,14 +568,14 @@
                         FontAttributes="Bold"
                         FontSize="Medium"
                         HorizontalOptions="Center"
-                        Text="STATUS"
+                        Text="STATUS *"
                         TextColor="Black"
                         VerticalOptions="Start" />
                     <Frame
                         Padding="10"
+                        BackgroundColor="#DCF4DA"
                         BorderColor="Black"
                         CornerRadius="5"
-                        BackgroundColor="#DCF4DA"
                         HorizontalOptions="FillAndExpand"
                         VerticalOptions="Start">
                         <StackLayout>
@@ -521,7 +606,7 @@
                                     VerticalOptions="Start" />
                                 <DatePicker
                                     x:Name="DeathDatePicker"
-                                    Margin="10,0"
+                                    Margin="5,0"
                                     FontSize="20"
                                     HeightRequest="50"
                                     HorizontalOptions="FillAndExpand"
@@ -568,6 +653,11 @@
                                     HeightRequest="100"
                                     Source="default_image_placeholder.png"
                                     WidthRequest="100" />
+                                <Label
+                                    Padding="5,30,0,0"
+                                    FontSize="Medium"
+                                    Text="Image 1:*" />
+
                                 <Button
                                     Margin="0,10,0,0"
                                     BackgroundColor="#096B00"
@@ -590,6 +680,10 @@
                                     HeightRequest="100"
                                     Source="default_image_placeholder.png"
                                     WidthRequest="100" />
+                                <Label
+                                    Padding="5,30,0,0"
+                                    FontSize="Medium"
+                                    Text="Image 2:" />
                                 <Button
                                     Margin="0,10,0,0"
                                     BackgroundColor="#096B00"
@@ -612,6 +706,10 @@
                                     HeightRequest="100"
                                     Source="default_image_placeholder.png"
                                     WidthRequest="100" />
+                                <Label
+                                    Padding="5,30,0,0"
+                                    FontSize="Medium"
+                                    Text="Image 3:" />
                                 <Button
                                     Margin="0,10,0,0"
                                     BackgroundColor="#096B00"
@@ -634,6 +732,10 @@
                                     HeightRequest="100"
                                     Source="default_image_placeholder.png"
                                     WidthRequest="100" />
+                                <Label
+                                    Padding="5,30,0,0"
+                                    FontSize="Medium"
+                                    Text="Image 4:" />
                                 <Button
                                     Margin="0,10,0,0"
                                     BackgroundColor="#096B00"
