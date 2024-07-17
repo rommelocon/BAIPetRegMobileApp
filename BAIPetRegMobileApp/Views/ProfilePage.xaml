@@ -69,17 +69,14 @@
                         </Grid>
                     </Frame>
 
-
-
                     <Label
                         Margin="0,5,0,0"
                         FontAttributes="Bold"
                         FontSize="40"
                         SemanticProperties.HeadingLevel="Level4"
                         Style="{StaticResource Headline}"
-                        Text="{Binding UserName}"
+                        Text="{Binding FullName}"
                         TextColor="#096B00" />
-
 
                     <Label
                         Margin="0,20,0,0"
@@ -90,7 +87,6 @@
                         Text="Pet Owner"
                         TextColor="Black" />
 
-
                     <Label
                         Padding="20"
                         BackgroundColor="#12DC00"
@@ -99,7 +95,6 @@
                         HorizontalTextAlignment="Center"
                         Text="REGISTERED PETS"
                         TextColor="White" />
-
 
                     <HorizontalStackLayout HorizontalOptions="Center" Spacing="20">
                         <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center">
@@ -171,6 +166,96 @@
                         TextColor="White"
                         VerticalTextAlignment="Center" />
                     <StackLayout Orientation="Vertical">
+                        <!--  firstname  -->
+                        <Label
+    Margin="20,0,0,0"
+    FontSize="20"
+    HorizontalTextAlignment="Start"
+    Text="First Name"
+    TextColor="Black" />
+                        <Label
+    Text="{Binding Firstname}"
+    Margin="20,0,20,40"
+    Padding="5"
+    Background="#e2f2e1"
+    FontSize="20"
+    HorizontalTextAlignment="Start"
+    TextColor="Black" />
+                        <!--  middlename  -->
+                        <Label
+Margin="20,0,0,0"
+FontSize="20"
+HorizontalTextAlignment="Start"
+Text="Middle Name"
+TextColor="Black" />
+                        <Label
+Text="{Binding MiddleName}"
+Margin="20,0,20,40"
+Padding="5"
+Background="#e2f2e1"
+FontSize="20"
+HorizontalTextAlignment="Start"
+TextColor="Black" />
+                        <!--  lastname  -->
+                        <Label
+Margin="20,0,0,0"
+FontSize="20"
+HorizontalTextAlignment="Start"
+Text="Last Name"
+TextColor="Black" />
+                        <Label
+Text="{Binding Lastname}"
+Margin="20,0,20,40"
+Padding="5"
+Background="#e2f2e1"
+FontSize="20"
+HorizontalTextAlignment="Start"
+TextColor="Black" />
+                        <!--  extension name  -->
+                        <Label
+Margin="20,0,0,0"
+FontSize="20"
+HorizontalTextAlignment="Start"
+Text="Extension Name"
+TextColor="Black" />
+                        <Label
+Text="{Binding ExtensionName}"
+Margin="20,0,20,40"
+Padding="5"
+Background="#e2f2e1"
+FontSize="20"
+HorizontalTextAlignment="Start"
+TextColor="Black" />
+                        <!--  birthday  -->
+                        <Label
+Margin="20,0,0,0"
+FontSize="20"
+HorizontalTextAlignment="Start"
+Text="Birthday"
+TextColor="Black" />
+                        <Label
+Text="{Binding Birthday}"
+Margin="20,0,20,40"
+Padding="5"
+Background="#e2f2e1"
+FontSize="20"
+HorizontalTextAlignment="Start"
+TextColor="Black" />
+                        <!--  sex  -->
+                        <Label
+Margin="20,0,0,0"
+FontSize="20"
+HorizontalTextAlignment="Start"
+Text="Sex"
+TextColor="Black" />
+                        <Label
+Text="{Binding SexDescription}"
+Margin="20,0,20,40"
+Padding="5"
+Background="#e2f2e1"
+FontSize="20"
+HorizontalTextAlignment="Start"
+TextColor="Black" />
                         <!--  email  -->
                         <Label
                             Margin="20,0,0,0"
@@ -200,41 +285,7 @@
                             FontAttributes="Italic"
                             FontSize="20"
                             HorizontalTextAlignment="Start"
-                            Text="{}"
-                            TextColor="Black" />
-
-                        <!--  BirthDay  -->
-                        <Label
-                            Margin="20,0,0,0"
-                            FontSize="20"
-                            HorizontalTextAlignment="Start"
-                            Text="Birth Day"
-                            TextColor="Black" />
-                        <Label
-                            Margin="20,0,20,40"
-                            Padding="5"
-                            Background="#e2f2e1"
-                            FontAttributes="Italic"
-                            FontSize="20"
-                            HorizontalTextAlignment="Start"
-                            Text="June 22, 1998"
-                            TextColor="Black" />
-
-                        <!--  SEX  -->
-                        <Label
-                            Margin="20,0,0,0"
-                            FontSize="20"
-                            HorizontalTextAlignment="Start"
-                            Text="Sex"
-                            TextColor="Black" />
-                        <Label
-                            Margin="20,0,20,40"
-                            Padding="5"
-                            Background="#e2f2e1"
-                            FontAttributes="Italic"
-                            FontSize="20"
-                            HorizontalTextAlignment="Start"
-                            Text="Male"
+                            Text="{Binding CivilStatusName}"
                             TextColor="Black" />
 
                         <!--  Contact Number  -->
@@ -268,7 +319,7 @@
                             FontAttributes="Italic"
                             FontSize="20"
                             HorizontalTextAlignment="Start"
-                            Text="NCR"
+                            Text="{Binding Region}"
                             TextColor="Black" />
 
                         <!--  Province  -->
@@ -285,7 +336,7 @@
                             FontAttributes="Italic"
                             FontSize="20"
                             HorizontalTextAlignment="Start"
-                            Text="Metro Manila"
+                            Text="{Binding ProvinceName}"
                             TextColor="Black" />
 
                         <!--  Municapality  -->
@@ -302,7 +353,7 @@
                             FontAttributes="Italic"
                             FontSize="20"
                             HorizontalTextAlignment="Start"
-                            Text="Quezon City"
+                            Text="{Binding MunicipalitiesCities}"
                             TextColor="Black" />
 
                         <!--  Barangay  -->
@@ -319,8 +370,43 @@
                             FontAttributes="Italic"
                             FontSize="20"
                             HorizontalTextAlignment="Start"
-                            Text="Vasra"
+                            Text="{Binding BarangayName}"
                             TextColor="Black" />
+                        <!--  Street  -->
+                        <Label
+                            Margin="20,0,0,0"
+                            FontSize="20"
+                            HorizontalTextAlignment="Start"
+                            Text="Street"
+                            TextColor="Black" />
+                        <Entry
+    Margin="20,0,20,40"
+    BackgroundColor="#e2f2e1"
+                            PlaceholderColor="#e2f2e1"
+    FontAttributes="Italic"
+    FontSize="20"
+    HorizontalTextAlignment="Start"
+    Placeholder="Enter Street Address"
+    Text="{Binding StreetAddress}"
+    TextColor="Black" />
+
+                        <!--  Full Address  -->
+                        <Label
+    Margin="20,0,0,0"
+    FontSize="20"
+    HorizontalTextAlignment="Start"
+    Text="Full Address"
+    TextColor="Black" />
+                        <Label
+    Margin="20,0,20,40"
+    Padding="5"
+    Background="#e2f2e1"
+    FontAttributes="Italic"
+    FontSize="20"
+    HorizontalTextAlignment="Start"
+    Text="{Binding FullAddress}"
+    TextColor="Black" />
+
                     </StackLayout>
                 </VerticalStackLayout>
             </VerticalStackLayout>

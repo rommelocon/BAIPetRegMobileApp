@@ -43,8 +43,7 @@
                     FontSize="20"
                     IsSpellCheckEnabled="False"
                     IsTextPredictionEnabled="False"
-                    Keyboard="Email"
-                    Placeholder="Email"
+                    Placeholder="Username"
                     TextColor="Black"
                     VerticalOptions="Center" 
                     Text="{Binding LoginModel.UserName}"/>

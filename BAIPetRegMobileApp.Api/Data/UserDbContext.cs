@@ -5,13 +5,8 @@ using Microsoft.EntityFrameworkCore;
 
 namespace BAIPetRegMobileApp.Api.Data
 {
-    public class UserDbContext : IdentityDbContext<IdentityUser>
+    public class UserDbContext(DbContextOptions<UserDbContext> options) : IdentityDbContext<ApplicationUser>(options)
     {
-        public UserDbContext(DbContextOptions<UserDbContext> options)
-        : base(options)
-        {
-        }
-
         public DbSet<TblProvinces> TblProvinces { get; set; }
         public DbSet<TblSpecies> TblSpecies { get; set; }
         public DbSet<TblSexType> TblSexTypes { get; set; }
@@ -27,6 +22,78 @@ namespace BAIPetRegMobileApp.Api.Data
         {
             base.OnModelCreating(modelBuilder);
 
+            // Configure primary keys
+            modelBuilder.Entity<TblCivilStatus>(entity =>
+            {
+                entity.HasKey(cs => cs.CivilCode);
+            });
+            modelBuilder.Entity<TblRegions>(entity =>
+            {
+                entity.HasKey(r => r.Rcode);
+            });
+
+            modelBuilder.Entity<TblProvinces>(entity =>
+            {
+                entity.HasKey(p => p.ProvCode);
+            });
+
+            modelBuilder.Entity<TblMunicipalities>(entity =>
+            {
+                entity.HasKey(m => m.MunCode);
+            });
+
+            modelBuilder.Entity<TblBarangays>(entity =>
+            {
+                entity.HasKey(b => b.Bcode);
+            });
+
+            modelBuilder.Entity<TblAccessLevel>(entity =>
+            {
+                entity.HasKey(al => al.AccessLevelID);
+            });
+
+            modelBuilder.Entity<TblAgencyName>(entity =>
+            {
+                entity.HasKey(an => an.AgencyID);
+            });
+
+            modelBuilder.Entity<TblSexType>(entity =>
+            {
+                entity.HasKey(st => st.SexID);
+            });
+
+            modelBuilder.Entity<TblRegistrationOption>(entity =>
+            {
+                entity.HasKey(ro => ro.RegOptID);
+            });
+
+            modelBuilder.Entity<TblCivilStatus>(entity =>
+            {
+                entity.HasKey(cs => cs.CivilCode);
+            });
+
+            modelBuilder.Entity<TblSpecies>(entity =>
+            {
+                entity.HasKey(s => s.SpeciesID);
+            });
+
+            // Configure relationships
+            modelBuilder.Entity<TblBarangays>()
+                .HasOne(m => m.Municipalities)
+                .WithMany()
+                .HasForeignKey(m => m.MunCode);
+
+            modelBuilder.Entity<TblProvinces>()
+                .HasOne(p => p.Regions)
+                .WithMany()
+                .HasForeignKey(p => p.Rcode);
+
+            modelBuilder.Entity<TblMunicipalities>()
+                .HasOne(m => m.Provinces)
+                .WithMany()
+                .HasForeignKey(m => m.ProvCode);
+
+            // Configure ApplicationUser relationships
             modelBuilder.Entity<ApplicationUser>(entity =>
             {
                 entity.HasIndex(e => e.NormalizedEmail).HasDatabaseName("EmailIndex");
@@ -52,127 +119,14 @@ namespace BAIPetRegMobileApp.Api.Data
                     .WithMany()
                     .HasForeignKey(e => e.AccessLevelID)
                     .OnDelete(DeleteBehavior.SetNull);
+
+                entity.HasOne(e => e.CivilStatus)
+                    .WithMany()
+                    .HasForeignKey(e => e.CivilStatusCode)
+                    .OnDelete(DeleteBehavior.SetNull);
             });
 
             // Additional configurations for other entities
-            // Configure primary keys
-            modelBuilder.Entity<TblProvinces>()
-                .HasKey(p => p.ProvCode);
-
-            modelBuilder.Entity<TblMunicipalities>()
-                .HasKey(m => m.MunCode);
-
-            modelBuilder.Entity<TblBarangays>()
-            .HasKey(b => b.Bcode);
-
-
-            // Configure relationships
-            modelBuilder.Entity<TblBarangays>()
-                .HasOne(b => b.TblMunicipalities)
-                .WithMany(m => m.TblBarangays)
-                .HasForeignKey(b => b.MunCode);
-
-            modelBuilder.Entity<TblProvinces>()
-                .HasOne(p => p.TblRegions)
-                .WithMany(r => r.TblProvinces)
-                .HasForeignKey(p => p.Rcode);
-
-            modelBuilder.Entity<TblMunicipalities>()
-                .HasOne(m => m.TblProvinces)
-                .WithMany(p => p.TblMunicipalities)
-                .HasForeignKey(m => m.ProvCode);
-
-            //Configure TblRegions
-            modelBuilder.Entity<TblRegions>(entity =>
-            {
-                entity.HasKey(e => e.Rcode)
-                      .HasName("TblRegions");
-
-                entity.Property(e => e.Rcode)
-                      .HasColumnName("Rcode")
-                      .HasMaxLength(50)
-                      .IsRequired();
-
-                entity.Property(e => e.RegionName)
-                      .HasColumnName("Region")
-                      .HasMaxLength(100);
-
-                entity.Property(e => e.PSGC)
-                      .HasColumnName("PSGC")
-                      .HasMaxLength(50);
-
-                entity.Property(e => e.Population2020)
-                      .HasColumnName("Pop_2020");
-
-                entity.HasMany(e => e.TblProvinces)
-                      .WithOne(p => p.TblRegions)
-                      .HasForeignKey(p => p.Rcode);
-            });
-
-            // Configure TblSpecies
-            modelBuilder.Entity<TblSpecies>(entity =>
-            {
-                entity.HasKey(e => e.SpeciesID);
-
-                entity.Property(e => e.SpeciesID)
-                      .ValueGeneratedNever(); // Assumes SpeciesID is manually set
-
-                entity.Property(e => e.SpeciesDescription)
-                      .HasMaxLength(50);
-            });
-            // Configure TblSexType
-            modelBuilder.Entity<TblSexType>(entity =>
-            {
-                entity.HasKey(e => e.SexID);
-
-                entity.Property(e => e.SexID)
-                      .ValueGeneratedNever(); // Assumes SexID is manually set
-
-                entity.Property(e => e.SexDescription)
-                      .HasMaxLength(50);
-            });
-            // Configure TblRegistrationOption
-            modelBuilder.Entity<TblRegistrationOption>(entity =>
-            {
-                entity.HasKey(e => e.RegOptID);
-
-                entity.Property(e => e.RegOptID)
-                      .ValueGeneratedNever(); // Assumes RegOptID is manually set
-
-                entity.Property(e => e.RegOptDescription)
-                      .HasMaxLength(50);
-            });
-            // Configure entity for TblAccessLevel
-            modelBuilder.Entity<TblAccessLevel>(entity =>
-            {
-                entity.HasKey(e => e.AccessLevelID);
-
-                entity.Property(e => e.AccessLevelDescription)
-                    .HasMaxLength(50)
-                    .IsRequired(false);
-            });
-
-            // Configure entity for TblAgencyName
-            modelBuilder.Entity<TblAgencyName>(entity =>
-            {
-                entity.HasKey(e => e.AgencyID);
-
-                entity.Property(e => e.AgencyDescription)
-                    .HasMaxLength(50)
-                    .IsRequired(false);
-            });
-
-            // Configure TblCivilStatus
-            modelBuilder.Entity<TblCivilStatus>(entity =>
-            {
-                entity.HasKey(e => e.CivilCode);
-
-                entity.Property(e => e.CivilCode)
-                      .ValueGeneratedNever(); // Key property
-
-                entity.Property(e => e.CivilStatus)
-                      .HasMaxLength(50);
-            });
         }
     }
 }

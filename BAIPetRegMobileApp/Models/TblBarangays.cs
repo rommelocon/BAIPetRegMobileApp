@@ -1,41 +1,46 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
 
-namespace BAIPetRegMobileApp.Api.Models
+namespace BAIPetRegMobileApp.Models
 {
-    public class Barangay
+    public class TblBarangays
     {
         [Key]
+        [Column("Bcode")]
         [StringLength(50)]
         public string? Bcode { get; set; }
 
+        [Column("Rcode")]
         [StringLength(50)]
         public string? Rcode { get; set; }
 
+        [Column("ProvCode")]
         [StringLength(50)]
         public string? ProvCode { get; set; }
 
+        [Column("MunCode")]
         [StringLength(50)]
         public string? MunCode { get; set; }
 
+        [Column("PSGCID")]
         [StringLength(50)]
         public string? PSGCID { get; set; }
 
+        [Column("BarangayName")]
         [StringLength(150)]
         public string? BarangayName { get; set; }
 
-        public double? OldBcode { get; set; }
+        [Column("OldBcode")]
+        public float? OldBcode { get; set; }
 
+        [Column("OldBryName")]
         [StringLength(150)]
         public string? OldBryName { get; set; }
 
-        public double? Pop2020 { get; set; }
-
-        // Foreign key reference
-        [ForeignKey("MunCode")]
-        public Municipality? Municipality { get; set; }
+        [Column("Pop2020")]
+        public float? Population2020 { get; set; }
 
         // Navigation properties
-        public virtual ICollection<ApplicationUser>? ApplicationUsers { get; set; }
+        public TblMunicipalities? Municipalities { get; set; }
     }
 }

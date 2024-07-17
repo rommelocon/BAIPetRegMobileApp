@@ -2,7 +2,6 @@
 using System.Net.Http.Json;
 using System.Text.Json;
 using BAIPetRegMobileApp.ViewModels;
-using BAIPetRegMobileApp.Api.Models;
 
 namespace BAIPetRegMobileApp.Services;
 public class ClientService
@@ -62,15 +61,33 @@ public class ClientService
 
     public async Task Logout()
     {
-        Console.WriteLine("Logout Method Called"); // Logging
-        var httpClient = httpClientFactory.CreateClient("custom-httpclient");
-        var result = await httpClient.PostAsync("/Account/logout", null);
-        SecureStorage.Default.Remove("Authentication");
+        // Retrieve the authentication data from secure storage
+        var serializedResponse = await SecureStorage.GetAsync("Authentication");
 
-        await Shell.Current.GoToAsync(nameof(LoginPage));
+        if (serializedResponse != null)
+        {
+            // Deserialize the response to get the username
+            var loginResponse = JsonSerializer.Deserialize<LoginResponse>(serializedResponse);
+            var httpClient = httpClientFactory.CreateClient("custom-httpclient");
+            if (loginResponse != null && !string.IsNullOrEmpty(loginResponse.UserName) && !string.IsNullOrEmpty(loginResponse.AccessToken))
+            {
+                httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", loginResponse.AccessToken);
+                var result = await httpClient.PostAsync("/Account/logout", null);
+                SecureStorage.Default.Remove("Authentication");
+                await Shell.Current.GoToAsync(nameof(LoginPage));
+            }
+            else
+            {
+                await Shell.Current.DisplayAlert("Alert", "Username is not available. Please log in again.", "Ok");
+            }
+        }
+        else
+        {
+            await Shell.Current.DisplayAlert("Alert", "Authentication data not found. Please log in.", "Ok");
+        }
     }
 
-    public async Task<UserProfileDto> GetProfile()
+    public async Task<UserViewModel> GetProfile()
     {
         // Retrieve the authentication data from secure storage
         var serializedResponse = await SecureStorage.GetAsync("Authentication");
@@ -80,15 +97,16 @@ public class ClientService
             // Deserialize the response to get the username
             var loginResponse = JsonSerializer.Deserialize<LoginResponse>(serializedResponse);
 
-            if (loginResponse != null && !string.IsNullOrEmpty(loginResponse.UserName))
+            if (loginResponse != null && !string.IsNullOrEmpty(loginResponse.UserName) && !string.IsNullOrEmpty(loginResponse.AccessToken))
             {
                 // Make the API request with the retrieved username
                 var httpClient = httpClientFactory.CreateClient("custom-httpclient");
-                var result = await httpClient.GetAsync($"/Account/{loginResponse.UserName}");
+                httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", loginResponse.AccessToken);
+                var result = await httpClient.GetAsync($"/Account/profile/{loginResponse.UserName}");
 
                 if (result.IsSuccessStatusCode)
                 {
-                    var responseContent = await result.Content.ReadFromJsonAsync<UserProfileDto>();
+                    var responseContent = await result.Content.ReadFromJsonAsync<UserViewModel>();
                     try
                     {
                         if (responseContent is not null)

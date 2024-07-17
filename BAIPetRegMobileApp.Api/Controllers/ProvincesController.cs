@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace BAIPetRegMobileApp.Api.Controllers
 {
     [Route("[controller]")]
-    public class RegionsController(UserDbContext userDbContext) : BaseController<TblRegions>(userDbContext)
+    public class ProvincesController(UserDbContext userDbContext) : BaseController<TblProvinces>(userDbContext)
     {
     }
 }

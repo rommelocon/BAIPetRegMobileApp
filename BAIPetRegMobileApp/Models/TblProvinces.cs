@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 
-namespace BAIPetRegMobileApp.Api.Models
+namespace BAIPetRegMobileApp.Models
 {
     public class TblProvinces
     {

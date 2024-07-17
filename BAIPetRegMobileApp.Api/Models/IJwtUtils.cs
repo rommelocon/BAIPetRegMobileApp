@@ -15,25 +15,32 @@ namespace BAIPetRegMobileApp.Api.Models
     public class JwtUtils : IJwtUtils
     {
         private readonly string? _secret;
-
+        private IConfiguration configuration;
         public JwtUtils(IConfiguration configuration)
         {
-            _secret = configuration["Jwt:Secret"]; // Assuming Jwt:Secret is configured in appsettings.json or other configuration source
+            this.configuration = configuration; // Assuming Jwt:Secret is configured in appsettings.json or other configuration source
         }
 
         public string GenerateToken(ApplicationUser user)
         {
-            // generate token that is valid for 7 days
-            var tokenHandler = new JwtSecurityTokenHandler();
-            var key = Encoding.ASCII.GetBytes(_secret!);
-            var tokenDescriptor = new SecurityTokenDescriptor
+            var claims = new List<Claim>
             {
-                Subject = new ClaimsIdentity(new[] { new Claim("id", user.Id.ToString()) }),
-                Expires = DateTime.UtcNow.AddDays(7),
-                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
+                new(ClaimTypes.NameIdentifier, user.Id),
+                new(ClaimTypes.Name, user.UserName!),
+                // Add additional claims as needed
             };
-            var token = tokenHandler.CreateToken(tokenDescriptor);
-            return tokenHandler.WriteToken(token);
+
+            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["Jwt:Key"] ?? ""));
+            var credentials = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+
+            var token = new JwtSecurityToken(
+                configuration["Jwt:Issuer"] ?? "",
+                configuration["Jwt:Audience"] ?? "",
+                claims,
+                expires: DateTime.UtcNow.AddMinutes(Convert.ToDouble(configuration["Jwt:AccessTokenExpirationMinutes"])),
+                signingCredentials: credentials);
+
+            return new JwtSecurityTokenHandler().WriteToken(token);
         }
         public string GenerateRefreshToken()
         {

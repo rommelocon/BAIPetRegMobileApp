@@ -8,57 +8,27 @@ namespace BAIPetRegMobileApp.Api.Controllers
 {
     [Route("[controller]")]
     [ApiController]
-    public class AccountController : ControllerBase
+    public class AccountController(
+        UserManager<ApplicationUser> userManager,
+        SignInManager<ApplicationUser> signInManager,
+        IJwtUtils jwtUtils) : ControllerBase
     {
-        //userManager will hold the UserManager instance
-        private readonly UserManager<ApplicationUser> userManager;
-        //signInManager will hold the SignInManager instance
-        private readonly SignInManager<ApplicationUser> signInManager;
-
-        private readonly IJwtUtils jwtUtils;
-
-        private readonly IConfiguration configuration;
-        //Both UserManager and SignInManager services are injected into the AccountController
-        //using constructor injection
-        public AccountController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, IConfiguration configuration, IJwtUtils jwtUtils)
-        {
-            this.userManager = userManager;
-            this.signInManager = signInManager;
-            this.configuration = configuration;
-            this.jwtUtils = jwtUtils;
-        }
-
-        [HttpGet("{username}")]
+        [HttpGet("profile/{username}")]
         [Authorize]
         public async Task<IActionResult> GetProfile(string username)
         {
             var user = await userManager.FindByNameAsync(username);
             if (user == null)
-            {   
+            {
                 return NotFound();
             }
 
-            var profile = new UserProfileDto
-            {
-                UserName = user.UserName,
-                Email = user.Email,
-                Firstname = user.Firstname,
-                Lastname = user.Lastname,
-                Birthday = user.Birthday.HasValue ? user.Birthday.Value.ToString("yyyy-MM-dd") : null,
-                MobileNumber = user.MobileNumber,
-                Region = user.Region,
-                ProvinceName = user.ProvinceName,
-                MunicipalitiesCities = user.MunicipalitiesCities,
-                BarangayName = user.BarangayName,
-                // add other fields as needed
-            };
-
-            return Ok(profile);
+            return Ok(MapUserToProfileViewModel(user));
         }
 
-        [HttpPut("{username}")]
+        [HttpPut("profile/{username}")]
         [Authorize]
-        public async Task<IActionResult> UpdateProfile(string username, [FromBody] ProfileViewModel model)
+        public async Task<IActionResult> UpdateProfile(string username, [FromBody] UserViewModel model)
         {
             var user = await userManager.FindByNameAsync(username);
             if (user == null)
@@ -66,10 +36,23 @@ namespace BAIPetRegMobileApp.Api.Controllers
                 return NotFound();
             }
 
+            // Update user properties from UserViewModel
             user.Email = model.Email;
-            user.Firstname = model.FirstName!;
-            user.Lastname = model.LastName!;
-            // update other fields as needed
+            user.Firstname = model.Firstname;
+            user.Lastname = model.Lastname;
+            user.MiddleName = model.MiddleName;
+            user.ExtensionName = model.ExtensionName;
+            user.Birthday = model.Birthday;
+            user.SexDescription = model.SexDescription;
+            user.MobileNumber = model.MobileNumber;
+            user.Region = model.Region;
+            user.ProvinceName = model.ProvinceName;
+            user.MunicipalitiesCities = model.MunicipalitiesCities;
+            user.BarangayName = model.BarangayName;
+            user.FullAddress = model.FullAddress;
+            user.ProfilePicture = model.ProfilePicture;
+            user.CivilStatusName = model.CivilStatusName;
+            // Update other fields as needed
 
             var result = await userManager.UpdateAsync(user);
             if (result.Succeeded)
@@ -84,21 +67,19 @@ namespace BAIPetRegMobileApp.Api.Controllers
         public async Task<IActionResult> Register(RegisterViewModel model)
         {
             var user = new ApplicationUser
-            { 
-                UserName = model.UserName, 
+            {
+                UserName = model.UserName,
                 Email = model.Email,
                 DateRegistered = DateTime.UtcNow // Set the registration date
             };
 
             var result = await userManager.CreateAsync(user, model.Password!);
-                if (result.Succeeded)
+            if (result.Succeeded)
             {
                 return Ok("User registered successfully");
             }
-            else
-            {
-                return BadRequest(result.Errors);
-            }
+
+            return BadRequest(result.Errors);
         }
 
         [HttpPost("login")]
@@ -128,27 +109,48 @@ namespace BAIPetRegMobileApp.Api.Controllers
         }
 
         [HttpPost("logout")]
+        [Authorize]
         public async Task<IActionResult> Logout()
         {
-            if (signInManager.IsSignedIn(User))
-            {
-                await signInManager.SignOutAsync();
-                return Ok("User logged out successful");
-            }
-            return BadRequest("You are not logged in");
-          
+            await signInManager.SignOutAsync();
+            return Ok("User logged out successfully");
         }
 
         [HttpGet("user")]
+        [Authorize]
         public async Task<ActionResult<ApplicationUser>> GetUserInfo()
         {
-            var user = await userManager.GetUserAsync(User); // Get the current authenticated user
+            var user = await userManager.GetUserAsync(User);
             if (user == null)
             {
                 return NotFound();
             }
 
             return Ok(user);
+        }
+
+        private UserViewModel MapUserToProfileViewModel(ApplicationUser user)
+        {
+            return new UserViewModel
+            {
+                Firstname = user.Firstname,
+                Lastname = user.Lastname,
+                MiddleName = user.MiddleName,
+                ExtensionName = user.ExtensionName,
+                Birthday = user.Birthday, // Assuming ApplicationUser has a DateOnly property for Birthday
+                SexDescription = user.SexDescription,
+                MobileNumber = user.MobileNumber,
+                UserName = user.UserName,
+                Email = user.Email,
+                Region = user.Region,
+                ProvinceName = user.ProvinceName,
+                MunicipalitiesCities = user.MunicipalitiesCities,
+                BarangayName = user.BarangayName,
+                FullAddress = user.FullAddress,
+                ProfilePicture = user.ProfilePicture,
+                CivilStatusName = user.CivilStatusName,
+                // Map other properties as needed
+            };
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using BAIPetRegMobileApp.Services;
 using CommunityToolkit.Mvvm.ComponentModel;
+using Microsoft.AspNet.Identity;
 
 namespace BAIPetRegMobileApp.ViewModels
 {
@@ -28,7 +29,7 @@ namespace BAIPetRegMobileApp.ViewModels
         private int civilStatusCode;
 
         [ObservableProperty]
-        private string birthday;
+        private DateOnly birthday;
 
         [ObservableProperty]
         private string sexDescription;
@@ -48,6 +49,28 @@ namespace BAIPetRegMobileApp.ViewModels
         [ObservableProperty]
         private string barangayName;
 
+        [ObservableProperty]
+        private string civilStatusName;
+
+        [ObservableProperty]
+        private string middleName;
+
+        [ObservableProperty]
+        private string extensionName;
+
+        [ObservableProperty]
+        private byte[] profilePicture;
+
+        [ObservableProperty]
+        private string streetAddress;
+
+        [ObservableProperty]
+        private string fullAddress;
+
+        [ObservableProperty]
+        private string fullName;
+
+
         // Public method to initialize profile
         public async Task InitializeProfile()
         {
@@ -59,21 +82,28 @@ namespace BAIPetRegMobileApp.ViewModels
         {
             try
             {
-                var userProfile = await clientService.GetProfile();
+                var user = await clientService.GetProfile();
 
-                if (userProfile != null)
+                if (user != null)
                 {
                     // Update the ViewModel properties with the profile data
-                    UserName = userProfile.UserName;
-                    Email = userProfile.Email;
-                    Firstname = userProfile.Firstname;
-                    Lastname = userProfile.Lastname;
-                    Birthday = userProfile.Birthday;
-                    MobileNumber = userProfile.MobileNumber;
-                    Region = userProfile.Region;
-                    ProvinceName = userProfile.ProvinceName;
-                    MunicipalitiesCities = userProfile.MunicipalitiesCities;
-                    BarangayName = userProfile.BarangayName;
+                    Firstname = user.Firstname;
+                    Lastname = user.Lastname;
+                    MiddleName = user.MiddleName;
+                    ExtensionName = user.ExtensionName;
+                    Birthday = user.Birthday; // Assuming ApplicationUser has a DateOnly property for Birthday
+                    SexDescription = user.SexDescription;
+                    MobileNumber = user.MobileNumber;
+                    UserName = user.UserName;
+                    Email = user.Email;
+                    Region = user.Region;
+                    ProvinceName = user.ProvinceName;
+                    MunicipalitiesCities = user.MunicipalitiesCities;
+                    BarangayName = user.BarangayName;
+                    ProfilePicture = user.ProfilePicture;
+                    CivilStatusName = user.CivilStatusName;
+                    FullAddress = $"{StreetAddress} {BarangayName} {MunicipalitiesCities} {ProvinceName} {Region}";
+                    FullName = $"{Firstname} {MiddleName} {Lastname} {ExtensionName}";
                 }
                 else
                 {

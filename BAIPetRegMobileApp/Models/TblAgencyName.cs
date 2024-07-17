@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace BAIPetRegMobileApp.Api.Models
+namespace BAIPetRegMobileApp.Models
 {
     public class TblAgencyName
     {
