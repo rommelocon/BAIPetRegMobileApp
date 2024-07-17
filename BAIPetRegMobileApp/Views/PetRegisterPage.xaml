@@ -21,8 +21,7 @@
             VerticalOptions="Center" />
 
         <ScrollView Grid.Row="2">
-            <VerticalStackLayout
-                >
+            <VerticalStackLayout>
                 <Label
                     Margin="0,30,0,0"
                     FontAttributes="Bold"
@@ -227,7 +226,6 @@
                         HorizontalOptions="FillAndExpand">
                         <DatePicker
                             x:Name="BirtDate"
-                            Date="{Binding BirthDate}"
                             FontSize="20"
                             Format="D" />
                     </Frame>

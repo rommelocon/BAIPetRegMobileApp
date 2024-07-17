@@ -5,7 +5,6 @@ namespace BAIPetRegMobileApp.Views;
 
 public partial class PetRegisterPage : ContentPage
 {
-    public string selectedOwnership;
 
     List<string> dogBreeds = new List<string>()
 {
@@ -236,7 +235,7 @@ public partial class PetRegisterPage : ContentPage
     public PetRegisterPage()
     {
         InitializeComponent();
-        Application.Current.UserAppTheme = AppTheme.Light;
+        
 
 
 
