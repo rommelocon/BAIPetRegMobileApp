@@ -1,12 +1,16 @@
-﻿using BAIPetRegMobileApp.Views;
+﻿using BAIPetRegMobileApp.Services;
+using BAIPetRegMobileApp.Views;
+using CommunityToolkit.Mvvm.Input;
 
 namespace BAIPetRegMobileApp
 {
     public partial class AppShell : Shell
     {
+        private readonly ClientService clientService;
         public AppShell()
         {
             InitializeComponent();
+            BindingContext = this;
             Routing.RegisterRoute(nameof(LoginPage), typeof(LoginPage));
             Routing.RegisterRoute(nameof(HomePage), typeof(HomePage));
             Routing.RegisterRoute(nameof(FinalCheckingPage), typeof(FinalCheckingPage));
@@ -42,7 +46,6 @@ namespace BAIPetRegMobileApp
 
         }
 
-
         private void OnDogPetButtonTapped(object sender, TappedEventArgs e)
         {
             Shell.Current.GoToAsync(nameof(DogBreedPage));
@@ -53,6 +56,12 @@ namespace BAIPetRegMobileApp
         {
             Shell.Current.GoToAsync(nameof(CatBreedPage));
             Shell.Current.FlyoutIsPresented = false;
+        }
+
+        [RelayCommand]
+        private async Task Logout()
+        {
+            await clientService.Logout();
         }
     }
 }

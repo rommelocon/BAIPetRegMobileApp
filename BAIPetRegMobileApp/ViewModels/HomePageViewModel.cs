@@ -58,7 +58,7 @@ public partial class HomePageViewModel : ObservableObject
         {
             // Handle exceptions, such as network errors or server issues
             // Example: Display an error message to the user
-            // await DisplayAlert("Error", $"Failed to load profile: {ex.Message}", "OK");
+            await Shell.Current.DisplayAlert("Error", $"Failed to load profile: {ex.Message}", "OK");
         }
     }
 }

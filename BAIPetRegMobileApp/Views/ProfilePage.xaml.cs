@@ -1,4 +1,3 @@
-using BAIPetRegMobileApp.Services;
 using BAIPetRegMobileApp.ViewModels;
 
 namespace BAIPetRegMobileApp.Views;
@@ -6,12 +5,10 @@ namespace BAIPetRegMobileApp.Views;
 public partial class ProfilePage : ContentPage
 {
 	private ProfilePageViewModel viewModel;
-	private ClientService clientService;
 
-	public ProfilePage(ClientService clientService,ProfilePageViewModel viewModel)
+	public ProfilePage(ProfilePageViewModel viewModel)
 	{
 		InitializeComponent();
-		this.clientService = clientService;
 		this.viewModel = viewModel;
 		BindingContext = viewModel;
         Application.Current.UserAppTheme = AppTheme.Light;
@@ -20,8 +17,7 @@ public partial class ProfilePage : ContentPage
 	protected override async void OnAppearing()
 	{
 		base.OnAppearing();
-		var viewModel = new ProfilePageViewModel();
-		var username = SecureStorage.Default.GetAsync("Authentication").Result;
-		var profileData = await clientService.GetProfilePageViewModel(username);
-	}
+        // Load the profile when the page appears
+        await viewModel.InitializeProfile();
+    }
 }

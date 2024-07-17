@@ -38,15 +38,13 @@ namespace BAIPetRegMobileApp.Api.Controllers
                 return NotFound();
             }
 
-            var profile = new ApplicationUser
+            var profile = new UserProfileDto
             {
                 UserName = user.UserName,
                 Email = user.Email,
                 Firstname = user.Firstname,
                 Lastname = user.Lastname,
-                CivilStatusCode = user.CivilStatusCode,
-                Birthday = user.Birthday,
-                SexID = user.SexID,
+                Birthday = user.Birthday.HasValue ? user.Birthday.Value.ToString("yyyy-MM-dd") : null,
                 MobileNumber = user.MobileNumber,
                 Region = user.Region,
                 ProvinceName = user.ProvinceName,

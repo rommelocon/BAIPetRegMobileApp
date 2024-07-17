@@ -4,6 +4,7 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:viewmodels="clr-namespace:BAIPetRegMobileApp.ViewModels"
+    x:DataType="viewmodels:ProfilePageViewModel"
     Background="White"
     FlyoutItem.IsVisible="False"
     Shell.BackgroundColor="#57C84D"
@@ -76,7 +77,7 @@
                         FontSize="40"
                         SemanticProperties.HeadingLevel="Level4"
                         Style="{StaticResource Headline}"
-                        Text="{}"
+                        Text="{Binding UserName}"
                         TextColor="#096B00" />
 
 
@@ -178,14 +179,12 @@
                             Text="Email"
                             TextColor="Black" />
                         <Label
+                            Text="{Binding Email}"
                             Margin="20,0,20,40"
                             Padding="5"
                             Background="#e2f2e1"
-                            BindingContext=""
-                            FontAttributes="Italic"
                             FontSize="20"
                             HorizontalTextAlignment="Start"
-                            Text="JuanDelaCruz@gmail.com"
                             TextColor="Black" />
                         <!--  Civil Status  -->
                         <Label
@@ -198,11 +197,10 @@
                             Margin="20,0,20,40"
                             Padding="5"
                             Background="#e2f2e1"
-                            BindingContext=""
                             FontAttributes="Italic"
                             FontSize="20"
                             HorizontalTextAlignment="Start"
-                            Text="Married"
+                            Text="{}"
                             TextColor="Black" />
 
                         <!--  BirthDay  -->
@@ -210,13 +208,12 @@
                             Margin="20,0,0,0"
                             FontSize="20"
                             HorizontalTextAlignment="Start"
-                            Text="BirthDay"
+                            Text="Birth Day"
                             TextColor="Black" />
                         <Label
                             Margin="20,0,20,40"
                             Padding="5"
                             Background="#e2f2e1"
-                            BindingContext=""
                             FontAttributes="Italic"
                             FontSize="20"
                             HorizontalTextAlignment="Start"
@@ -228,13 +225,12 @@
                             Margin="20,0,0,0"
                             FontSize="20"
                             HorizontalTextAlignment="Start"
-                            Text="SEX"
+                            Text="Sex"
                             TextColor="Black" />
                         <Label
                             Margin="20,0,20,40"
                             Padding="5"
                             Background="#e2f2e1"
-                            BindingContext=""
                             FontAttributes="Italic"
                             FontSize="20"
                             HorizontalTextAlignment="Start"
@@ -252,29 +248,10 @@
                             Margin="20,0,20,40"
                             Padding="5"
                             Background="#e2f2e1"
-                            BindingContext=""
                             FontAttributes="Italic"
                             FontSize="20"
                             HorizontalTextAlignment="Start"
-                            Text="09123456789"
-                            TextColor="Black" />
-
-                        <!--  Nationality  -->
-                        <Label
-                            Margin="20,0,0,0"
-                            FontSize="20"
-                            HorizontalTextAlignment="Start"
-                            Text="Nationality"
-                            TextColor="Black" />
-                        <Label
-                            Margin="20,0,20,40"
-                            Padding="5"
-                            Background="#e2f2e1"
-                            BindingContext=""
-                            FontAttributes="Italic"
-                            FontSize="20"
-                            HorizontalTextAlignment="Start"
-                            Text="Filipino"
+                            Text="{Binding MobileNumber}"
                             TextColor="Black" />
 
                         <!--  Region  -->
@@ -288,7 +265,6 @@
                             Margin="20,0,20,40"
                             Padding="5"
                             Background="#e2f2e1"
-                            BindingContext=""
                             FontAttributes="Italic"
                             FontSize="20"
                             HorizontalTextAlignment="Start"
@@ -306,7 +282,6 @@
                             Margin="20,0,20,40"
                             Padding="5"
                             Background="#e2f2e1"
-                            BindingContext=""
                             FontAttributes="Italic"
                             FontSize="20"
                             HorizontalTextAlignment="Start"
@@ -324,7 +299,6 @@
                             Margin="20,0,20,40"
                             Padding="5"
                             Background="#e2f2e1"
-                            BindingContext=""
                             FontAttributes="Italic"
                             FontSize="20"
                             HorizontalTextAlignment="Start"
@@ -342,36 +316,14 @@
                             Margin="20,0,20,40"
                             Padding="5"
                             Background="#e2f2e1"
-                            BindingContext=""
                             FontAttributes="Italic"
                             FontSize="20"
                             HorizontalTextAlignment="Start"
                             Text="Vasra"
                             TextColor="Black" />
-
-                        <!--  Street  -->
-                        <Label
-                            Margin="20,0,0,0"
-                            FontSize="20"
-                            HorizontalTextAlignment="Start"
-                            Text="Street"
-                            TextColor="Black" />
-                        <Label
-                            Margin="20,0,20,40"
-                            Padding="5"
-                            Background="#e2f2e1"
-                            BindingContext=""
-                            FontAttributes="Italic"
-                            FontSize="20"
-                            HorizontalTextAlignment="Start"
-                            Text="Visayas Avenue"
-                            TextColor="Black" />
-
                     </StackLayout>
-
                 </VerticalStackLayout>
             </VerticalStackLayout>
         </ScrollView>
     </Grid>
-
 </ContentPage>

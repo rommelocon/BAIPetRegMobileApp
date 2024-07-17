@@ -44,6 +44,7 @@ namespace BAIPetRegMobileApp.ViewModels
         [RelayCommand]
         private async Task Logout()
         {
+            Console.WriteLine("Logout Command Call");
             await clientService.Logout();
         }
     }

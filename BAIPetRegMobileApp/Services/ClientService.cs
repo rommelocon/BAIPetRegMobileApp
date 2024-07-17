@@ -2,6 +2,7 @@
 using System.Net.Http.Json;
 using System.Text.Json;
 using BAIPetRegMobileApp.ViewModels;
+using BAIPetRegMobileApp.Api.Models;
 
 namespace BAIPetRegMobileApp.Services;
 public class ClientService
@@ -24,40 +25,40 @@ public class ClientService
         await Shell.Current.DisplayAlert("Alert", result.ReasonPhrase, "Ok");
     }
 
-    public async Task Login(LoginModel model)
-    {
-        var httpClient = httpClientFactory.CreateClient("custom-httpclient");
-        var result = await httpClient.PostAsJsonAsync("/Account/login", model);
-
-        if (result.IsSuccessStatusCode)
+        public async Task Login(LoginModel model)
         {
-            var response = await result.Content.ReadFromJsonAsync<LoginResponse>();
+            var httpClient = httpClientFactory.CreateClient("custom-httpclient");
+            var result = await httpClient.PostAsJsonAsync("/Account/login", model);
 
-            if (response is not null)
+            if (result.IsSuccessStatusCode)
             {
-                var serializedResponse = JsonSerializer.Serialize(
-                    new LoginResponse()
-                    {
-                        AccessToken = response.AccessToken,
-                        RefreshToken = response.RefreshToken,
-                        UserName = response.UserName
-                    });
+                var response = await result.Content.ReadFromJsonAsync<LoginResponse>();
 
-                await SecureStorage.SetAsync("Authentication", serializedResponse);
+                if (response is not null)
+                {
+                    var serializedResponse = JsonSerializer.Serialize(
+                        new LoginResponse()
+                        {
+                            AccessToken = response.AccessToken,
+                            RefreshToken = response.RefreshToken,
+                            UserName = response.UserName
+                        });
 
-                // Navigate to HomePage
-                await Shell.Current.GoToAsync(nameof(HomePage));
+                    await SecureStorage.SetAsync("Authentication", serializedResponse);
+
+                    // Navigate to HomePage
+                    await Shell.Current.GoToAsync(nameof(HomePage));
+                }
+                else
+                {
+                    await Shell.Current.DisplayAlert("Alert", "Login failed. Please try again.", "Ok");
+                }
             }
             else
             {
                 await Shell.Current.DisplayAlert("Alert", "Login failed. Please try again.", "Ok");
             }
         }
-        else
-        {
-            await Shell.Current.DisplayAlert("Alert", "Login failed. Please try again.", "Ok");
-        }
-    }
 
     public async Task Logout()
     {
@@ -69,25 +70,56 @@ public class ClientService
         await Shell.Current.GoToAsync(nameof(LoginPage));
     }
 
-    public async Task<HomePageViewModel> GetHomePageViewModel(string username)
+    public async Task<UserProfileDto> GetProfile()
     {
-        var httpClient = httpClientFactory.CreateClient("custom-httpclient");
-        var response = await httpClient.GetAsync($"/Account/{username}");
-        response.EnsureSuccessStatusCode();
+        // Retrieve the authentication data from secure storage
+        var serializedResponse = await SecureStorage.GetAsync("Authentication");
 
-        var json = await response.Content.ReadAsStringAsync();
-        var user = JsonSerializer.Deserialize<HomePageViewModel>(json);
-        return user!;
-    }
+        if (serializedResponse != null)
+        {
+            // Deserialize the response to get the username
+            var loginResponse = JsonSerializer.Deserialize<LoginResponse>(serializedResponse);
 
-    public async Task<ProfilePageViewModel> GetProfilePageViewModel(string username)
-    {
-        var httpClient = httpClientFactory.CreateClient("custom-httpclient");
-        var response = await httpClient.GetAsync($"/Account/{username}");
-        response.EnsureSuccessStatusCode();
+            if (loginResponse != null && !string.IsNullOrEmpty(loginResponse.UserName))
+            {
+                // Make the API request with the retrieved username
+                var httpClient = httpClientFactory.CreateClient("custom-httpclient");
+                var result = await httpClient.GetAsync($"/Account/{loginResponse.UserName}");
 
-        var json = await response.Content.ReadAsStringAsync();
-        var user = JsonSerializer.Deserialize<ProfilePageViewModel>(json);
-        return user!;
+                if (result.IsSuccessStatusCode)
+                {
+                    var responseContent = await result.Content.ReadFromJsonAsync<UserProfileDto>();
+                    try
+                    {
+                        if (responseContent is not null)
+                        {
+                            return responseContent;
+                        }
+                        else
+                        {
+                            await Shell.Current.DisplayAlert("Alert", "Failed to retrieve profile data. Please try again.", "Ok");
+                        }
+                    }
+                    catch (JsonException ex)
+                    {
+                        await Shell.Current.DisplayAlert("Alert", $"Failed to parse profile data: {ex.Message}", "Ok");
+                    }
+                }
+                else
+                {
+                    await Shell.Current.DisplayAlert("Alert", "Failed to retrieve profile. Please try again.", "Ok");
+                }
+            }
+            else
+            {
+                await Shell.Current.DisplayAlert("Alert", "Username is not available. Please log in again.", "Ok");
+            }
+        }
+        else
+        {
+            await Shell.Current.DisplayAlert("Alert", "Authentication data not found. Please log in.", "Ok");
+        }
+
+        return null;
     }
 }
