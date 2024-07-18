@@ -11,13 +11,17 @@ public partial class ProfilePage : ContentPage
 		InitializeComponent();
 		this.viewModel = viewModel;
 		BindingContext = viewModel;
-        Application.Current.UserAppTheme = AppTheme.Light;
     }
 
 	protected override async void OnAppearing()
 	{
 		base.OnAppearing();
         // Load the profile when the page appears
-        await viewModel.InitializeProfile();
+        await viewModel.InitializeProfileAsync();
+    }
+
+    private void EditProfile_Clicked(object sender, EventArgs e)
+    {
+		Shell.Current.GoToAsync(nameof(EditProfilePage));
     }
 }

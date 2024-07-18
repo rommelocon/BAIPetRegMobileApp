@@ -20,6 +20,7 @@ namespace BAIPetRegMobileApp
             Routing.RegisterRoute(nameof(PetInformationPage), typeof(PetInformationPage));
             Routing.RegisterRoute(nameof(CatBreedPage), typeof(CatBreedPage));
             Routing.RegisterRoute(nameof(DogBreedPage), typeof(DogBreedPage));
+            Routing.RegisterRoute(nameof(EditProfilePage), typeof(EditProfilePage));
         }
 
         private void ClostMenuButton_Clicked(object sender, EventArgs e)
