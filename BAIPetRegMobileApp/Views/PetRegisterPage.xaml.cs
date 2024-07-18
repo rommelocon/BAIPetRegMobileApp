@@ -278,6 +278,9 @@ public partial class PetRegisterPage : ContentPage
         string selectedOwnership = (string)picker.SelectedItem;
     }
 
+
+
+
     //imagepicker function
 
     private async void OnSelectImage1Clicked(object sender, EventArgs e)
@@ -405,7 +408,7 @@ public partial class PetRegisterPage : ContentPage
         }
     }
 
-    private void OnRadioTagButtonCheckedChanged(object sender, CheckedChangedEventArgs e)
+    private void OnStatusRadioButtonCheckedChanged(object sender, CheckedChangedEventArgs e)
     {
         if (NoneRdBtn.IsChecked)
         {
@@ -422,17 +425,15 @@ public partial class PetRegisterPage : ContentPage
 
     }
 
-    private void OnStatusRadioButtonCheckedChanged(object sender, CheckedChangedEventArgs e)
+    private void OnRadioButtonTagCheckedChanged(object sender, CheckedChangedEventArgs e)
     {
-        if (DeadRadioButton.IsChecked)
+        if (NoneRdBtn.IsChecked)
         {
-            DatePickerStack.IsVisible = true;
+            OtherTagEntryStack.IsVisible = false;
         }
         else
         {
-            DatePickerStack.IsVisible = false;
+            OtherTagEntryStack.IsVisible = true;
         }
     }
-
-
 }

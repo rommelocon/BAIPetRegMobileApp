@@ -274,14 +274,14 @@
                     </Frame>
                 </StackLayout>
 
-                <!--  Weight Entry  -->
+                <!--  Habitat  -->
 
                 <StackLayout>
                     <Label
                         Margin="40,20,0,0"
                         FontAttributes="Bold"
                         FontSize="20"
-                        Text="Weight(KG)"
+                        Text="Habitat *"
                         TextColor="Black" />
                     <Frame
                         Margin="30,10"
@@ -291,19 +291,112 @@
                         CornerRadius="15"
                         HasShadow="False"
                         HorizontalOptions="FillAndExpand">
-                        <Entry
-                            x:Name="PetWeight"
-                            BackgroundColor="Transparent"
-                            FontAttributes="None"
-                            FontSize="20"
-                            HorizontalOptions="FillAndExpand"
-                            IsSpellCheckEnabled="False"
-                            IsTextPredictionEnabled="False"
-                            Keyboard="Numeric"
-                            MaxLength="5"
-                            Placeholder="Input Weight(KG)"
-                            PlaceholderColor="Black"
-                            VerticalOptions="Center" />
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <Picker
+                                x:Name="HabitatList"
+                                Title="Select Habitat"
+                                Grid.Column="0"
+                                FontSize="20"
+                                Style="{StaticResource NoUnderlinePicker}"
+                                TitleColor="Black" />
+                            <Label
+                                Grid.Column="1"
+                                Margin="0,0,10,0"
+                                FontFamily="MaterialIconsOutlined-Regular"
+                                FontSize="40"
+                                HorizontalOptions="End"
+                                Text="arrow_drop_down"
+                                TextColor="Black"
+                                VerticalOptions="Center" />
+                        </Grid>
+                    </Frame>
+                </StackLayout>
+
+                <!--  Tag Type  -->
+
+                <StackLayout>
+                    <Label
+                        Margin="40,20,0,0"
+                        FontAttributes="Bold"
+                        FontSize="20"
+                        Text="Tag Type *"
+                        TextColor="Black" />
+                    <Frame
+                        Margin="30,10"
+                        Padding="10"
+                        BackgroundColor="#DCF4DA"
+                        BorderColor="Transparent"
+                        CornerRadius="15"
+                        HasShadow="False"
+                        HorizontalOptions="FillAndExpand">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <Picker
+                                x:Name="TagTypeList"
+                                Title="Select Tag Type"
+                                Grid.Column="0"
+                                FontSize="20"
+                                Style="{StaticResource NoUnderlinePicker}"
+                                TitleColor="Black" />
+                            <Label
+                                Grid.Column="1"
+                                Margin="0,0,10,0"
+                                FontFamily="MaterialIconsOutlined-Regular"
+                                FontSize="40"
+                                HorizontalOptions="End"
+                                Text="arrow_drop_down"
+                                TextColor="Black"
+                                VerticalOptions="Center" />
+                        </Grid>
+                    </Frame>
+                </StackLayout>
+
+                <!--  Contact with Other Animals?  -->
+
+                <StackLayout>
+                    <Label
+                        Margin="40,20,0,0"
+                        FontAttributes="Bold"
+                        FontSize="20"
+                        Text="Contact with other Animals? *"
+                        TextColor="Black" />
+                    <Frame
+                        Margin="30,10"
+                        Padding="10"
+                        BackgroundColor="#DCF4DA"
+                        BorderColor="Transparent"
+                        CornerRadius="15"
+                        HasShadow="False"
+                        HorizontalOptions="FillAndExpand">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <Picker
+                                x:Name="ContactwOtherAnimals"
+                                Title="Select"
+                                Grid.Column="0"
+                                FontSize="20"
+                                Style="{StaticResource NoUnderlinePicker}"
+                                TitleColor="Black" />
+                            <Label
+                                Grid.Column="1"
+                                Margin="0,0,10,0"
+                                FontFamily="MaterialIconsOutlined-Regular"
+                                FontSize="40"
+                                HorizontalOptions="End"
+                                Text="arrow_drop_down"
+                                TextColor="Black"
+                                VerticalOptions="Center" />
+                        </Grid>
                     </Frame>
                 </StackLayout>
 
@@ -314,7 +407,7 @@
                         Margin="40,20,0,0"
                         FontAttributes="Bold"
                         FontSize="20"
-                        Text="Animal Color"
+                        Text="Weight(KGS) *"
                         TextColor="Black" />
                     <Frame
                         Margin="30,10"
@@ -325,6 +418,7 @@
                         HasShadow="False"
                         HorizontalOptions="FillAndExpand">
                         <Entry
+                            x:Name="PetColor"
                             BackgroundColor="Transparent"
                             FontAttributes="None"
                             FontSize="20"
@@ -339,111 +433,77 @@
                     </Frame>
                 </StackLayout>
 
-                <!--  Pet Tag Type  -->
+                <!--  Animal Color Entry  -->
 
-
-                <StackLayout Padding="20">
+                <StackLayout>
                     <Label
+                        Margin="40,20,0,0"
                         FontAttributes="Bold"
-                        FontSize="Medium"
-                        HorizontalOptions="Center"
-                        Text="Tag Type *"
-                        TextColor="Black"
-                        VerticalOptions="Start" />
+                        FontSize="20"
+                        Text="Animal Color *"
+                        TextColor="Black" />
+
+                    <Frame
+                        Margin="30,10"
+                        Padding="10"
+                        BackgroundColor="#DCF4DA"
+                        BorderColor="Transparent"
+                        CornerRadius="15"
+                        HasShadow="False"
+                        HorizontalOptions="FillAndExpand">
+                        <Entry
+                            x:Name="PetColor"
+                            BackgroundColor="Transparent"
+                            FontAttributes="None"
+                            FontSize="20"
+                            HorizontalOptions="FillAndExpand"
+                            IsSpellCheckEnabled="False"
+                            IsTextPredictionEnabled="False"
+                            Keyboard="Text"
+                            Placeholder="Input Animal Color"
+                            PlaceholderColor="Black"
+                            VerticalOptions="Center" />
+                    </Frame>
+                </StackLayout>
+
+
+                <!--  Remarks  -->
+                <StackLayout Padding="20">
 
                     <Frame
                         Padding="10"
-                        BorderColor="Black"
                         BackgroundColor="#DCF4DA"
+                        BorderColor="Black"
                         CornerRadius="5"
                         HorizontalOptions="FillAndExpand"
                         VerticalOptions="Start">
                         <StackLayout>
-                            <StackLayout Orientation="Vertical">
-                                <RadioButton
-                                    x:Name="NoneRdBtn"
-                                    CheckedChanged="OnRadioButtonTagCheckedChanged"
-                                    Content="None"
-                                    FontSize="20"
-                                    GroupName="PetTagType"
-                                    TextColor="Black" />
-                                <RadioButton
-                                    x:Name="CollarTagRdBtn"
-                                    CheckedChanged="OnRadioButtonTagCheckedChanged"
-                                    Content="Collar Tag"
-                                    FontSize="20"
-                                    GroupName="PetTagType"
-                                    TextColor="Black" />
-                                <RadioButton
-                                    x:Name="EarTagRdBtn"
-                                    CheckedChanged="OnRadioButtonTagCheckedChanged"
-                                    Content="Ear Tag"
-                                    FontSize="20"
-                                    GroupName="PetTagType"
-                                    TextColor="Black" />
-                                <RadioButton
-                                    x:Name="LegBandRdBtn"
-                                    CheckedChanged="OnRadioButtonTagCheckedChanged"
-                                    Content="Leg Band"
-                                    FontSize="20"
-                                    GroupName="PetTagType"
-                                    TextColor="Black" />
-                                <RadioButton
-                                    x:Name="MicrochipCodeRdBtn"
-                                    CheckedChanged="OnRadioButtonTagCheckedChanged"
-                                    Content="Microchip Code"
-                                    FontSize="20"
-                                    GroupName="PetTagType"
-                                    TextColor="Black" />
-                                <RadioButton
-                                    x:Name="RFIDRdBtn"
-                                    CheckedChanged="OnRadioButtonTagCheckedChanged"
-                                    Content="Radio Frequency Identification"
-                                    FontSize="20"
-                                    GroupName="PetTagType"
-                                    TextColor="Black" />
-                                <RadioButton
-                                    x:Name="TattooCodeRdBtn"
-                                    CheckedChanged="OnRadioButtonTagCheckedChanged"
-                                    Content="Tattoo Code"
-                                    FontSize="20"
-                                    GroupName="PetTagType"
-                                    TextColor="Black" />
-                                <RadioButton
-                                    x:Name="WingBandRdBtn"
-                                    CheckedChanged="OnRadioButtonTagCheckedChanged"
-                                    Content="Wing Band"
-                                    FontSize="20"
-                                    GroupName="PetTagType"
-                                    TextColor="Black" />
-                            </StackLayout>
-
-                            <StackLayout x:Name="OtherTagEntryStack" IsVisible="False">
-                                <Label
-                                    Margin="10,10"
-                                    FontAttributes="Bold"
-                                    FontSize="20"
-                                    HorizontalOptions="Start"
-                                    Text="Tag Number"
-                                    TextColor="Black"
-                                    VerticalOptions="Start" />
-                                <Entry
-                                    x:Name="OtherTagEntry"
-                                    Margin="10,10"
-                                    FontSize="20"
-                                    HeightRequest="100"
-                                    HorizontalOptions="FillAndExpand"
-                                    Placeholder="Enter Tag Number"
-                                    PlaceholderColor="Black"
-                                    TextColor="Black"
-                                    VerticalOptions="Start" />
-                            </StackLayout>
+                            <Label
+                                Margin="10,10"
+                                FontAttributes="Bold"
+                                FontSize="20"
+                                HorizontalOptions="Start"
+                                Text="*Remarks"
+                                TextColor="Black"
+                                VerticalOptions="Start" />
+                            <Editor
+                                Margin="10,10"
+                                AutoSize="TextChanges"
+                                FontSize="20"
+                                HeightRequest="100"
+                                HorizontalOptions="FillAndExpand"
+                                Placeholder="Input Remarks"
+                                PlaceholderColor="Black"
+                                TextColor="Black"
+                                VerticalOptions="Start" />
                         </StackLayout>
+
+
                     </Frame>
+
                 </StackLayout>
 
-                <!--  Pet Origin  -->
-
+                <!--  Pet Tag Type  -->
                 <StackLayout Padding="20">
                     <Label
                         FontAttributes="Bold"
@@ -461,42 +521,120 @@
                         HorizontalOptions="FillAndExpand"
                         VerticalOptions="Start">
                         <StackLayout>
-                            <StackLayout Orientation="Horizontal">
+                            <Label
+                                Margin="10,10"
+                                FontAttributes="Bold"
+                                FontSize="20"
+                                HorizontalOptions="Start"
+                                Text="*Remarks"
+                                TextColor="Black"
+                                VerticalOptions="Start" />
+                            <Editor
+                                Margin="10,10"
+                                AutoSize="TextChanges"
+                                FontSize="20"
+                                HeightRequest="100"
+                                HorizontalOptions="FillAndExpand"
+                                Placeholder="Input Remarks"
+                                PlaceholderColor="Black"
+                                TextColor="Black"
+                                
+                                VerticalOptions="Start" />
+                        </StackLayout>
+
+
+                    </Frame>
+                </StackLayout>
+
+
+                <!--  Pet Origin  -->
+
+                <StackLayout Padding="20">
+                    <Label
+                        FontAttributes="Bold"
+                        FontSize="Medium"
+                        HorizontalOptions="Center"
+                        Text="Tag Type *"
+                        TextColor="Black"
+                        VerticalOptions="Start" />
+
+                    <Frame
+                        Padding="10"
+                        BackgroundColor="#DCF4DA"
+                        BorderColor="Black"
+                        CornerRadius="5"
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="Start">
+                        <StackLayout>
+                            <StackLayout Orientation="Vertical">
                                 <RadioButton
-                                    x:Name="LocalRadioButton"
-                                    CheckedChanged="OnRadioButtonCheckedChanged"
-                                    Content="Local (within the Barangay)"
+                                    x:Name="NoneRDbtn"
+                                    CheckedChanged="OnRadioTagButtonCheckedChanged"
+                                    Content="None"
                                     FontSize="20"
-                                    GroupName="PetOriginGroup"
+                                    GroupName="TagTypeGroup"
                                     TextColor="Black" />
-                            </StackLayout>
-                            <StackLayout Orientation="Horizontal">
                                 <RadioButton
-                                    x:Name="OtherRadioButton"
-                                    CheckedChanged="OnRadioButtonCheckedChanged"
-                                    Content="Other (Outside the Barangay)"
+                                    x:Name="CollarTagRdBtn"
+                                    CheckedChanged="OnRadioTagButtonCheckedChanged"
+                                    Content="Collar Tag"
                                     FontSize="20"
-                                    GroupName="PetOriginGroup"
+                                    GroupName="TagTypeGroup"
+                                    TextColor="Black" />
+                                <RadioButton
+                                    x:Name="EarTagRdBtn"
+                                    CheckedChanged="OnRadioTagButtonCheckedChanged"
+                                    Content="Ear Tag"
+                                    FontSize="20"
+                                    GroupName="TagTypeGroup"
+                                    TextColor="Black" />
+                                <RadioButton
+                                    x:Name="LegBandRdBtn"
+                                    CheckedChanged="OnRadioTagButtonCheckedChanged"
+                                    Content="Leg Band"
+                                    FontSize="20"
+                                    GroupName="TagTypeGroup"
+                                    TextColor="Black" />
+                                <RadioButton
+                                    x:Name="MicrochipCodeRdBtn"
+                                    CheckedChanged="OnRadioTagButtonCheckedChanged"
+                                    Content="Microchip Code"
+                                    FontSize="20"
+                                    GroupName="TagTypeGroup"
+                                    TextColor="Black" />
+                                <RadioButton
+                                    x:Name="RFIDRdBtn"
+                                    CheckedChanged="OnRadioTagButtonCheckedChanged"
+                                    Content="Radio Frequency Identification"
+                                    FontSize="20"
+                                    GroupName="TagTypeGroup"
+                                    TextColor="Black" />
+                                <RadioButton
+                                    x:Name="TattooCodeRdBtn"
+                                    CheckedChanged="OnRadioTagButtonCheckedChanged"
+                                    Content="Tattoo Code"
+                                    FontSize="20"
+                                    GroupName="TagTypeGroup"
                                     TextColor="Black" />
                             </StackLayout>
 
-                            <StackLayout x:Name="OtherOriginEntryStack" IsVisible="False">
+                            <StackLayout x:Name="TagNumberEntryStack" IsVisible="False">
                                 <Label
                                     Margin="10,10"
                                     FontAttributes="Bold"
                                     FontSize="20"
                                     HorizontalOptions="Start"
-                                    Text="Indicate the Origin"
+                                    Text="Tag Number"
                                     TextColor="Black"
                                     VerticalOptions="Start" />
-                                <Editor
-                                    x:Name="OtherOriginEntry"
+                                <Entry
+                                    x:Name="OtherTagEntry"
                                     Margin="10,10"
-                                    AutoSize="TextChanges"
                                     FontSize="20"
                                     HeightRequest="100"
                                     HorizontalOptions="FillAndExpand"
-                                    Placeholder="Enter origin here"
+                                    Placeholder="Enter Tag Number"
+                                    PlaceholderColor="#c2c2c2"
                                     TextColor="Black"
                                     VerticalOptions="Start" />
                             </StackLayout>
@@ -562,8 +700,6 @@
                         </StackLayout>
                     </Frame>
                 </StackLayout>
-
-
                 <!--  ImagePicker  -->
                 <StackLayout Padding="10">
                     <Label
@@ -726,6 +862,7 @@
                         </Frame>
                     </Grid>
                 </StackLayout>
+
 
 
                 <!--  Button for Submit  -->
