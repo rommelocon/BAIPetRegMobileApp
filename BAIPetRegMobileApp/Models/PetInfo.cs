@@ -5,13 +5,13 @@ namespace BAIPetRegMobileApp.Models
     public class PetInfo
     {
     public string? EntryPetname { get; set; }
-    public string? OwnershipList { get; set; }
-    public string? SpeciesList { get; set; }
-    public string? BreedList { get; set; }
+    public List <string>? OwnershipList { get; set; }
+    public List <string>? SpeciesList { get; set; }
+    public List<string>? BreedList { get; set; }
     public DateTime BirthDate { get; set; }
-    public string? SexList { get; set; }
-    public string? HabitatList {  get; set; }
-    public string? TagTypeList { get; set; }
+    public List<string>? SexList { get; set; }
+    public List<string>? HabitatList {  get; set; }
+    public List<string>? TagTypeList { get; set; }
     public int PetWeight { get; set; }
     public string? PetColor { get; set; }
     public int EntryTagNumber { get; set; }
