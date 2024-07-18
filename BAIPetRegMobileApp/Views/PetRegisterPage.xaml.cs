@@ -235,7 +235,7 @@ public partial class PetRegisterPage : ContentPage
     public PetRegisterPage()
     {
         InitializeComponent();
-        
+
 
 
 
@@ -286,13 +286,22 @@ public partial class PetRegisterPage : ContentPage
             "Ear Tag",
             "Leg Band",
             "Microchip Code",
-
             "None",
             "Radio Frequency Identification",
             "Tatto Code"
         };
         TagTypeList.ItemsSource = listTagTypeList;
+
+        List<string> ContactwAnimalList = new List<string>()
+        {
+            "Frequent",
+            "Never",
+            "Seldom",
+            "Unknown"
+        };
+        ContactwOtherAnimals.ItemsSource = ContactwAnimalList;
     }
+
 
 
 

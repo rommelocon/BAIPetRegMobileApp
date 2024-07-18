@@ -8,7 +8,6 @@ namespace BAIPetRegMobileApp
         public LoginPage()
         {
             InitializeComponent();
-            Application.Current.UserAppTheme = AppTheme.Light;
 
         }
 
@@ -26,11 +25,11 @@ namespace BAIPetRegMobileApp
                 await DisplayAlert("Login failed", "Username or password is invalid", "Try again");
             }
         }
-        //private void ClearEntries()
-        //{
-        //    UsernameEntry.Text = string.Empty;
-        //    PasswordEntry.Text = string.Empty;
-        //}
+        private void ClearEntries()
+        {
+            UsernameEntry.Text = string.Empty;
+            PasswordEntry.Text = string.Empty;
+        }
 
         bool IsCredentialCorrect(string username, string password)
         {
