@@ -305,6 +305,8 @@ public partial class PetRegisterPage : ContentPage
 
 
 
+
+
     //imagepicker function
 
     private async void OnSelectImage1Clicked(object sender, EventArgs e)
@@ -387,6 +389,18 @@ public partial class PetRegisterPage : ContentPage
         }
     }
 
+    private void OnRadioTagButtonCheckedChanged(object sender, CheckedChangedEventArgs e)
+    {
+        if (NoneRDbtn.IsChecked)
+        {
+            TagNumberEntryStack.IsVisible = false;
+        }
+        else
+        {
+            TagNumberEntryStack.IsVisible = true;
+        }
+    }
+
     private void OnStatusRadioButtonCheckedChanged(object sender, CheckedChangedEventArgs e)
     {
         if (DeadRadioButton.IsChecked)
@@ -403,4 +417,6 @@ public partial class PetRegisterPage : ContentPage
     {
 
     }
+
+   
 }
