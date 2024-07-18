@@ -1,16 +1,13 @@
-﻿using BAIPetRegMobileApp.Services;
+﻿using BAIPetRegMobileApp.Models;
+using BAIPetRegMobileApp.Services;
 using CommunityToolkit.Mvvm.ComponentModel;
+using System.Text.Json;
 
 namespace BAIPetRegMobileApp.ViewModels
 {
-    public abstract partial class BaseViewModel : ObservableObject
+    public partial class BaseViewModel : ObservableObject
     {
-        private readonly ClientService _clientService;
 
-        public BaseViewModel(ClientService clientService)
-        {
-            _clientService = clientService;
-        }
 
         [ObservableProperty]
         private string? userName;
@@ -25,7 +22,6 @@ namespace BAIPetRegMobileApp.ViewModels
         private string? lastname;
 
         [ObservableProperty]
-        private int? civilStatusCode;
 
         [ObservableProperty]
         private DateOnly? birthday;
@@ -69,24 +65,13 @@ namespace BAIPetRegMobileApp.ViewModels
         [ObservableProperty]
         private string? fullName;
 
-        [ObservableProperty]
-        private bool isDataLoaded = false;
 
-        public async Task InitializeAsync()
         {
-            if (!IsDataLoaded)
-            {
-                await LoadDataAsync();
-                IsDataLoaded = true;
-            }
+        }
         }
 
-        protected abstract Task LoadDataAsync();
 
-        public async Task RefreshDataAsync()
-        {
-            IsDataLoaded = false;
-            await InitializeAsync();
+            {
         }
     }
 }

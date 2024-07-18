@@ -16,14 +16,12 @@ public partial class ProfilePage : ContentPage
 	protected override async void OnAppearing()
 	{
 		base.OnAppearing();
-        if (BindingContext is ProfilePageViewModel viewModel)
-        {
-            await _viewModel.InitializeAsync();
-        }
+        // Load the profile when the page appears
+        await viewModel.InitializeProfileAsync();
     }
 
     private void EditProfile_Clicked(object sender, EventArgs e)
     {
-        Shell.Current.GoToAsync(nameof(EditProfilePage));
+		Shell.Current.GoToAsync(nameof(EditProfilePage));
     }
 }

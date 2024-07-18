@@ -1,41 +1,91 @@
 ﻿using BAIPetRegMobileApp.Models;
 using BAIPetRegMobileApp.Services;
 using CommunityToolkit.Mvvm.ComponentModel;
-using System.Text.Json;
+using CommunityToolkit.Mvvm.Input;
+using Microsoft.Maui.Controls;
+using System.Collections.ObjectModel;
 
 namespace BAIPetRegMobileApp.ViewModels
 {
-    public partial class EditProfilePageViewModel(ClientService clientService) : BaseViewModel(clientService)
     {
-        private readonly ClientService clientService = clientService;
-        private readonly JsonSerializerOptions serializerOptions;
 
-        // Properties for data binding
-        public List<TblRegions> Regions { get; private set; }
+
 
         [ObservableProperty]
-        private string? selectedRegion;
 
         [ObservableProperty]
-        private string? selectedProvince;
 
         [ObservableProperty]
-        private string? selectedMunicipality;
 
         [ObservableProperty]
-        private string? selectedBarangay;
 
-        [ObservableProperty]
-        private DateOnly birthday;
-
-        protected override async Task LoadDataAsync()
-        {
-            await GetRegionsAsync();
+            {
         }
 
-        public async Task<List<TblRegions>> GetRegionsAsync()
+                {
+                    Provinces.Add(province);
+                }
+            }
+        }
+
+        [RelayCommand]
+        private async Task LoadMunicipalities()
         {
-           
+            if (SelectedProvince != null)
+            {
+                var municipalities = await clientService.GetMunicipalitiesByProvinceCodeAsync(SelectedProvince.ProvCode);
+                Municipalities.Clear();
+                foreach (var municipality in municipalities)
+                {
+                    Municipalities.Add(municipality);
+                }
+            }
+        }
+
+        [RelayCommand]
+        private async Task LoadBarangays()
+        {
+            if (SelectedMunicipality != null)
+            {
+                var barangays = await clientService.GetBarangaysByMunicipalityCodeAsync(SelectedMunicipality.MunCode);
+                Barangays.Clear();
+                foreach (var barangay in barangays)
+                {
+                    Barangays.Add(barangay);
+                }
+            }
+        }
+        public void Refresh()
+        {
+            // Reset or clear necessary properties and collections
+            SelectedRegion = null;
+            SelectedProvince = null;
+            SelectedMunicipality = null;
+            SelectedBarangay = null;
+        }
+
+        private async Task InitializeProfileAsync()
+        {
+            await LoadProfile(user =>
+            {
+                Firstname = user.Firstname;
+                Lastname = user.Lastname;
+                MiddleName = user.MiddleName;
+                ExtensionName = user.ExtensionName;
+                Birthday = user.Birthday;
+                SexDescription = user.SexDescription;
+                MobileNumber = user.MobileNumber;
+                UserName = user.UserName;
+                Email = user.Email;
+                Region = user.Region;
+                ProvinceName = user.ProvinceName;
+                MunicipalitiesCities = user.MunicipalitiesCities;
+                BarangayName = user.BarangayName;
+                ProfilePicture = user.ProfilePicture;
+                CivilStatusName = user.CivilStatusName;
+                FullAddress = $"{StreetAddress} {BarangayName} {MunicipalitiesCities} {ProvinceName} {Region}";
+                FullName = $"{Firstname} {MiddleName} {Lastname} {ExtensionName}";
+            });
         }
     }
 }

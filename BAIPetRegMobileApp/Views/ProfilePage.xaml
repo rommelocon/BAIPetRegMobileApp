@@ -406,13 +406,11 @@
                             HorizontalTextAlignment="Start"
                             Text="{Binding FullAddress}"
                             TextColor="Black" />
-
-                        <!--  Edit Button  -->
                         <Button
                             x:Name="EditProfile"
                             Margin="10"
                             Padding="20"
-                            BackgroundColor="#7EE175"
+                            BackgroundColor="#096B00"
                             Clicked="EditProfile_Clicked"
                             CornerRadius="10"
                             FontAttributes="Bold"

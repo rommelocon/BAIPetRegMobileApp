@@ -18,10 +18,7 @@ public partial class HomePage : ContentPage
     protected override async void OnAppearing()
     {
         base.OnAppearing();
-        if (BindingContext is HomePageViewModel viewModel)
-        {
-            await _viewModel.InitializeAsync();
-        }
+        await viewModel.InitializeProfileAsync();
     }
 
     protected override bool OnBackButtonPressed()

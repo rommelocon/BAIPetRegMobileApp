@@ -6,18 +6,17 @@ public partial class EditProfilePage : ContentPage
 {
     private readonly EditProfilePageViewModel viewModel;
 	public EditProfilePage(EditProfilePageViewModel viewModel)
-    {
-        InitializeComponent();
-        BindingContext = viewModel;
+	{
+		InitializeComponent();
+		BindingContext = viewModel;
         this.viewModel = viewModel;
-    }
-
-    protected override async void OnAppearing()
+	}
+    protected override void OnAppearing()
     {
         base.OnAppearing();
+        // Refresh the ViewModel to clear any previous state
         if (BindingContext is EditProfilePageViewModel viewModel)
         {
-            await viewModel.InitializeAsync();
         }
     }
 }

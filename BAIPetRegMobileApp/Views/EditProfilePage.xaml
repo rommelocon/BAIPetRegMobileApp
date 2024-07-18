@@ -4,210 +4,215 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:viewmodels="clr-namespace:BAIPetRegMobileApp.ViewModels"
+    Title="EditProfilePage"
     x:DataType="viewmodels:EditProfilePageViewModel">
     <ScrollView>
         <VerticalStackLayout>
-            <StackLayout Orientation="Vertical">
-                <!--  First Name  -->
-                <Label
-                    Margin="20,0,0,0"
-                    FontSize="20"
-                    HorizontalTextAlignment="Start"
-                    Text="First Name"
-                    TextColor="Black" />
-                <Entry
-                    Margin="20,0,20,40"
-                    Background="#e2f2e1"
-                    FontSize="20"
-                    Text="{Binding Firstname}"
-                    TextColor="Black" />
+        <StackLayout Orientation="Vertical">
+            <!--  firstname  -->
+            <Label
+                Margin="20,0,0,0"
+                FontSize="20"
+                HorizontalTextAlignment="Start"
+                Text="First Name"
+                TextColor="Black" />
+            <Entry
+                Margin="20,0,20,40"
+                FontSize="20"
+                TextColor="Black" />
 
-                <!--  Middle Name  -->
-                <Label
-                    Margin="20,0,0,0"
-                    FontSize="20"
-                    HorizontalTextAlignment="Start"
-                    Text="Middle Name"
-                    TextColor="Black" />
-                <Entry
-                    Margin="20,0,20,40"
-                    Background="#e2f2e1"
-                    FontSize="20"
-                    Text="{Binding MiddleName}"
-                    TextColor="Black" />
+            <Label
+                Margin="20,0,0,0"
+                FontSize="20"
+                HorizontalTextAlignment="Start"
+                Text="Middle Name"
+                TextColor="Black" />
+            <Entry
+                Margin="20,0,20,40"
+                FontSize="20"
+                TextColor="Black" />
 
-                <!--  Last Name  -->
-                <Label
-                    Margin="20,0,0,0"
-                    FontSize="20"
-                    HorizontalTextAlignment="Start"
-                    Text="Last Name"
-                    TextColor="Black" />
-                <Entry
-                    Margin="20,0,20,40"
-                    Background="#e2f2e1"
-                    FontSize="20"
-                    Text="{Binding Lastname}"
-                    TextColor="Black" />
+            <Label
+                Margin="20,0,0,0"
+                FontSize="20"
+                HorizontalTextAlignment="Start"
+                Text="Last Name"
+                TextColor="Black" />
+            <Entry
+                Margin="20,0,20,40"
+                FontSize="20"
+                TextColor="Black" />
 
-                <!--  Extension Name  -->
-                <Label
-                    Margin="20,0,0,0"
-                    FontSize="20"
-                    HorizontalTextAlignment="Start"
-                    Text="Extension Name"
-                    TextColor="Black" />
-                <Entry
-                    Margin="20,0,20,40"
-                    Background="#e2f2e1"
-                    FontSize="20"
-                    Text="{Binding ExtensionName}"
-                    TextColor="Black" />
+            <Label
+                Margin="20,0,0,0"
+                FontSize="20"
+                HorizontalTextAlignment="Start"
+                Text="Extension Name"
+                TextColor="Black" />
+            <Entry
+                Margin="20,0,20,40"
+                FontSize="20"
+                TextColor="Black" />
 
-                <!--  Birthday  -->
-                <Label
-                    Margin="20,0,0,0"
-                    FontSize="20"
-                    HorizontalTextAlignment="Start"
-                    Text="Birthday"
-                    TextColor="Black" />
-                <DatePicker
-                    Margin="20,0,20,40"
-                    Date="{Binding Birthday}"
-                    FontSize="20" />
+            <Label
+                Margin="20,0,0,0"
+                FontSize="20"
+                HorizontalTextAlignment="Start"
+                Text="Birthday"
+                TextColor="Black" />
+                Margin="20,0,20,40"
 
-                <!--  Sex  -->
-                <Label
-                    Margin="20,0,0,0"
-                    FontSize="20"
-                    HorizontalTextAlignment="Start"
-                    Text="Sex"
-                    TextColor="Black" />
-                <Picker
-                    Title="Select Sex"
-                    Margin="20,0,20,40"
-                    FontSize="20"
-                    TextColor="Black" />
+            <Label
+                Margin="20,0,0,0"
+                FontSize="20"
+                HorizontalTextAlignment="Start"
+                Text="Sex"
+                TextColor="Black" />
+                Margin="20,0,20,40"
+                BackgroundColor="#e2f2e1"
+                FontSize="20"
+                HorizontalTextAlignment="Start"
+                Placeholder="Enter Sex"
+                PlaceholderColor="#808080"
+                Text="{Binding SexDescription}"
+                TextColor="Black" />
 
-                <!--  Email  -->
-                <Label
-                    Margin="20,0,0,0"
-                    FontSize="20"
-                    HorizontalTextAlignment="Start"
-                    Text="Email"
-                    TextColor="Black" />
-                <Entry
-                    Margin="20,0,20,40"
-                    Background="#e2f2e1"
-                    FontSize="20"
-                    Text="{Binding Email}"
-                    TextColor="Black" />
+            <Label
+                Margin="20,0,0,0"
+                FontSize="20"
+                HorizontalTextAlignment="Start"
+                Text="Email"
+                TextColor="Black" />
+            <Entry
+                Margin="20,0,20,40"
+                FontSize="20"
+                TextColor="Black" />
 
-                <!--  Civil Status  -->
-                <Label
-                    Margin="20,0,0,0"
-                    FontSize="20"
-                    HorizontalTextAlignment="Start"
-                    Text="Civil Status"
-                    TextColor="Black" />
-                <Picker
-                    Title="Select Civil Status"
-                    Margin="20,0,20,40"
-                    FontSize="20"
-                    TextColor="Black" />
+            <!--  Civil Status  -->
+            <Label
+                Margin="20,0,0,0"
+                FontSize="20"
+                HorizontalTextAlignment="Start"
+                Text="Civil Status"
+                TextColor="Black" />
+                Margin="20,0,20,40"
+                BackgroundColor="#e2f2e1"
+                FontSize="20"
+                HorizontalTextAlignment="Start"
+                Placeholder="Enter Civil Status"
+                PlaceholderColor="#808080"
+                Text="{Binding CivilStatusName}"
+                TextColor="Black" />
 
-                <!--  Contact Number  -->
-                <Label
-                    Margin="20,0,0,0"
-                    FontSize="20"
-                    HorizontalTextAlignment="Start"
-                    Text="Contact Number"
-                    TextColor="Black" />
-                <Entry
-                    Margin="20,0,20,40"
-                    Background="#e2f2e1"
-                    FontSize="20"
-                    Text="{Binding MobileNumber}"
-                    TextColor="Black" />
+            <!--  Contact Number  -->
+            <Label
+                Margin="20,0,0,0"
+                FontSize="20"
+                HorizontalTextAlignment="Start"
+                Text="Contact Number"
+                TextColor="Black" />
+            <Entry
+                Margin="20,0,20,40"
+                FontSize="20"
+                TextColor="Black" />
 
-                <!--  Region  -->
-                <Label
-                    Margin="20,0,0,0"
-                    FontSize="20"
-                    HorizontalTextAlignment="Start"
-                    Text="Region"
-                    TextColor="Black" />
-                <Picker
-                    Title="Select Region"
-                    Margin="20,0,20,40"
-                    FontSize="20"
-                    TextColor="Black" />
+            <!--  Region  -->
+            <Label
+                Margin="20,0,0,0"
+                FontSize="20"
+                HorizontalTextAlignment="Start"
+                Text="Region"
+                TextColor="Black" />
+            <Picker
+                Margin="20,0,20,40"
+                BackgroundColor="#e2f2e1"
+                FontSize="20"
+                HorizontalTextAlignment="Start"
+                ItemDisplayBinding="{Binding RegionName}"
+                ItemsSource="{Binding Regions}"
+                SelectedItem="{Binding SelectedRegion, Mode=TwoWay}"
+                TextColor="Black" />
 
-                <!--  Province  -->
-                <Label
-                    Margin="20,0,0,0"
-                    FontSize="20"
-                    HorizontalTextAlignment="Start"
-                    Text="Province"
-                    TextColor="Black" />
-                <Picker
-                    Title="Select Province"
-                    Margin="20,0,20,40"
-                    FontSize="20"
-                    TextColor="Black" />
+            <!--  Province  -->
+            <Label
+                Margin="20,0,0,0"
+                FontSize="20"
+                HorizontalTextAlignment="Start"
+                Text="Province"
+                TextColor="Black" />
+            <Picker
+                x:Name="provincePicker"
+                Title="Select Province"
+                Margin="20,0,20,40"
+                BackgroundColor="#e2f2e1"
+                FontSize="20"
+                HorizontalTextAlignment="Start"
+                ItemDisplayBinding="{Binding ProvinceName}"
+                ItemsSource="{Binding Provinces}"
+                SelectedItem="{Binding SelectedProvince, Mode=TwoWay}"
+                TextColor="Black" />
 
-                <!--  Municipality  -->
-                <Label
-                    Margin="20,0,0,0"
-                    FontSize="20"
-                    HorizontalTextAlignment="Start"
-                    Text="Municipality"
-                    TextColor="Black" />
-                <Picker
-                    Title="Select Municipality"
-                    Margin="20,0,20,40"
-                    FontSize="20"
-                    TextColor="Black" />
+            <!--  Municipality  -->
+            <Label
+                Margin="20,0,0,0"
+                FontSize="20"
+                HorizontalTextAlignment="Start"
+                Text="Municipality"
+                TextColor="Black" />
+            <Picker
+                x:Name="municipalityPicker"
+                Title="Select Municipality"
+                Margin="20,0,20,40"
+                BackgroundColor="#e2f2e1"
+                FontSize="20"
+                HorizontalTextAlignment="Start"
+                ItemDisplayBinding="{Binding MunCity}"
+                ItemsSource="{Binding Municipalities}"
+                SelectedItem="{Binding SelectedMunicipality, Mode=TwoWay}"
+                TextColor="Black" />
 
-                <!--  Barangay  -->
-                <Label
-                    Margin="20,0,0,0"
-                    FontSize="20"
-                    HorizontalTextAlignment="Start"
-                    Text="Barangay"
-                    TextColor="Black" />
-                <Picker
-                    Title="Select Barangay"
-                    Margin="20,0,20,40"
-                    FontSize="20"
-                    TextColor="Black" />
+            <!--  Barangay  -->
+            <Label
+                Margin="20,0,0,0"
+                FontSize="20"
+                HorizontalTextAlignment="Start"
+                Text="Barangay"
+                TextColor="Black" />
+            <Picker
+                x:Name="barangayPicker"
+                Title="Select Barangay"
+                Margin="20,0,20,40"
+                BackgroundColor="#e2f2e1"
+                FontSize="20"
+                HorizontalTextAlignment="Start"
+                ItemDisplayBinding="{Binding BarangayName}"
+                ItemsSource="{Binding Barangays}"
+                SelectedItem="{Binding SelectedBarangay, Mode=TwoWay}"
+                TextColor="Black" />
 
-                <!--  Street  -->
-                <Label
-                    Margin="20,0,0,0"
-                    FontSize="20"
-                    HorizontalTextAlignment="Start"
-                    Text="Street"
-                    TextColor="Black" />
-                <Entry
-                    Margin="20,0,20,40"
-                    Background="#e2f2e1"
-                    FontSize="20"
-                    Text="{Binding StreetAddress}"
-                    TextColor="Black" />
+            <!--  Street  -->
+            <Label
+                Margin="20,0,0,0"
+                FontSize="20"
+                HorizontalTextAlignment="Start"
+                Text="Street"
+                TextColor="Black" />
+            <Entry
+                Margin="20,0,20,40"
+                FontSize="20"
+                TextColor="Black" />
 
                 <!--  Save Button  -->
-                <Button
-                    x:Name="SaveProfile"
-                    Margin="10"
-                    Padding="20"
-                    BackgroundColor="#7EE175"
-                    CornerRadius="10"
-                    FontAttributes="Bold"
-                    FontSize="20"
-                    Text="Save Profile"
-                    TextColor="White" />
-            </StackLayout>
+            <Button
+                x:Name="SaveProfile"
+                Margin="10"
+                Padding="20"
+                CornerRadius="10"
+                FontAttributes="Bold"
+                FontSize="20"
+                HorizontalOptions="FillAndExpand"
+                Text="Save Profile"
+        </StackLayout>
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>
