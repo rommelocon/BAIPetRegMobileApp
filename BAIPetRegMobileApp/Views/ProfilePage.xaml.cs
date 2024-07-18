@@ -4,20 +4,26 @@ namespace BAIPetRegMobileApp.Views;
 
 public partial class ProfilePage : ContentPage
 {
-	private ProfilePageViewModel viewModel;
+    private readonly ProfilePageViewModel _viewModel;
 
 	public ProfilePage(ProfilePageViewModel viewModel)
 	{
 		InitializeComponent();
-		this.viewModel = viewModel;
+		_viewModel = viewModel;
 		BindingContext = viewModel;
-        Application.Current.UserAppTheme = AppTheme.Light;
     }
 
 	protected override async void OnAppearing()
 	{
 		base.OnAppearing();
-        // Load the profile when the page appears
-        await viewModel.InitializeProfile();
+        if (BindingContext is ProfilePageViewModel viewModel)
+        {
+            await _viewModel.InitializeAsync();
+        }
+    }
+
+    private void EditProfile_Clicked(object sender, EventArgs e)
+    {
+        Shell.Current.GoToAsync(nameof(EditProfilePage));
     }
 }

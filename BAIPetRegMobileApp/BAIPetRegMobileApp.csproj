@@ -106,6 +106,9 @@
 		<MauiXaml Update="Views\DogBreedPage.xaml">
 		  <Generator>MSBuild:Compile</Generator>
 		</MauiXaml>
+		<MauiXaml Update="Views\EditProfilePage.xaml">
+		  <Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
 		<MauiXaml Update="Views\PetInformationPage.xaml">
 		  <Generator>MSBuild:Compile</Generator>
 		</MauiXaml>
@@ -142,4 +145,12 @@
 			<Generator>MSBuild:UpdateGeneratedFiles</Generator>
 		</AndroidResource>
 	</ItemGroup>
+
+	<ItemGroup>
+	  <Compile Update="Views\EditProfilePage.xaml.cs">
+	    <DependentUpon>EditProfilePage.xaml</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
+	<ProjectExtensions><VisualStudio><UserProperties XamarinHotReloadDebuggerTimeoutExceptionBAIPetRegMobileAppHideInfoBar="True" XamarinHotReloadGenericExceptionInfoBarBAIPetRegMobileAppHideInfoBar="True" /></VisualStudio></ProjectExtensions>
 </Project>

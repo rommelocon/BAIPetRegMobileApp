@@ -57,7 +57,7 @@
                             <Image
                                 Aspect="AspectFill"
                                 HorizontalOptions="FillAndExpand"
-                                Source="profile_pic_1.png"
+                                Source="default_user_icon.png"
                                 VerticalOptions="FillAndExpand">
                                 <Image.Clip>
                                     <EllipseGeometry
@@ -168,94 +168,94 @@
                     <StackLayout Orientation="Vertical">
                         <!--  firstname  -->
                         <Label
-    Margin="20,0,0,0"
-    FontSize="20"
-    HorizontalTextAlignment="Start"
-    Text="First Name"
-    TextColor="Black" />
+                            Margin="20,0,0,0"
+                            FontSize="20"
+                            HorizontalTextAlignment="Start"
+                            Text="First Name"
+                            TextColor="Black" />
                         <Label
-    Text="{Binding Firstname}"
-    Margin="20,0,20,40"
-    Padding="5"
-    Background="#e2f2e1"
-    FontSize="20"
-    HorizontalTextAlignment="Start"
-    TextColor="Black" />
+                            Margin="20,0,20,40"
+                            Padding="5"
+                            Background="#e2f2e1"
+                            FontSize="20"
+                            HorizontalTextAlignment="Start"
+                            Text="{Binding Firstname}"
+                            TextColor="Black" />
                         <!--  middlename  -->
                         <Label
-Margin="20,0,0,0"
-FontSize="20"
-HorizontalTextAlignment="Start"
-Text="Middle Name"
-TextColor="Black" />
+                            Margin="20,0,0,0"
+                            FontSize="20"
+                            HorizontalTextAlignment="Start"
+                            Text="Middle Name"
+                            TextColor="Black" />
                         <Label
-Text="{Binding MiddleName}"
-Margin="20,0,20,40"
-Padding="5"
-Background="#e2f2e1"
-FontSize="20"
-HorizontalTextAlignment="Start"
-TextColor="Black" />
+                            Margin="20,0,20,40"
+                            Padding="5"
+                            Background="#e2f2e1"
+                            FontSize="20"
+                            HorizontalTextAlignment="Start"
+                            Text="{Binding MiddleName}"
+                            TextColor="Black" />
                         <!--  lastname  -->
                         <Label
-Margin="20,0,0,0"
-FontSize="20"
-HorizontalTextAlignment="Start"
-Text="Last Name"
-TextColor="Black" />
+                            Margin="20,0,0,0"
+                            FontSize="20"
+                            HorizontalTextAlignment="Start"
+                            Text="Last Name"
+                            TextColor="Black" />
                         <Label
-Text="{Binding Lastname}"
-Margin="20,0,20,40"
-Padding="5"
-Background="#e2f2e1"
-FontSize="20"
-HorizontalTextAlignment="Start"
-TextColor="Black" />
+                            Margin="20,0,20,40"
+                            Padding="5"
+                            Background="#e2f2e1"
+                            FontSize="20"
+                            HorizontalTextAlignment="Start"
+                            Text="{Binding Lastname}"
+                            TextColor="Black" />
                         <!--  extension name  -->
                         <Label
-Margin="20,0,0,0"
-FontSize="20"
-HorizontalTextAlignment="Start"
-Text="Extension Name"
-TextColor="Black" />
+                            Margin="20,0,0,0"
+                            FontSize="20"
+                            HorizontalTextAlignment="Start"
+                            Text="Extension Name"
+                            TextColor="Black" />
                         <Label
-Text="{Binding ExtensionName}"
-Margin="20,0,20,40"
-Padding="5"
-Background="#e2f2e1"
-FontSize="20"
-HorizontalTextAlignment="Start"
-TextColor="Black" />
+                            Margin="20,0,20,40"
+                            Padding="5"
+                            Background="#e2f2e1"
+                            FontSize="20"
+                            HorizontalTextAlignment="Start"
+                            Text="{Binding ExtensionName}"
+                            TextColor="Black" />
                         <!--  birthday  -->
                         <Label
-Margin="20,0,0,0"
-FontSize="20"
-HorizontalTextAlignment="Start"
-Text="Birthday"
-TextColor="Black" />
+                            Margin="20,0,0,0"
+                            FontSize="20"
+                            HorizontalTextAlignment="Start"
+                            Text="Birthday"
+                            TextColor="Black" />
                         <Label
-Text="{Binding Birthday}"
-Margin="20,0,20,40"
-Padding="5"
-Background="#e2f2e1"
-FontSize="20"
-HorizontalTextAlignment="Start"
-TextColor="Black" />
+                            Margin="20,0,20,40"
+                            Padding="5"
+                            Background="#e2f2e1"
+                            FontSize="20"
+                            HorizontalTextAlignment="Start"
+                            Text="{Binding Birthday}"
+                            TextColor="Black" />
                         <!--  sex  -->
                         <Label
-Margin="20,0,0,0"
-FontSize="20"
-HorizontalTextAlignment="Start"
-Text="Sex"
-TextColor="Black" />
+                            Margin="20,0,0,0"
+                            FontSize="20"
+                            HorizontalTextAlignment="Start"
+                            Text="Sex"
+                            TextColor="Black" />
                         <Label
-Text="{Binding SexDescription}"
-Margin="20,0,20,40"
-Padding="5"
-Background="#e2f2e1"
-FontSize="20"
-HorizontalTextAlignment="Start"
-TextColor="Black" />
+                            Margin="20,0,20,40"
+                            Padding="5"
+                            Background="#e2f2e1"
+                            FontSize="20"
+                            HorizontalTextAlignment="Start"
+                            Text="{Binding SexDescription}"
+                            TextColor="Black" />
                         <!--  email  -->
                         <Label
                             Margin="20,0,0,0"
@@ -264,12 +264,12 @@ TextColor="Black" />
                             Text="Email"
                             TextColor="Black" />
                         <Label
-                            Text="{Binding Email}"
                             Margin="20,0,20,40"
                             Padding="5"
                             Background="#e2f2e1"
                             FontSize="20"
                             HorizontalTextAlignment="Start"
+                            Text="{Binding Email}"
                             TextColor="Black" />
                         <!--  Civil Status  -->
                         <Label
@@ -372,6 +372,7 @@ TextColor="Black" />
                             HorizontalTextAlignment="Start"
                             Text="{Binding BarangayName}"
                             TextColor="Black" />
+
                         <!--  Street  -->
                         <Label
                             Margin="20,0,0,0"
@@ -379,34 +380,45 @@ TextColor="Black" />
                             HorizontalTextAlignment="Start"
                             Text="Street"
                             TextColor="Black" />
-                        <Entry
-    Margin="20,0,20,40"
-    BackgroundColor="#e2f2e1"
-                            PlaceholderColor="#e2f2e1"
-    FontAttributes="Italic"
-    FontSize="20"
-    HorizontalTextAlignment="Start"
-    Placeholder="Enter Street Address"
-    Text="{Binding StreetAddress}"
-    TextColor="Black" />
+                        <Label
+                            Margin="20,0,20,40"
+                            Padding="5"
+                            Background="#e2f2e1"
+                            FontAttributes="Italic"
+                            FontSize="20"
+                            HorizontalTextAlignment="Start"
+                            Text="{Binding StreetAddress}"
+                            TextColor="Black" />
 
                         <!--  Full Address  -->
                         <Label
-    Margin="20,0,0,0"
-    FontSize="20"
-    HorizontalTextAlignment="Start"
-    Text="Full Address"
-    TextColor="Black" />
+                            Margin="20,0,0,0"
+                            FontSize="20"
+                            HorizontalTextAlignment="Start"
+                            Text="Full Address"
+                            TextColor="Black" />
                         <Label
-    Margin="20,0,20,40"
-    Padding="5"
-    Background="#e2f2e1"
-    FontAttributes="Italic"
-    FontSize="20"
-    HorizontalTextAlignment="Start"
-    Text="{Binding FullAddress}"
-    TextColor="Black" />
+                            Margin="20,0,20,40"
+                            Padding="5"
+                            Background="#e2f2e1"
+                            FontAttributes="Italic"
+                            FontSize="20"
+                            HorizontalTextAlignment="Start"
+                            Text="{Binding FullAddress}"
+                            TextColor="Black" />
 
+                        <!--  Edit Button  -->
+                        <Button
+                            x:Name="EditProfile"
+                            Margin="10"
+                            Padding="20"
+                            BackgroundColor="#7EE175"
+                            Clicked="EditProfile_Clicked"
+                            CornerRadius="10"
+                            FontAttributes="Bold"
+                            FontSize="20"
+                            Text="Edit Profile"
+                            TextColor="White" />
                     </StackLayout>
                 </VerticalStackLayout>
             </VerticalStackLayout>
