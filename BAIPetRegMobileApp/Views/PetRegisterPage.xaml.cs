@@ -272,10 +272,35 @@ public partial class PetRegisterPage : ContentPage
         sexList.ItemsSource = listSex;
 
 
-    public void OnOwnershipListSelectedIndexChanged(object sender, EventArgs e)
-    {
-        var picker = (Picker)sender;
-        string selectedOwnership = (string)picker.SelectedItem;
+        List<string> listHabitat = new List<string>()
+        {
+            "Household",
+            "Neigborhood",
+            "Stray Animal"
+        };
+        HabitatList.ItemsSource = listHabitat;
+
+
+        List<string> listTagTypeList = new List<string>()
+        {
+            "Collar Tag",
+            "Ear Tag",
+            "Leg Band",
+            "Microchip Code",
+            "None",
+            "Radio Frequency Identification",
+            "Tatto Code"
+        };
+        TagTypeList.ItemsSource = listTagTypeList;
+
+        List<string> ContactwAnimalList = new List<string>()
+        {
+            "Frequent",
+            "Never",
+            "Seldom",
+            "Unknown"
+        };
+        ContactwOtherAnimals.ItemsSource = ContactwAnimalList;
     }
 
 
@@ -345,9 +370,6 @@ public partial class PetRegisterPage : ContentPage
         }
     }
 
-
-
-
     private async Task PickImageAsync(Image imageControl)
     {
         try
@@ -416,13 +438,8 @@ public partial class PetRegisterPage : ContentPage
         }
         else
         {
-            OtherTagEntryStack.IsVisible = true;
+            TagNumberEntryStack.IsVisible = true;
         }
-    }
-
-    private void Label_Focused(object sender, FocusEventArgs e)
-    {
-
     }
 
     private void OnRadioButtonTagCheckedChanged(object sender, CheckedChangedEventArgs e)
@@ -433,7 +450,12 @@ public partial class PetRegisterPage : ContentPage
         }
         else
         {
-            OtherTagEntryStack.IsVisible = true;
+            DatePickerStack.IsVisible = false;
         }
+    }
+
+    private void Label_Focused(object sender, FocusEventArgs e)
+    {
+
     }
 }

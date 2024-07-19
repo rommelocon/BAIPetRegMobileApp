@@ -400,39 +400,6 @@
                     </Frame>
                 </StackLayout>
 
-                <!--  Weight Entry  -->
-
-                <StackLayout>
-                    <Label
-                        Margin="40,20,0,0"
-                        FontAttributes="Bold"
-                        FontSize="20"
-                        Text="Weight(KGS) *"
-                        TextColor="Black" />
-                    <Frame
-                        Margin="30,10"
-                        Padding="10"
-                        BackgroundColor="#DCF4DA"
-                        BorderColor="Transparent"
-                        CornerRadius="15"
-                        HasShadow="False"
-                        HorizontalOptions="FillAndExpand">
-                        <Entry
-                            x:Name="PetColor"
-                            BackgroundColor="Transparent"
-                            FontAttributes="None"
-                            FontSize="20"
-                            HorizontalOptions="FillAndExpand"
-                            IsSpellCheckEnabled="False"
-                            IsTextPredictionEnabled="False"
-                            Keyboard="Numeric"
-                            MaxLength="5"
-                            Placeholder="Input Weight(KGS)"
-                            PlaceholderColor="Black"
-                            VerticalOptions="Center" />
-                    </Frame>
-                </StackLayout>
-
                 <!--  Animal Color Entry  -->
 
                 <StackLayout>
@@ -442,7 +409,6 @@
                         FontSize="20"
                         Text="Animal Color *"
                         TextColor="Black" />
-
                     <Frame
                         Margin="30,10"
                         Padding="10"
@@ -466,6 +432,38 @@
                     </Frame>
                 </StackLayout>
 
+                <!--  Tag number Entry  -->
+
+                <StackLayout>
+                    <Label
+                        Margin="40,20,0,0"
+                        FontAttributes="Bold"
+                        FontSize="20"
+                        Text="Tag Number (Optional)"
+                        TextColor="Black" />
+
+                    <Frame
+                        Padding="10"
+                        BackgroundColor="#DCF4DA"
+                        BorderColor="Transparent"
+                        CornerRadius="15"
+                        HasShadow="False"
+                        HorizontalOptions="FillAndExpand">
+                        <Entry
+                            x:Name="PetColor"
+                            BackgroundColor="Transparent"
+                            FontAttributes="None"
+                            FontSize="20"
+                            HorizontalOptions="FillAndExpand"
+                            IsSpellCheckEnabled="False"
+                            IsTextPredictionEnabled="False"
+                            Keyboard="Text"
+                            Placeholder="Input Animal Color"
+                            PlaceholderColor="Black"
+                            VerticalOptions="Center" />
+                    </Frame>
+
+                </StackLayout>
 
                 <!--  Remarks  -->
                 <StackLayout Padding="20">
@@ -495,6 +493,7 @@
                                 Placeholder="Input Remarks"
                                 PlaceholderColor="Black"
                                 TextColor="Black"
+                                
                                 VerticalOptions="Start" />
                         </StackLayout>
 
@@ -503,7 +502,9 @@
 
                 </StackLayout>
 
-                <!--  Pet Tag Type  -->
+
+                <!--  Pet Origin  -->
+
                 <StackLayout Padding="20">
                     <Label
                         FontAttributes="Bold"
@@ -700,6 +701,7 @@
                         </StackLayout>
                     </Frame>
                 </StackLayout>
+                
                 <!--  ImagePicker  -->
                 <StackLayout Padding="10">
                     <Label
@@ -739,6 +741,11 @@
                                     HeightRequest="100"
                                     Source="default_image_placeholder.png"
                                     WidthRequest="100" />
+                                <Label
+                                    Padding="5,30,0,0"
+                                    FontSize="Medium"
+                                    Text="Image 1:*" />
+
                                 <Button
                                     Margin="0,10,0,0"
                                     BackgroundColor="#096B00"
@@ -862,8 +869,6 @@
                         </Frame>
                     </Grid>
                 </StackLayout>
-
-
 
                 <!--  Button for Submit  -->
 
