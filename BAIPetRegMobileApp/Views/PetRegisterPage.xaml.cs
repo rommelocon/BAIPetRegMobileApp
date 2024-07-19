@@ -331,4 +331,16 @@ public partial class PetRegisterPage : ContentPage
             DatePickerStack.IsVisible = false;
         }
     }
+
+    private void OnRadioButtonTagCheckedChanged(object sender, CheckedChangedEventArgs e)
+    {
+        if (NoneRdBtn.IsChecked)
+        {
+            OtherTagEntryStack.IsVisible = false;
+        }
+        else
+        {
+            OtherTagEntryStack.IsVisible = true;
+        }
+    }
 }

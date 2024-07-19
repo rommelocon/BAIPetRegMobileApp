@@ -29,8 +29,8 @@
                 FontFamily="MaterialIconsOutlined-Regular"
                 FontSize="30"
                 HorizontalOptions="Start"
-                TextColor="White"
-                Text="menu" />
+                Text="menu"
+                TextColor="White" />
 
             <Button
                 x:Name="HomepageBtn"
@@ -41,8 +41,8 @@
                 FontFamily="MaterialIconsOutlined-Regular"
                 FontSize="30"
                 HorizontalOptions="EndAndExpand"
-                TextColor="White"
-                Text="pets" />
+                Text="pets"
+                TextColor="White" />
 
 
 
@@ -114,8 +114,8 @@
                     CornerRadius="10"
                     FontAttributes="Bold"
                     FontSize="20"
-                    TextColor="White"
-                    Text="Register a Pet" />
+                    Text="Register a Pet"
+                    TextColor="White" />
 
                 <!--  Pet Gallery - 1  -->
                 <StackLayout Padding="10">
@@ -132,10 +132,13 @@
                                 Source="dog1.jpeg" />
 
                             <!--  Labels  -->
-                            <Label FontAttributes="Bold" Text="REG ID: 01022023 JUDELA CRUZBLACKIENO"  TextColor="#2E8B26"/>
-                            <Label Text="Date Registered: 22/03/2024"  TextColor="#2E8B26"/>
-                            <Label Text="Date Of Birth: 02/01/2023"  TextColor="#2E8B26"/>
-                            <Label Text="Alias: Jaguar"  TextColor="#2E8B26"/>
+                            <Label
+                                FontAttributes="Bold"
+                                Text="REG ID: 01022023 JUDELA CRUZBLACKIENO"
+                                TextColor="#2E8B26" />
+                            <Label Text="Date Registered: 22/03/2024" TextColor="#2E8B26" />
+                            <Label Text="Date Of Birth: 02/01/2023" TextColor="#2E8B26" />
+                            <Label Text="Alias: Jaguar" TextColor="#2E8B26" />
 
                             <!--  Button  -->
 
@@ -167,10 +170,13 @@
                                 Source="dog_img.png" />
 
                             <!--  Labels  -->
-                            <Label FontAttributes="Bold" Text="REG ID: 01022023 JUDELA CRUZBLACKIENO"  TextColor="#2E8B26" />
-                            <Label Text="Date Registered: 22/03/2024"  TextColor="#2E8B26" />
-                            <Label Text="Date Of Birth: 02/01/2023"  TextColor="#2E8B26"/>
-                            <Label Text="Alias: Jaguar"  TextColor="#2E8B26"/>
+                            <Label
+                                FontAttributes="Bold"
+                                Text="REG ID: 01022023 JUDELA CRUZBLACKIENO"
+                                TextColor="#2E8B26" />
+                            <Label Text="Date Registered: 22/03/2024" TextColor="#2E8B26" />
+                            <Label Text="Date Of Birth: 02/01/2023" TextColor="#2E8B26" />
+                            <Label Text="Alias: Jaguar" TextColor="#2E8B26" />
 
                             <!--  Button  -->
                             <Button
@@ -199,10 +205,13 @@
                                 Source="dog_img.png" />
 
                             <!--  Labels  -->
-                            <Label FontAttributes="Bold" Text="REG ID: 01022023 JUDELA CRUZBLACKIENO"  TextColor="#2E8B26"/>
-                            <Label Text="Date Registered: 22/03/2024"  TextColor="#2E8B26" />
-                            <Label Text="Date Of Birth: 02/01/2023"  TextColor="#2E8B26" />
-                            <Label Text="Alias: Jaguar"  TextColor="#2E8B26"/>
+                            <Label
+                                FontAttributes="Bold"
+                                Text="REG ID: 01022023 JUDELA CRUZBLACKIENO"
+                                TextColor="#2E8B26" />
+                            <Label Text="Date Registered: 22/03/2024" TextColor="#2E8B26" />
+                            <Label Text="Date Of Birth: 02/01/2023" TextColor="#2E8B26" />
+                            <Label Text="Alias: Jaguar" TextColor="#2E8B26" />
 
                             <!--  Button  -->
                             <Button

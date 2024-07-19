@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="BAIPetRegMobileApp.Views.TOAPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="TOAPage"
+    FlyoutItem.IsVisible="False"
+    Shell.BackgroundColor="#57C84D"
+    Shell.FlyoutBehavior="Flyout"
+    Shell.NavBarIsVisible="True">
+
+    <Shell.BackButtonBehavior>
+        <BackButtonBehavior IsEnabled="False" IsVisible="False" />
+    </Shell.BackButtonBehavior>
+
+
+    <Shell.TitleView>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Button
+                x:Name="MenuBtnClicked"
+                Grid.Column="0"
+                BackgroundColor="Transparent"
+                Clicked="MenuBtnClicked_Clicked"
+                FontFamily="MaterialIconsOutlined-Regular"
+                FontSize="30"
+                HorizontalOptions="Start"
+                Text="menu"
+                TextColor="White" />
+
+            <Button
+                x:Name="HomepageBtn"
+                Grid.Column="2"
+                Margin="0,0,20,0"
+                BackgroundColor="Transparent"
+                Clicked="HomepageBtn_Clicked"
+                FontFamily="MaterialIconsOutlined-Regular"
+                FontSize="30"
+                HorizontalOptions="EndAndExpand"
+                Text="pets"
+                TextColor="White" />
+
+
+
+            <!--  Empty element to fill the right column  -->
+
+
+        </Grid>
+    </Shell.TitleView>
+
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <!--  Define rows for your banner, search frame, and content  -->
+            <RowDefinition Height="Auto" />
+            <!--  Banner  -->
+            <RowDefinition Height="Auto" />
+            <!--  Search Frame  -->
+            <RowDefinition Height="*" />
+            <!--  Content  -->
+        </Grid.RowDefinitions>
+
+        <Image
+            HorizontalOptions="Center"
+            Source="bai_banner.jpg"
+            VerticalOptions="Center" />
+
+        <ScrollView Grid.Row="2">
+            <VerticalStackLayout
+                Margin="10"
+                Padding="20"
+                BackgroundColor="#98FB98"
+                Spacing="15">
+                <!--  Header  -->
+                <Label
+                    FontAttributes="Bold"
+                    FontSize="Large"
+                    HorizontalOptions="CenterAndExpand"
+                    HorizontalTextAlignment="Center"
+                    Text="Terms of Agreement for Pet Registration" />
+
+                <Label
+                    FontAttributes="None"
+                    FontSize="15"
+                    HorizontalOptions="CenterAndExpand"
+                    HorizontalTextAlignment="Center"
+                    LineBreakMode="WordWrap"
+                    Text="Thank you for choosing our pet registration service. By registering your pet, you agree to the collection, use, and sharing of the following information for the purposes of maintaining a comprehensive and accurate database of pet details" />
+
+                <!--  Information Collection  -->
+                <Label
+                    FontAttributes="Bold"
+                    FontSize="Medium"
+                    HorizontalOptions="CenterAndExpand"
+                    Text="Content" />
+                
+                <Label
+                    FontSize="Small"
+                    HorizontalOptions="CenterAndExpand"
+                    LineBreakMode="WordWrap"
+                    Text="We collect all the following information about your pet" />
+
+                <Label
+                    FontSize="Small"
+                    LineBreakMode="WordWrap"
+                    Text="Additionally, we may collect images of your pet to enhance the identification and verification process." />
+
+                <!--  Changes to Service  -->
+                <Label
+                    FontAttributes="Bold"
+                    FontSize="Medium"
+                    HorizontalOptions="CenterAndExpand"
+                    Text="Changes to Service" />
+                <Label
+                    FontSize="Small"
+                    LineBreakMode="WordWrap"
+                    Text="We reserve the right to withdraw or amend our service, and any service or material we provide via our service, at our sole discretion without notice. We will not be liable if for any reason all or any part of our service is unavailable at any time or for any period. From time to time, we may restrict access to some parts of our service, or the entire service, to users, including registered users." />
+
+                <!--  Amendments to Terms  -->
+                <Label
+                    FontAttributes="Bold"
+                    FontSize="Medium"
+                    HorizontalOptions="CenterAndExpand"
+                    Text="Amendments to Terms" />
+                <Label
+                    FontSize="Small"
+                    LineBreakMode="WordWrap"
+                    Text="We may amend these terms at any time by posting the amended terms on this site. It is your responsibility to review these terms periodically. Your continued use of the platform following the posting of revised terms means that you accept and agree to the changes. You are expected to check this page frequently so you are aware of any changes, as they are binding on you. By continuing to access or use our service after any revisions become effective, you agree to be bound by the revised terms. If you do not agree to the new terms, you are no longer authorized to use our service." />
+
+                <!--  Footer  -->
+                <Label
+                    FontAttributes="Bold"
+                    FontSize="Medium"
+                    HorizontalOptions="CenterAndExpand"
+                    Text="Acknowledgement" />
+                <Label
+                    FontSize="Small"
+                    LineBreakMode="WordWrap"
+                    Text="BY USING OUR SERVICE OR OTHER SERVICES PROVIDED BY US, YOU ACKNOWLEDGE THAT YOU HAVE READ THESE TERMS OF SERVICE AND AGREE TO BE BOUND BY THEM." />
+
+                <Label
+                    FontAttributes="Bold"
+                    FontSize="Medium"
+                    HorizontalOptions="CenterAndExpand"
+                    Text="Contact Us" />
+                <Label
+                    FontSize="Small"
+                    LineBreakMode="WordWrap"
+                    Text="Please send your feedback, comments, requests for technical support by email: comms@bai.gov.ph." />
+
+                <!--  Acceptance  -->
+                <HorizontalStackLayout Spacing="10" VerticalOptions="Center">
+                    <CheckBox x:Name="AcceptCheckBox" CheckedChanged="OnAcceptCheckBoxCheckedChanged" />
+                    <Label Text="I accept the Terms of Agreement" VerticalOptions="Center" />
+                </HorizontalStackLayout>
+
+                <Button
+                    x:Name="AcceptButton"
+                    BackgroundColor="#C2C2C2"
+                    Clicked="OnAcceptButtonClicked"
+                    CornerRadius="25"
+                    HeightRequest="50"
+                    HorizontalOptions="Center"
+                    IsEnabled="False"
+                    Text="Accept"
+                    TextColor="White"
+                    WidthRequest="150" />
+            </VerticalStackLayout>
+
+        </ScrollView>
+
+    </Grid>
+
+
+    <ContentPage.Background>
+        <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+            <GradientStop Offset="0.0" Color="#7EE175" />
+            <GradientStop Offset="1.0" Color="#ffffff" />
+        </LinearGradientBrush>
+    </ContentPage.Background>
+
+</ContentPage>
