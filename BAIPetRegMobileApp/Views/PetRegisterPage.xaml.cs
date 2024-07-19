@@ -1,6 +1,7 @@
 using SQLite;
 using System.Windows.Input;
 
+
 namespace BAIPetRegMobileApp.Views;
 
 public partial class PetRegisterPage : ContentPage
@@ -280,17 +281,6 @@ public partial class PetRegisterPage : ContentPage
         HabitatList.ItemsSource = listHabitat;
 
 
-        List<string> listTagTypeList = new List<string>()
-        {
-            "Collar Tag",
-            "Ear Tag",
-            "Leg Band",
-            "Microchip Code",
-            "None",
-            "Radio Frequency Identification",
-            "Tatto Code"
-        };
-        TagTypeList.ItemsSource = listTagTypeList;
 
         List<string> ContactwAnimalList = new List<string>()
         {
@@ -328,6 +318,51 @@ public partial class PetRegisterPage : ContentPage
     {
         await PickImageAsync(Image4);
     }
+
+    private async void OnTakePhoto1Clicked(object sender, EventArgs e)
+    {
+        await TakePhotoAsync(Image1);
+    }
+
+    private async void OnTakePhoto2Clicked(object sender, EventArgs e)
+    {
+        await TakePhotoAsync(Image2);
+    }
+
+    private async void OnTakePhoto3Clicked(object sender, EventArgs e)
+    {
+        await TakePhotoAsync(Image3);
+    }
+
+    private async void OnTakePhoto4Clicked(object sender, EventArgs e)
+    {
+        await TakePhotoAsync(Image4);
+    }
+
+    private async Task TakePhotoAsync(Image imageControl)
+    {
+        try
+        {
+            var result = await MediaPicker.CapturePhotoAsync(new MediaPickerOptions
+            {
+                Title = "Take a photo"
+            });
+
+            if (result != null)
+            {
+                var stream = await result.OpenReadAsync();
+                imageControl.Source = ImageSource.FromStream(() => stream);
+            }
+        }
+        catch (Exception ex)
+        {
+            // Handle any exceptions that may occur
+            await DisplayAlert("Error", $"An error occurred: {ex.Message}", "OK");
+        }
+    }
+
+
+
 
     private async Task PickImageAsync(Image imageControl)
     {
@@ -391,13 +426,13 @@ public partial class PetRegisterPage : ContentPage
 
     private void OnRadioTagButtonCheckedChanged(object sender, CheckedChangedEventArgs e)
     {
-        if (NoneRDbtn.IsChecked)
+        if (NoneRdBtn.IsChecked)
         {
-            TagNumberEntryStack.IsVisible = false;
+            OtherTagEntryStack.IsVisible = false;
         }
         else
         {
-            TagNumberEntryStack.IsVisible = true;
+            OtherTagEntryStack.IsVisible = true;
         }
     }
 
@@ -413,8 +448,5 @@ public partial class PetRegisterPage : ContentPage
         }
     }
 
-    private void Label_Focused(object sender, FocusEventArgs e)
-    {
 
-    }
 }
