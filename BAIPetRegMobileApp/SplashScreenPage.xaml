@@ -1,14 +1,21 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="BAIPetRegMobileApp.SplashScreenPage"
-             Background="White"
-             Title="SplashScreenPage">
+<ContentPage
+    x:Class="BAIPetRegMobileApp.SplashScreenPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="SplashScreenPage"
+    Background="White">
 
-    <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
-        <!-- Your splash screen content here -->
-        <Image Source="bai_logo.png" VerticalOptions="Center" HorizontalOptions="Center" />
-        <ActivityIndicator IsRunning="True" VerticalOptions="Center" HorizontalOptions="Center" />
+    <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+        <!--  Your splash screen content here  -->
+        <Image
+            HorizontalOptions="Center"
+            Source="bai_logo.png"
+            VerticalOptions="Center" />
+        <ActivityIndicator
+            HorizontalOptions="Center"
+            IsRunning="True"
+            VerticalOptions="Center" />
     </Grid>
 
 </ContentPage>

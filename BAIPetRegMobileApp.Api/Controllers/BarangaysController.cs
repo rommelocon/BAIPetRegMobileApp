@@ -18,7 +18,9 @@ namespace BAIPetRegMobileApp.Api.Controllers
         [HttpGet("by-municipality/{muncode}")]
         public async Task<ActionResult<IEnumerable<TblBarangays>>> GetByMunicipality(string muncode)
         {
-            var barangays = await _context.TblBarangays.Where(b => b.MunCode == muncode).ToListAsync();
+            var barangays = await _context.TblBarangays
+                .Where(b => b.MunCode == muncode)
+                .ToListAsync();
             return Ok(barangays);
         }
     }

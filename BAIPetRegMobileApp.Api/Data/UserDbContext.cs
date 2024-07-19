@@ -77,7 +77,7 @@ namespace BAIPetRegMobileApp.Api.Data
 
             modelBuilder.Entity<TblProvinces>()
                 .HasOne(p => p.Regions)
-                .WithMany(r =>  r.Provinces)
+                .WithMany(r => r.Provinces)
                 .HasForeignKey(p => p.Rcode);
 
             modelBuilder.Entity<TblMunicipalities>()

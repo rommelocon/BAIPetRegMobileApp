@@ -28,7 +28,7 @@ namespace BAIPetRegMobileApp.Api.Controllers
 
         [HttpPut("profile/{username}")]
         [Authorize]
-        public async Task<IActionResult> UpdateProfile(string username)
+        public async Task<IActionResult> UpdateProfile(string username, [FromBody] UserViewModel model)
         {
             //First Fetch the User Details by UserId
             var user = await userManager.FindByNameAsync(username);
@@ -37,26 +37,30 @@ namespace BAIPetRegMobileApp.Api.Controllers
                 return NotFound();
             }
 
-            //Store all the information in the EditUserViewModel instance
-            var model = new UserViewModel
-            {
-                Firstname = user.Firstname,
-                Lastname = user.Lastname,
-                MiddleName = user.MiddleName,
-                ExtensionName = user.ExtensionName,
-                Birthday = user.Birthday,
-                SexDescription = user.SexDescription,
-                Email = user.Email,
-                CivilStatusName = user.CivilStatusName,
-                MobileNumber = user.MobileNumber,
-                Region = user.Region,
-                ProvinceName = user.ProvinceName,
-                MunicipalitiesCities = user.MunicipalitiesCities,
-                BarangayName = user.BarangayName,
-                // Add other properties as needed
-            };
+            /// Update the user details
+            user.Firstname = model.Firstname;
+            user.Lastname = model.Lastname;
+            user.MiddleName = model.MiddleName;
+            user.ExtensionName = model.ExtensionName;
+            user.Birthday = model.Birthday;
+            user.SexDescription = model.SexDescription;
+            user.Email = model.Email;
+            user.CivilStatusName = model.CivilStatusName;
+            user.MobileNumber = model.MobileNumber;
+            user.Region = model.Region;
+            user.ProvinceName = model.ProvinceName;
+            user.MunicipalitiesCities = model.MunicipalitiesCities;
+            user.BarangayName = model.BarangayName;
+            // Update other properties as needed
 
-            return Ok(model);
+            // Save the changes
+            var result = await userManager.UpdateAsync(user);
+            if (!result.Succeeded)
+            {
+                return BadRequest(result.Errors);
+            }
+
+            return NoContent();
         }
 
         [HttpPost("register")]
@@ -133,7 +137,7 @@ namespace BAIPetRegMobileApp.Api.Controllers
                 Lastname = user.Lastname,
                 MiddleName = user.MiddleName,
                 ExtensionName = user.ExtensionName,
-                Birthday = user.Birthday,
+                Birthday = user.Birthday, // Assuming ApplicationUser has a DateOnly property for Birthday
                 SexDescription = user.SexDescription,
                 MobileNumber = user.MobileNumber,
                 UserName = user.UserName,

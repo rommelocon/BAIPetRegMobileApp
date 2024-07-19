@@ -130,8 +130,8 @@
                                 Text="Breed: Afghan Hound"
                                 TextColor="Black" />
                             <Button
-                                BackgroundColor="Green"
                                 Margin="0,10"
+                                BackgroundColor="Green"
                                 Text="Show Full Information"
                                 TextColor="White" />
                         </StackLayout>
@@ -159,8 +159,8 @@
                                 Text="Breed: Airedale Terrier"
                                 TextColor="Black" />
                             <Button
-                                BackgroundColor="Green"
                                 Margin="0,10"
+                                BackgroundColor="Green"
                                 Text="Show Full Information"
                                 TextColor="White" />
                         </StackLayout>

@@ -115,8 +115,8 @@
                                 FontFamily="MaterialIconsOutlined-Regular"
                                 FontSize="40"
                                 HorizontalOptions="End"
-                                TextColor="Black"
                                 Text="arrow_drop_down"
+                                TextColor="Black"
                                 VerticalOptions="Center" />
                         </Grid>
                     </Frame>
@@ -158,8 +158,8 @@
                                 FontFamily="MaterialIconsOutlined-Regular"
                                 FontSize="40"
                                 HorizontalOptions="End"
-                                TextColor="Black"
                                 Text="arrow_drop_down"
+                                TextColor="Black"
                                 VerticalOptions="Center" />
                         </Grid>
                     </Frame>
@@ -200,8 +200,8 @@
                                 FontFamily="MaterialIconsOutlined-Regular"
                                 FontSize="40"
                                 HorizontalOptions="End"
-                                TextColor="Black"
                                 Text="arrow_drop_down"
+                                TextColor="Black"
                                 VerticalOptions="Center" />
 
                         </Grid>
@@ -451,8 +451,8 @@
                                     BackgroundColor="#096B00"
                                     Clicked="OnSelectImage1Clicked"
                                     CornerRadius="10"
-                                    TextColor="White"
-                                    Text="Select Image 1" />
+                                    Text="Select Image 1"
+                                    TextColor="White" />
                             </StackLayout>
                         </Frame>
                         <Frame
@@ -473,8 +473,8 @@
                                     BackgroundColor="#096B00"
                                     Clicked="OnSelectImage2Clicked"
                                     CornerRadius="10"
-                                    TextColor="White"
-                                    Text="Select Image 2" />
+                                    Text="Select Image 2"
+                                    TextColor="White" />
                             </StackLayout>
                         </Frame>
                         <Frame
@@ -495,8 +495,8 @@
                                     BackgroundColor="#096B00"
                                     Clicked="OnSelectImage3Clicked"
                                     CornerRadius="10"
-                                    TextColor="White"
-                                    Text="Select Image 3" />
+                                    Text="Select Image 3"
+                                    TextColor="White" />
                             </StackLayout>
                         </Frame>
                         <Frame
@@ -517,8 +517,8 @@
                                     BackgroundColor="#096B00"
                                     Clicked="OnSelectImage4Clicked"
                                     CornerRadius="10"
-                                    TextColor="White"
-                                    Text="Select Image 4" />
+                                    Text="Select Image 4"
+                                    TextColor="White" />
                             </StackLayout>
                         </Frame>
                     </Grid>
@@ -535,8 +535,8 @@
                     CornerRadius="10"
                     FontAttributes="Bold"
                     FontSize="20"
-                    TextColor="White"
-                    Text="SUBMIT" />
+                    Text="SUBMIT"
+                    TextColor="White" />
 
             </VerticalStackLayout>
         </ScrollView>

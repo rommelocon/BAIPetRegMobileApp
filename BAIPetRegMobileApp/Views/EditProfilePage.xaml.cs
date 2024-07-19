@@ -4,19 +4,16 @@ namespace BAIPetRegMobileApp.Views;
 
 public partial class EditProfilePage : ContentPage
 {
-    private readonly EditProfilePageViewModel viewModel;
-	public EditProfilePage(EditProfilePageViewModel viewModel)
-	{
-		InitializeComponent();
-		BindingContext = viewModel;
+    private EditProfilePageViewModel viewModel;
+    public EditProfilePage(EditProfilePageViewModel viewModel)
+    {
+        InitializeComponent();
         this.viewModel = viewModel;
-	}
-    protected override void OnAppearing()
+        BindingContext = viewModel;
+    }
+    protected override async void OnAppearing()
     {
         base.OnAppearing();
-        // Refresh the ViewModel to clear any previous state
-        if (BindingContext is EditProfilePageViewModel viewModel)
-        {
-        }
+        await viewModel.InitializeProfileAsync();
     }
 }

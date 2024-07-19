@@ -3,7 +3,6 @@ using System.Net.Http.Json;
 using System.Text.Json;
 using BAIPetRegMobileApp.ViewModels;
 using System.Text;
-using System.Net.Http;
 
 namespace BAIPetRegMobileApp.Services;
 public class ClientService
@@ -89,7 +88,7 @@ public class ClientService
         }
     }
 
-    public async Task<UserViewModel> GetProfile()
+    public async Task<UserViewModel?> GetProfile()
     {
         // Retrieve the authentication data from secure storage
         var serializedResponse = await SecureStorage.GetAsync("Authentication");
@@ -143,7 +142,7 @@ public class ClientService
         return null;
     }
 
-    public async Task<bool> SaveProfile(UserViewModel model)
+    public async Task<bool> SaveProfile(UserViewModel user)
     {
         // Retrieve the authentication data from secure storage
         var serializedResponse = await SecureStorage.GetAsync("Authentication");
@@ -155,44 +154,17 @@ public class ClientService
 
             if (loginResponse != null && !string.IsNullOrEmpty(loginResponse.UserName) && !string.IsNullOrEmpty(loginResponse.AccessToken))
             {
+                var json = JsonSerializer.Serialize(user);
+                var content = new StringContent(json, Encoding.UTF8, "application/json");
                 // Make the API request with the retrieved username
                 var httpClient = httpClientFactory.CreateClient("custom-httpclient");
                 httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", loginResponse.AccessToken);
-                var result = await httpClient.GetAsync($"/Account/profile/{loginResponse.UserName}");
-
-                var userToUpdate = new UserViewModel
-                {
-                    Firstname = model.Firstname,
-                    Lastname = model.Lastname,
-                    MiddleName = model.MiddleName,
-                    ExtensionName = model.ExtensionName,
-                    Birthday = model.Birthday,
-                    SexDescription = model.SexDescription,
-                    Email = model.Email,
-                    CivilStatusName = model.CivilStatusName,
-                    MobileNumber = model.MobileNumber,
-                    Region = model.Region,
-                    ProvinceName = model.ProvinceName,
-                    MunicipalitiesCities = model.MunicipalitiesCities,
-                    BarangayName = model.BarangayName,
-                    StreetNumber = model.StreetNumber
-                    // Add other properties as needed
-                };
-
-                var json = JsonSerializer.Serialize(userToUpdate);
-                var content = new StringContent(json, Encoding.UTF8, "application/json");
-
-                var response = await httpClient.PutAsync($"/Account/profile/{loginResponse.UserName}", content);
-                if (result.IsSuccessStatusCode)
-                {
-                    var responseContent = await result.Content.ReadFromJsonAsync<UserViewModel>();
-                }
-
+                var result = await httpClient.PutAsync($"/Account/profile/{loginResponse.UserName}", content);
             }
         }
         return false;
     }
-    public async Task<List<TblRegions>> GetRegionsAsync()
+    public async Task<List<TblRegions>?> GetRegionsAsync()
     {
         var httpClient = httpClientFactory.CreateClient("custom-httpclient");
         var response = await httpClient.GetAsync("api/Regions");
@@ -206,7 +178,7 @@ public class ClientService
 
         return regions;
     }
-    public async Task<List<TblProvinces>> GetProvincesByRegionCodeAsync(string regionCode)
+    public async Task<List<TblProvinces>?> GetProvincesByRegionCodeAsync(string regionCode)
     {
         var httpClient = httpClientFactory.CreateClient("custom-httpclient");
         var response = await httpClient.GetStringAsync($"api/Provinces/by-region/{regionCode}");
@@ -218,7 +190,7 @@ public class ClientService
         return provinces;
     }
 
-    public async Task<List<TblMunicipalities>> GetMunicipalitiesByProvinceCodeAsync(string provinceCode)
+    public async Task<List<TblMunicipalities>?> GetMunicipalitiesByProvinceCodeAsync(string provinceCode)
     {
         var httpClient = httpClientFactory.CreateClient("custom-httpclient");
         var response = await httpClient.GetStringAsync($"api/Municipalities/by-province/{provinceCode}");
@@ -230,7 +202,7 @@ public class ClientService
         return municipalities;
     }
 
-    public async Task<List<TblBarangays>> GetBarangaysByMunicipalityCodeAsync(string municipalityCode)
+    public async Task<List<TblBarangays>?> GetBarangaysByMunicipalityCodeAsync(string municipalityCode)
     {
         var httpClient = httpClientFactory.CreateClient("custom-httpclient");
         var response = await httpClient.GetStringAsync($"api/Barangays/by-municipality/{municipalityCode}");

@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="BAIPetRegMobileApp.LoginPage"
-             xmlns:viewmodels="clr-namespace:BAIPetRegMobileApp.ViewModels"
-             x:DataType="viewmodels:LoginPageViewModel"
-             Shell.NavBarIsVisible="False"
-             Shell.FlyoutBehavior="Disabled"
-             Padding="0"
-             Title="LoginPage">
+<ContentPage
+    x:Class="BAIPetRegMobileApp.LoginPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:viewmodels="clr-namespace:BAIPetRegMobileApp.ViewModels"
+    Title="LoginPage"
+    Padding="0"
+    x:DataType="viewmodels:LoginPageViewModel"
+    Shell.FlyoutBehavior="Disabled"
+    Shell.NavBarIsVisible="False">
     <ScrollView>
         <VerticalStackLayout>
             <Image
@@ -44,9 +45,9 @@
                     IsSpellCheckEnabled="False"
                     IsTextPredictionEnabled="False"
                     Placeholder="Username"
+                    Text="{Binding LoginModel.UserName}"
                     TextColor="Black"
-                    VerticalOptions="Center" 
-                    Text="{Binding LoginModel.UserName}"/>
+                    VerticalOptions="Center" />
             </Frame>
             <Frame
                 Margin="30,10"
@@ -65,9 +66,9 @@
                     IsSpellCheckEnabled="False"
                     IsTextPredictionEnabled="False"
                     Placeholder="Password"
+                    Text="{Binding LoginModel.Password}"
                     TextColor="Black"
-                    VerticalOptions="Center" 
-                    Text="{Binding LoginModel.Password}"/>
+                    VerticalOptions="Center" />
             </Frame>
 
             <!--  Forgot Password Link  -->
@@ -85,18 +86,17 @@
 
             <!--  Sign In Button  -->
             <Button
-				x:Name="LoginButton"
+                x:Name="LoginButton"
                 Margin="0,0,0,0"
                 BackgroundColor="Green"
+                Command="{Binding LoginCommand}"
                 CornerRadius="10"
                 FontAttributes="Bold"
                 FontSize="20"
                 HeightRequest="60"
                 Text="Sign in"
                 TextColor="White"
-                WidthRequest="330"
-				Command="{Binding LoginCommand}"
-			/>
+                WidthRequest="330" />
 
 
 

@@ -4,10 +4,10 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:BAIPetRegMobileApp"
+    Title="BAIPetRegMobileApp"
     x:DataType="local:AppShell"
     Shell.FlyoutBehavior="Disabled"
-    Shell.NavBarIsVisible="False"
-    Title="BAIPetRegMobileApp">
+    Shell.NavBarIsVisible="False">
 
     <FlyoutItem FlyoutDisplayOptions="AsMultipleItems" Route="ParentRoute">
         <ShellContent
@@ -186,11 +186,11 @@
                     x:Name="BtnLogOut"
                     Margin="30,0,30,0"
                     BackgroundColor="#096B00"
+                    Command="{Binding LogoutCommand}"
                     CornerRadius="50"
                     Text="LogOut"
                     TextColor="White"
-                    WidthRequest="180" 
-					Command="{Binding LogoutCommand}" />
+                    WidthRequest="180" />
             </StackLayout>
         </VerticalStackLayout>
     </Shell.FlyoutFooter>

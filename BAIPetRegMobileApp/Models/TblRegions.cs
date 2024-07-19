@@ -8,7 +8,7 @@ namespace BAIPetRegMobileApp.Models
         [Key]
         [Column("Rcode")]
         [StringLength(50)]
-        public string Rcode { get; set; }
+        public string? Rcode { get; set; }
 
         [Column("Region")]
         [StringLength(100)]
