@@ -6,12 +6,12 @@ namespace BAIPetRegMobileApp;
 
 public partial class HomePage : ContentPage
 {
-    private HomePageViewModel viewModel;
+    private HomePageViewModel _viewModel;
 
     public HomePage(HomePageViewModel viewModel)
     {
         InitializeComponent();
-        this.viewModel = viewModel;
+        _viewModel = viewModel;
         BindingContext = viewModel;
     }
 
@@ -23,7 +23,6 @@ public partial class HomePage : ContentPage
 
     protected override bool OnBackButtonPressed()
     {
-        //Application.Current.Quit();
         return true;
     }
 
@@ -47,6 +46,4 @@ public partial class HomePage : ContentPage
         Shell.Current.GoToAsync(nameof(HomePage));
  
 ;    }
-
- 
 }

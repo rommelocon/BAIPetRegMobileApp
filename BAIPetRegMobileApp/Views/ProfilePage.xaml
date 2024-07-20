@@ -57,7 +57,7 @@
                             <Image
                                 Aspect="AspectFill"
                                 HorizontalOptions="FillAndExpand"
-                                Source="profile_pic_1.png"
+                                Source="default_user_icon.png"
                                 VerticalOptions="FillAndExpand">
                                 <Image.Clip>
                                     <EllipseGeometry
@@ -372,6 +372,7 @@
                             HorizontalTextAlignment="Start"
                             Text="{Binding BarangayName}"
                             TextColor="Black" />
+
                         <!--  Street  -->
                         <Label
                             Margin="20,0,0,0"

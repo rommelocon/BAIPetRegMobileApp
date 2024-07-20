@@ -7,6 +7,7 @@
     Title="EditProfilePage"
     x:DataType="viewmodels:EditProfilePageViewModel">
     <ScrollView>
+        <VerticalStackLayout>
         <StackLayout Orientation="Vertical">
             <!--  firstname  -->
             <Label
@@ -17,15 +18,9 @@
                 TextColor="Black" />
             <Entry
                 Margin="20,0,20,40"
-                BackgroundColor="#e2f2e1"
                 FontSize="20"
-                HorizontalTextAlignment="Start"
-                Placeholder="Enter First Name"
-                PlaceholderColor="#808080"
-                Text="{Binding UserViewModel.Firstname, Mode=TwoWay}"
                 TextColor="Black" />
 
-            <!--  middlename  -->
             <Label
                 Margin="20,0,0,0"
                 FontSize="20"
@@ -34,15 +29,9 @@
                 TextColor="Black" />
             <Entry
                 Margin="20,0,20,40"
-                BackgroundColor="#e2f2e1"
                 FontSize="20"
-                HorizontalTextAlignment="Start"
-                Placeholder="Enter Middle Name"
-                PlaceholderColor="#808080"
-                Text="{Binding UserViewModel.MiddleName, Mode=TwoWay}"
                 TextColor="Black" />
 
-            <!--  lastname  -->
             <Label
                 Margin="20,0,0,0"
                 FontSize="20"
@@ -51,15 +40,9 @@
                 TextColor="Black" />
             <Entry
                 Margin="20,0,20,40"
-                BackgroundColor="#e2f2e1"
                 FontSize="20"
-                HorizontalTextAlignment="Start"
-                Placeholder="Enter Last Name"
-                PlaceholderColor="#808080"
-                Text="{Binding UserViewModel.Lastname, Mode=TwoWay}"
                 TextColor="Black" />
 
-            <!--  extension name  -->
             <Label
                 Margin="20,0,0,0"
                 FontSize="20"
@@ -68,39 +51,23 @@
                 TextColor="Black" />
             <Entry
                 Margin="20,0,20,40"
-                BackgroundColor="#e2f2e1"
                 FontSize="20"
-                HorizontalTextAlignment="Start"
-                Placeholder="Enter Extension Name"
-                PlaceholderColor="#808080"
-                Text="{Binding UserViewModel.ExtensionName, Mode=TwoWay}"
                 TextColor="Black" />
 
-            <!--  birthday  -->
             <Label
                 Margin="20,0,0,0"
                 FontSize="20"
                 HorizontalTextAlignment="Start"
                 Text="Birthday"
                 TextColor="Black" />
-            <Entry
                 Margin="20,0,20,40"
-                BackgroundColor="#e2f2e1"
-                FontSize="20"
-                HorizontalTextAlignment="Start"
-                Placeholder="Enter Birthday"
-                PlaceholderColor="#808080"
-                Text="{Binding Birthday}"
-                TextColor="Black" />
 
-            <!--  sex  -->
             <Label
                 Margin="20,0,0,0"
                 FontSize="20"
                 HorizontalTextAlignment="Start"
                 Text="Sex"
                 TextColor="Black" />
-            <Entry
                 Margin="20,0,20,40"
                 BackgroundColor="#e2f2e1"
                 FontSize="20"
@@ -110,7 +77,6 @@
                 Text="{Binding SexDescription}"
                 TextColor="Black" />
 
-            <!--  email  -->
             <Label
                 Margin="20,0,0,0"
                 FontSize="20"
@@ -119,12 +85,7 @@
                 TextColor="Black" />
             <Entry
                 Margin="20,0,20,40"
-                BackgroundColor="#e2f2e1"
                 FontSize="20"
-                HorizontalTextAlignment="Start"
-                Placeholder="Enter Email"
-                PlaceholderColor="#808080"
-                Text="{Binding UserViewModel.Email, Mode=TwoWay}"
                 TextColor="Black" />
 
             <!--  Civil Status  -->
@@ -134,7 +95,6 @@
                 HorizontalTextAlignment="Start"
                 Text="Civil Status"
                 TextColor="Black" />
-            <Entry
                 Margin="20,0,20,40"
                 BackgroundColor="#e2f2e1"
                 FontSize="20"
@@ -153,12 +113,7 @@
                 TextColor="Black" />
             <Entry
                 Margin="20,0,20,40"
-                BackgroundColor="#e2f2e1"
                 FontSize="20"
-                HorizontalTextAlignment="Start"
-                Placeholder="Enter Contact Number"
-                PlaceholderColor="#808080"
-                Text="{Binding UserViewModel.MobileNumber, Mode=TwoWay}"
                 TextColor="Black" />
 
             <!--  Region  -->
@@ -169,8 +124,6 @@
                 Text="Region"
                 TextColor="Black" />
             <Picker
-                x:Name="regionPicker"
-                Title="Select a region"
                 Margin="20,0,20,40"
                 BackgroundColor="#e2f2e1"
                 FontSize="20"
@@ -246,26 +199,20 @@
                 TextColor="Black" />
             <Entry
                 Margin="20,0,20,40"
-                BackgroundColor="#e2f2e1"
                 FontSize="20"
-                HorizontalTextAlignment="Start"
-                Placeholder="Enter Street Address"
-                PlaceholderColor="#808080"
-                Text="{Binding UserViewModel.StreetNumber, Mode=TwoWay}"
                 TextColor="Black" />
 
+                <!--  Save Button  -->
             <Button
                 x:Name="SaveProfile"
                 Margin="10"
                 Padding="20"
-                BackgroundColor="#096B00"
                 CornerRadius="10"
                 FontAttributes="Bold"
                 FontSize="20"
                 HorizontalOptions="FillAndExpand"
                 Text="Save Profile"
-                TextColor="White"
-                VerticalOptions="CenterAndExpand" />
         </StackLayout>
+        </VerticalStackLayout>
     </ScrollView>
 </ContentPage>

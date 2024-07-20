@@ -4,12 +4,12 @@ namespace BAIPetRegMobileApp.Views;
 
 public partial class ProfilePage : ContentPage
 {
-	private ProfilePageViewModel viewModel;
+    private readonly ProfilePageViewModel _viewModel;
 
 	public ProfilePage(ProfilePageViewModel viewModel)
 	{
 		InitializeComponent();
-		this.viewModel = viewModel;
+		_viewModel = viewModel;
 		BindingContext = viewModel;
     }
 

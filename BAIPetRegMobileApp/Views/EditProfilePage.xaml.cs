@@ -4,10 +4,12 @@ namespace BAIPetRegMobileApp.Views;
 
 public partial class EditProfilePage : ContentPage
 {
+    private readonly EditProfilePageViewModel viewModel;
 	public EditProfilePage(EditProfilePageViewModel viewModel)
 	{
 		InitializeComponent();
 		BindingContext = viewModel;
+        this.viewModel = viewModel;
 	}
     protected override void OnAppearing()
     {
@@ -15,7 +17,6 @@ public partial class EditProfilePage : ContentPage
         // Refresh the ViewModel to clear any previous state
         if (BindingContext is EditProfilePageViewModel viewModel)
         {
-            viewModel.Refresh(); // Add a method to your ViewModel to reset its state
         }
     }
 }

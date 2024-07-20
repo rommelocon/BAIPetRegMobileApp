@@ -126,4 +126,12 @@
 			<Generator>MSBuild:UpdateGeneratedFiles</Generator>
 		</AndroidResource>
 	</ItemGroup>
+
+	<ItemGroup>
+	  <Compile Update="Views\EditProfilePage.xaml.cs">
+	    <DependentUpon>EditProfilePage.xaml</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
+	<ProjectExtensions><VisualStudio><UserProperties XamarinHotReloadDebuggerTimeoutExceptionBAIPetRegMobileAppHideInfoBar="True" XamarinHotReloadGenericExceptionInfoBarBAIPetRegMobileAppHideInfoBar="True" /></VisualStudio></ProjectExtensions>
 </Project>

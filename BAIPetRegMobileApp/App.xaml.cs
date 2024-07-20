@@ -1,7 +1,4 @@
-﻿using BAIPetRegMobileApp.Services;
-using BAIPetRegMobileApp.ViewModels;
-
-namespace BAIPetRegMobileApp
+﻿namespace BAIPetRegMobileApp
 {
     public partial class App : Application
     {

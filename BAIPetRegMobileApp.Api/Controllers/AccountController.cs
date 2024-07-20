@@ -133,7 +133,7 @@ namespace BAIPetRegMobileApp.Api.Controllers
                 Lastname = user.Lastname,
                 MiddleName = user.MiddleName,
                 ExtensionName = user.ExtensionName,
-                Birthday = user.Birthday, // Assuming ApplicationUser has a DateOnly property for Birthday
+                Birthday = user.Birthday,
                 SexDescription = user.SexDescription,
                 MobileNumber = user.MobileNumber,
                 UserName = user.UserName,
