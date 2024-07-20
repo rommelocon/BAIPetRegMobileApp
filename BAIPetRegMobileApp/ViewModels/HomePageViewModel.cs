@@ -5,14 +5,14 @@ using CommunityToolkit.Mvvm.Input;
 using System.Text.Json;
 
 namespace BAIPetRegMobileApp.ViewModels;
-public partial class HomePageViewModel : BaseViewModel
+public partial class HomePageViewModel : ObservableObject
 {
     private ClientService clientService;
 
     [ObservableProperty]
     private string userName;
     [ObservableProperty]
-    private string? welcomeMessage;
+    private string welcomeMessage;
 
     // add other fields as needed
 
@@ -26,7 +26,7 @@ public partial class HomePageViewModel : BaseViewModel
 
     private async Task LoadProfile()
     {
-        await LoadProfile(user =>
+        try
         {
             // Get the username of the current authenticated user
             var serializedResponse = await SecureStorage.GetAsync("Authentication");

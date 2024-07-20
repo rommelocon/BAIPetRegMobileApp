@@ -4,7 +4,7 @@ using Microsoft.AspNet.Identity;
 
 namespace BAIPetRegMobileApp.ViewModels
 {
-    public class ProfilePageViewModel : BaseViewModel
+    public partial class ProfilePageViewModel : ObservableObject
     {
         private ClientService clientService;
 
