@@ -55,13 +55,11 @@ public static class MauiProgram
         builder.Services.AddSingleton<DogBreedPage>();
         builder.Services.AddSingleton<CatBreedPage>();
         builder.Services.AddSingleton<PetInformationPage>();
-        builder.Services.AddSingleton<EditProfilePage>();
 
         // View Models
         builder.Services.AddSingleton<LoginPageViewModel>();
         builder.Services.AddSingleton<HomePageViewModel>();
         builder.Services.AddSingleton<ProfilePageViewModel>();
-        builder.Services.AddSingleton<EditProfilePageViewModel>();
 
         // Services
         builder.Services.AddSingleton<ClientService>();

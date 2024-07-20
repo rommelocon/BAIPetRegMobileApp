@@ -1,4 +1,6 @@
 ﻿using BAIPetRegMobileApp.Services;
+using CommunityToolkit.Mvvm.ComponentModel;
+using Microsoft.AspNet.Identity;
 
 namespace BAIPetRegMobileApp.ViewModels
 {

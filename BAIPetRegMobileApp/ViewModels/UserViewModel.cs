@@ -6,7 +6,7 @@
         public string? Lastname { get; set; }
         public string? MiddleName { get; set; }
         public string? ExtensionName { get; set; }
-        public DateOnly? Birthday { get; set; }
+        public DateOnly Birthday { get; set; }
         public string? SexDescription { get; set; }
         public string? MobileNumber { get; set; }
         public string? UserName { get; set; }

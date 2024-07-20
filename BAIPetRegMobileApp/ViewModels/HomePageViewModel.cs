@@ -1,13 +1,16 @@
 ﻿using BAIPetRegMobileApp.Models;
 using BAIPetRegMobileApp.Services;
 using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using System.Text.Json;
 
 namespace BAIPetRegMobileApp.ViewModels;
 public partial class HomePageViewModel : BaseViewModel
 {
+    private ClientService clientService;
+
     [ObservableProperty]
-    private string? userName;
+    private string userName;
     [ObservableProperty]
     private string? welcomeMessage;
 

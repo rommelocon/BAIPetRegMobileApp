@@ -22,8 +22,6 @@ namespace BAIPetRegMobileApp.ViewModels
         private string? lastname;
 
         [ObservableProperty]
-
-        [ObservableProperty]
         private DateOnly? birthday;
 
         [ObservableProperty]
