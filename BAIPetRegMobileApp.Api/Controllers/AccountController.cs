@@ -30,7 +30,6 @@ namespace BAIPetRegMobileApp.Api.Controllers
         [Authorize]
         public async Task<IActionResult> UpdateProfile(string username, [FromBody] UserViewModel model)
         {
-            //First Fetch the User Details by UserId
             var user = await userManager.FindByNameAsync(username);
             if (user == null)
             {
@@ -59,8 +58,21 @@ namespace BAIPetRegMobileApp.Api.Controllers
             {
                 return BadRequest(result.Errors);
             }
-
+                MiddleName = user.MiddleName,
             return NoContent();
+                Birthday = user.Birthday,
+                SexDescription = user.SexDescription,
+                Email = user.Email,
+                CivilStatusName = user.CivilStatusName,
+                MobileNumber = user.MobileNumber,
+                Region = user.Region,
+                ProvinceName = user.ProvinceName,
+                MunicipalitiesCities = user.MunicipalitiesCities,
+                BarangayName = user.BarangayName,
+                // Add other properties as needed
+            };
+
+            return Ok(model);
         }
 
         [HttpPost("register")]
@@ -129,7 +141,7 @@ namespace BAIPetRegMobileApp.Api.Controllers
             return Ok(user);
         }
 
-        private static UserViewModel MapUserToProfileViewModel(ApplicationUser user)
+        private UserViewModel MapUserToProfileViewModel(ApplicationUser user)
         {
             return new UserViewModel
             {

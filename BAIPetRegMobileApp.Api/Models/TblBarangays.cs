@@ -31,15 +31,16 @@ namespace BAIPetRegMobileApp.Api.Models
         public string? BarangayName { get; set; }
 
         [Column("OldBcode")]
-        public double? OldBcode { get; set; }
+        public float? OldBcode { get; set; }
 
         [Column("OldBryName")]
         [StringLength(150)]
         public string? OldBryName { get; set; }
 
         [Column("Pop2020")]
-        public double? Population2020 { get; set; }
+        public float? Population2020 { get; set; }
 
+        // Navigation properties
         public TblMunicipalities? Municipalities { get; set; }
     }
 }

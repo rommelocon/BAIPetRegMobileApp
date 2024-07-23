@@ -5,12 +5,14 @@ using CommunityToolkit.Mvvm.Input;
 using System.Text.Json;
 
 namespace BAIPetRegMobileApp.ViewModels;
-public partial class HomePageViewModel : BaseViewModel
+public partial class HomePageViewModel : ObservableObject
 {
+    private ClientService clientService;
+
     [ObservableProperty]
-    private string? userName;
+    private string userName;
     [ObservableProperty]
-    private string? welcomeMessage;
+    private string welcomeMessage;
 
     public HomePageViewModel(ClientService clientService) : base(clientService)
     {
@@ -23,7 +25,7 @@ public partial class HomePageViewModel : BaseViewModel
 
     private async Task LoadProfile()
     {
-        await LoadProfile(user =>
+        try
         {
             UserName = user.UserName;
             WelcomeMessage = $"Welcome {UserName}!";

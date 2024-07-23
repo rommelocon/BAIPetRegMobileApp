@@ -13,12 +13,13 @@ public partial class HomePage : ContentPage
         InitializeComponent();
         this.viewModel = viewModel;
         BindingContext = viewModel;
+        Application.Current.UserAppTheme = AppTheme.Light;
     }
 
     protected override async void OnAppearing()
     {
         base.OnAppearing();
-        await viewModel.InitializeProfileAsync();
+        await viewModel.LoadProfileCommand.ExecuteAsync(null);
     }
 
     protected override bool OnBackButtonPressed()
