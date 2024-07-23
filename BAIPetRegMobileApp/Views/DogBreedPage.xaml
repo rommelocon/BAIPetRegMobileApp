@@ -80,7 +80,37 @@
 
         <ScrollView Grid.Row="2">
             <StackLayout Padding="10">
-                <!--  First Pet  -->
+
+                <!--  1st Breed  -->
+                <Frame
+                    Margin="0,10"
+                    Padding="10"
+                    BackgroundColor="LightGreen"
+                    CornerRadius="20">
+                    <StackLayout Orientation="Horizontal">
+                        <Image
+                            Aspect="AspectFill"
+                            HeightRequest="100"
+                            Source="aspin.jpg"
+                            WidthRequest="100" />
+                        <StackLayout
+                            Padding="30,0"
+                            Orientation="Vertical"
+                            VerticalOptions="CenterAndExpand">
+                            <Label
+                                FontSize="Medium"
+                                Text="Breed: Aspin"
+                                TextColor="Black" />
+                            <Button
+                                Margin="0,10"
+                                BackgroundColor="Green"
+                                Text="Show Full Information"
+                                TextColor="White" />
+                        </StackLayout>
+                    </StackLayout>
+                </Frame>
+
+                <!--  2nd Breed  -->
                 <Frame
                     Margin="0,10"
                     Padding="10"
@@ -109,7 +139,7 @@
                     </StackLayout>
                 </Frame>
 
-                <!--  Second Pet  -->
+                <!--  3rd Breed  -->
                 <Frame
                     Margin="0,10"
                     Padding="10"
@@ -130,15 +160,15 @@
                                 Text="Breed: Afghan Hound"
                                 TextColor="Black" />
                             <Button
-                                BackgroundColor="Green"
                                 Margin="0,10"
+                                BackgroundColor="Green"
                                 Text="Show Full Information"
                                 TextColor="White" />
                         </StackLayout>
                     </StackLayout>
                 </Frame>
 
-                <!--  Third Pet  -->
+                <!--  4th Breed  -->
                 <Frame
                     Margin="0,10"
                     Padding="10"
@@ -148,7 +178,7 @@
                         <Image
                             Aspect="AspectFill"
                             HeightRequest="100"
-                            Source="DogBreed/airedale_terrier.jpg"
+                            Source="airedale_terrier.jpg"
                             WidthRequest="100" />
                         <StackLayout
                             Padding="30,0"
@@ -159,13 +189,1063 @@
                                 Text="Breed: Airedale Terrier"
                                 TextColor="Black" />
                             <Button
-                                BackgroundColor="Green"
                                 Margin="0,10"
+                                BackgroundColor="Green"
                                 Text="Show Full Information"
                                 TextColor="White" />
                         </StackLayout>
                     </StackLayout>
                 </Frame>
+
+
+                <!--  5th Breed  -->
+                <Frame
+                    Margin="0,10"
+                    Padding="10"
+                    BackgroundColor="LightGreen"
+                    CornerRadius="20">
+                    <StackLayout Orientation="Horizontal">
+                        <Image
+                            Aspect="AspectFill"
+                            HeightRequest="100"
+                            Source="akita_inu.jpg"
+                            WidthRequest="100" />
+                        <StackLayout
+                            Padding="30,0"
+                            Orientation="Vertical"
+                            VerticalOptions="CenterAndExpand">
+                            <Label
+                                FontSize="Medium"
+                                Text="Breed: Akita Inu"
+                                TextColor="Black" />
+                            <Button
+                                Margin="0,10"
+                                BackgroundColor="Green"
+                                Text="Show Full Information"
+                                TextColor="White" />
+                        </StackLayout>
+                    </StackLayout>
+                </Frame>
+
+                <!--  6th Breed  -->
+                <Frame
+                    Margin="0,10"
+                    Padding="10"
+                    BackgroundColor="LightGreen"
+                    CornerRadius="20">
+                    <StackLayout Orientation="Horizontal">
+                        <Image
+                            Aspect="AspectFill"
+                            HeightRequest="100"
+                            Source="alaskan_malamute.jpg"
+                            WidthRequest="100" />
+                        <StackLayout
+                            Padding="30,0"
+                            Orientation="Vertical"
+                            VerticalOptions="CenterAndExpand">
+                            <Label
+                                FontSize="Medium"
+                                Text="Breed: Alaskan Malamute"
+                                TextColor="Black" />
+                            <Button
+                                Margin="0,10"
+                                BackgroundColor="Green"
+                                Text="Show Full Information"
+                                TextColor="White" />
+                        </StackLayout>
+                    </StackLayout>
+                </Frame>
+
+                <!--  7th Breed  -->
+                <Frame
+                    Margin="0,10"
+                    Padding="10"
+                    BackgroundColor="LightGreen"
+                    CornerRadius="20">
+                    <StackLayout Orientation="Horizontal">
+                        <Image
+                            Aspect="AspectFill"
+                            HeightRequest="100"
+                            Source="african_bulldog.jpg"
+                            WidthRequest="100" />
+                        <StackLayout
+                            Padding="30,0"
+                            Orientation="Vertical"
+                            VerticalOptions="CenterAndExpand">
+                            <Label
+                                FontSize="Medium"
+                                Text="Breed: African Bulldog"
+                                TextColor="Black" />
+                            <Button
+                                Margin="0,10"
+                                BackgroundColor="Green"
+                                Text="Show Full Information"
+                                TextColor="White" />
+                        </StackLayout>
+                    </StackLayout>
+                </Frame>
+
+                <!--  8th Breed  -->
+                <Frame
+                    Margin="0,10"
+                    Padding="10"
+                    BackgroundColor="LightGreen"
+                    CornerRadius="20">
+                    <StackLayout Orientation="Horizontal">
+                        <Image
+                            Aspect="AspectFill"
+                            HeightRequest="100"
+                            Source="american_bully.jpg"
+                            WidthRequest="100" />
+                        <StackLayout
+                            Padding="30,0"
+                            Orientation="Vertical"
+                            VerticalOptions="CenterAndExpand">
+                            <Label
+                                FontSize="Medium"
+                                Text="Breed: American Bully"
+                                TextColor="Black" />
+                            <Button
+                                Margin="0,10"
+                                BackgroundColor="Green"
+                                Text="Show Full Information"
+                                TextColor="White" />
+                        </StackLayout>
+                    </StackLayout>
+                </Frame>
+
+                <!--  9th Breed  -->
+                <Frame
+                    Margin="0,10"
+                    Padding="10"
+                    BackgroundColor="LightGreen"
+                    CornerRadius="20">
+                    <StackLayout Orientation="Horizontal">
+                        <Image
+                            Aspect="AspectFill"
+                            HeightRequest="100"
+                            Source="australian_cattle.jpg"
+                            WidthRequest="100" />
+                        <StackLayout
+                            Padding="30,0"
+                            Orientation="Vertical"
+                            VerticalOptions="CenterAndExpand">
+                            <Label
+                                FontSize="Medium"
+                                Text="Breed: Australian Cattle Dog"
+                                TextColor="Black" />
+                            <Button
+                                Margin="0,10"
+                                BackgroundColor="Green"
+                                Text="Show Full Information"
+                                TextColor="White" />
+                        </StackLayout>
+                    </StackLayout>
+                </Frame>
+
+                <!--  1oth Breed  -->
+                <Frame
+                    Margin="0,10"
+                    Padding="10"
+                    BackgroundColor="LightGreen"
+                    CornerRadius="20">
+                    <StackLayout Orientation="Horizontal">
+                        <Image
+                            Aspect="AspectFill"
+                            HeightRequest="100"
+                            Source="australian_dingo.jpg"
+                            WidthRequest="100" />
+                        <StackLayout
+                            Padding="30,0"
+                            Orientation="Vertical"
+                            VerticalOptions="CenterAndExpand">
+                            <Label
+                                FontSize="Medium"
+                                Text="Breed: Australian Dingo"
+                                TextColor="Black" />
+                            <Button
+                                Margin="0,10"
+                                BackgroundColor="Green"
+                                Text="Show Full Information"
+                                TextColor="White" />
+                        </StackLayout>
+                    </StackLayout>
+                </Frame>
+
+                <!--  11th Breed  -->
+                <Frame
+                    Margin="0,10"
+                    Padding="10"
+                    BackgroundColor="LightGreen"
+                    CornerRadius="20">
+                    <StackLayout Orientation="Horizontal">
+                        <Image
+                            Aspect="AspectFill"
+                            HeightRequest="100"
+                            Source="australian_kelpie.jpg"
+                            WidthRequest="100" />
+                        <StackLayout
+                            Padding="30,0"
+                            Orientation="Vertical"
+                            VerticalOptions="CenterAndExpand">
+                            <Label
+                                FontSize="Medium"
+                                Text="Breed: Australian Kelpie"
+                                TextColor="Black" />
+                            <Button
+                                Margin="0,10"
+                                BackgroundColor="Green"
+                                Text="Show Full Information"
+                                TextColor="White" />
+                        </StackLayout>
+                    </StackLayout>
+                </Frame>
+
+                <!--  12th Breed  -->
+                <Frame
+                    Margin="0,10"
+                    Padding="10"
+                    BackgroundColor="LightGreen"
+                    CornerRadius="20">
+                    <StackLayout Orientation="Horizontal">
+                        <Image
+                            Aspect="AspectFill"
+                            HeightRequest="100"
+                            Source="australian_silky_terrier.jpg"
+                            WidthRequest="100" />
+                        <StackLayout
+                            Padding="30,0"
+                            Orientation="Vertical"
+                            VerticalOptions="Center">
+                            <Label
+                                FontSize="Medium"
+                                Text="Breed: Australian Silky Terrier"
+                                LineBreakMode="WordWrap"
+                                TextColor="Black" />
+                            <Button
+                                Margin="0,10"
+                                BackgroundColor="Green"
+                                Text="Show Full Information"
+                                TextColor="White" />
+                        </StackLayout>
+                    </StackLayout>
+                </Frame>
+
+                <!--  13th Breed  -->
+                <Frame
+                    Margin="0,10"
+                    Padding="10"
+                    BackgroundColor="LightGreen"
+                    CornerRadius="20">
+                    <StackLayout Orientation="Horizontal">
+                        <Image
+                            Aspect="AspectFill"
+                            HeightRequest="100"
+                            Source="airedale_terrier.jpg"
+                            WidthRequest="100" />
+                        <StackLayout
+                            Padding="30,0"
+                            Orientation="Vertical"
+                            VerticalOptions="CenterAndExpand">
+                            <Label
+                                FontSize="Medium"
+                                Text="Breed: Australian Terrier "
+                                TextColor="Black" />
+                            <Button
+                                Margin="0,10"
+                                BackgroundColor="Green"
+                                Text="Show Full Information"
+                                TextColor="White" />
+                        </StackLayout>
+                    </StackLayout>
+                </Frame>
+
+                <!--  Australian Shepherd  -->
+                <Frame
+                    Margin="0,10"
+                    Padding="10"
+                    BackgroundColor="LightGreen"
+                    CornerRadius="20">
+                    <StackLayout Orientation="Horizontal">
+                        <Image
+                            Aspect="AspectFill"
+                            HeightRequest="100"
+                            Source="australian_shepherd.jpg"
+                            WidthRequest="100" />
+                        <StackLayout
+                            Padding="30,0"
+                            Orientation="Vertical"
+                            VerticalOptions="CenterAndExpand">
+                            <Label
+                                FontSize="Medium"
+                                Text="Breed: Australian Shepherd "
+                                TextColor="Black" />
+                            <Button
+                                Margin="0,10"
+                                BackgroundColor="Green"
+                                Text="Show Full Information"
+                                TextColor="White" />
+                        </StackLayout>
+                    </StackLayout>
+                </Frame>
+
+                <!--  14th Breed  -->
+                <Frame
+                    Margin="0,10"
+                    Padding="10"
+                    BackgroundColor="LightGreen"
+                    CornerRadius="20">
+                    <StackLayout Orientation="Horizontal">
+                        <Image
+                            Aspect="AspectFill"
+                            HeightRequest="100"
+                            Source="basenji.jpg"
+                            WidthRequest="100" />
+                        <StackLayout
+                            Padding="30,0"
+                            Orientation="Vertical"
+                            VerticalOptions="CenterAndExpand">
+                            <Label
+                                FontSize="Medium"
+                                Text="Breed: Basenji"
+                                TextColor="Black" />
+                            <Button
+                                Margin="0,10"
+                                BackgroundColor="Green"
+                                Text="Show Full Information"
+                                TextColor="White" />
+                        </StackLayout>
+                    </StackLayout>
+                </Frame>
+
+                <!--  15th Breed  -->
+                <Frame
+                    Margin="0,10"
+                    Padding="10"
+                    BackgroundColor="LightGreen"
+                    CornerRadius="20">
+                    <StackLayout Orientation="Horizontal">
+                        <Image
+                            Aspect="AspectFill"
+                            HeightRequest="100"
+                            Source="basset_hound.jpg"
+                            WidthRequest="100" />
+                        <StackLayout
+                            Padding="30,0"
+                            Orientation="Vertical"
+                            VerticalOptions="CenterAndExpand">
+                            <Label
+                                FontSize="Medium"
+                                Text="Breed: Basset Hound"
+                                TextColor="Black" />
+                            <Button
+                                Margin="0,10"
+                                BackgroundColor="Green"
+                                Text="Show Full Information"
+                                TextColor="White" />
+                        </StackLayout>
+                    </StackLayout>
+                </Frame>
+
+                <!--  16th Breed  -->
+                <Frame
+                    Margin="0,10"
+                    Padding="10"
+                    BackgroundColor="LightGreen"
+                    CornerRadius="20">
+                    <StackLayout Orientation="Horizontal">
+                        <Image
+                            Aspect="AspectFill"
+                            HeightRequest="100"
+                            Source="beagle.jpg"
+                            WidthRequest="100" />
+                        <StackLayout
+                            Padding="30,0"
+                            Orientation="Vertical"
+                            VerticalOptions="CenterAndExpand">
+                            <Label
+                                FontSize="Medium"
+                                Text="Breed: Beagle"
+                                TextColor="Black" />
+                            <Button
+                                Margin="0,10"
+                                BackgroundColor="Green"
+                                Text="Show Full Information"
+                                TextColor="White" />
+                        </StackLayout>
+                    </StackLayout>
+                </Frame>
+
+                <!--  17th Breed  -->
+                <Frame
+                    Margin="0,10"
+                    Padding="10"
+                    BackgroundColor="LightGreen"
+                    CornerRadius="20">
+                    <StackLayout Orientation="Horizontal">
+                        <Image
+                            Aspect="AspectFill"
+                            HeightRequest="100"
+                            Source="bearded_collie.jpg"
+                            WidthRequest="100" />
+                        <StackLayout
+                            Padding="30,0"
+                            Orientation="Vertical"
+                            VerticalOptions="CenterAndExpand">
+                            <Label
+                                FontSize="Medium"
+                                Text="Breed: Bearded Collie"
+                                TextColor="Black" />
+                            <Button
+                                Margin="0,10"
+                                BackgroundColor="Green"
+                                Text="Show Full Information"
+                                TextColor="White" />
+                        </StackLayout>
+                    </StackLayout>
+                </Frame>
+
+                <!--  18th Breed  -->
+                <Frame
+                    Margin="0,10"
+                    Padding="10"
+                    BackgroundColor="LightGreen"
+                    CornerRadius="20">
+                    <StackLayout Orientation="Horizontal">
+                        <Image
+                            Aspect="AspectFill"
+                            HeightRequest="100"
+                            Source="bedlington.jpg"
+                            WidthRequest="100" />
+                        <StackLayout
+                            Padding="30,0"
+                            Orientation="Vertical"
+                            VerticalOptions="CenterAndExpand">
+                            <Label
+                                FontSize="Medium"
+                                Text="Breed: Bedlington"
+                                TextColor="Black" />
+                            <Button
+                                Margin="0,10"
+                                BackgroundColor="Green"
+                                Text="Show Full Information"
+                                TextColor="White" />
+                        </StackLayout>
+                    </StackLayout>
+                </Frame>
+
+                <!--  19th Breed  -->
+                <Frame
+                    Margin="0,10"
+                    Padding="10"
+                    BackgroundColor="LightGreen"
+                    CornerRadius="20">
+                    <StackLayout Orientation="Horizontal">
+                        <Image
+                            Aspect="AspectFill"
+                            HeightRequest="100"
+                            Source="belgian_malinois.jpg"
+                            WidthRequest="100" />
+                        <StackLayout
+                            Padding="30,0"
+                            Orientation="Vertical"
+                            VerticalOptions="CenterAndExpand">
+                            <Label
+                                FontSize="Medium"
+                                Text="Breed: Belgian Malinois"
+                                TextColor="Black" />
+                            <Button
+                                Margin="0,10"
+                                BackgroundColor="Green"
+                                Text="Show Full Information"
+                                TextColor="White" />
+                        </StackLayout>
+                    </StackLayout>
+                </Frame>
+
+                <!--  20th Breed  -->
+                <Frame
+                    Margin="0,10"
+                    Padding="10"
+                    BackgroundColor="LightGreen"
+                    CornerRadius="20">
+                    <StackLayout Orientation="Horizontal">
+                        <Image
+                            Aspect="AspectFill"
+                            HeightRequest="100"
+                            Source="bernese_mountain_dog.jpg"
+                            WidthRequest="100" />
+                        <StackLayout
+                            Padding="30,0"
+                            Orientation="Vertical"
+                            VerticalOptions="CenterAndExpand">
+                            <Label
+                                FontSize="Medium"
+                                Text="Breed: Bernese Mountain Dog"
+                                TextColor="Black" />
+                            <Button
+                                Margin="0,10"
+                                BackgroundColor="Green"
+                                Text="Show Full Information"
+                                TextColor="White" />
+                        </StackLayout>
+                    </StackLayout>
+                </Frame>
+
+                <!--  21st Breed  -->
+                <Frame
+                    Margin="0,10"
+                    Padding="10"
+                    BackgroundColor="LightGreen"
+                    CornerRadius="20">
+                    <StackLayout Orientation="Horizontal">
+                        <Image
+                            Aspect="AspectFill"
+                            HeightRequest="100"
+                            Source="bichon_frise.jpg"
+                            WidthRequest="100" />
+                        <StackLayout
+                            Padding="30,0"
+                            Orientation="Vertical"
+                            VerticalOptions="CenterAndExpand">
+                            <Label
+                                FontSize="Medium"
+                                Text="Breed: Bichon Frise"
+                                TextColor="Black" />
+                            <Button
+                                Margin="0,10"
+                                BackgroundColor="Green"
+                                Text="Show Full Information"
+                                TextColor="White" />
+                        </StackLayout>
+                    </StackLayout>
+                </Frame>
+
+                <!--  22nd Breed  -->
+                <Frame
+                    Margin="0,10"
+                    Padding="10"
+                    BackgroundColor="LightGreen"
+                    CornerRadius="20">
+                    <StackLayout Orientation="Horizontal">
+                        <Image
+                            Aspect="AspectFill"
+                            HeightRequest="100"
+                            Source="biewer.jpg"
+                            WidthRequest="100" />
+                        <StackLayout
+                            Padding="30,0"
+                            Orientation="Vertical"
+                            VerticalOptions="CenterAndExpand">
+                            <Label
+                                FontSize="Medium"
+                                Text="Breed: Biewer"
+                                TextColor="Black" />
+                            <Button
+                                Margin="0,10"
+                                BackgroundColor="Green"
+                                Text="Show Full Information"
+                                TextColor="White" />
+                        </StackLayout>
+                    </StackLayout>
+                </Frame>
+
+                <!--  23rd Breed  -->
+                <Frame
+                    Margin="0,10"
+                    Padding="10"
+                    BackgroundColor="LightGreen"
+                    CornerRadius="20">
+                    <StackLayout Orientation="Horizontal">
+                        <Image
+                            Aspect="AspectFill"
+                            HeightRequest="100"
+                            Source="bloodhound.jpg"
+                            WidthRequest="100" />
+                        <StackLayout
+                            Padding="30,0"
+                            Orientation="Vertical"
+                            VerticalOptions="CenterAndExpand">
+                            <Label
+                                FontSize="Medium"
+                                Text="Breed: Bloodhound"
+                                TextColor="Black" />
+                            <Button
+                                Margin="0,10"
+                                BackgroundColor="Green"
+                                Text="Show Full Information"
+                                TextColor="White" />
+                        </StackLayout>
+                    </StackLayout>
+                </Frame>
+
+                <!--  24th Breed  -->
+                <Frame
+                    Margin="0,10"
+                    Padding="10"
+                    BackgroundColor="LightGreen"
+                    CornerRadius="20">
+                    <StackLayout Orientation="Horizontal">
+                        <Image
+                            Aspect="AspectFill"
+                            HeightRequest="100"
+                            Source="border.jpg"
+                            WidthRequest="100" />
+                        <StackLayout
+                            Padding="30,0"
+                            Orientation="Vertical"
+                            VerticalOptions="CenterAndExpand">
+                            <Label
+                                FontSize="Medium"
+                                Text="Breed: Border"
+                                TextColor="Black" />
+                            <Button
+                                Margin="0,10"
+                                BackgroundColor="Green"
+                                Text="Show Full Information"
+                                TextColor="White" />
+                        </StackLayout>
+                    </StackLayout>
+                </Frame>
+
+                <!--  25th Breed  -->
+                <Frame
+                    Margin="0,10"
+                    Padding="10"
+                    BackgroundColor="LightGreen"
+                    CornerRadius="20">
+                    <StackLayout Orientation="Horizontal">
+                        <Image
+                            Aspect="AspectFill"
+                            HeightRequest="100"
+                            Source="border_collie.jpg"
+                            WidthRequest="100" />
+                        <StackLayout
+                            Padding="30,0"
+                            Orientation="Vertical"
+                            VerticalOptions="CenterAndExpand">
+                            <Label
+                                FontSize="Medium"
+                                Text="Breed: Border Collie"
+                                TextColor="Black" />
+                            <Button
+                                Margin="0,10"
+                                BackgroundColor="Green"
+                                Text="Show Full Information"
+                                TextColor="White" />
+                        </StackLayout>
+                    </StackLayout>
+                </Frame>
+
+                <!--  26th Breed  -->
+                <Frame
+                    Margin="0,10"
+                    Padding="10"
+                    BackgroundColor="LightGreen"
+                    CornerRadius="20">
+                    <StackLayout Orientation="Horizontal">
+                        <Image
+                            Aspect="AspectFill"
+                            HeightRequest="100"
+                            Source="borzoi.jpg"
+                            WidthRequest="100" />
+                        <StackLayout
+                            Padding="30,0"
+                            Orientation="Vertical"
+                            VerticalOptions="CenterAndExpand">
+                            <Label
+                                FontSize="Medium"
+                                Text="Breed: Borzoi"
+                                TextColor="Black" />
+                            <Button
+                                Margin="0,10"
+                                BackgroundColor="Green"
+                                Text="Show Full Information"
+                                TextColor="White" />
+                        </StackLayout>
+                    </StackLayout>
+                </Frame>
+
+                <!--  28th Breed  -->
+                <Frame
+                    Margin="0,10"
+                    Padding="10"
+                    BackgroundColor="LightGreen"
+                    CornerRadius="20">
+                    <StackLayout Orientation="Horizontal">
+                        <Image
+                            Aspect="AspectFill"
+                            HeightRequest="100"
+                            Source="boston_terrier.jpg"
+                            WidthRequest="100" />
+                        <StackLayout
+                            Padding="30,0"
+                            Orientation="Vertical"
+                            VerticalOptions="CenterAndExpand">
+                            <Label
+                                FontSize="Medium"
+                                Text="Breed: Boston Terrier"
+                                TextColor="Black" />
+                            <Button
+                                Margin="0,10"
+                                BackgroundColor="Green"
+                                Text="Show Full Information"
+                                TextColor="White" />
+                        </StackLayout>
+                    </StackLayout>
+                </Frame>
+
+                <!--  29th Breed  -->
+                <Frame
+                    Margin="0,10"
+                    Padding="10"
+                    BackgroundColor="LightGreen"
+                    CornerRadius="20">
+                    <StackLayout Orientation="Horizontal">
+                        <Image
+                            Aspect="AspectFill"
+                            HeightRequest="100"
+                            Source="boxer.jpg"
+                            WidthRequest="100" />
+                        <StackLayout
+                            Padding="30,0"
+                            Orientation="Vertical"
+                            VerticalOptions="CenterAndExpand">
+                            <Label
+                                FontSize="Medium"
+                                Text="Breed: Boxer"
+                                TextColor="Black" />
+                            <Button
+                                Margin="0,10"
+                                BackgroundColor="Green"
+                                Text="Show Full Information"
+                                TextColor="White" />
+                        </StackLayout>
+                    </StackLayout>
+                </Frame>
+
+                <!--  30th Breed  -->
+                <Frame
+                    Margin="0,10"
+                    Padding="10"
+                    BackgroundColor="LightGreen"
+                    CornerRadius="20">
+                    <StackLayout Orientation="Horizontal">
+                        <Image
+                            Aspect="AspectFill"
+                            HeightRequest="100"
+                            Source="briard.jpg"
+                            WidthRequest="100" />
+                        <StackLayout
+                            Padding="30,0"
+                            Orientation="Vertical"
+                            VerticalOptions="CenterAndExpand">
+                            <Label
+                                FontSize="Medium"
+                                Text="Breed: Briard"
+                                TextColor="Black" />
+                            <Button
+                                Margin="0,10"
+                                BackgroundColor="Green"
+                                Text="Show Full Information"
+                                TextColor="White" />
+                        </StackLayout>
+                    </StackLayout>
+                </Frame>
+
+                <!--  31st Breed  -->
+                <Frame
+                    Margin="0,10"
+                    Padding="10"
+                    BackgroundColor="LightGreen"
+                    CornerRadius="20">
+                    <StackLayout Orientation="Horizontal">
+                        <Image
+                            Aspect="AspectFill"
+                            HeightRequest="100"
+                            Source="british_bulldog.jpg"
+                            WidthRequest="100" />
+                        <StackLayout
+                            Padding="30,0"
+                            Orientation="Vertical"
+                            VerticalOptions="CenterAndExpand">
+                            <Label
+                                FontSize="Medium"
+                                Text="Breed: British Bulldog
+"
+                                TextColor="Black" />
+                            <Button
+                                Margin="0,10"
+                                BackgroundColor="Green"
+                                Text="Show Full Information"
+                                TextColor="White" />
+                        </StackLayout>
+                    </StackLayout>
+                </Frame>
+
+                <!--  32nd Breed  -->
+                <Frame
+                    Margin="0,10"
+                    Padding="10"
+                    BackgroundColor="LightGreen"
+                    CornerRadius="20">
+                    <StackLayout Orientation="Horizontal">
+                        <Image
+                            Aspect="AspectFill"
+                            HeightRequest="100"
+                            Source="bull.jpg"
+                            WidthRequest="100" />
+                        <StackLayout
+                            Padding="30,0"
+                            Orientation="Vertical"
+                            VerticalOptions="CenterAndExpand">
+                            <Label
+                                FontSize="Medium"
+                                Text="Breed: Bull"
+                                TextColor="Black" />
+                            <Button
+                                Margin="0,10"
+                                BackgroundColor="Green"
+                                Text="Show Full Information"
+                                TextColor="White" />
+                        </StackLayout>
+                    </StackLayout>
+                </Frame>
+
+                <!--  33rd Breed  -->
+                <Frame
+                    Margin="0,10"
+                    Padding="10"
+                    BackgroundColor="LightGreen"
+                    CornerRadius="20">
+                    <StackLayout Orientation="Horizontal">
+                        <Image
+                            Aspect="AspectFill"
+                            HeightRequest="100"
+                            Source="bull_mastiff.jpg"
+                            WidthRequest="100" />
+                        <StackLayout
+                            Padding="30,0"
+                            Orientation="Vertical"
+                            VerticalOptions="CenterAndExpand">
+                            <Label
+                                FontSize="Medium"
+                                Text="Breed: Bull Mastiff"
+                                TextColor="Black" />
+                            <Button
+                                Margin="0,10"
+                                BackgroundColor="Green"
+                                Text="Show Full Information"
+                                TextColor="White" />
+                        </StackLayout>
+                    </StackLayout>
+                </Frame>
+
+                <!--  34th Breed  -->
+                <Frame
+                    Margin="0,10"
+                    Padding="10"
+                    BackgroundColor="LightGreen"
+                    CornerRadius="20">
+                    <StackLayout Orientation="Horizontal">
+                        <Image
+                            Aspect="AspectFill"
+                            HeightRequest="100"
+                            Source="bull_terrier.jpg"
+                            WidthRequest="100" />
+                        <StackLayout
+                            Padding="30,0"
+                            Orientation="Vertical"
+                            VerticalOptions="CenterAndExpand">
+                            <Label
+                                FontSize="Medium"
+                                Text="Breed: Bull Terrier"
+                                TextColor="Black" />
+                            <Button
+                                Margin="0,10"
+                                BackgroundColor="Green"
+                                Text="Show Full Information"
+                                TextColor="White" />
+                        </StackLayout>
+                    </StackLayout>
+                </Frame>
+
+                <!--  35th Breed  -->
+                <Frame
+                    Margin="0,10"
+                    Padding="10"
+                    BackgroundColor="LightGreen"
+                    CornerRadius="20">
+                    <StackLayout Orientation="Horizontal">
+                        <Image
+                            Aspect="AspectFill"
+                            HeightRequest="100"
+                            Source="airedale_terrier.jpg"
+                            WidthRequest="100" />
+                        <StackLayout
+                            Padding="30,0"
+                            Orientation="Vertical"
+                            VerticalOptions="CenterAndExpand">
+                            <Label
+                                FontSize="Medium"
+                                Text="Breed: "
+                                TextColor="Black" />
+                            <Button
+                                Margin="0,10"
+                                BackgroundColor="Green"
+                                Text="Show Full Information"
+                                TextColor="White" />
+                        </StackLayout>
+                    </StackLayout>
+                </Frame>
+
+                <!--  36th Breed  -->
+                <Frame
+                    Margin="0,10"
+                    Padding="10"
+                    BackgroundColor="LightGreen"
+                    CornerRadius="20">
+                    <StackLayout Orientation="Horizontal">
+                        <Image
+                            Aspect="AspectFill"
+                            HeightRequest="100"
+                            Source="airedale_terrier.jpg"
+                            WidthRequest="100" />
+                        <StackLayout
+                            Padding="30,0"
+                            Orientation="Vertical"
+                            VerticalOptions="CenterAndExpand">
+                            <Label
+                                FontSize="Medium"
+                                Text="Breed: "
+                                TextColor="Black" />
+                            <Button
+                                Margin="0,10"
+                                BackgroundColor="Green"
+                                Text="Show Full Information"
+                                TextColor="White" />
+                        </StackLayout>
+                    </StackLayout>
+                </Frame>
+
+                <!--  37th Breed  -->
+                <Frame
+                    Margin="0,10"
+                    Padding="10"
+                    BackgroundColor="LightGreen"
+                    CornerRadius="20">
+                    <StackLayout Orientation="Horizontal">
+                        <Image
+                            Aspect="AspectFill"
+                            HeightRequest="100"
+                            Source="airedale_terrier.jpg"
+                            WidthRequest="100" />
+                        <StackLayout
+                            Padding="30,0"
+                            Orientation="Vertical"
+                            VerticalOptions="CenterAndExpand">
+                            <Label
+                                FontSize="Medium"
+                                Text="Breed: "
+                                TextColor="Black" />
+                            <Button
+                                Margin="0,10"
+                                BackgroundColor="Green"
+                                Text="Show Full Information"
+                                TextColor="White" />
+                        </StackLayout>
+                    </StackLayout>
+                </Frame>
+
+                <!--  38th Breed  -->
+                <Frame
+                    Margin="0,10"
+                    Padding="10"
+                    BackgroundColor="LightGreen"
+                    CornerRadius="20">
+                    <StackLayout Orientation="Horizontal">
+                        <Image
+                            Aspect="AspectFill"
+                            HeightRequest="100"
+                            Source="airedale_terrier.jpg"
+                            WidthRequest="100" />
+                        <StackLayout
+                            Padding="30,0"
+                            Orientation="Vertical"
+                            VerticalOptions="CenterAndExpand">
+                            <Label
+                                FontSize="Medium"
+                                Text="Breed: "
+                                TextColor="Black" />
+                            <Button
+                                Margin="0,10"
+                                BackgroundColor="Green"
+                                Text="Show Full Information"
+                                TextColor="White" />
+                        </StackLayout>
+                    </StackLayout>
+                </Frame>
+
+                <!--  39th Breed  -->
+                <Frame
+                    Margin="0,10"
+                    Padding="10"
+                    BackgroundColor="LightGreen"
+                    CornerRadius="20">
+                    <StackLayout Orientation="Horizontal">
+                        <Image
+                            Aspect="AspectFill"
+                            HeightRequest="100"
+                            Source="airedale_terrier.jpg"
+                            WidthRequest="100" />
+                        <StackLayout
+                            Padding="30,0"
+                            Orientation="Vertical"
+                            VerticalOptions="CenterAndExpand">
+                            <Label
+                                FontSize="Medium"
+                                Text="Breed: "
+                                TextColor="Black" />
+                            <Button
+                                Margin="0,10"
+                                BackgroundColor="Green"
+                                Text="Show Full Information"
+                                TextColor="White" />
+                        </StackLayout>
+                    </StackLayout>
+                </Frame>
+
+                <!--  40th Breed  -->
+                <Frame
+                    Margin="0,10"
+                    Padding="10"
+                    BackgroundColor="LightGreen"
+                    CornerRadius="20">
+                    <StackLayout Orientation="Horizontal">
+                        <Image
+                            Aspect="AspectFill"
+                            HeightRequest="100"
+                            Source="airedale_terrier.jpg"
+                            WidthRequest="100" />
+                        <StackLayout
+                            Padding="30,0"
+                            Orientation="Vertical"
+                            VerticalOptions="CenterAndExpand">
+                            <Label
+                                FontSize="Medium"
+                                Text="Breed: "
+                                TextColor="Black" />
+                            <Button
+                                Margin="0,10"
+                                BackgroundColor="Green"
+                                Text="Show Full Information"
+                                TextColor="White" />
+                        </StackLayout>
+                    </StackLayout>
+                </Frame>
+
+
+
             </StackLayout>
         </ScrollView>
 

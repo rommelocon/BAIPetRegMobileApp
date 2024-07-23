@@ -272,15 +272,6 @@ public partial class PetRegisterPage : ContentPage
         SexList.ItemsSource = listSex;
 
 
-        List<string> listHabitat = new List<string>()
-        {
-            "Household",
-            "Neigborhood",
-            "Stray Animal"
-        };
-        HabitatList.ItemsSource = listHabitat;
-
-
 
         List<string> ContactwAnimalList = new List<string>()
         {

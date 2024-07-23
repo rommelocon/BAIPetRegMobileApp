@@ -10,7 +10,6 @@ namespace BAIPetRegMobileApp.Models
     public List<string>? BreedList { get; set; }
     public DateTime BirthDate { get; set; }
     public List<string>? SexList { get; set; }
-    public List<string>? HabitatList {  get; set; }
     public List<string>? TagTypeList { get; set; }
     public int PetWeight { get; set; }
     public string? PetColor { get; set; }

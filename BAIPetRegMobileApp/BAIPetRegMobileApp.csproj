@@ -64,13 +64,19 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <MauiImage Remove="Resources\Images\Australian_Terrier.jpg" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<None Remove="Platforms\Android\Resources\xml\network_security_config.xml" />
+		<None Remove="Resources\Images\Australian_Terrier.jpg" />
 		<None Remove="Resources\Images\cat_1.jpg" />
 		<None Remove="Resources\Images\cat_2.jpg" />
 		<None Remove="Resources\Images\dog1.jpeg" />
 		<None Remove="Resources\Images\dog2.jpg" />
 		<None Remove="Resources\Images\dog3.jpg" />
 		<None Remove="Resources\Images\dog4.jpg" />
+		<None Remove="Resources\Images\DogBreed\Aspin.webp" />
 		<None Remove="Resources\Images\dog_1.jpg" />
 		<None Remove="Resources\Images\dog_2.jpg" />
 		<None Remove="Resources\Images\dog_img.png" />
