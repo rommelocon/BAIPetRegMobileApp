@@ -69,6 +69,9 @@ namespace BAIPetRegMobileApp.ViewModels
         [ObservableProperty]
         private string? fullName;
 
+        [ObservableProperty]
+        private string? welcomeMessage;
+
         public BaseViewModel(ClientService clientService)
         {
             this.clientService = clientService;
@@ -135,6 +138,7 @@ namespace BAIPetRegMobileApp.ViewModels
                 StreetNumber = user.StreetNumber;
                 FullAddress = $"{StreetNumber} {BarangayName} {MunicipalitiesCities} {ProvinceName} {Region}";
                 FullName = $"{Firstname} {MiddleName} {Lastname} {ExtensionName}";
+                WelcomeMessage = $"Welcome {user.UserName}";
             });
         }
     }

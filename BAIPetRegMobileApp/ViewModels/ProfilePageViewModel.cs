@@ -1,13 +1,12 @@
 ﻿using BAIPetRegMobileApp.Services;
-using CommunityToolkit.Mvvm.ComponentModel;
-using Microsoft.AspNet.Identity;
 
 namespace BAIPetRegMobileApp.ViewModels
 {
-    public partial class ProfilePageViewModel : ObservableObject
+    public partial class ProfilePageViewModel : BaseViewModel
     {
         public ProfilePageViewModel(ClientService clientService) : base(clientService)
         {
+            _ = InitializeProfileAsync();
         }
     }
 }

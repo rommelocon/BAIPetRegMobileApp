@@ -58,20 +58,7 @@ namespace BAIPetRegMobileApp.Api.Controllers
             {
                 return BadRequest(result.Errors);
             }
-                MiddleName = user.MiddleName,
-            return NoContent();
-                Birthday = user.Birthday,
-                SexDescription = user.SexDescription,
-                Email = user.Email,
-                CivilStatusName = user.CivilStatusName,
-                MobileNumber = user.MobileNumber,
-                Region = user.Region,
-                ProvinceName = user.ProvinceName,
-                MunicipalitiesCities = user.MunicipalitiesCities,
-                BarangayName = user.BarangayName,
-                // Add other properties as needed
-            };
-
+      
             return Ok(model);
         }
 

@@ -10,6 +10,7 @@ namespace BAIPetRegMobileApp.ViewModels
     {
         public EditProfilePageViewModel(ClientService clientService) : base(clientService)
         {
+            _ = InitializeProfileAsync();
             Regions = new ObservableCollection<TblRegions>();
             Provinces = new ObservableCollection<TblProvinces>();
             Municipalities = new ObservableCollection<TblMunicipalities>();
@@ -91,29 +92,37 @@ namespace BAIPetRegMobileApp.ViewModels
         }
 
         [RelayCommand]
-        private async Task SaveProfile()
+        // Method to save profile
+        public async Task SaveProfile()
         {
-            // Update the user model with the latest data from the view model
-            var user = new UserViewModel
+            try
             {
-                Firstname = Firstname,
-                MiddleName = MiddleName,
-                Lastname = Lastname,
-                ExtensionName = ExtensionName,
-                Birthday = Birthday,
-                SexDescription = SexDescription,
-                Email = Email,
-                CivilStatusName = CivilStatusName,
-                MobileNumber = MobileNumber,
-                Region = SelectedRegion?.RegionName,
-                ProvinceName = SelectedProvince?.ProvinceName,
-                MunicipalitiesCities = SelectedMunicipality?.MunCity,
-                BarangayName = SelectedBarangay?.BarangayName,
-                StreetNumber = StreetNumber
-            };
+                var updatedUser = new UserViewModel
+                {
+                    UserName = this.UserName,
+                    Email = this.Email,
+                    Firstname = this.Firstname,
+                    Lastname = this.Lastname,
+                    MiddleName = this.MiddleName,
+                    ExtensionName = this.ExtensionName,
+                    Birthday = this.Birthday,
+                    SexDescription = this.SexDescription,
+                    MobileNumber = this.MobileNumber,
+                    Region = SelectedRegion.RegionName,
+                    ProvinceName = SelectedProvince.ProvinceName,
+                    MunicipalitiesCities = SelectedMunicipality.MunCity,
+                    BarangayName = SelectedBarangay.BarangayName,
+                    ProfilePicture = this.ProfilePicture,
+                    CivilStatusName = this.CivilStatusName,
+                    StreetNumber = this.StreetNumber
+                };
 
-            // Save the updated user model, e.g., through a service
-            await clientService.SaveProfile(user);
+                var response = await clientService.UpdateProfileAsync(updatedUser);
+            }
+            catch (Exception ex)
+            {
+                await HandleException(ex);
+            }
         }
     }
 }

@@ -43,7 +43,7 @@ namespace BAIPetRegMobileApp.Models
         public string? IncomeClassification { get; set; }
 
         [Column("Pop2020")]
-        public float? Population2020 { get; set; }
+        public double? Population2020 { get; set; }
 
         // Navigation properties
         public TblProvinces? Provinces { get; set; }
