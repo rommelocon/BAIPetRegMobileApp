@@ -105,6 +105,7 @@
 
 	<ItemGroup>
 		<Folder Include="Components\" />
+		<Folder Include="Resources\Images\DogBreed\" />
 		<Folder Include="UserControls\" />
 	</ItemGroup>
 
@@ -134,11 +135,6 @@
 
 	<ItemGroup>
 		<Folder Include="Components\" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <MauiImage Include="Resources\Images\DogBreed\affenpinscher.jpg" />
-	  <MauiImage Include="Resources\Images\DogBreed\afghan_hound.jpg" />
 	</ItemGroup>
 
 	<ItemGroup>

@@ -21,8 +21,7 @@
             VerticalOptions="Center" />
 
         <ScrollView Grid.Row="2">
-            <VerticalStackLayout
-                >
+            <VerticalStackLayout>
                 <Label
                     Margin="0,30,0,0"
                     FontAttributes="Bold"
@@ -274,90 +273,6 @@
                     </Frame>
                 </StackLayout>
 
-                <!--  Habitat  -->
-
-                <StackLayout>
-                    <Label
-                        Margin="40,20,0,0"
-                        FontAttributes="Bold"
-                        FontSize="20"
-                        Text="Habitat *"
-                        TextColor="Black" />
-                    <Frame
-                        Margin="30,10"
-                        Padding="10"
-                        BackgroundColor="#DCF4DA"
-                        BorderColor="Transparent"
-                        CornerRadius="15"
-                        HasShadow="False"
-                        HorizontalOptions="FillAndExpand">
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="Auto" />
-                            </Grid.ColumnDefinitions>
-                            <Picker
-                                x:Name="HabitatList"
-                                Title="Select Habitat"
-                                Grid.Column="0"
-                                FontSize="20"
-                                Style="{StaticResource NoUnderlinePicker}"
-                                TitleColor="Black" />
-                            <Label
-                                Grid.Column="1"
-                                Margin="0,0,10,0"
-                                FontFamily="MaterialIconsOutlined-Regular"
-                                FontSize="40"
-                                HorizontalOptions="End"
-                                Text="arrow_drop_down"
-                                TextColor="Black"
-                                VerticalOptions="Center" />
-                        </Grid>
-                    </Frame>
-                </StackLayout>
-
-                <!--  Tag Type  -->
-
-                <StackLayout>
-                    <Label
-                        Margin="40,20,0,0"
-                        FontAttributes="Bold"
-                        FontSize="20"
-                        Text="Tag Type *"
-                        TextColor="Black" />
-                    <Frame
-                        Margin="30,10"
-                        Padding="10"
-                        BackgroundColor="#DCF4DA"
-                        BorderColor="Transparent"
-                        CornerRadius="15"
-                        HasShadow="False"
-                        HorizontalOptions="FillAndExpand">
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="Auto" />
-                            </Grid.ColumnDefinitions>
-                            <Picker
-                                x:Name="TagTypeList"
-                                Title="Select Tag Type"
-                                Grid.Column="0"
-                                FontSize="20"
-                                Style="{StaticResource NoUnderlinePicker}"
-                                TitleColor="Black" />
-                            <Label
-                                Grid.Column="1"
-                                Margin="0,0,10,0"
-                                FontFamily="MaterialIconsOutlined-Regular"
-                                FontSize="40"
-                                HorizontalOptions="End"
-                                Text="arrow_drop_down"
-                                TextColor="Black"
-                                VerticalOptions="Center" />
-                        </Grid>
-                    </Frame>
-                </StackLayout>
-
                 <!--  Contact with Other Animals?  -->
 
                 <StackLayout>
@@ -432,38 +347,6 @@
                     </Frame>
                 </StackLayout>
 
-                <!--  Tag number Entry  -->
-
-                <StackLayout>
-                    <Label
-                        Margin="40,20,0,0"
-                        FontAttributes="Bold"
-                        FontSize="20"
-                        Text="Tag Number (Optional)"
-                        TextColor="Black" />
-
-                    <Frame
-                        Padding="10"
-                        BackgroundColor="#DCF4DA"
-                        BorderColor="Transparent"
-                        CornerRadius="15"
-                        HasShadow="False"
-                        HorizontalOptions="FillAndExpand">
-                        <Entry
-                            x:Name="PetColor"
-                            BackgroundColor="Transparent"
-                            FontAttributes="None"
-                            FontSize="20"
-                            HorizontalOptions="FillAndExpand"
-                            IsSpellCheckEnabled="False"
-                            IsTextPredictionEnabled="False"
-                            Keyboard="Text"
-                            Placeholder="Input Animal Color"
-                            PlaceholderColor="Black"
-                            VerticalOptions="Center" />
-                    </Frame>
-
-                </StackLayout>
 
                 <!--  Remarks  -->
                 <StackLayout Padding="20">
@@ -493,7 +376,6 @@
                                 Placeholder="Input Remarks"
                                 PlaceholderColor="Black"
                                 TextColor="Black"
-                                
                                 VerticalOptions="Start" />
                         </StackLayout>
 
@@ -522,25 +404,39 @@
                         HorizontalOptions="FillAndExpand"
                         VerticalOptions="Start">
                         <StackLayout>
-                            <Label
-                                Margin="10,10"
-                                FontAttributes="Bold"
+                            <RadioButton
+                                x:Name="LocalRdBtn"
+                                CheckedChanged="OnRadioButtonCheckedChanged"
+                                Content="Local Within the Barangay"
                                 FontSize="20"
-                                HorizontalOptions="Start"
-                                Text="*Remarks"
-                                TextColor="Black"
-                                VerticalOptions="Start" />
-                            <Editor
-                                Margin="10,10"
-                                AutoSize="TextChanges"
+                                GroupName="StatusGroup" />
+                            <RadioButton
+                                x:Name="OtherRdBtn"
+                                CheckedChanged="OnRadioButtonCheckedChanged"
+                                Content="Others (Outside the Barangay)"
                                 FontSize="20"
-                                HeightRequest="100"
-                                HorizontalOptions="FillAndExpand"
-                                Placeholder="Input Remarks"
-                                PlaceholderColor="Black"
-                                TextColor="Black"
-                                
-                                VerticalOptions="Start" />
+                                GroupName="StatusGroup" />
+                            <StackLayout Margin="10,0,10,0" 
+                                         x:Name="OtherEntryStack"
+                                         IsVisible="False">
+                                <Label
+                                    Margin="10,10"
+                                    FontAttributes="Bold"
+                                    FontSize="20"
+                                    HorizontalOptions="Start"
+                                    Text="Indicate Origin *"
+                                    TextColor="Black"
+                                    VerticalOptions="Start" />
+                                <Editor
+                                    Margin="10,10"
+                                    FontSize="20"
+                                    HeightRequest="100"
+                                    HorizontalOptions="FillAndExpand"
+                                    Placeholder="Input Origin"
+                                    PlaceholderColor="Black"
+                                    TextColor="Black"
+                                    VerticalOptions="Start" />
+                            </StackLayout>
                         </StackLayout>
 
 
@@ -548,8 +444,7 @@
                 </StackLayout>
 
 
-                <!--  Pet Origin  -->
-
+                <!--  Pet Tag type  -->
                 <StackLayout Padding="20">
                     <Label
                         FontAttributes="Bold"
@@ -643,10 +538,10 @@
                     </Frame>
                 </StackLayout>
 
+
                 <!--  Pet Status  -->
 
                 <StackLayout Padding="20">
-                    <!--  Existing Content  -->
 
                     <!--  STATUS Section  -->
                     <Label
@@ -701,7 +596,7 @@
                         </StackLayout>
                     </Frame>
                 </StackLayout>
-                
+
                 <!--  ImagePicker  -->
                 <StackLayout Padding="10">
                     <Label

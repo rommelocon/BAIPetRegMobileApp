@@ -263,36 +263,6 @@ public partial class PetRegisterPage : ContentPage
         OwnershipList.ItemsSource = listOwnership;
 
 
-
-        List<string> listSex = new List<string>()
-        {
-            "Male",
-            "Female"
-        };
-        sexList.ItemsSource = listSex;
-
-
-        List<string> listHabitat = new List<string>()
-        {
-            "Household",
-            "Neigborhood",
-            "Stray Animal"
-        };
-        HabitatList.ItemsSource = listHabitat;
-
-
-        List<string> listTagTypeList = new List<string>()
-        {
-            "Collar Tag",
-            "Ear Tag",
-            "Leg Band",
-            "Microchip Code",
-            "None",
-            "Radio Frequency Identification",
-            "Tatto Code"
-        };
-        TagTypeList.ItemsSource = listTagTypeList;
-
         List<string> ContactwAnimalList = new List<string>()
         {
             "Frequent",
@@ -420,33 +390,21 @@ public partial class PetRegisterPage : ContentPage
 
     private void OnRadioButtonCheckedChanged(object sender, CheckedChangedEventArgs e)
     {
-        if (OtherRadioButton.IsChecked)
+        if (OtherRdBtn.IsChecked)
         {
-            OtherOriginEntryStack.IsVisible = true;
+            OtherEntryStack.IsVisible = true;
         }
         else
         {
-            OtherOriginEntryStack.IsVisible = false;
+            OtherEntryStack.IsVisible = false;
         }
     }
 
     private void OnStatusRadioButtonCheckedChanged(object sender, CheckedChangedEventArgs e)
     {
-        if (NoneRdBtn.IsChecked)
+        if (DeadRadioButton.IsChecked)
         {
-            OtherTagEntryStack.IsVisible = false;
-        }
-        else
-        {
-            TagNumberEntryStack.IsVisible = true;
-        }
-    }
-
-    private void OnRadioButtonTagCheckedChanged(object sender, CheckedChangedEventArgs e)
-    {
-        if (NoneRdBtn.IsChecked)
-        {
-            OtherTagEntryStack.IsVisible = false;
+            DatePickerStack.IsVisible = true;
         }
         else
         {
@@ -454,8 +412,15 @@ public partial class PetRegisterPage : ContentPage
         }
     }
 
-    private void Label_Focused(object sender, FocusEventArgs e)
+    private void OnRadioTagButtonCheckedChanged(object sender, CheckedChangedEventArgs e)
     {
-
+        if (NoneRDbtn.IsChecked)
+        {
+            TagNumberEntryStack.IsVisible = false;
+        }
+        else
+        {
+            TagNumberEntryStack.IsVisible = true;
+        }
     }
 }
