@@ -13,9 +13,9 @@ namespace BAIPetRegMobileApp.Api.Data
         public DbSet<TblBarangays> TblBarangays { get; set; }
 
         public DbSet<TblSpecies> TblSpecies { get; set; }
-        public DbSet<TblSexType> TblSexTypes { get; set; }
+        public DbSet<TblSexType> TblSexType { get; set; }
         public DbSet<TblRegistrationOption> TblRegistrationOptions { get; set; }
-        public DbSet<TblCivilStatus> TblCivilStatuses { get; set; }
+        public DbSet<TblCivilStatus> TblCivilStatus { get; set; }
         public DbSet<TblAgencyName> TblAgencyName { get; set; }
         public DbSet<TblAccessLevel> TblAccessLevel { get; set; }
 
@@ -59,10 +59,6 @@ namespace BAIPetRegMobileApp.Api.Data
             modelBuilder.Entity<TblRegistrationOption>(entity =>
             {
                 entity.HasKey(ro => ro.RegOptID);
-            });
-            modelBuilder.Entity<TblCivilStatus>(entity =>
-            {
-                entity.HasKey(cs => cs.CivilCode);
             });
             modelBuilder.Entity<TblSpecies>(entity =>
             {

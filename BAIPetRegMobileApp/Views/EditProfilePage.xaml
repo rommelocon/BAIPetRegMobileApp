@@ -100,14 +100,16 @@
                 HorizontalTextAlignment="Start"
                 Text="Sex"
                 TextColor="Black" />
-            <Entry
+            <Picker
+                x:Name="sexTypePicker"
+                Title="Gender"
                 Margin="20,0,20,40"
                 BackgroundColor="#e2f2e1"
                 FontSize="20"
                 HorizontalTextAlignment="Start"
-                Placeholder="Enter Sex"
-                PlaceholderColor="#808080"
-                Text="{Binding SexDescription}"
+                ItemDisplayBinding="{Binding SexDescription}"
+                ItemsSource="{Binding SexType}"
+                SelectedItem="{Binding SelectedSexType, Mode=TwoWay}"
                 TextColor="Black" />
 
             <!--  email  -->

@@ -205,4 +205,32 @@ public class ClientService
 
         return barangays;
     }
+
+    public async Task<List<TblSexType>> GetSexType()
+    {
+        var httpClient = httpClientFactory.CreateClient("custom-httpclient");
+        var response = await httpClient.GetAsync("api/SexType");
+
+        var jsonResponse = await response.Content.ReadAsStringAsync();
+        var sexType = JsonSerializer.Deserialize<List<TblSexType>>(jsonResponse, new JsonSerializerOptions
+        {
+            PropertyNamingPolicy = JsonNamingPolicy.CamelCase
+        });
+
+        return sexType;
+    }
+
+    public async Task<List<TblCivilStatus>> GetCivilStatus()
+    {
+        var httpClient = httpClientFactory.CreateClient("custom-httpclient");
+        var response = await httpClient.GetAsync("api/SexType");
+
+        var jsonResponse = await response.Content.ReadAsStringAsync();
+        var civilStatuses = JsonSerializer.Deserialize<List<TblCivilStatus>>(jsonResponse, new JsonSerializerOptions
+        {
+            PropertyNamingPolicy = JsonNamingPolicy.CamelCase
+        });
+
+        return civilStatuses;
+    }
 }

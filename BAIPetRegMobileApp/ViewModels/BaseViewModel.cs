@@ -8,6 +8,7 @@ namespace BAIPetRegMobileApp.ViewModels
     public partial class BaseViewModel : ObservableObject
     {
         protected readonly ClientService clientService;
+        private bool isProfileLoaded;
 
         [ObservableProperty]
         private UserViewModel? userViewModel;
@@ -88,6 +89,8 @@ namespace BAIPetRegMobileApp.ViewModels
         {
             try
             {
+                if (isProfileLoaded) return;
+
                 var serializedResponse = await SecureStorage.GetAsync("Authentication");
                 if (serializedResponse != null)
                 {
@@ -98,6 +101,7 @@ namespace BAIPetRegMobileApp.ViewModels
                     if (user != null)
                     {
                         updateProperties.Invoke(user);
+                        isProfileLoaded = true;
                     }
                     else
                     {
@@ -115,7 +119,6 @@ namespace BAIPetRegMobileApp.ViewModels
             }
         }
 
-        //
         public async Task InitializeProfileAsync()
         {
             await LoadProfile(user =>
@@ -136,7 +139,7 @@ namespace BAIPetRegMobileApp.ViewModels
                 ProfilePicture = user.ProfilePicture;
                 CivilStatusName = user.CivilStatusName;
                 StreetNumber = user.StreetNumber;
-                FullAddress = $"{StreetNumber} {BarangayName} {MunicipalitiesCities} {ProvinceName} {Region}";
+                FullAddress = user.FullAddress;
                 FullName = $"{Firstname} {MiddleName} {Lastname} {ExtensionName}";
                 WelcomeMessage = $"Welcome {user.UserName}";
             });

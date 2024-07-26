@@ -50,6 +50,7 @@ namespace BAIPetRegMobileApp.Api.Controllers
             user.ProvinceName = model.ProvinceName;
             user.MunicipalitiesCities = model.MunicipalitiesCities;
             user.BarangayName = model.BarangayName;
+            user.FullAddress = model.FullAddress;
             // Update other properties as needed
 
             // Save the changes
