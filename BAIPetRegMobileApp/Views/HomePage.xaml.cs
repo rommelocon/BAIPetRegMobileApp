@@ -29,8 +29,10 @@ public partial class HomePage : ContentPage
 
     private async void BtnRegisterPet_Clicked(object sender, EventArgs e)
     {
-        await Shell.Current.GoToAsync(nameof(PetRegisterPage));
+        //Shell.Current.GoToAsync(nameof(PetRegisterPage));
+        Shell.Current.GoToAsync(nameof(TOAPage));
     }
+
 
     private void MenuBtnClicked_Clicked(object sender, EventArgs e)
     {

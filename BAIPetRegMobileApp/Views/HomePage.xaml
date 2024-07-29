@@ -43,6 +43,9 @@
                 HorizontalOptions="EndAndExpand"
                 Text="pets"
                 TextColor="White" />
+
+
+
             <!--  Empty element to fill the right column  -->
         </Grid>
     </Shell.TitleView>
