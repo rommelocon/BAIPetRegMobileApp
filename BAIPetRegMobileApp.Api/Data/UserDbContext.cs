@@ -1,5 +1,4 @@
-﻿using BAIPetRegMobileApp.Api.Models.PetRegistration;
-using BAIPetRegMobileApp.Api.Models.User;
+﻿using BAIPetRegMobileApp.Api.Data.User;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
@@ -15,10 +14,9 @@ namespace BAIPetRegMobileApp.Api.Data
         public DbSet<Provinces> TblProvinces { get; set; }
         public DbSet<Barangays> TblBarangays { get; set; }
 
-        public DbSet<Species> TblSpecies { get; set; }
+        // Application DbSet
         public DbSet<SexType> TblSexType { get; set; }
         public DbSet<RegistrationOption> TblRegistrationOptions { get; set; }
-        public DbSet<CivilStatuses> TblCivilStatus { get; set; }
         public DbSet<AgencyName> TblAgencyName { get; set; }
         public DbSet<AccessLevel> TblAccessLevel { get; set; }
 
@@ -33,16 +31,17 @@ namespace BAIPetRegMobileApp.Api.Data
 
         private void ConfigurePrimaryKeys(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<CivilStatuses>().HasKey(cs => cs.CivilCode);
+            // Location Primary Keys
             modelBuilder.Entity<Regions>().HasKey(r => r.Rcode);
             modelBuilder.Entity<Provinces>().HasKey(p => p.ProvCode);
             modelBuilder.Entity<Municipalities>().HasKey(m => m.MunCode);
             modelBuilder.Entity<Barangays>().HasKey(b => b.Bcode);
+
+            // Application Primary Keys
             modelBuilder.Entity<AccessLevel>().HasKey(al => al.AccessLevelID);
             modelBuilder.Entity<AgencyName>().HasKey(an => an.AgencyID);
             modelBuilder.Entity<SexType>().HasKey(st => st.SexID);
             modelBuilder.Entity<RegistrationOption>().HasKey(ro => ro.RegOptID);
-            modelBuilder.Entity<Species>().HasKey(s => s.SpeciesID);
         }
 
         private void ConfigureRelationships(ModelBuilder modelBuilder)
@@ -88,11 +87,6 @@ namespace BAIPetRegMobileApp.Api.Data
                 entity.HasOne(e => e.AccessLevel)
                     .WithMany()
                     .HasForeignKey(e => e.AccessLevelID)
-                    .OnDelete(DeleteBehavior.SetNull);
-
-                entity.HasOne(e => e.CivilStatus)
-                    .WithMany()
-                    .HasForeignKey(e => e.CivilStatusCode)
                     .OnDelete(DeleteBehavior.SetNull);
             });
         }

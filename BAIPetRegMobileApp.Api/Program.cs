@@ -1,6 +1,6 @@
 using BAIPetRegMobileApp.Api.Data;
-using BAIPetRegMobileApp.Api.Models;
-using BAIPetRegMobileApp.Api.Models.User;
+using BAIPetRegMobileApp.Api.Data.User;
+using BAIPetRegMobileApp.Api.Interfaces;
 using BAIPetRegMobileApp.Api.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
@@ -28,7 +28,7 @@ static void ConfigureServices(IServiceCollection services, IConfiguration config
     services.AddControllers();
 
     // JWT Utils
-    services.AddScoped<IJwtUtils, JwtUtils>();
+    services.AddScoped<IJWTConfiguration, JwtUtils>();
 
     // Email sender service
     services.AddTransient<IEmailSender, EmailSender>();
@@ -66,9 +66,6 @@ static void ConfigureServices(IServiceCollection services, IConfiguration config
 
     services.AddDbContext<PetRegistrationDbContext>(options =>
         options.UseSqlServer(configuration.GetConnectionString("PetRegistrationDb")));
-
-    // Add Scoped Services
-    services.AddScoped<PetRegistrationService>();
 
     // Add AutoMapper
     services.AddAutoMapper(typeof(Program));

@@ -1,97 +1,61 @@
-﻿using BAIPetRegMobileApp.Api.Models;
-using BAIPetRegMobileApp.Api.Models.User;
-using BAIPetRegMobileApp.Api.ViewModels;
+﻿using BAIPetRegMobileApp.Api.Data.User;
+using BAIPetRegMobileApp.Api.DTOs;
+using BAIPetRegMobileApp.Api.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BAIPetRegMobileApp.Api.Controllers
 {
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     [ApiController]
-    public class AccountController(
-        UserManager<ApplicationUser> userManager,
-        SignInManager<ApplicationUser> signInManager,
-        IJwtUtils jwtUtils) : ControllerBase
+    public class AccountController : ControllerBase
     {
-        [HttpGet("profile/{username}")]
-        [Authorize]
-        public async Task<IActionResult> GetProfile(string username)
-        {
-            var user = await userManager.FindByNameAsync(username);
-            if (user == null)
-            {
-                return NotFound();
-            }
+        private readonly UserManager<ApplicationUser> _userManager;
+        private readonly SignInManager<ApplicationUser> _signInManager;
+        private readonly IJWTConfiguration _jwtUtils;
 
-            return Ok(MapUserToProfileViewModel(user));
+        public AccountController(
+            UserManager<ApplicationUser> userManager,
+            SignInManager<ApplicationUser> signInManager,
+            IJWTConfiguration jwtUtils)
+        {
+            _userManager = userManager;
+            _signInManager = signInManager;
+            _jwtUtils = jwtUtils;
         }
 
-        [HttpPut("profile/{username}")]
+        [HttpPut("user")]
         [Authorize]
-        public async Task<IActionResult> UpdateProfile(string username, [FromBody] UserViewModel model)
+        public async Task<IActionResult> UpdateProfile([FromBody] UserDTO model)
         {
-            var user = await userManager.FindByNameAsync(username);
+            var user = await _userManager.GetUserAsync(User);
             if (user == null)
             {
                 return NotFound();
             }
 
-            /// Update the user details
-            user.Firstname = model.Firstname;
-            user.Lastname = model.Lastname;
-            user.MiddleName = model.MiddleName;
-            user.ExtensionName = model.ExtensionName;
-            user.Birthday = model.Birthday;
-            user.SexDescription = model.SexDescription;
-            user.Email = model.Email;
-            user.CivilStatusName = model.CivilStatusName;
-            user.MobileNumber = model.MobileNumber;
-            user.Region = model.Region;
-            user.ProvinceName = model.ProvinceName;
-            user.MunicipalitiesCities = model.MunicipalitiesCities;
-            user.BarangayName = model.BarangayName;
-            user.FullAddress = model.FullAddress;
-            // Update other properties as needed
+            // Update the user details
+            UpdateUserFromDTO(user, model);
 
-            // Save the changes
-            var result = await userManager.UpdateAsync(user);
+            var result = await _userManager.UpdateAsync(user);
             if (!result.Succeeded)
             {
                 return BadRequest(result.Errors);
             }
-      
+
             return Ok(model);
         }
 
-        [HttpPost("register")]
-        public async Task<IActionResult> Register(RegisterViewModel model)
-        {
-            var user = new ApplicationUser
-            {
-                UserName = model.UserName,
-                Email = model.Email,
-                DateRegistered = DateTime.UtcNow // Set the registration date
-            };
-
-            var result = await userManager.CreateAsync(user, model.Password!);
-            if (result.Succeeded)
-            {
-                return Ok("User registered successfully");
-            }
-
-            return BadRequest(result.Errors);
-        }
-
         [HttpPost("login")]
-        public async Task<IActionResult> Login([FromBody] LoginModel model)
+        public async Task<IActionResult> Login([FromBody] Login model)
         {
-            var result = await signInManager.PasswordSignInAsync(model.UserName!, model.Password!, model.RememberMe, lockoutOnFailure: false);
+            var result = await _signInManager.PasswordSignInAsync(model.UserName!, model.Password!, model.RememberMe, lockoutOnFailure: false);
             if (result.Succeeded)
             {
-                var user = await userManager.FindByNameAsync(model.UserName!);
-                var accessToken = jwtUtils.GenerateToken(user!);
-                var refreshToken = jwtUtils.GenerateRefreshToken();
+                var user = await _userManager.FindByNameAsync(model.UserName!);
+                var accessToken = _jwtUtils.GenerateToken(user!);
+                var refreshToken = _jwtUtils.GenerateRefreshToken();
 
                 return Ok(new
                 {
@@ -113,32 +77,32 @@ namespace BAIPetRegMobileApp.Api.Controllers
         [Authorize]
         public async Task<IActionResult> Logout()
         {
-            await signInManager.SignOutAsync();
+            await _signInManager.SignOutAsync();
             return Ok("User logged out successfully");
         }
 
         [HttpGet("user")]
         [Authorize]
-        public async Task<ActionResult<ApplicationUser>> GetUserInfo()
+        public async Task<ActionResult<UserDTO>> GetUserInfo()
         {
-            var user = await userManager.GetUserAsync(User);
+            var user = await _userManager.GetUserAsync(User);
             if (user == null)
             {
                 return NotFound();
             }
 
-            return Ok(user);
+            return Ok(MapUserToViewModel(user));
         }
 
-        private UserViewModel MapUserToProfileViewModel(ApplicationUser user)
+        private UserDTO MapUserToViewModel(ApplicationUser user)
         {
-            return new UserViewModel
+            return new UserDTO
             {
                 Firstname = user.Firstname,
                 Lastname = user.Lastname,
                 MiddleName = user.MiddleName,
                 ExtensionName = user.ExtensionName,
-                Birthday = user.Birthday, // Assuming ApplicationUser has a DateOnly property for Birthday
+                Birthday = user.Birthday,
                 SexDescription = user.SexDescription,
                 MobileNumber = user.MobileNumber,
                 UserName = user.UserName,
@@ -149,9 +113,27 @@ namespace BAIPetRegMobileApp.Api.Controllers
                 BarangayName = user.BarangayName,
                 FullAddress = user.FullAddress,
                 ProfilePicture = user.ProfilePicture,
-                CivilStatusName = user.CivilStatusName,
-                // Map other properties as needed
             };
+        }
+
+        private void UpdateUserFromDTO(ApplicationUser user, UserDTO model)
+        {
+            user.Firstname = model.Firstname;
+            user.Lastname = model.Lastname;
+            user.MiddleName = model.MiddleName;
+            user.ExtensionName = model.ExtensionName;
+            user.Birthday = model.Birthday;
+            user.SexDescription = model.SexDescription;
+            user.MobileNumber = model.MobileNumber;
+            user.UserName = model.UserName;
+            user.Email = model.Email;
+            user.Region = model.Region;
+            user.ProvinceName = model.ProvinceName;
+            user.MunicipalitiesCities = model.MunicipalitiesCities;
+            user.BarangayName = model.BarangayName;
+            user.FullAddress = model.FullAddress;
+            user.ProfilePicture = model.ProfilePicture;
+            // Update other properties as needed
         }
     }
 }

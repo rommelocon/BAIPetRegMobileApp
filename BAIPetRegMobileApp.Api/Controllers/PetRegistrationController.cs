@@ -1,64 +1,128 @@
-﻿using BAIPetRegMobileApp.Api.Models.PetRegistration;
-using BAIPetRegMobileApp.Api.Services;
+﻿using BAIPetRegMobileApp.Api.Data;
+using BAIPetRegMobileApp.Api.Data.PetRegistration;
+using BAIPetRegMobileApp.Api.Data.User;
+using BAIPetRegMobileApp.Api.DTOs;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using System.Security.Claims;
+using Microsoft.EntityFrameworkCore;
 
-[ApiController]
-[Route("api/[controller]")]
-public class PetRegistrationController : ControllerBase
+namespace BAIPetRegMobileApp.Api.Controllers
 {
-    private readonly PetRegistrationService _service;
-
-    public PetRegistrationController(PetRegistrationService service)
+    [Route("api/[controller]")]
+    [ApiController]
+    public class PetRegistrationController : ControllerBase
     {
-        _service = service;
-    }
+        private readonly UserManager<ApplicationUser> _userManager;
+        private readonly SignInManager<ApplicationUser> _signInManager;
+        private readonly PetRegistrationDbContext _context;
 
-    [HttpGet]
-    public async Task<ActionResult<IEnumerable<PetRegistrationDto>>> Get()
-    {
-        var registrations = await _service.GetAllAsync();
-        return Ok(registrations);
-    }
-
-    [HttpGet("{petRegistrationID}")]
-    public async Task<ActionResult<PetRegistrationDto>> Get(string petRegistrationID)
-    {
-        var registration = await _service.GetByIdAsync(petRegistrationID);
-        if (registration == null) return NotFound();
-
-        return Ok(registration);
-    }
-
-    [HttpPost]
-    public async Task<ActionResult<PetRegistrationDto>> Post(PetRegistrationDto dto)
-    {
-        var userId = User.FindFirstValue(ClaimTypes.NameIdentifier); // Get the current user's ID from the claims
-
-        if (userId == null)
+        public PetRegistrationController(
+            UserManager<ApplicationUser> userManager,
+            SignInManager<ApplicationUser> signInManager,
+            PetRegistrationDbContext context)
         {
-            return Unauthorized(); // Return Unauthorized if user ID is not found
+            _userManager = userManager;
+            _signInManager = signInManager;
+            _context = context;
         }
 
-        var createdRegistration = await _service.CreateAsync(dto, userId);
-        return CreatedAtAction(nameof(Get), new { petRegistrationID = createdRegistration.PetRegistrationID }, createdRegistration);
-    }
+        [HttpPost("register-pet")]
+        public async Task<IActionResult> RegisterPet([FromBody] PetRegistrationDTO model)
+        {
+            var user = await _userManager.GetUserAsync(User);
+            if (model == null)
+            {
+                return BadRequest("Invalid pet registration data.");
+            }
 
-    [HttpPut("{petRegistrationID}")]
-    public async Task<IActionResult> Put(string petRegistrationID, PetRegistrationDto dto)
-    {
-        var updated = await _service.UpdateAsync(petRegistrationID, dto);
-        if (!updated) return NotFound();
+            // Validate PetSexID and AnimalFemaleClassID relationship
+            if (model.PetSexID == 2)
+            {
+                if (model.AnimalFemaleClassID == 0 || !await _context.TblAnimalFemalClassification.AnyAsync(c => c.AnimalFemaleClassID == model.AnimalFemaleClassID))
+                {
+                    return BadRequest("Invalid AnimalFemaleClassID for the selected pet sex.");
+                }
+            }
 
-        return NoContent();
-    }
+            // Create a new PetRegistration entity
+            var petRegistration = new PetRegistration
+            {
+                DateEncocde = model.DateEncocde,
+                DateRegistered = model.DateRegistered,
+                TagID = model.TagID,
+                TagDescription = model.TagDescription,
+                TagNo = model.TagNo,
+                Alias = model.Alias,
+                ClientID = user.Id,
+                ClientName = $"{user.Firstname} {user.Lastname}",
+                ClientSexID = user.SexID,
+                ClientSexDescription = user.SexDescription,
+                ClientRcode = user.RcodeNum,
+                ClientRegion = user.Region,
+                ClientProvCode = user.PcodeNum,
+                ClientProvinceName = user.ProvinceName,
+                ClientMunCode = user.McodeNum,
+                ClientMunicipalities = user.MunicipalitiesCities,
+                ClientBcode = user.Bcode,
+                ClientBarangayName = user.BarangayName,
+                OwnershipType = model.OwnershipType,
+                OwnershipTypeDescription = model.OwnershipDescription,
+                PetName = model.PetName,
+                PetDateofBirth = model.PetDateofBirth,
+                PetSexID = model.PetSexID,
+                PetSexDescription = model.PetSexDescription,
+                AnimalFemaleClassID = model.PetSexID == 1 ? model.AnimalFemaleClassID : (int?)null, // Set only if female
+                AnimalFemalClassification = model.PetSexID == 1 ? model.AnimalFemalClassification : null,
+                NumberOffspring = model.NumberOffspring,
+                Weight = model.Weight,
+                AgeInMonth = model.AgeInMonth,
+                SpeciesCode = model.SpeciesCode,
+                SpeciesCommonName = model.SpeciesCommonName,
+                BreedID = model.BreedID,
+                BreedDescription = model.BreedDescription,
+                AnimalColorID = model.AnimalColorID,
+                AnimalColorDescription = model.AnimalColorDescription,
+                PetOrigin = model.PetOrigin,
+                StatusID = model.StatusID,
+                StatusDescription = model.StatusDescription,
+                DateDied = model.DateDied,
+                ReportOfficer = model.ReportOfficer,
+                PetImage1 = model.PetImage1,
+                PetImage2 = model.PetImage2,
+                PetImage3 = model.PetImage3,
+                PetImage4 = model.PetImage4,
+                UserName = user.UserName,
+                Remarks = model.Remarks
+            };
 
-    [HttpDelete("{petRegistrationID}")]
-    public async Task<IActionResult> Delete(string petRegistrationID)
-    {
-        var deleted = await _service.DeleteAsync(petRegistrationID);
-        if (!deleted) return NotFound();
+            // Add to the database
+            _context.TblPetRegistration.Add(petRegistration);
 
-        return NoContent();
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateException ex)
+            {
+                // Log and handle the exception
+                return StatusCode(StatusCodes.Status500InternalServerError, $"{ex}: An error occurred while saving the pet registration.");
+            }
+
+            return Ok("Pet registration successful.");
+        }
+
+        [HttpGet("{id}")]
+        [Authorize]
+        public async Task<IActionResult> GetPetRegistration(string id)
+        {
+            var petRegistration = await _context.TblPetRegistration.FindAsync(id);
+            if (petRegistration == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(petRegistration);
+        }
     }
 }

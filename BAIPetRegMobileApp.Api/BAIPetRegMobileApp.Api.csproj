@@ -33,7 +33,11 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<Folder Include="Configurations\" />
+		<Folder Include="Mapping\" />
 		<Folder Include="Migrations\" />
+		<Folder Include="Models\" />
+		<Folder Include="Repositories\" />
 	</ItemGroup>
 
 </Project>
