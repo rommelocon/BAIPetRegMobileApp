@@ -17,7 +17,6 @@
         public string? BarangayName { get; set; }
         public byte[]? ProfilePicture { get; set; }
         public string? CivilStatusName { get; set; }
-        public string? StreetNumber { get; set; }
         public string? FullAddress { get; set; }
         // add other fields as needed
     }

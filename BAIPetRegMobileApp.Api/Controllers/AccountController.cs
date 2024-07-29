@@ -1,4 +1,5 @@
 ﻿using BAIPetRegMobileApp.Api.Models;
+using BAIPetRegMobileApp.Api.Models.User;
 using BAIPetRegMobileApp.Api.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;

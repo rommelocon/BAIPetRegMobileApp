@@ -6,11 +6,11 @@ namespace BAIPetRegMobileApp.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class SexTypeController : BaseController<SexType, UserDbContext, int>
+    public class PetSexTypeController : BaseController<SexType, PetRegistrationDbContext, int>
     {
-        public SexTypeController(UserDbContext context) : base(context) { }
+        public PetSexTypeController(PetRegistrationDbContext context) : base(context) { }
 
-        protected override int GetId(SexType entity) => entity.SexID;
+        protected override int GetId(SexType entity) => entity.SexID!;
 
         protected override bool IdMatches(SexType entity, int id) => entity.SexID == id;
     }

@@ -1,6 +1,7 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using BAIPetRegMobileApp.Api.Models.PetRegistration;
+using Microsoft.AspNetCore.Identity;
 
-namespace BAIPetRegMobileApp.Api.Models
+namespace BAIPetRegMobileApp.Api.Models.User
 {
     public class ApplicationUser : IdentityUser
     {
@@ -46,10 +47,10 @@ namespace BAIPetRegMobileApp.Api.Models
         public string? CivilStatusName { get; set; }
 
         // Navigation properties
-        public virtual TblRegistrationOption? RegistrationOption { get; set; }
-        public virtual TblSexType? SexType { get; set; }
-        public virtual TblAgencyName? AgencyName { get; set; }
-        public virtual TblAccessLevel? AccessLevel { get; set; }
-        public virtual TblCivilStatus? CivilStatus { get; set; }
+        public virtual RegistrationOption? RegistrationOption { get; set; }
+        public virtual SexType? SexType { get; set; }
+        public virtual AgencyName? AgencyName { get; set; }
+        public virtual AccessLevel? AccessLevel { get; set; }
+        public virtual CivilStatuses? CivilStatus { get; set; }
     }
 }

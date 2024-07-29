@@ -1,9 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 
-namespace BAIPetRegMobileApp.Api.Models
+namespace BAIPetRegMobileApp.Api.Models.PetRegistration
 {
-    public class TblRegions
+    public class Regions
     {
         [Key]
         [Column("Rcode")]
@@ -21,6 +21,6 @@ namespace BAIPetRegMobileApp.Api.Models
         [Column("Pop_2020")]
         public int? Population2020 { get; set; }
 
-        public ICollection<TblProvinces>? Provinces { get; set; }
+        public ICollection<Provinces>? Provinces { get; set; }
     }
 }

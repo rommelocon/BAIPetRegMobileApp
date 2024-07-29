@@ -136,14 +136,16 @@
                 HorizontalTextAlignment="Start"
                 Text="Civil Status"
                 TextColor="Black" />
-            <Entry
+            <Picker
+                x:Name="civilStatusPicker"
+                Title="Civil Status"
                 Margin="20,0,20,40"
                 BackgroundColor="#e2f2e1"
                 FontSize="20"
                 HorizontalTextAlignment="Start"
-                Placeholder="Enter Civil Status"
-                PlaceholderColor="#808080"
-                Text="{Binding CivilStatusName}"
+                ItemDisplayBinding="{Binding CivilStatusName}"
+                ItemsSource="{Binding CivilStatus}"
+                SelectedItem="{Binding SelectedCivilStatus, Mode=TwoWay}"
                 TextColor="Black" />
 
             <!--  Contact Number  -->
@@ -172,7 +174,7 @@
                 TextColor="Black" />
             <Picker
                 x:Name="regionPicker"
-                Title="Select a region"
+                Title="Select Region"
                 Margin="20,0,20,40"
                 BackgroundColor="#e2f2e1"
                 FontSize="20"
@@ -237,23 +239,6 @@
                 ItemDisplayBinding="{Binding BarangayName}"
                 ItemsSource="{Binding Barangays}"
                 SelectedItem="{Binding SelectedBarangay, Mode=TwoWay}"
-                TextColor="Black" />
-
-            <!--  Street  -->
-            <Label
-                Margin="20,0,0,0"
-                FontSize="20"
-                HorizontalTextAlignment="Start"
-                Text="Street"
-                TextColor="Black" />
-            <Entry
-                Margin="20,0,20,40"
-                BackgroundColor="#e2f2e1"
-                FontSize="20"
-                HorizontalTextAlignment="Start"
-                Placeholder="Enter Street Address"
-                PlaceholderColor="#808080"
-                Text="{Binding StreetNumber}"
                 TextColor="Black" />
 
             <Button

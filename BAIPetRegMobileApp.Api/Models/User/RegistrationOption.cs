@@ -1,6 +1,6 @@
-﻿namespace BAIPetRegMobileApp.Api.Models
+﻿namespace BAIPetRegMobileApp.Api.Models.User
 {
-    public class TblRegistrationOption
+    public class RegistrationOption
     {
         public int RegOptID { get; set; } // Primary key
         public string? RegOptDescription { get; set; }

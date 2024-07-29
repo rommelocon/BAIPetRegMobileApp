@@ -1,5 +1,6 @@
 using BAIPetRegMobileApp.Api.Data;
 using BAIPetRegMobileApp.Api.Models;
+using BAIPetRegMobileApp.Api.Models.User;
 using BAIPetRegMobileApp.Api.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
@@ -7,68 +8,84 @@ using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
-using Swashbuckle.AspNetCore.Filters;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddControllers();
+ConfigureServices(builder.Services, builder.Configuration);
 
-//jwt utils
-builder.Services.AddScoped<IJwtUtils, JwtUtils>(); // Add this line
+var app = builder.Build();
 
-// Add email sender service
-builder.Services.AddTransient<IEmailSender, EmailSender>();
+// Configure the HTTP request pipeline.
+ConfigureMiddleware(app, app.Environment);
 
-// Add Swagger/OpenAPI configuration
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen(options =>
+app.Run();
+
+// Method to configure services
+static void ConfigureServices(IServiceCollection services, IConfiguration configuration)
 {
-    options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
-    {
-        Description = "JWT Authorization header using the Bearer scheme",
-        Name = "Authorization",
-        In = ParameterLocation.Header,
-        Type = SecuritySchemeType.Http,
-        Scheme = "bearer",
-        BearerFormat = "JWT",
-        Reference = new OpenApiReference { Type = ReferenceType.SecurityScheme, Id = "Bearer" }
-    });
+    services.AddControllers();
 
-    options.AddSecurityRequirement(new OpenApiSecurityRequirement
+    // JWT Utils
+    services.AddScoped<IJwtUtils, JwtUtils>();
+
+    // Email sender service
+    services.AddTransient<IEmailSender, EmailSender>();
+
+    // Swagger/OpenAPI configuration
+    services.AddEndpointsApiExplorer();
+    services.AddSwaggerGen(options =>
     {
+        options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
         {
-            new OpenApiSecurityScheme
+            Description = "JWT Authorization header using the Bearer scheme",
+            Name = "Authorization",
+            In = ParameterLocation.Header,
+            Type = SecuritySchemeType.Http,
+            Scheme = "bearer",
+            BearerFormat = "JWT",
+            Reference = new OpenApiReference { Type = ReferenceType.SecurityScheme, Id = "Bearer" }
+        });
+
+        options.AddSecurityRequirement(new OpenApiSecurityRequirement
+        {
             {
-                Reference = new OpenApiReference { Type = ReferenceType.SecurityScheme, Id = "Bearer" }
-            },
-            Array.Empty<string>()
-        }
+                new OpenApiSecurityScheme
+                {
+                    Reference = new OpenApiReference { Type = ReferenceType.SecurityScheme, Id = "Bearer" }
+                },
+                Array.Empty<string>()
+            }
+        });
     });
-});
 
-// Add DbContexts
-builder.Services.AddDbContext<UserDbContext>(options =>
-           options.UseSqlServer(builder.Configuration.GetConnectionString("UserDb")));
+    // Add DbContexts
+    services.AddDbContext<UserDbContext>(options =>
+        options.UseSqlServer(configuration.GetConnectionString("UserDb")));
 
-builder.Services.AddDbContext<PetRegistrationDbContext>(options =>
-           options.UseSqlServer(builder.Configuration.GetConnectionString("PetRegistrationDb")));
+    services.AddDbContext<PetRegistrationDbContext>(options =>
+        options.UseSqlServer(configuration.GetConnectionString("PetRegistrationDb")));
 
-// Add Identity with JWT Authentication
-builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options =>
-{
-    options.SignIn.RequireConfirmedAccount = false;
-})
+    // Add Scoped Services
+    services.AddScoped<PetRegistrationService>();
+
+    // Add AutoMapper
+    services.AddAutoMapper(typeof(Program));
+
+    // Identity and JWT Authentication
+    services.AddIdentity<ApplicationUser, IdentityRole>(options =>
+    {
+        options.SignIn.RequireConfirmedAccount = false;
+    })
     .AddEntityFrameworkStores<UserDbContext>()
     .AddDefaultTokenProviders();
 
-// Add JWT Authentication
-builder.Services.AddAuthentication(options =>
-{
-    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-})
+    services.AddAuthentication(options =>
+    {
+        options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+        options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+    })
     .AddJwtBearer(options =>
     {
         options.TokenValidationParameters = new TokenValidationParameters
@@ -77,55 +94,40 @@ builder.Services.AddAuthentication(options =>
             ValidateAudience = true,
             ValidateLifetime = true,
             ValidateIssuerSigningKey = true,
-            ValidIssuer = builder.Configuration["Jwt:Issuer"], // Replace with your actual issuer
-            ValidAudience = builder.Configuration["Jwt:Audience"], // Replace with your actual audience
-            IssuerSigningKey = GetSymmetricSecurityKey(builder.Configuration["Jwt:Key"]) // Replace with your actual key
+            ValidIssuer = configuration["Jwt:Issuer"],
+            ValidAudience = configuration["Jwt:Audience"],
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["Jwt:Key"]))
         };
     });
 
-SecurityKey GetSymmetricSecurityKey(string? key)
-{
-    // Method to retrieve SymmetricSecurityKey safely
-    if (key == null)
+    // Configure CORS
+    services.AddCors(options =>
     {
-        throw new ArgumentNullException(nameof(key), "JWT key configuration is missing or null.");
+        options.AddPolicy("AllowAll",
+            builder =>
+            {
+                builder.AllowAnyOrigin()
+                       .AllowAnyMethod()
+                       .AllowAnyHeader();
+            });
+    });
+}
+
+// Method to configure middleware
+static void ConfigureMiddleware(WebApplication app, IWebHostEnvironment env)
+{
+    if (env.IsDevelopment())
+    {
+        app.UseSwagger();
+        app.UseSwaggerUI();
     }
 
-    return new SymmetricSecurityKey(Encoding.UTF8.GetBytes(key));
+    app.UseHttpsRedirection();
+    app.UseCors("AllowAll");
+
+    app.UseRouting();
+    app.UseAuthentication();
+    app.UseAuthorization();
+
+    app.MapControllers();
 }
-
-// Configure CORS
-builder.Services.AddCors(options =>
-{
-    options.AddPolicy("AllowAll",
-        builder =>
-        {
-            builder.AllowAnyOrigin()
-                   .AllowAnyMethod()
-                   .AllowAnyHeader();
-        });
-});
-
-var app = builder.Build();
-
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
-
-app.UseHttpsRedirection();
-
-// Enable CORS
-app.UseCors("AllowAll");
-
-app.UseRouting();
-
-// Use authentication and authorization
-app.UseAuthentication();
-app.UseAuthorization();
-
-app.MapControllers();
-
-app.Run();

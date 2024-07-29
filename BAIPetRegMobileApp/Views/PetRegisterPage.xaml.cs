@@ -1,7 +1,3 @@
-using SQLite;
-using System.Windows.Input;
-
-
 namespace BAIPetRegMobileApp.Views;
 
 public partial class PetRegisterPage : ContentPage
@@ -261,7 +257,7 @@ public partial class PetRegisterPage : ContentPage
         };
         OwnershipList.ItemsSource = listOwnership;
 
-        sexList.ItemsSource = new List<string>
+        List<string> listSex = new List<string>
         {
             "Male",
             "Female"

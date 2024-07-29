@@ -372,22 +372,6 @@
                             HorizontalTextAlignment="Start"
                             Text="{Binding BarangayName}"
                             TextColor="Black" />
-                        <!--  Street  -->
-                        <Label
-                            Margin="20,0,0,0"
-                            FontSize="20"
-                            HorizontalTextAlignment="Start"
-                            Text="Street"
-                            TextColor="Black" />
-                        <Label
-                            Margin="20,0,20,40"
-                            Padding="5"
-                            Background="#e2f2e1"
-                            FontAttributes="Italic"
-                            FontSize="20"
-                            HorizontalTextAlignment="Start"
-                            Text="{Binding StreetNumber}"
-                            TextColor="Black" />
 
                         <!--  Full Address  -->
                         <Label

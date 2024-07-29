@@ -148,8 +148,7 @@ namespace BAIPetRegMobileApp.ViewModels
                     BarangayName = SelectedBarangay.BarangayName,
                     ProfilePicture = this.ProfilePicture,
                     CivilStatusName = SelectedCivilStatus.CivilStatus,
-                    StreetNumber = this.StreetNumber,
-                    FullAddress = $"{StreetNumber} {Region} {MunicipalitiesCities} {ProvinceName} {BarangayName}",
+                    FullAddress = $"{Region} {MunicipalitiesCities} {ProvinceName} {BarangayName}",
                 };
 
                 var response = await clientService.UpdateProfileAsync(updatedUser);

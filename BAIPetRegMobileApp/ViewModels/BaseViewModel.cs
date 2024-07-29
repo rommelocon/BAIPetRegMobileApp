@@ -62,9 +62,6 @@ namespace BAIPetRegMobileApp.ViewModels
         private byte[]? profilePicture;
 
         [ObservableProperty]
-        private string? streetNumber;
-
-        [ObservableProperty]
         private string? fullAddress;
 
         [ObservableProperty]
@@ -138,7 +135,6 @@ namespace BAIPetRegMobileApp.ViewModels
                 BarangayName = user.BarangayName;
                 ProfilePicture = user.ProfilePicture;
                 CivilStatusName = user.CivilStatusName;
-                StreetNumber = user.StreetNumber;
                 FullAddress = user.FullAddress;
                 FullName = $"{Firstname} {MiddleName} {Lastname} {ExtensionName}";
                 WelcomeMessage = $"Welcome {user.UserName}";
