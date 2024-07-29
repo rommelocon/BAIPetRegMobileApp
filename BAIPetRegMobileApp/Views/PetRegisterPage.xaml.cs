@@ -271,6 +271,17 @@ public partial class PetRegisterPage : ContentPage
             "Unknown"
         };
         ContactwOtherAnimals.ItemsSource = ContactwAnimalList;
+
+
+        List<string> ListSex = new List<string>()
+        {
+            "Male",
+            "Female",
+            "Undetermine",
+
+            "Mixed"
+        };
+        SexList.ItemsSource = ListSex;
     }
 
 
