@@ -231,47 +231,6 @@
                     </Frame>
                 </StackLayout>
 
-                <!--  Sex  -->
-
-                <StackLayout>
-                    <Label
-                        Margin="40,20,0,0"
-                        FontAttributes="Bold"
-                        FontSize="20"
-                        Text="Sex *"
-                        TextColor="Black" />
-                    <Frame
-                        Margin="30,10"
-                        Padding="10"
-                        BackgroundColor="#DCF4DA"
-                        BorderColor="Transparent"
-                        CornerRadius="15"
-                        HasShadow="False"
-                        HorizontalOptions="FillAndExpand">
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="Auto" />
-                            </Grid.ColumnDefinitions>
-                            <Picker
-                                x:Name="SexList"
-                                Title="Select Sex"
-                                Grid.Column="0"
-                                FontSize="20"
-                                Style="{StaticResource NoUnderlinePicker}"
-                                TitleColor="Black" />
-                            <Label
-                                Grid.Column="1"
-                                Margin="0,0,10,0"
-                                FontFamily="MaterialIconsOutlined-Regular"
-                                FontSize="40"
-                                HorizontalOptions="End"
-                                Text="arrow_drop_down"
-                                TextColor="Black"
-                                VerticalOptions="Center" />
-                        </Grid>
-                    </Frame>
-                </StackLayout>
 
                 <!--  Contact with Other Animals?  -->
 
@@ -347,6 +306,112 @@
                     </Frame>
                 </StackLayout>
 
+                <!--  Sex  -->
+                <StackLayout>
+                    <Label
+                        Margin="40,20,0,0"
+                        FontAttributes="Bold"
+                        FontSize="20"
+                        Text="Sex *"
+                        TextColor="Black" />
+                    <Frame
+                        Margin="30,10"
+                        Padding="10"
+                        BackgroundColor="#DCF4DA"
+                        BorderColor="Transparent"
+                        CornerRadius="15"
+                        HasShadow="False"
+                        HorizontalOptions="FillAndExpand">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <Picker
+                                x:Name="SexList"
+                                Title="Select Sex"
+                                Grid.Column="0"
+                                FontSize="20"
+                                SelectedIndexChanged="SexList_SelectedIndexChanged"
+                                Style="{StaticResource NoUnderlinePicker}"
+                                TitleColor="Black" />
+                            <Label
+                                Grid.Column="1"
+                                Margin="0,0,10,0"
+                                FontFamily="MaterialIconsOutlined-Regular"
+                                FontSize="40"
+                                HorizontalOptions="End"
+                                Text="arrow_drop_down"
+                                TextColor="Black"
+                                VerticalOptions="Center" />
+                        </Grid>
+                    </Frame>
+                </StackLayout>
+
+                <StackLayout
+                    x:Name="FemaleOptionsStack"
+                    Padding="20"
+                    IsVisible="False">
+                    <Label
+                        FontAttributes="Bold"
+                        FontSize="Medium"
+                        HorizontalOptions="Center"
+                        Text="IF FEMALE SEX SELECTION *"
+                        TextColor="Black"
+                        VerticalOptions="Start" />
+                    <Frame
+                        Padding="10"
+                        BackgroundColor="#DCF4DA"
+                        BorderColor="Black"
+                        CornerRadius="5"
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="Start">
+                        <StackLayout>
+                            <RadioButton
+                                x:Name="NARdBtn"
+                                CheckedChanged="OnRadioButtonSexCheckedChanged"
+                                Content="N/A"
+                                FontSize="20"
+                                GroupName="StatusGroup" />
+                            <RadioButton
+                                x:Name="PregnantRdBtn"
+                                CheckedChanged="OnRadioButtonSexCheckedChanged"
+                                Content="Pregnant"
+                                FontSize="20"
+                                GroupName="StatusGroup" />
+                            <RadioButton
+                                x:Name="LactatingRdBtn"
+                                CheckedChanged="OnRadioButtonSexCheckedChanged"
+                                Content="Lactating with puppies"
+                                FontSize="20"
+                                GroupName="StatusGroup" />
+                            <StackLayout
+                                x:Name="OtherEntrySexStack"
+                                Margin="10,0,10,0"
+                                IsVisible="False">
+                                <Label
+                                    Margin="10,10"
+                                    FontAttributes="Bold"
+                                    FontSize="20"
+                                    HorizontalOptions="Start"
+                                    Text="No of Puppies *"
+                                    TextColor="Black"
+                                    VerticalOptions="Start" />
+                                <Entry
+                                    Margin="10,10"
+                                    FontSize="20"
+                                    HeightRequest="100"
+                                    HorizontalOptions="FillAndExpand"
+                                    Placeholder="Input No:"
+                                    PlaceholderColor="Black"
+                                    TextColor="Black"
+                                    VerticalOptions="Start" />
+                            </StackLayout>
+                        </StackLayout>
+                    </Frame>
+                </StackLayout>
+
+
 
                 <!--  Remarks  -->
                 <StackLayout Padding="20">
@@ -416,9 +481,10 @@
                                 Content="Others (Outside the Barangay)"
                                 FontSize="20"
                                 GroupName="StatusGroup" />
-                            <StackLayout Margin="10,0,10,0" 
-                                         x:Name="OtherEntryStack"
-                                         IsVisible="False">
+                            <StackLayout
+                                x:Name="OtherEntryStack"
+                                Margin="10,0,10,0"
+                                IsVisible="False">
                                 <Label
                                     Margin="10,10"
                                     FontAttributes="Bold"

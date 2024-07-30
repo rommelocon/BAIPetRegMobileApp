@@ -276,14 +276,45 @@ public partial class PetRegisterPage : ContentPage
         List<string> ListSex = new List<string>()
         {
             "Male",
-            "Female",
-            "Undetermine",
-
-            "Mixed"
+            "Female"
         };
         SexList.ItemsSource = ListSex;
     }
 
+    private void SexList_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        if (SexList.SelectedItem != null)
+        {
+            string selectedSex = SexList.SelectedItem.ToString();
+            if (selectedSex == "Male")
+            {
+                FemaleOptionsStack.IsVisible = false;
+            }
+            else if (selectedSex == "Female")
+            {
+                FemaleOptionsStack.IsVisible = true;
+            }
+        }
+    }
+
+    private void OnRadioButtonSexCheckedChanged(object sender, CheckedChangedEventArgs e)
+    {
+        if (sender is RadioButton radioButton && radioButton.IsChecked)
+        {
+            switch (radioButton.Content.ToString())
+            {
+                case "N/A":
+                    OtherEntrySexStack.IsVisible = false;
+                    break;
+                case "Pregnant":
+                    OtherEntrySexStack.IsVisible = false;
+                    break;
+                case "Lactating with puppies":
+                    OtherEntrySexStack.IsVisible = true;
+                    break;
+            }
+        }
+    }
 
 
 
