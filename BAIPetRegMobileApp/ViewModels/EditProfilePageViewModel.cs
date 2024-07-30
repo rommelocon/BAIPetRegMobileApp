@@ -16,10 +16,8 @@ namespace BAIPetRegMobileApp.ViewModels
             Provinces = new ObservableCollection<TblProvinces>();
             Municipalities = new ObservableCollection<TblMunicipalities>();
             Barangays = new ObservableCollection<TblBarangays>();
-            CivilStatus = new ObservableCollection<TblCivilStatus>();
             SexType = new ObservableCollection<TblSexType>();
             LoadRegionsCommand.ExecuteAsync(null);
-            LoadCivilStatusCommand.ExecuteAsync(null);
             LoadSexTypeCommand.ExecuteAsync(null);
         }
 
@@ -32,21 +30,48 @@ namespace BAIPetRegMobileApp.ViewModels
 
         [ObservableProperty]
         private TblRegions selectedRegion;
-        partial void OnSelectedRegionChanged(TblRegions value) => LoadProvincesCommand.ExecuteAsync(null);
+        partial void OnSelectedRegionChanged(TblRegions value)
+        {
+            // Clear related selections
+            SelectedProvince = null;
+            SelectedMunicipality = null;
+            SelectedBarangay = null;
+            Provinces.Clear();
+            Municipalities.Clear();
+            Barangays.Clear();
+
+            // Load provinces for the selected region
+            LoadProvincesCommand.ExecuteAsync(null);
+        }
 
         [ObservableProperty]
         private TblProvinces selectedProvince;
-        partial void OnSelectedProvinceChanged(TblProvinces value) => LoadMunicipalitiesCommand.ExecuteAsync(null);
+        partial void OnSelectedProvinceChanged(TblProvinces value)
+        {
+            // Clear related selections
+            SelectedMunicipality = null;
+            SelectedBarangay = null;
+            Municipalities.Clear();
+            Barangays.Clear();
+
+            // Load municipalities for the selected province
+            LoadMunicipalitiesCommand.ExecuteAsync(null);
+        }
 
         [ObservableProperty]
         private TblMunicipalities selectedMunicipality;
-        partial void OnSelectedMunicipalityChanged(TblMunicipalities value) => LoadBarangaysCommand.ExecuteAsync(null);
+        partial void OnSelectedMunicipalityChanged(TblMunicipalities value)
+        {
+            // Clear related selection
+            SelectedBarangay = null;
+            Barangays.Clear();
+
+            // Load barangays for the selected municipality
+            LoadBarangaysCommand.ExecuteAsync(null);
+        }
 
         [ObservableProperty]
         private TblBarangays selectedBarangay;
-
-        [ObservableProperty]
-        private TblCivilStatus selectedCivilStatus;
 
         [ObservableProperty]
         private TblSexType selectedSexType;
@@ -55,9 +80,7 @@ namespace BAIPetRegMobileApp.ViewModels
         private async Task LoadRegions()
         {
             var regions = await clientService.GetRegionsAsync();
-            Provinces.Clear();
-            Municipalities.Clear();
-            Barangays.Clear();
+            Regions.Clear();
             foreach (var region in regions)
             {
                 Regions.Add(region);
@@ -70,8 +93,7 @@ namespace BAIPetRegMobileApp.ViewModels
             if (SelectedRegion != null)
             {
                 var provinces = await clientService.GetProvincesByRegionCodeAsync(SelectedRegion.Rcode);
-                Municipalities.Clear();
-                Barangays.Clear();
+                Provinces.Clear();
                 foreach (var province in provinces)
                 {
                     Provinces.Add(province);
@@ -85,7 +107,7 @@ namespace BAIPetRegMobileApp.ViewModels
             if (SelectedProvince != null)
             {
                 var municipalities = await clientService.GetMunicipalitiesByProvinceCodeAsync(SelectedProvince.ProvCode);
-                Barangays.Clear();
+                Municipalities.Clear();
                 foreach (var municipality in municipalities)
                 {
                     Municipalities.Add(municipality);
@@ -99,6 +121,7 @@ namespace BAIPetRegMobileApp.ViewModels
             if (SelectedMunicipality != null)
             {
                 var barangays = await clientService.GetBarangaysByMunicipalityCodeAsync(SelectedMunicipality.MunCode);
+                Barangays.Clear();
                 foreach (var barangay in barangays)
                 {
                     Barangays.Add(barangay);
@@ -107,19 +130,10 @@ namespace BAIPetRegMobileApp.ViewModels
         }
 
         [RelayCommand]
-        private async Task LoadCivilStatus()
-        {
-            var civilStatuses = await clientService.GetCivilStatus();
-            foreach (var civilStatus in civilStatuses)
-            {
-                CivilStatus.Add(civilStatus);
-            }
-        }
-
-        [RelayCommand]
         private async Task LoadSexType()
         {
             var sexTypes = await clientService.GetSexType();
+            SexType.Clear();
             foreach (var sexType in sexTypes)
             {
                 SexType.Add(sexType);
@@ -131,7 +145,7 @@ namespace BAIPetRegMobileApp.ViewModels
         {
             try
             {
-                var updatedUser = new UserViewModel
+                var updatedUser = new User
                 {
                     UserName = this.UserName,
                     Email = this.Email,
@@ -140,15 +154,13 @@ namespace BAIPetRegMobileApp.ViewModels
                     MiddleName = this.MiddleName,
                     ExtensionName = this.ExtensionName,
                     Birthday = this.Birthday,
-                    SexDescription = SelectedCivilStatus.CivilStatus,
                     MobileNumber = this.MobileNumber,
-                    Region = SelectedRegion.RegionName,
-                    ProvinceName = SelectedProvince.ProvinceName,
-                    MunicipalitiesCities = SelectedMunicipality.MunCity,
-                    BarangayName = SelectedBarangay.BarangayName,
+                    Region = SelectedRegion?.RegionName,
+                    ProvinceName = SelectedProvince?.ProvinceName,
+                    MunicipalitiesCities = SelectedMunicipality?.MunCity,
+                    BarangayName = SelectedBarangay?.BarangayName,
                     ProfilePicture = this.ProfilePicture,
-                    CivilStatusName = SelectedCivilStatus.CivilStatus,
-                    FullAddress = $"{Region} {MunicipalitiesCities} {ProvinceName} {BarangayName}",
+                    FullAddress = $"{Region} {MunicipalitiesCities} {ProvinceName} {BarangayName}".Trim(),
                 };
 
                 var response = await clientService.UpdateProfileAsync(updatedUser);

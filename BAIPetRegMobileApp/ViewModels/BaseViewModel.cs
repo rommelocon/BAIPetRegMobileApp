@@ -1,6 +1,7 @@
 ﻿using BAIPetRegMobileApp.Models;
 using BAIPetRegMobileApp.Services;
 using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using System.Text.Json;
 
 namespace BAIPetRegMobileApp.ViewModels
@@ -10,65 +11,25 @@ namespace BAIPetRegMobileApp.ViewModels
         protected readonly ClientService clientService;
         private bool isProfileLoaded;
 
-        [ObservableProperty]
-        private UserViewModel? userViewModel;
-
-        [ObservableProperty]
-        private string? userName;
-
-        [ObservableProperty]
-        private string? email;
-
-        [ObservableProperty]
-        private string? firstname;
-
-        [ObservableProperty]
-        private string? lastname;
-
-        [ObservableProperty]
-        private int? civilStatusCode;
-
-        [ObservableProperty]
-        private DateOnly? birthday;
-
-        [ObservableProperty]
-        private string? sexDescription;
-
-        [ObservableProperty]
-        private string? mobileNumber;
-
-        [ObservableProperty]
-        private string? region;
-
-        [ObservableProperty]
-        private string? provinceName;
-
-        [ObservableProperty]
-        private string? municipalitiesCities;
-
-        [ObservableProperty]
-        private string? barangayName;
-
-        [ObservableProperty]
-        private string? civilStatusName;
-
-        [ObservableProperty]
-        private string? middleName;
-
-        [ObservableProperty]
-        private string? extensionName;
-
-        [ObservableProperty]
-        private byte[]? profilePicture;
-
-        [ObservableProperty]
-        private string? fullAddress;
-
-        [ObservableProperty]
-        private string? fullName;
-
-        [ObservableProperty]
-        private string? welcomeMessage;
+        [ObservableProperty] private User? userViewModel;
+        [ObservableProperty] private string? userName;
+        [ObservableProperty] private string? email;
+        [ObservableProperty] private string? firstname;
+        [ObservableProperty] private string? lastname;
+        [ObservableProperty] private int? civilStatusCode;
+        [ObservableProperty] private DateTime? birthday;
+        [ObservableProperty] private string? sexDescription;
+        [ObservableProperty] private string? mobileNumber;
+        [ObservableProperty] private string? region;
+        [ObservableProperty] private string? provinceName;
+        [ObservableProperty] private string? municipalitiesCities;
+        [ObservableProperty] private string? barangayName;
+        [ObservableProperty] private string? middleName;
+        [ObservableProperty] private string? extensionName;
+        [ObservableProperty] private byte[]? profilePicture;
+        [ObservableProperty] private string? fullAddress;
+        [ObservableProperty] private string? fullName;
+        [ObservableProperty] private string? welcomeMessage;
 
         public BaseViewModel(ClientService clientService)
         {
@@ -82,7 +43,7 @@ namespace BAIPetRegMobileApp.ViewModels
         }
 
         // Method to handle common profile loading
-        protected async Task LoadProfile(Action<UserViewModel> updateProperties)
+        protected async Task LoadProfile(Action<User> updateProperties)
         {
             try
             {
@@ -93,21 +54,19 @@ namespace BAIPetRegMobileApp.ViewModels
                 {
                     var loginResponse = JsonSerializer.Deserialize<LoginResponse>(serializedResponse);
 
-                    var user = await clientService.GetProfile();
-
-                    if (user != null)
+                    if (loginResponse != null)
                     {
-                        updateProperties.Invoke(user);
-                        isProfileLoaded = true;
+                        var user = await clientService.GetProfile();
+                        if (user != null)
+                        {
+                            updateProperties.Invoke(user);
+                            isProfileLoaded = true;
+                        }
+                        else
+                        {
+                            await Shell.Current.DisplayAlert("Error", "No profile data found.", "OK");
+                        }
                     }
-                    else
-                    {
-                        await Shell.Current.DisplayAlert("Error", "No profile data found.", "OK");
-                    }
-                }
-                else
-                {
-                    // Handle scenario where serializedResponse is null (data not found)
                 }
             }
             catch (Exception ex)
@@ -134,10 +93,9 @@ namespace BAIPetRegMobileApp.ViewModels
                 MunicipalitiesCities = user.MunicipalitiesCities;
                 BarangayName = user.BarangayName;
                 ProfilePicture = user.ProfilePicture;
-                CivilStatusName = user.CivilStatusName;
                 FullAddress = user.FullAddress;
-                FullName = $"{Firstname} {MiddleName} {Lastname} {ExtensionName}";
-                WelcomeMessage = $"Welcome {user.UserName}";
+                FullName = $"{Firstname} {MiddleName} {Lastname} {ExtensionName}".Trim();
+                WelcomeMessage = $"Welcome {(string.IsNullOrEmpty(Firstname) ? UserName : Firstname)}!";
             });
         }
     }

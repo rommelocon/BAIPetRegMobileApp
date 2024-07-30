@@ -27,7 +27,7 @@ public partial class HomePage : ContentPage
         return true;
     }
 
-    private async void BtnRegisterPet_Clicked(object sender, EventArgs e)
+    private void BtnRegisterPet_Clicked(object sender, EventArgs e)
     {
         //Shell.Current.GoToAsync(nameof(PetRegisterPage));
         Shell.Current.GoToAsync(nameof(TOAPage));

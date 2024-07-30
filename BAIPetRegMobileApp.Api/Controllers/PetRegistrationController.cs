@@ -27,23 +27,11 @@ namespace BAIPetRegMobileApp.Api.Controllers
             _context = context;
         }
 
-        [HttpPost("register-pet")]
+        [HttpPost("register")]
         public async Task<IActionResult> RegisterPet([FromBody] PetRegistrationDTO model)
         {
             var user = await _userManager.GetUserAsync(User);
-            if (model == null)
-            {
-                return BadRequest("Invalid pet registration data.");
-            }
-
-            // Validate PetSexID and AnimalFemaleClassID relationship
-            if (model.PetSexID == 2)
-            {
-                if (model.AnimalFemaleClassID == 0 || !await _context.TblAnimalFemalClassification.AnyAsync(c => c.AnimalFemaleClassID == model.AnimalFemaleClassID))
-                {
-                    return BadRequest("Invalid AnimalFemaleClassID for the selected pet sex.");
-                }
-            }
+          
 
             // Create a new PetRegistration entity
             var petRegistration = new PetRegistration
@@ -72,8 +60,8 @@ namespace BAIPetRegMobileApp.Api.Controllers
                 PetDateofBirth = model.PetDateofBirth,
                 PetSexID = model.PetSexID,
                 PetSexDescription = model.PetSexDescription,
-                AnimalFemaleClassID = model.PetSexID == 1 ? model.AnimalFemaleClassID : (int?)null, // Set only if female
-                AnimalFemalClassification = model.PetSexID == 1 ? model.AnimalFemalClassification : null,
+                AnimalFemaleClassID = model.PetSexID == 2 ? model.AnimalFemaleClassID : (int?)null,
+                AnimalFemalClassification = model.PetSexID == 2 ? model.AnimalFemalClassification : null,
                 NumberOffspring = model.NumberOffspring,
                 Weight = model.Weight,
                 AgeInMonth = model.AgeInMonth,
@@ -112,16 +100,20 @@ namespace BAIPetRegMobileApp.Api.Controllers
             return Ok("Pet registration successful.");
         }
 
-        [HttpGet("{id}")]
+        [HttpGet]
         [Authorize]
-        public async Task<IActionResult> GetPetRegistration(string id)
+        public async Task<IActionResult> GetPetRegistration()
         {
-            var petRegistration = await _context.TblPetRegistration.FindAsync(id);
+            var userId = _userManager.GetUserId(User);
+            var petRegistration = await _context.TblPetRegistration
+                .Where(p=>p.ClientID == userId)
+                .AsNoTracking()
+                .ToListAsync();
             if (petRegistration == null)
             {
                 return NotFound();
             }
-
+            
             return Ok(petRegistration);
         }
     }

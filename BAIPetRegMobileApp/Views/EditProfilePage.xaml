@@ -129,25 +129,6 @@
                 Text="{Binding Email}"
                 TextColor="Black" />
 
-            <!--  Civil Status  -->
-            <Label
-                Margin="20,0,0,0"
-                FontSize="20"
-                HorizontalTextAlignment="Start"
-                Text="Civil Status"
-                TextColor="Black" />
-            <Picker
-                x:Name="civilStatusPicker"
-                Title="Civil Status"
-                Margin="20,0,20,40"
-                BackgroundColor="#e2f2e1"
-                FontSize="20"
-                HorizontalTextAlignment="Start"
-                ItemDisplayBinding="{Binding CivilStatusName}"
-                ItemsSource="{Binding CivilStatus}"
-                SelectedItem="{Binding SelectedCivilStatus, Mode=TwoWay}"
-                TextColor="Black" />
-
             <!--  Contact Number  -->
             <Label
                 Margin="20,0,0,0"

@@ -7,10 +7,16 @@ namespace BAIPetRegMobileApp
     public partial class AppShell : Shell
     {
         private readonly ClientService clientService;
-        public AppShell()
+        public AppShell(ClientService clientService)
         {
             InitializeComponent();
-            BindingContext = this;
+            this.clientService = clientService;
+            BindingContext = clientService;
+            RegisterRoutes();
+        }
+
+        private void RegisterRoutes()
+        {
             Routing.RegisterRoute(nameof(LoginPage), typeof(LoginPage));
             Routing.RegisterRoute(nameof(HomePage), typeof(HomePage));
             Routing.RegisterRoute(nameof(FinalCheckingPage), typeof(FinalCheckingPage));
@@ -21,7 +27,6 @@ namespace BAIPetRegMobileApp
             Routing.RegisterRoute(nameof(CatBreedPage), typeof(CatBreedPage));
             Routing.RegisterRoute(nameof(DogBreedPage), typeof(DogBreedPage));
             Routing.RegisterRoute(nameof(TOAPage), typeof(TOAPage));
-
             Routing.RegisterRoute(nameof(EditProfilePage), typeof(EditProfilePage));
         }
 
@@ -62,9 +67,18 @@ namespace BAIPetRegMobileApp
         }
 
         [RelayCommand]
-        private async Task Logout()
+        public async Task Logout()
         {
-            await clientService.Logout();
+            try
+            {
+                await clientService.Logout();
+                await Shell.Current.GoToAsync(nameof(LoginPage));
+            }
+            catch (Exception ex)
+            {
+                // Handle the exception (logging, showing message, etc.)
+                await Shell.Current.DisplayAlert("Error", $"An error occurred: {ex.Message}", "OK");
+            }
         }
     }
 }

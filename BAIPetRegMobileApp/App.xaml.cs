@@ -1,14 +1,13 @@
 ﻿using BAIPetRegMobileApp.Services;
-using BAIPetRegMobileApp.ViewModels;
 
 namespace BAIPetRegMobileApp
 {
     public partial class App : Application
     {
-        public App()
+        public App(ClientService clientService)
         {
             InitializeComponent();
-            MainPage = new AppShell();
+            MainPage = new AppShell(clientService);
         }
 
         private void CloseButton_Clicked(object sender, EventArgs e)

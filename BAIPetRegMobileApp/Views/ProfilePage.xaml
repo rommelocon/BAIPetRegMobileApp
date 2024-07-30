@@ -271,22 +271,6 @@
                             HorizontalTextAlignment="Start"
                             Text="{Binding Email}"
                             TextColor="Black" />
-                        <!--  Civil Status  -->
-                        <Label
-                            Margin="20,0,0,0"
-                            FontSize="20"
-                            HorizontalTextAlignment="Start"
-                            Text="Civil Status"
-                            TextColor="Black" />
-                        <Label
-                            Margin="20,0,20,40"
-                            Padding="5"
-                            Background="#e2f2e1"
-                            FontAttributes="Italic"
-                            FontSize="20"
-                            HorizontalTextAlignment="Start"
-                            Text="{Binding CivilStatusName}"
-                            TextColor="Black" />
 
                         <!--  Contact Number  -->
                         <Label

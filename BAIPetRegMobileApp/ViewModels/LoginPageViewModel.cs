@@ -2,37 +2,20 @@
 using BAIPetRegMobileApp.Services;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using System.Text.Json;
-using System.Windows.Input;
 
 namespace BAIPetRegMobileApp.ViewModels
 {
     public partial class LoginPageViewModel : ObservableObject
     {
         [ObservableProperty]
-        private RegisterModel registerModel;
-        [ObservableProperty]
         private LoginModel loginModel;
-
-        [ObservableProperty]
-        private string userName;
-        [ObservableProperty]
-        private bool isAuthenticated;
 
         private readonly ClientService clientService;
 
         public LoginPageViewModel(ClientService clientService)
         {
             this.clientService = clientService;
-            RegisterModel = new RegisterModel();
             LoginModel = new LoginModel();
-            IsAuthenticated = false;
-        }
-
-        [RelayCommand]
-        private async Task Register()
-        {
-            await clientService.Register(RegisterModel);
         }
 
         [RelayCommand]

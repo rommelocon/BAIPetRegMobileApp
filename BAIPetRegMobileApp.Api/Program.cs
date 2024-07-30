@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using System.Configuration;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -26,12 +27,6 @@ app.Run();
 static void ConfigureServices(IServiceCollection services, IConfiguration configuration)
 {
     services.AddControllers();
-
-    // JWT Utils
-    services.AddScoped<IJWTConfiguration, JwtUtils>();
-
-    // Email sender service
-    services.AddTransient<IEmailSender, EmailSender>();
 
     // Swagger/OpenAPI configuration
     services.AddEndpointsApiExplorer();
@@ -62,13 +57,15 @@ static void ConfigureServices(IServiceCollection services, IConfiguration config
 
     // Add DbContexts
     services.AddDbContext<UserDbContext>(options =>
-        options.UseSqlServer(configuration.GetConnectionString("UserDb")));
+       options.UseSqlServer(configuration.GetConnectionString("UserDb"),
+           sqlOptions =>
+           {
+               sqlOptions.EnableRetryOnFailure();
+           }));
+
 
     services.AddDbContext<PetRegistrationDbContext>(options =>
         options.UseSqlServer(configuration.GetConnectionString("PetRegistrationDb")));
-
-    // Add AutoMapper
-    services.AddAutoMapper(typeof(Program));
 
     // Identity and JWT Authentication
     services.AddIdentity<ApplicationUser, IdentityRole>(options =>
@@ -108,6 +105,14 @@ static void ConfigureServices(IServiceCollection services, IConfiguration config
                        .AllowAnyHeader();
             });
     });
+
+    // Service Scope
+    services.AddScoped<IJWTConfiguration, JwtUtils>();
+    services.AddScoped<ILocationService, LocationService>();
+    services.AddScoped<ISexTypeService, SexTypeService>();
+
+    // Service Transient
+    services.AddTransient<IEmailSender, EmailSender>();
 }
 
 // Method to configure middleware
