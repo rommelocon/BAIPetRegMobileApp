@@ -14,17 +14,15 @@ namespace BAIPetRegMobileApp.Api.Data
         public DbSet<SexType> TblSexType { get; set; }
         public DbSet<AnimalFemaleClassification> TblAnimalFemalClassification { get; set; }
         public DbSet<AnimalColor> TblAnimalColor { get; set; }
-        public DbSet<AnimalContact> TblAnimalContact { get; set; }
         public DbSet<SpeciesGroup> TblSpeciesGroup { get; set; }
-        public DbSet<SpeciesBreed> TblSpeciesBreed { get; set; }
-        public DbSet<PetTagType> TblPetTagType { get; set; }
-        public DbSet<TagType> TblTagType { get; set; }
-
-        // Location DbSet
         public DbSet<Regions> TblRegions { get; set; }
         public DbSet<Provinces> TblProvinces { get; set; }
         public DbSet<Municipalities> TblMunicipalities { get; set; }
         public DbSet<Barangays> TblBarangays { get; set; }
+        public DbSet<SpeciesBreed> TblSpeciesBreed { get; set; }
+        public DbSet<AnimalContact> TblAnimalContact { get; set; }
+        public DbSet<TagType> TblTagType { get; set; }
+        public DbSet<PetTagType> TblPetTagType { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -88,7 +86,65 @@ namespace BAIPetRegMobileApp.Api.Data
 
         private void ConfigurePetRegistration(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<PetRegistration.PetRegistration>()
+                .HasOne(p => p.OwnershipTypeNavigation)
+                .WithMany()
+                .HasForeignKey(p => p.OwnershipType)
+                .OnDelete(DeleteBehavior.Restrict);
 
+            modelBuilder.Entity<PetRegistration.PetRegistration>()
+                .HasOne(p => p.PetSexNavigation)
+                .WithMany()
+                .HasForeignKey(p => p.PetSexID)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<PetRegistration.PetRegistration>()
+                .HasOne(p => p.AnimalFemaleClassNavigation)
+                .WithMany()
+                .HasForeignKey(p => p.AnimalFemaleClassID)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<PetRegistration.PetRegistration>()
+                .HasOne(p => p.AnimalColorNavigation)
+                .WithMany()
+                .HasForeignKey(p => p.AnimalColorID)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<PetRegistration.PetRegistration>()
+                .HasOne(p => p.SpeciesGroupNavigation)
+                .WithMany()
+                .HasForeignKey(p => p.SpeciesCode)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<PetRegistration.PetRegistration>()
+                .HasOne(p => p.RegionsNavigation)
+                .WithMany()
+                .HasForeignKey(p => p.ClientRcode)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<PetRegistration.PetRegistration>()
+                .HasOne(p => p.ProvincesNavigation)
+                .WithMany()
+                .HasForeignKey(p => p.ClientProvCode)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<PetRegistration.PetRegistration>()
+                .HasOne(p => p.MunicipalitiesNavigation)
+                .WithMany()
+                .HasForeignKey(p => p.ClientMunCode)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<PetRegistration.PetRegistration>()
+                .HasOne(p => p.BarangaysNavigation)
+                .WithMany()
+                .HasForeignKey(p => p.ClientBcode)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<PetRegistration.PetRegistration>()
+                .HasOne(p => p.SpeciesBreedNavigation)
+                .WithMany()
+                .HasForeignKey(p => p.BreedID)
+                .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }

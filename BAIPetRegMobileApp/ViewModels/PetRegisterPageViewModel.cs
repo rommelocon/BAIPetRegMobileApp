@@ -4,7 +4,6 @@ using System.Collections.ObjectModel;
 using CommunityToolkit.Mvvm.Input;
 using CommunityToolkit.Mvvm.ComponentModel;
 using BAIPetRegMobileApp.Models.User;
-using System.Threading.Tasks;
 
 namespace BAIPetRegMobileApp.ViewModels
 {
@@ -16,6 +15,7 @@ namespace BAIPetRegMobileApp.ViewModels
         {
             _clientService = clientService;
 
+            // Initialize collections
             PetRegistrations = new ObservableCollection<PetRegistration>();
             OwnerShipTypes = new ObservableCollection<OwnerShipType>();
             AnimalColors = new ObservableCollection<AnimalColor>();
@@ -27,9 +27,11 @@ namespace BAIPetRegMobileApp.ViewModels
             TagTypes = new ObservableCollection<TagType>();
             SexTypes = new ObservableCollection<SexType>();
 
+            // Load initial data
             LoadDataCommand.ExecuteAsync(null);
         }
 
+        // Properties
         public ObservableCollection<PetRegistration> PetRegistrations { get; }
         public ObservableCollection<OwnerShipType> OwnerShipTypes { get; }
         public ObservableCollection<AnimalColor> AnimalColors { get; }
@@ -41,6 +43,7 @@ namespace BAIPetRegMobileApp.ViewModels
         public ObservableCollection<TagType> TagTypes { get; }
         public ObservableCollection<SexType> SexTypes { get; }
 
+        // Observable properties
         [ObservableProperty]
         private SpeciesGroup _selectedSpeciesGroup;
 
@@ -63,7 +66,44 @@ namespace BAIPetRegMobileApp.ViewModels
         private PetTagType _selectedPetTagType;
 
         [ObservableProperty]
+        private TagType _selectedTagType;
+
+        [ObservableProperty]
         private PetRegistration _petRegistration = new PetRegistration();
+
+        [ObservableProperty]
+        private bool _isTagNumberVisible;  // Visibility for Tag Number entry
+
+        // Handle tag type selection change
+        partial void OnSelectedTagTypeChanged(TagType value)
+        {
+            IsTagNumberVisible = value != null && value.TagID != "NO";
+        }
+
+        partial void OnSelectedSpeciesGroupChanged(SpeciesGroup value)
+        {
+            if (value != null)
+            {
+                LoadBreedsAsync(value.SpeciesCode!);
+            }
+        }
+
+        private async void LoadBreedsAsync(string speciesCode)
+        {
+            try
+            {
+                SpeciesBreeds.Clear();
+                var speciesBreeds = await _clientService.GetSpeciesBreedsAsync(speciesCode);
+                foreach (var breed in speciesBreeds)
+                {
+                    SpeciesBreeds.Add(breed);
+                }
+            }
+            catch (Exception ex)
+            {
+                await Shell.Current.DisplayAlert("Error", $"An error occurred while loading breeds: {ex.Message}", "OK");
+            }
+        }
 
         [RelayCommand]
         private async Task LoadDataAsync()
@@ -74,6 +114,7 @@ namespace BAIPetRegMobileApp.ViewModels
             {
                 IsBusy = true;
 
+                // Load various types of data from the client service
                 OwnerShipTypes.Clear();
                 var ownershipTypes = await _clientService.GetOwnerShipTypes();
                 foreach (var item in ownershipTypes)
@@ -94,28 +135,15 @@ namespace BAIPetRegMobileApp.ViewModels
                 foreach (var item in animalFemaleClassifications)
                     AnimalFemaleClassifications.Add(item);
 
-                PetTagTypes.Clear();
-                var petTagTypes = await _clientService.GetPetTagTypesAsync();
-                foreach (var item in petTagTypes)
-                    PetTagTypes.Add(item);
+                TagTypes.Clear();
+                var tagTypes = await _clientService.GetTagTypesAsync();
+                foreach (var item in tagTypes)
+                    TagTypes.Add(item);
 
                 SpeciesGroups.Clear();
                 var speciesGroups = await _clientService.GetSpeciesGroupsAsync();
                 foreach (var item in speciesGroups)
                     SpeciesGroups.Add(item);
-
-                if (_selectedSpeciesGroup != null)
-                {
-                    SpeciesBreeds.Clear();
-                    var speciesBreeds = await _clientService.GetSpeciesBreedsAsync(_selectedSpeciesGroup.SpeciesCode);
-                    foreach (var item in speciesBreeds)
-                        SpeciesBreeds.Add(item);
-                }
-
-                TagTypes.Clear();
-                var tagTypes = await _clientService.GetTagTypesAsync();
-                foreach (var item in tagTypes)
-                    TagTypes.Add(item);
 
                 SexTypes.Clear();
                 var sexTypes = await _clientService.GetSexType();
@@ -124,7 +152,6 @@ namespace BAIPetRegMobileApp.ViewModels
             }
             catch (Exception ex)
             {
-                // Handle exceptions (e.g., logging, user notifications)
                 await Shell.Current.DisplayAlert("Error", $"An error occurred while loading data: {ex.Message}", "OK");
             }
             finally
@@ -136,22 +163,31 @@ namespace BAIPetRegMobileApp.ViewModels
         [RelayCommand]
         public async Task PetRegistrationSubmit()
         {
-            if (PetRegistration == null)
+            // Create your PetRegistration object and populate it
+            var petRegistration = new PetRegistration
             {
-                await Shell.Current.DisplayAlert("Error", "Pet registration details are missing.", "OK");
-                return;
-            }
+                DateRegistered = DateTime.Now,
+                DateEncocde = DateTime.Now,
+                PetName = PetRegistration.PetName,
+                Weight = PetRegistration.Weight,
+                OwnershipType = SelectedOwnerShipType.OwnerShipTypeID,
+                OwnershipTypeDescription = SelectedOwnerShipType.OwnerShipDescription,
+                SpeciesCode = SelectedSpeciesGroup.SpeciesCode,
+                SpeciesCommonName = SelectedSpeciesGroup.SpeciesCommonName,
+                BreedID = SelectedSpeciesBreed.BreedID,
+                BreedDescription= SelectedSpeciesBreed.BreedDescription,
+                PetSexID = SelectedSexType.SexID,
+                PetSexDescription = SelectedSexType.SexDescription,
+                TagID = SelectedTagType.TagID,
+                TagDescription = SelectedTagType.TagDescription,
+                TagNo = PetRegistration.TagNo,
+                AnimalColorDescription = SelectedAnimalColor.AnimalColorDescription,
+                AnimalColorID = SelectedAnimalColor.AnimalColorID,
+                PetDateofBirth = this.PetRegistration.PetDateofBirth,
+            };
 
-            try
-            {
-                var response = await _clientService.RegisterPetAsync(PetRegistration);
-                await Shell.Current.DisplayAlert("Success", response, "OK");
-            }
-            catch (Exception ex)
-            {
-                // Handle error
-                await Shell.Current.DisplayAlert("Error", $"An error occurred while registering the pet: {ex.Message}", "OK");
-            }
+            // Call your API to submit the registration
+            await clientService.RegisterPetAsync(petRegistration);
         }
     }
 }

@@ -30,12 +30,24 @@ namespace BAIPetRegMobileApp.Api.Controllers
         [HttpPost("register")]
         public async Task<IActionResult> RegisterPet([FromBody] PetRegistrationDTO model)
         {
+            if (!ModelState.IsValid)
+            {
+                var errors = ModelState.Values.SelectMany(v => v.Errors);
+                var errorMessages = errors.Select(e => e.ErrorMessage).ToList();
+                return BadRequest(new { Errors = errorMessages });
+            }
+
             var user = await _userManager.GetUserAsync(User);
 
+            if (user == null)
+            {
+                return Unauthorized("User is not authenticated.");
+            }
 
             // Create a new PetRegistration entity
             var petRegistration = new PetRegistration
             {
+                PetRegistrationID = Guid.NewGuid().ToString(),
                 DateEncocde = model.DateEncocde,
                 DateRegistered = model.DateRegistered,
                 TagID = model.TagID,
@@ -55,7 +67,7 @@ namespace BAIPetRegMobileApp.Api.Controllers
                 ClientBcode = user.Bcode,
                 ClientBarangayName = user.BarangayName,
                 OwnershipType = model.OwnershipType,
-                OwnershipTypeDescription = model.OwnershipDescription,
+                OwnershipTypeDescription = model.OwnershipTypeDescription,
                 PetName = model.PetName,
                 PetDateofBirth = model.PetDateofBirth,
                 PetSexID = model.PetSexID,

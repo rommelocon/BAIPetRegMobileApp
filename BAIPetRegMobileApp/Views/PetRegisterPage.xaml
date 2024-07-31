@@ -234,6 +234,7 @@
                         HorizontalOptions="FillAndExpand">
                         <DatePicker
                             x:Name="BirtDate"
+                            Date="{Binding PetRegistration.PetDateofBirth}"
                             FontSize="20"
                             Format="D" />
                     </Frame>
@@ -268,6 +269,50 @@
                                 ItemDisplayBinding="{Binding SexDescription}"
                                 ItemsSource="{Binding SexTypes}"
                                 SelectedItem="{Binding SelectedSexType, Mode=TwoWay}"
+                                Style="{StaticResource NoUnderlinePicker}"
+                                TitleColor="Black" />
+                            <Label
+                                Grid.Column="1"
+                                Margin="0,0,10,0"
+                                FontFamily="MaterialIconsOutlined-Regular"
+                                FontSize="40"
+                                HorizontalOptions="End"
+                                Text="arrow_drop_down"
+                                TextColor="Black"
+                                VerticalOptions="Center" />
+                        </Grid>
+                    </Frame>
+                </StackLayout>
+
+                <!--  Animal Color  -->
+                <StackLayout>
+                    <Label
+                        Margin="40,20,0,0"
+                        FontAttributes="Bold"
+                        FontSize="20"
+                        Text="Animal Color *"
+                        TextColor="Black" />
+                    <Frame
+                        Margin="30,10"
+                        Padding="10"
+                        BackgroundColor="#DCF4DA"
+                        BorderColor="Transparent"
+                        CornerRadius="15"
+                        HasShadow="False"
+                        HorizontalOptions="FillAndExpand">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <Picker
+                                x:Name="AnimalColorList"
+                                Title="Select Animal Color"
+                                Grid.Column="0"
+                                FontSize="20"
+                                ItemDisplayBinding="{Binding AnimalColorDescription}"
+                                ItemsSource="{Binding AnimalColors}"
+                                SelectedItem="{Binding SelectedAnimalColor, Mode=TwoWay}"
                                 Style="{StaticResource NoUnderlinePicker}"
                                 TitleColor="Black" />
                             <Label
@@ -421,76 +466,21 @@
                         VerticalOptions="Start">
                         <StackLayout>
                             <StackLayout Orientation="Vertical">
-                                <RadioButton
-                                    x:Name="NoneRdBtn"
-                                    Content="None"
+                                <Picker
+                                    Title="Select Pet Tag Type"
+                                    Grid.Column="0"
                                     FontSize="20"
-                                    GroupName="PetTagType"
-                                    TextColor="Black" />
-                                <RadioButton
-                                    x:Name="CollarTagRdBtn"
-                                    Content="Collar Tag"
-                                    FontSize="20"
-                                    GroupName="PetTagType"
-                                    TextColor="Black" />
-                                <RadioButton
-                                    x:Name="EarTagRdBtn"
-                                    Content="Ear Tag"
-                                    FontSize="20"
-                                    GroupName="PetTagType"
-                                    TextColor="Black" />
-                                <RadioButton
-                                    x:Name="LegBandRdBtn"
-                                    Content="Leg Band"
-                                    FontSize="20"
-                                    GroupName="PetTagType"
-                                    TextColor="Black" />
-                                <RadioButton
-                                    x:Name="MicrochipCodeRdBtn"
-                                    Content="Microchip Code"
-                                    FontSize="20"
-                                    GroupName="PetTagType"
-                                    TextColor="Black" />
-                                <RadioButton
-                                    x:Name="RFIDRdBtn"
-                                    Content="Radio Frequency Identification"
-                                    FontSize="20"
-                                    GroupName="PetTagType"
-                                    TextColor="Black" />
-                                <RadioButton
-                                    x:Name="TattooCodeRdBtn"
-                                    Content="Tattoo Code"
-                                    FontSize="20"
-                                    GroupName="PetTagType"
-                                    TextColor="Black" />
-                                <RadioButton
-                                    x:Name="WingBandRdBtn"
-                                    Content="Wing Band"
-                                    FontSize="20"
-                                    GroupName="PetTagType"
-                                    TextColor="Black" />
-                            </StackLayout>
+                                    ItemDisplayBinding="{Binding TagDescription}"
+                                    ItemsSource="{Binding TagTypes}"
+                                    SelectedItem="{Binding SelectedTagType, Mode=TwoWay}"
+                                    Style="{StaticResource NoUnderlinePicker}"
+                                    TitleColor="Black" />
 
-                            <StackLayout x:Name="OtherTagEntryStack" IsVisible="False">
-                                <Label
-                                    Margin="10,10"
-                                    FontAttributes="Bold"
-                                    FontSize="20"
-                                    HorizontalOptions="Start"
-                                    Text="Tag Number"
-                                    TextColor="Black"
-                                    VerticalOptions="Start" />
-                                <Editor
-                                    x:Name="OtherTagEntry"
-                                    Margin="10,10"
-                                    AutoSize="TextChanges"
-                                    FontSize="20"
-                                    HeightRequest="100"
-                                    HorizontalOptions="FillAndExpand"
-                                    Placeholder="Enter Tag Number"
-                                    PlaceholderColor="Black"
-                                    TextColor="Black"
-                                    VerticalOptions="Start" />
+                                <Entry
+                                    IsVisible="{Binding IsTagNumberVisible}"
+                                    Keyboard="Numeric"
+                                    Placeholder="Tag Number"
+                                    Text="{Binding PetRegistration.TagNo}" />
                             </StackLayout>
                         </StackLayout>
                     </Frame>

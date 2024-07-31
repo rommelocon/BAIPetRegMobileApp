@@ -60,12 +60,17 @@ static void ConfigureServices(IServiceCollection services, IConfiguration config
        options.UseSqlServer(configuration.GetConnectionString("UserDb"),
            sqlOptions =>
            {
-               sqlOptions.EnableRetryOnFailure();
+               sqlOptions.CommandTimeout(300);
+               sqlOptions.EnableRetryOnFailure(maxRetryCount: 5, maxRetryDelay: TimeSpan.FromSeconds(30), errorNumbersToAdd: null);
            }));
 
-
     services.AddDbContext<PetRegistrationDbContext>(options =>
-        options.UseSqlServer(configuration.GetConnectionString("PetRegistrationDb")));
+        options.UseSqlServer(configuration.GetConnectionString("PetRegistrationDb"),
+            sqlOptions =>
+            {
+                sqlOptions.CommandTimeout(300);
+                sqlOptions.EnableRetryOnFailure(maxRetryCount: 5, maxRetryDelay: TimeSpan.FromSeconds(30), errorNumbersToAdd: null);
+            }));
 
     // Identity and JWT Authentication
     services.AddIdentity<ApplicationUser, IdentityRole>(options =>

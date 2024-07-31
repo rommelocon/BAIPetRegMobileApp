@@ -3,7 +3,6 @@ using System.Text.Json;
 using System.Net.Http.Headers;
 using BAIPetRegMobileApp.Models.User;
 using BAIPetRegMobileApp.Models.PetRegistration;
-using Azure;
 
 namespace BAIPetRegMobileApp.Services
 {
@@ -141,24 +140,15 @@ namespace BAIPetRegMobileApp.Services
             throw new InvalidOperationException("Authentication data not found.");
         }
 
-        public async Task<string> RegisterPetAsync(PetRegistration model)
+        public async Task<bool> RegisterPetAsync(PetRegistration model)
         {
             var loginResponse = await GetStoredLoginResponseAsync();
 
             if (loginResponse != null && !string.IsNullOrEmpty(loginResponse.UserName) && !string.IsNullOrEmpty(loginResponse.AccessToken))
             {
                 var httpClient = CreateClientWithAuthorization(loginResponse.AccessToken);
-                var result = await httpClient.PostAsJsonAsync("/api/PetRegistration/register", model);
-                SecureStorage.Default.Remove("Authentication");
-                if (result.IsSuccessStatusCode)
-                {
-                    return await result.Content.ReadAsStringAsync();
-                }
-                else
-                {
-                    var error = await result.Content.ReadAsStringAsync();
-                    throw new Exception($"Error: {error}");
-                }
+                var response = await httpClient.PostAsJsonAsync("/api/PetRegistration/register", model);
+                return response.IsSuccessStatusCode;
             }
             throw new InvalidOperationException("Authentication data not found.");
         }
@@ -186,7 +176,5 @@ namespace BAIPetRegMobileApp.Services
         public Task<List<SpeciesBreed>> GetSpeciesBreedsAsync(string speciesCode) => GetListAsync<SpeciesBreed>($"/api/PetRegistration/speciesBreed/{speciesCode}");
         public Task<List<SpeciesGroup>> GetSpeciesGroupsAsync() => GetListAsync<SpeciesGroup>("/api/PetRegistration/speciesGroup");
         public Task<List<TagType>> GetTagTypesAsync() => GetListAsync<TagType>("/api/PetRegistration/tagType");
-
-
     }
 }
