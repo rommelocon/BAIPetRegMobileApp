@@ -1,8 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace BAIPetRegMobileApp.Models
+﻿namespace BAIPetRegMobileApp.Models.User
 {
-    public class TblAgencyName
+    public class AgencyName
     {
         public string AgencyID { get; set; }
         public string? AgencyDescription { get; set; }

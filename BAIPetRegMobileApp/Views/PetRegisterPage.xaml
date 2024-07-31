@@ -3,7 +3,9 @@
     x:Class="BAIPetRegMobileApp.Views.PetRegisterPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit">
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    xmlns:views="clr-namespace:BAIPetRegMobileApp.ViewModels"
+    x:DataType="views:PetRegisterPageViewModel">
     <Grid>
         <Grid.RowDefinitions>
             <!--  Define rows for your banner, search frame, and content  -->
@@ -66,6 +68,7 @@
                             IsTextPredictionEnabled="False"
                             Placeholder="Pet's Name"
                             PlaceholderColor="Black"
+                            Text="{Binding PetRegistration.PetName}"
                             VerticalOptions="Center">
                             <Entry.Behaviors>
                                 <toolkit:TextValidationBehavior
@@ -105,6 +108,9 @@
                                 Title="Type of Ownership"
                                 Grid.Column="0"
                                 FontSize="20"
+                                ItemDisplayBinding="{Binding OwnerShipDescription}"
+                                ItemsSource="{Binding OwnerShipTypes}"
+                                SelectedItem="{Binding SelectedOwnerShipType, Mode=TwoWay}"
                                 Style="{StaticResource NoUnderlinePicker}"
                                 TitleColor="Black" />
                             <Label
@@ -121,7 +127,6 @@
                 </StackLayout>
 
                 <!--  Species Picker  -->
-
                 <StackLayout>
                     <Label
                         Margin="40,20,0,0"
@@ -147,7 +152,9 @@
                                 Title="Select Species"
                                 Grid.Column="0"
                                 FontSize="20"
-                                SelectedIndexChanged="OnSpeciesSelected"
+                                ItemDisplayBinding="{Binding SpeciesCommonName}"
+                                ItemsSource="{Binding SpeciesGroups}"
+                                SelectedItem="{Binding SelectedSpeciesGroup, Mode=TwoWay}"
                                 Style="{StaticResource NoUnderlinePicker}"
                                 TitleColor="Black" />
                             <Label
@@ -164,7 +171,6 @@
                 </StackLayout>
 
                 <!--  Breed Picker  -->
-
                 <StackLayout>
                     <Label
                         Margin="40,20,0,0"
@@ -190,6 +196,9 @@
                                 Title="Select Breed"
                                 Grid.Column="0"
                                 FontSize="20"
+                                ItemDisplayBinding="{Binding BreedDescription}"
+                                ItemsSource="{Binding SpeciesBreeds}"
+                                SelectedItem="{Binding SelectedSpeciesBreed, Mode=TwoWay}"
                                 Style="{StaticResource NoUnderlinePicker}"
                                 TitleColor="Black" />
                             <Label
@@ -208,7 +217,6 @@
                 </StackLayout>
 
                 <!--  Date Picker  -->
-
                 <StackLayout>
                     <Label
                         Margin="40,20,0,0"
@@ -232,7 +240,6 @@
                 </StackLayout>
 
                 <!--  Sex  -->
-
                 <StackLayout>
                     <Label
                         Margin="40,20,0,0"
@@ -258,6 +265,9 @@
                                 Title="Select Sex"
                                 Grid.Column="0"
                                 FontSize="20"
+                                ItemDisplayBinding="{Binding SexDescription}"
+                                ItemsSource="{Binding SexTypes}"
+                                SelectedItem="{Binding SelectedSexType, Mode=TwoWay}"
                                 Style="{StaticResource NoUnderlinePicker}"
                                 TitleColor="Black" />
                             <Label
@@ -274,7 +284,7 @@
                 </StackLayout>
 
                 <!--  Habitat  -->
-
+                <!--
                 <StackLayout>
                     <Label
                         Margin="40,20,0,0"
@@ -313,10 +323,9 @@
                                 VerticalOptions="Center" />
                         </Grid>
                     </Frame>
-                </StackLayout>
+                </StackLayout>-->
 
                 <!--  Contact with Other Animals?  -->
-
                 <StackLayout>
                     <Label
                         Margin="40,20,0,0"
@@ -342,6 +351,9 @@
                                 Title="Select"
                                 Grid.Column="0"
                                 FontSize="20"
+                                ItemDisplayBinding="{Binding AnimalContactDescription}"
+                                ItemsSource="{Binding AnimalContacts}"
+                                SelectedItem="{Binding SelectedAnimalContact, Mode=TwoWay}"
                                 Style="{StaticResource NoUnderlinePicker}"
                                 TitleColor="Black" />
                             <Label
@@ -358,7 +370,6 @@
                 </StackLayout>
 
                 <!--  Weight Entry  -->
-
                 <StackLayout>
                     <Label
                         Margin="40,20,0,0"
@@ -386,13 +397,12 @@
                             MaxLength="5"
                             Placeholder="Input Weight(KGS)"
                             PlaceholderColor="Black"
+                            Text="{Binding PetRegistration.Weight}"
                             VerticalOptions="Center" />
                     </Frame>
                 </StackLayout>
 
                 <!--  Pet Tag Type  -->
-
-
                 <StackLayout Padding="20">
                     <Label
                         FontAttributes="Bold"
@@ -413,56 +423,48 @@
                             <StackLayout Orientation="Vertical">
                                 <RadioButton
                                     x:Name="NoneRdBtn"
-                                    CheckedChanged="OnRadioTagButtonCheckedChanged"
                                     Content="None"
                                     FontSize="20"
                                     GroupName="PetTagType"
                                     TextColor="Black" />
                                 <RadioButton
                                     x:Name="CollarTagRdBtn"
-                                    CheckedChanged="OnRadioTagButtonCheckedChanged"
                                     Content="Collar Tag"
                                     FontSize="20"
                                     GroupName="PetTagType"
                                     TextColor="Black" />
                                 <RadioButton
                                     x:Name="EarTagRdBtn"
-                                    CheckedChanged="OnRadioTagButtonCheckedChanged"
                                     Content="Ear Tag"
                                     FontSize="20"
                                     GroupName="PetTagType"
                                     TextColor="Black" />
                                 <RadioButton
                                     x:Name="LegBandRdBtn"
-                                    CheckedChanged="OnRadioTagButtonCheckedChanged"
                                     Content="Leg Band"
                                     FontSize="20"
                                     GroupName="PetTagType"
                                     TextColor="Black" />
                                 <RadioButton
                                     x:Name="MicrochipCodeRdBtn"
-                                    CheckedChanged="OnRadioTagButtonCheckedChanged"
                                     Content="Microchip Code"
                                     FontSize="20"
                                     GroupName="PetTagType"
                                     TextColor="Black" />
                                 <RadioButton
                                     x:Name="RFIDRdBtn"
-                                    CheckedChanged="OnRadioTagButtonCheckedChanged"
                                     Content="Radio Frequency Identification"
                                     FontSize="20"
                                     GroupName="PetTagType"
                                     TextColor="Black" />
                                 <RadioButton
                                     x:Name="TattooCodeRdBtn"
-                                    CheckedChanged="OnRadioTagButtonCheckedChanged"
                                     Content="Tattoo Code"
                                     FontSize="20"
                                     GroupName="PetTagType"
                                     TextColor="Black" />
                                 <RadioButton
                                     x:Name="WingBandRdBtn"
-                                    CheckedChanged="OnRadioTagButtonCheckedChanged"
                                     Content="Wing Band"
                                     FontSize="20"
                                     GroupName="PetTagType"
@@ -516,7 +518,6 @@
                             <StackLayout Orientation="Horizontal">
                                 <RadioButton
                                     x:Name="LocalRadioButton"
-                                    CheckedChanged="OnRadioButtonCheckedChanged"
                                     Content="Local (within the Barangay)"
                                     FontSize="20"
                                     GroupName="PetOriginGroup"
@@ -525,7 +526,6 @@
                             <StackLayout Orientation="Horizontal">
                                 <RadioButton
                                     x:Name="OtherRadioButton"
-                                    CheckedChanged="OnRadioButtonCheckedChanged"
                                     Content="Other (Outside the Barangay)"
                                     FontSize="20"
                                     GroupName="PetOriginGroup"
@@ -580,13 +580,11 @@
                         <StackLayout>
                             <RadioButton
                                 x:Name="AliveRadioButton"
-                                CheckedChanged="OnStatusRadioButtonCheckedChanged"
                                 Content="Alive"
                                 FontSize="20"
                                 GroupName="StatusGroup" />
                             <RadioButton
                                 x:Name="DeadRadioButton"
-                                CheckedChanged="OnStatusRadioButtonCheckedChanged"
                                 Content="Dead"
                                 FontSize="20"
                                 GroupName="StatusGroup" />
@@ -662,14 +660,12 @@
                                 <Button
                                     Margin="0,10,0,0"
                                     BackgroundColor="#096B00"
-                                    Clicked="OnSelectImage1Clicked"
                                     CornerRadius="10"
                                     Text="Upload Image"
                                     TextColor="White" />
                                 <Button
                                     Margin="0,10,0,0"
                                     BackgroundColor="#096B00"
-                                    Clicked="OnTakePhoto1Clicked"
                                     CornerRadius="10"
                                     Text="Take a Photo"
                                     TextColor="White" />
@@ -697,14 +693,12 @@
                                 <Button
                                     Margin="0,10,0,0"
                                     BackgroundColor="#096B00"
-                                    Clicked="OnSelectImage2Clicked"
                                     CornerRadius="10"
                                     Text="Upload Image"
                                     TextColor="White" />
                                 <Button
                                     Margin="0,10,0,0"
                                     BackgroundColor="#096B00"
-                                    Clicked="OnTakePhoto2Clicked"
                                     CornerRadius="10"
                                     Text="Take a Photo"
                                     TextColor="White" />
@@ -732,14 +726,12 @@
                                 <Button
                                     Margin="0,10,0,0"
                                     BackgroundColor="#096B00"
-                                    Clicked="OnSelectImage3Clicked"
                                     CornerRadius="10"
                                     Text="Upload Image"
                                     TextColor="White" />
                                 <Button
                                     Margin="0,10,0,0"
                                     BackgroundColor="#096B00"
-                                    Clicked="OnTakePhoto3Clicked"
                                     CornerRadius="10"
                                     Text="Take a Photo"
                                     TextColor="White" />
@@ -767,14 +759,12 @@
                                 <Button
                                     Margin="0,10,0,0"
                                     BackgroundColor="#096B00"
-                                    Clicked="OnSelectImage4Clicked"
                                     CornerRadius="10"
                                     Text="Upload Image"
                                     TextColor="White" />
                                 <Button
                                     Margin="0,10,0,0"
                                     BackgroundColor="#096B00"
-                                    Clicked="OnTakePhoto4Clicked"
                                     CornerRadius="10"
                                     Text="Take a Photo"
                                     TextColor="White" />
@@ -791,7 +781,7 @@
                     Margin="60"
                     Padding="20"
                     BackgroundColor="#096B00"
-                    Clicked="BtnSubmit_Clicked"
+                    Command="{Binding PetRegistrationSubmitCommand}"
                     CornerRadius="10"
                     FontAttributes="Bold"
                     FontSize="20"

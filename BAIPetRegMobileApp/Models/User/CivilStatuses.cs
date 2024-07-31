@@ -1,6 +1,6 @@
-﻿namespace BAIPetRegMobileApp.Models
+﻿namespace BAIPetRegMobileApp.Models.User
 {
-    public class TblCivilStatus
+    public class CivilStatuses
     {
         public int CivilCode { get; set; }
         public string? CivilStatus { get; set; }

@@ -11,4 +11,9 @@ public partial class PetRegisterPage : ContentPage
         this.petRegisterPageViewModel = petRegisterPageViewModel;
         BindingContext = petRegisterPageViewModel;
     }
+
+    private async Task PetRegistrationSubmitAsync()
+    {
+        await petRegisterPageViewModel.PetRegistrationSubmit();
+    }
 }

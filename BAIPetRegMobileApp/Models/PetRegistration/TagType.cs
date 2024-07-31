@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace BAIPetRegMobileApp.Api.Data.PetRegistration
+﻿namespace BAIPetRegMobileApp.Models.PetRegistration
 {
     public class TagType
     {

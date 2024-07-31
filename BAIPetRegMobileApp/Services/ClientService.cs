@@ -1,21 +1,14 @@
-﻿using BAIPetRegMobileApp.Models;
-using System.Net.Http.Json;
+﻿using System.Net.Http.Json;
 using System.Text.Json;
 using System.Net.Http.Headers;
+using BAIPetRegMobileApp.Models.User;
+using BAIPetRegMobileApp.Models.PetRegistration;
+using Azure;
 
 namespace BAIPetRegMobileApp.Services
 {
     public class ClientService
     {
-        // Define an event
-        public event EventHandler ProfileUpdated;
-
-        // Method to raise the event
-        protected virtual void OnProfileUpdated()
-        {
-            ProfileUpdated?.Invoke(this, EventArgs.Empty);
-        }
-
         private readonly IHttpClientFactory httpClientFactory;
 
         public ClientService(IHttpClientFactory httpClientFactory)
@@ -142,14 +135,31 @@ namespace BAIPetRegMobileApp.Services
                 var httpClient = CreateClientWithAuthorization(loginResponse.AccessToken);
                 var response = await httpClient.PutAsJsonAsync("/api/Account/user", updatedUser);
 
-                if (response.IsSuccessStatusCode)
-                {
-                    OnProfileUpdated();
-                }
-
                 return response;
             }
 
+            throw new InvalidOperationException("Authentication data not found.");
+        }
+
+        public async Task<string> RegisterPetAsync(PetRegistration model)
+        {
+            var loginResponse = await GetStoredLoginResponseAsync();
+
+            if (loginResponse != null && !string.IsNullOrEmpty(loginResponse.UserName) && !string.IsNullOrEmpty(loginResponse.AccessToken))
+            {
+                var httpClient = CreateClientWithAuthorization(loginResponse.AccessToken);
+                var result = await httpClient.PostAsJsonAsync("/api/PetRegistration/register", model);
+                SecureStorage.Default.Remove("Authentication");
+                if (result.IsSuccessStatusCode)
+                {
+                    return await result.Content.ReadAsStringAsync();
+                }
+                else
+                {
+                    var error = await result.Content.ReadAsStringAsync();
+                    throw new Exception($"Error: {error}");
+                }
+            }
             throw new InvalidOperationException("Authentication data not found.");
         }
 
@@ -163,10 +173,20 @@ namespace BAIPetRegMobileApp.Services
             return JsonSerializer.Deserialize<List<T>>(jsonResponse, new JsonSerializerOptions { PropertyNamingPolicy = JsonNamingPolicy.CamelCase })!;
         }
 
-        public Task<List<TblRegions>> GetRegionsAsync() => GetListAsync<TblRegions>("/api/Location/regions");
-        public Task<List<TblProvinces>> GetProvincesByRegionCodeAsync(string regionCode) => GetListAsync<TblProvinces>($"/api/Location/provinces/{regionCode}");
-        public Task<List<TblMunicipalities>> GetMunicipalitiesByProvinceCodeAsync(string provinceCode) => GetListAsync<TblMunicipalities>($"/api/Location/municipalities/{provinceCode}");
-        public Task<List<TblBarangays>> GetBarangaysByMunicipalityCodeAsync(string municipalityCode) => GetListAsync<TblBarangays>($"/api/Location/barangays/{municipalityCode}");
-        public Task<List<TblSexType>> GetSexType() => GetListAsync<TblSexType>("/api/SexType/sex");
+        public Task<List<Regions>> GetRegionsAsync() => GetListAsync<Regions>("/api/Location/regions");
+        public Task<List<Provinces>> GetProvincesByRegionCodeAsync(string regionCode) => GetListAsync<Provinces>($"/api/Location/provinces/{regionCode}");
+        public Task<List<Municipalities>> GetMunicipalitiesByProvinceCodeAsync(string provinceCode) => GetListAsync<Municipalities>($"/api/Location/municipalities/{provinceCode}");
+        public Task<List<Barangays>> GetBarangaysByMunicipalityCodeAsync(string municipalityCode) => GetListAsync<Barangays>($"/api/Location/barangays/{municipalityCode}");
+        public Task<List<SexType>> GetSexType() => GetListAsync<SexType>("/api/SexType/sex");
+        public Task<List<OwnerShipType>> GetOwnerShipTypes() => GetListAsync<OwnerShipType>("/api/PetRegistration/ownershipType");
+        public Task<List<AnimalColor>> GetAnimalColors() => GetListAsync<AnimalColor>("/api/PetRegistration/animalColor");
+        public Task<List<AnimalContact>> GetAnimalContactsAsync() => GetListAsync<AnimalContact>("/api/PetRegistration/animalContacts");
+        public Task<List<AnimalFemaleClassification>> GetAnimalFemaleClassificationsAsync() => GetListAsync<AnimalFemaleClassification>("/api/PetRegistration/animalFemaleClassificator");
+        public Task<List<PetTagType>> GetPetTagTypesAsync() => GetListAsync<PetTagType>("/api/PetRegistration/petTagType");
+        public Task<List<SpeciesBreed>> GetSpeciesBreedsAsync(string speciesCode) => GetListAsync<SpeciesBreed>($"/api/PetRegistration/speciesBreed/{speciesCode}");
+        public Task<List<SpeciesGroup>> GetSpeciesGroupsAsync() => GetListAsync<SpeciesGroup>("/api/PetRegistration/speciesGroup");
+        public Task<List<TagType>> GetTagTypesAsync() => GetListAsync<TagType>("/api/PetRegistration/tagType");
+
+
     }
 }

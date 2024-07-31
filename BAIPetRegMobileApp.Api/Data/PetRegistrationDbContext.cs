@@ -14,8 +14,11 @@ namespace BAIPetRegMobileApp.Api.Data
         public DbSet<SexType> TblSexType { get; set; }
         public DbSet<AnimalFemaleClassification> TblAnimalFemalClassification { get; set; }
         public DbSet<AnimalColor> TblAnimalColor { get; set; }
+        public DbSet<AnimalContact> TblAnimalContact { get; set; }
         public DbSet<SpeciesGroup> TblSpeciesGroup { get; set; }
         public DbSet<SpeciesBreed> TblSpeciesBreed { get; set; }
+        public DbSet<PetTagType> TblPetTagType { get; set; }
+        public DbSet<TagType> TblTagType { get; set; }
 
         // Location DbSet
         public DbSet<Regions> TblRegions { get; set; }
@@ -45,10 +48,23 @@ namespace BAIPetRegMobileApp.Api.Data
             modelBuilder.Entity<Provinces>().HasKey(p => p.ProvCode);
             modelBuilder.Entity<Municipalities>().HasKey(m => m.MunCode);
             modelBuilder.Entity<Barangays>().HasKey(b => b.Bcode);
+            modelBuilder.Entity<AnimalContact>().HasKey(ac => ac.AnimalContactID);
+            modelBuilder.Entity<PetTagType>().HasKey(ptt=>ptt.TagID);
+            modelBuilder.Entity<TagType>().HasKey(tt => tt.TagID);
         }
 
         private void ConfigureRelationships(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<PetTagType>()
+                .HasOne(a => a.TagType)
+                .WithMany()
+                .HasForeignKey(afc => afc.TagID);
+
+            modelBuilder.Entity<PetTagType>()
+               .HasOne(a => a.SpeciesGroup)
+               .WithMany()
+               .HasForeignKey(afc => afc.SpeciesCode);
+
             modelBuilder.Entity<SpeciesBreed>()
                 .HasOne(sb => sb.SpeciesGroup)
                 .WithMany(sg => sg.Breeds)

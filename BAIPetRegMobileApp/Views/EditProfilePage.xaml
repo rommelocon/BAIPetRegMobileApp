@@ -102,7 +102,7 @@
                 TextColor="Black" />
             <Picker
                 x:Name="sexTypePicker"
-                Title="{Binding SexDescription}"
+                Title="Gender"
                 Margin="20,0,20,40"
                 BackgroundColor="#e2f2e1"
                 FontSize="20"

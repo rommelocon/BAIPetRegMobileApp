@@ -1,5 +1,4 @@
-﻿using BAIPetRegMobileApp.Api.Data.User;
-using BAIPetRegMobileApp.Api.DTOs;
+﻿using BAIPetRegMobileApp.Api.DTOs;
 
 namespace BAIPetRegMobileApp.Api.Interfaces
 {

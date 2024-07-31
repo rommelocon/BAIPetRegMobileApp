@@ -31,7 +31,7 @@ namespace BAIPetRegMobileApp.Api.Controllers
         public async Task<IActionResult> RegisterPet([FromBody] PetRegistrationDTO model)
         {
             var user = await _userManager.GetUserAsync(User);
-          
+
 
             // Create a new PetRegistration entity
             var petRegistration = new PetRegistration
@@ -106,15 +106,73 @@ namespace BAIPetRegMobileApp.Api.Controllers
         {
             var userId = _userManager.GetUserId(User);
             var petRegistration = await _context.TblPetRegistration
-                .Where(p=>p.ClientID == userId)
+                .Where(p => p.ClientID == userId)
                 .AsNoTracking()
                 .ToListAsync();
             if (petRegistration == null)
             {
                 return NotFound();
             }
-            
+
             return Ok(petRegistration);
+        }
+
+        [HttpGet("ownershipType")]
+        public async Task<ActionResult<IEnumerable<OwnerShipType>>> GetOwnerShipType()
+        {
+            return await _context.TblOwnerShipType.AsNoTracking().ToListAsync();
+        }
+
+        [HttpGet("animalColor")]
+        public async Task<ActionResult<IEnumerable<AnimalColor>>> GetAnimalColor()
+        {
+            return await _context.TblAnimalColor.AsNoTracking().ToListAsync();
+        }
+
+        [HttpGet("animalContacts")]
+        public async Task<ActionResult<IEnumerable<AnimalContact>>> GetAnimalContact()
+        {
+            return await _context.TblAnimalContact.AsNoTracking().ToListAsync();
+        }
+
+        [HttpGet("animalFemaleClassificator")]
+        public async Task<ActionResult<IEnumerable<AnimalFemaleClassification>>> GetAnimalFemaleClassificator()
+        {
+            return await _context.TblAnimalFemalClassification.AsNoTracking().ToListAsync();
+        }
+
+        [HttpGet("petTagType")]
+        public async Task<ActionResult<IEnumerable<PetTagType>>> GetPetTagType()
+        {
+            return await _context.TblPetTagType.AsNoTracking().ToListAsync();
+        }
+
+        [HttpGet("speciesBreed/{speciesCode}")]
+        public async Task<ActionResult<IEnumerable<SpeciesBreed>>> GetSpeciesBreed(string speciesCode)
+        {
+            var speciesBreed = await _context.TblSpeciesBreed
+                .Where(e => e.SpeciesCode == speciesCode)
+                .AsNoTracking()
+                .ToListAsync();
+
+            return speciesBreed;
+        }
+
+        [HttpGet("speciesGroup")]
+        public async Task<ActionResult<IEnumerable<SpeciesGroup>>> GetSpeciesGroup()
+        {
+            var speciesGroup = await _context.TblSpeciesGroup
+                .Where(e => e.SpeciesCommonName == "Dog" || e.SpeciesCommonName == "Cat")
+                .AsNoTracking()
+                .ToListAsync();
+
+            return speciesGroup;
+        }
+
+        [HttpGet("tagType")]
+        public async Task<ActionResult<IEnumerable<TagType>>> GetTagType()
+        {
+            return await _context.TblTagType.AsNoTracking().ToListAsync();
         }
     }
 }

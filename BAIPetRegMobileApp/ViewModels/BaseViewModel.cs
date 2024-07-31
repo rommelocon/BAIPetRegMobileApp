@@ -1,4 +1,4 @@
-﻿using BAIPetRegMobileApp.Models;
+﻿using BAIPetRegMobileApp.Models.User;
 using BAIPetRegMobileApp.Services;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
@@ -11,7 +11,7 @@ namespace BAIPetRegMobileApp.ViewModels
     {
         protected readonly ClientService clientService;
         private bool isProfileLoaded;
-
+        [ObservableProperty] private bool isBusy;
         [ObservableProperty] private User? userViewModel;
         [ObservableProperty] private string? userName;
         [ObservableProperty] private string? email;

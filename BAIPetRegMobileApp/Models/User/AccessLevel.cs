@@ -1,6 +1,6 @@
-﻿namespace BAIPetRegMobileApp.Models
+﻿namespace BAIPetRegMobileApp.Models.User
 {
-    public class TblAccessLevel
+    public class AccessLevel
     {
         public int AccessLevelID { get; set; }
         public string? AccessLevelDescription { get; set; }

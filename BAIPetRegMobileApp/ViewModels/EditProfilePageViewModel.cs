@@ -1,4 +1,4 @@
-﻿using BAIPetRegMobileApp.Models;
+﻿using BAIPetRegMobileApp.Models.User;
 using BAIPetRegMobileApp.Services;
 using BAIPetRegMobileApp.Views;
 using CommunityToolkit.Mvvm.ComponentModel;
@@ -12,25 +12,24 @@ namespace BAIPetRegMobileApp.ViewModels
         public EditProfilePageViewModel(ClientService clientService) : base(clientService)
         {
             _ = InitializeProfileAsync();
-            Regions = new ObservableCollection<TblRegions>();
-            Provinces = new ObservableCollection<TblProvinces>();
-            Municipalities = new ObservableCollection<TblMunicipalities>();
-            Barangays = new ObservableCollection<TblBarangays>();
-            SexType = new ObservableCollection<TblSexType>();
+            Regions = new ObservableCollection<Regions>();
+            Provinces = new ObservableCollection<Provinces>();
+            Municipalities = new ObservableCollection<Municipalities>();
+            Barangays = new ObservableCollection<Barangays>();
+            SexType = new ObservableCollection<SexType>();
             LoadRegionsCommand.ExecuteAsync(null);
             LoadSexTypeCommand.ExecuteAsync(null);
         }
 
-        public ObservableCollection<TblRegions> Regions { get; }
-        public ObservableCollection<TblProvinces> Provinces { get; }
-        public ObservableCollection<TblMunicipalities> Municipalities { get; }
-        public ObservableCollection<TblBarangays> Barangays { get; }
-        public ObservableCollection<TblCivilStatus> CivilStatus { get; }
-        public ObservableCollection<TblSexType> SexType { get; }
+        public ObservableCollection<Regions> Regions { get; }
+        public ObservableCollection<Provinces> Provinces { get; }
+        public ObservableCollection<Municipalities> Municipalities { get; }
+        public ObservableCollection<Barangays> Barangays { get; }
+        public ObservableCollection<SexType> SexType { get; }
 
         [ObservableProperty]
-        private TblRegions selectedRegion;
-        partial void OnSelectedRegionChanged(TblRegions value)
+        private Regions selectedRegion;
+        partial void OnSelectedRegionChanged(Regions value)
         {
             // Clear related selections
             SelectedProvince = null;
@@ -45,8 +44,8 @@ namespace BAIPetRegMobileApp.ViewModels
         }
 
         [ObservableProperty]
-        private TblProvinces selectedProvince;
-        partial void OnSelectedProvinceChanged(TblProvinces value)
+        private Provinces selectedProvince;
+        partial void OnSelectedProvinceChanged(Provinces value)
         {
             // Clear related selections
             SelectedMunicipality = null;
@@ -59,8 +58,8 @@ namespace BAIPetRegMobileApp.ViewModels
         }
 
         [ObservableProperty]
-        private TblMunicipalities selectedMunicipality;
-        partial void OnSelectedMunicipalityChanged(TblMunicipalities value)
+        private Municipalities selectedMunicipality;
+        partial void OnSelectedMunicipalityChanged(Municipalities value)
         {
             // Clear related selection
             SelectedBarangay = null;
@@ -71,10 +70,10 @@ namespace BAIPetRegMobileApp.ViewModels
         }
 
         [ObservableProperty]
-        private TblBarangays selectedBarangay;
+        private Barangays selectedBarangay;
 
         [ObservableProperty]
-        private TblSexType selectedSexType;
+        private SexType selectedSexType;
 
         [RelayCommand]
         private async Task LoadRegions()

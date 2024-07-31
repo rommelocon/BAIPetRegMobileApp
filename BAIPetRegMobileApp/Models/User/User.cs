@@ -1,4 +1,4 @@
-﻿namespace BAIPetRegMobileApp.Models
+﻿namespace BAIPetRegMobileApp.Models.User
 {
     public class User
     {
