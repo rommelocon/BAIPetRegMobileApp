@@ -19,7 +19,7 @@
         <Frame
             Margin="0"
             Padding="10"
-            BackgroundColor="#57C84D"
+            BackgroundColor="#7EE175"
             BorderColor="Transparent"
             CornerRadius="0">
             <Button
@@ -46,8 +46,8 @@
             <Frame
                 Margin="12,30,12,0"
                 Padding="20,10"
-                BackgroundColor="#12DC00"
-                CornerRadius="10"
+                BackgroundColor="#096B00"
+                CornerRadius="30"
                 HasShadow="False">
                 <Frame.GestureRecognizers>
                     <TapGestureRecognizer Tapped="OnProfileButtonTapped" />
@@ -59,7 +59,7 @@
                     </Grid.ColumnDefinitions>
                     <Label
                         FontFamily="MaterialIcons-Regular"
-                        FontSize="24"
+                        FontSize="42"
                         Text="person"
                         TextColor="White"
                         VerticalOptions="Center" />
@@ -78,8 +78,8 @@
             <Frame
                 Margin="12,30,12,0"
                 Padding="20,10"
-                BackgroundColor="#12DC00"
-                CornerRadius="10"
+                BackgroundColor="#096B00"
+                CornerRadius="30"
                 HasShadow="False">
                 <Frame.GestureRecognizers>
                     <TapGestureRecognizer Tapped="OnRegisterPetButtonTapped" />
@@ -91,7 +91,7 @@
                     </Grid.ColumnDefinitions>
                     <Label
                         FontFamily="MaterialIcons-Regular"
-                        FontSize="24"
+                        FontSize="42"
                         Text="pets"
                         TextColor="White"
                         VerticalOptions="Center" />
@@ -110,8 +110,8 @@
             <Frame
                 Margin="12,30,12,0"
                 Padding="20,10"
-                BackgroundColor="#12DC00"
-                CornerRadius="10"
+                BackgroundColor="#096B00"
+                CornerRadius="30"
                 HasShadow="False">
                 <Frame.GestureRecognizers>
                     <TapGestureRecognizer Tapped="OnDogPetButtonTapped" />
@@ -123,7 +123,7 @@
                     </Grid.ColumnDefinitions>
                     <Label
                         FontFamily="MaterialIconsOutlined-Regular"
-                        FontSize="24"
+                        FontSize="42"
                         Text="list_alt"
                         TextColor="White"
                         VerticalOptions="Center" />
@@ -142,8 +142,8 @@
             <Frame
                 Margin="12,30,12,0"
                 Padding="20,10"
-                BackgroundColor="#12DC00"
-                CornerRadius="10"
+                BackgroundColor="#096B00"
+                CornerRadius="30"
                 HasShadow="False">
                 <Frame.GestureRecognizers>
                     <TapGestureRecognizer Tapped="OnCatPetButtonTapped" />
@@ -155,7 +155,7 @@
                     </Grid.ColumnDefinitions>
                     <Label
                         FontFamily="MaterialIconsOutlined-Regular"
-                        FontSize="24"
+                        FontSize="42"
                         Text="list_alt"
                         TextColor="White"
                         VerticalOptions="Center" />
@@ -179,9 +179,9 @@
                 HorizontalOptions="Center"
                 Orientation="Horizontal">
                 <Label
-                    Margin="30,0,0,0"
+                    Margin="50,0,0,0"
                     FontFamily="MaterialIconsOutlined-Regular"
-                    FontSize="60"
+                    FontSize="52"
                     Text="logout"
                     TextColor="#096B00" />
                 <Button
@@ -190,9 +190,10 @@
                     BackgroundColor="#096B00"
                     Clicked="BtnLogOut_Clicked"
                     CornerRadius="50"
-                    Text="LogOut"
+                    Text="Log Out"
+                    FontSize="24"
                     TextColor="White"
-                    WidthRequest="180" />
+                    WidthRequest="170" />
             </StackLayout>
         </VerticalStackLayout>
 
