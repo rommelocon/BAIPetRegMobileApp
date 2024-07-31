@@ -1,13 +1,21 @@
 ﻿using BAIPetRegMobileApp.Models;
 using System.Net.Http.Json;
 using System.Text.Json;
-using System.Text;
 using System.Net.Http.Headers;
 
 namespace BAIPetRegMobileApp.Services
 {
     public class ClientService
     {
+        // Define an event
+        public event EventHandler ProfileUpdated;
+
+        // Method to raise the event
+        protected virtual void OnProfileUpdated()
+        {
+            ProfileUpdated?.Invoke(this, EventArgs.Empty);
+        }
+
         private readonly IHttpClientFactory httpClientFactory;
 
         public ClientService(IHttpClientFactory httpClientFactory)
@@ -132,7 +140,14 @@ namespace BAIPetRegMobileApp.Services
             if (loginResponse != null && !string.IsNullOrEmpty(loginResponse.UserName) && !string.IsNullOrEmpty(loginResponse.AccessToken))
             {
                 var httpClient = CreateClientWithAuthorization(loginResponse.AccessToken);
-                return await httpClient.PutAsJsonAsync($"/api/Account/profile/{loginResponse.UserName}", updatedUser);
+                var response = await httpClient.PutAsJsonAsync("/api/Account/user", updatedUser);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    OnProfileUpdated();
+                }
+
+                return response;
             }
 
             throw new InvalidOperationException("Authentication data not found.");

@@ -2,6 +2,7 @@
 using BAIPetRegMobileApp.Services;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using Microsoft.IdentityModel.Tokens;
 using System.Text.Json;
 
 namespace BAIPetRegMobileApp.ViewModels
@@ -17,12 +18,17 @@ namespace BAIPetRegMobileApp.ViewModels
         [ObservableProperty] private string? firstname;
         [ObservableProperty] private string? lastname;
         [ObservableProperty] private int? civilStatusCode;
-        [ObservableProperty] private DateTime? birthday;
+        [ObservableProperty] private DateOnly? birthday;
+        [ObservableProperty] private int? sexID;
         [ObservableProperty] private string? sexDescription;
         [ObservableProperty] private string? mobileNumber;
+        [ObservableProperty] private string? rcodeNum;
         [ObservableProperty] private string? region;
+        [ObservableProperty] private string? pcodeNum;
         [ObservableProperty] private string? provinceName;
+        [ObservableProperty] private string? mcodeNum;
         [ObservableProperty] private string? municipalitiesCities;
+        [ObservableProperty] private string? bcode;
         [ObservableProperty] private string? barangayName;
         [ObservableProperty] private string? middleName;
         [ObservableProperty] private string? extensionName;
@@ -84,13 +90,18 @@ namespace BAIPetRegMobileApp.ViewModels
                 MiddleName = user.MiddleName;
                 ExtensionName = user.ExtensionName;
                 Birthday = user.Birthday;
+                SexID = user.SexID;
                 SexDescription = user.SexDescription;
                 MobileNumber = user.MobileNumber;
                 UserName = user.UserName;
                 Email = user.Email;
-                Region = user.Region;
+                RcodeNum = user.RcodeNum;
+                Region =  user.Region;
+                PcodeNum = user.PcodeNum;
                 ProvinceName = user.ProvinceName;
+                McodeNum = user.McodeNum;
                 MunicipalitiesCities = user.MunicipalitiesCities;
+                Bcode = user.Bcode;
                 BarangayName = user.BarangayName;
                 ProfilePicture = user.ProfilePicture;
                 FullAddress = user.FullAddress;

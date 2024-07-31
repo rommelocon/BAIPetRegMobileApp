@@ -1,5 +1,4 @@
 using BAIPetRegMobileApp.ViewModels;
-using CommunityToolkit.Mvvm.Input;
 
 namespace BAIPetRegMobileApp.Views;
 
@@ -16,6 +15,7 @@ public partial class EditProfilePage : ContentPage
     {
         base.OnAppearing();
         await viewModel.InitializeProfileAsync();
+        await SaveProfileAsync();
     }
 
     private async Task SaveProfileAsync()

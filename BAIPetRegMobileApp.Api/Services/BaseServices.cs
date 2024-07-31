@@ -19,11 +19,6 @@ namespace BAIPetRegMobileApp.Api.Services
             return await _dbSet.AsNoTracking().ToListAsync();
         }
 
-        public async Task<TEntity> GetByIdAsync(int id)
-        {
-            return await _dbSet.FindAsync(id);
-        }
-
         // Add other common methods here if needed
     }
 }

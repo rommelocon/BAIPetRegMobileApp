@@ -103,13 +103,18 @@ namespace BAIPetRegMobileApp.Api.Controllers
                 MiddleName = user.MiddleName,
                 ExtensionName = user.ExtensionName,
                 Birthday = user.Birthday,
+                SexID = user.SexID,
                 SexDescription = user.SexDescription,
                 MobileNumber = user.MobileNumber,
                 UserName = user.UserName,
                 Email = user.Email,
+                RcodeNum = user.RcodeNum,
                 Region = user.Region,
+                PcodeNum = user.PcodeNum,
                 ProvinceName = user.ProvinceName,
+                McodeNum = user.McodeNum,
                 MunicipalitiesCities = user.MunicipalitiesCities,
+                Bcode = user.Bcode,
                 BarangayName = user.BarangayName,
                 FullAddress = user.FullAddress,
                 ProfilePicture = user.ProfilePicture,
@@ -123,17 +128,21 @@ namespace BAIPetRegMobileApp.Api.Controllers
             user.MiddleName = model.MiddleName;
             user.ExtensionName = model.ExtensionName;
             user.Birthday = model.Birthday;
+            user.SexID = model.SexID;
             user.SexDescription = model.SexDescription;
             user.MobileNumber = model.MobileNumber;
             user.UserName = model.UserName;
             user.Email = model.Email;
+            user.RcodeNum = model.RcodeNum;
             user.Region = model.Region;
+            user.PcodeNum = model.PcodeNum;
             user.ProvinceName = model.ProvinceName;
+            user.McodeNum = model.McodeNum;
             user.MunicipalitiesCities = model.MunicipalitiesCities;
+            user.Bcode = model.Bcode;
             user.BarangayName = model.BarangayName;
             user.FullAddress = model.FullAddress;
             user.ProfilePicture = model.ProfilePicture;
-            // Update other properties as needed
         }
     }
 }

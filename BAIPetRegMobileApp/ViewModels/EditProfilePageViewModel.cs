@@ -1,9 +1,9 @@
 ﻿using BAIPetRegMobileApp.Models;
 using BAIPetRegMobileApp.Services;
+using BAIPetRegMobileApp.Views;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using System.Collections.ObjectModel;
-using System.Threading.Tasks;
 
 namespace BAIPetRegMobileApp.ViewModels
 {
@@ -79,11 +79,11 @@ namespace BAIPetRegMobileApp.ViewModels
         [RelayCommand]
         private async Task LoadRegions()
         {
-            var regions = await clientService.GetRegionsAsync();
+            var regionsResponse = await clientService.GetRegionsAsync();
             Regions.Clear();
-            foreach (var region in regions)
+            foreach (var r in regionsResponse)
             {
-                Regions.Add(region);
+                Regions.Add(r);
             }
         }
 
@@ -153,17 +153,28 @@ namespace BAIPetRegMobileApp.ViewModels
                     Lastname = this.Lastname,
                     MiddleName = this.MiddleName,
                     ExtensionName = this.ExtensionName,
+                    SexID = SelectedSexType.SexID,
+                    SexDescription = SelectedSexType.SexDescription,
                     Birthday = this.Birthday,
                     MobileNumber = this.MobileNumber,
+                    RcodeNum = SelectedRegion?.Rcode,
                     Region = SelectedRegion?.RegionName,
+                    PcodeNum = SelectedProvince?.ProvCode,
                     ProvinceName = SelectedProvince?.ProvinceName,
+                    McodeNum = SelectedMunicipality?.MunCode,
                     MunicipalitiesCities = SelectedMunicipality?.MunCity,
+                    Bcode = SelectedBarangay?.Bcode,
                     BarangayName = SelectedBarangay?.BarangayName,
                     ProfilePicture = this.ProfilePicture,
-                    FullAddress = $"{Region} {MunicipalitiesCities} {ProvinceName} {BarangayName}".Trim(),
+                    FullAddress = $"{SelectedRegion?.RegionName} {SelectedProvince?.ProvinceName} {SelectedMunicipality?.MunCity} {SelectedBarangay?.BarangayName}".Trim(),
                 };
 
                 var response = await clientService.UpdateProfileAsync(updatedUser);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    await Shell.Current.GoToAsync(nameof(ProfilePage));
+                }
             }
             catch (Exception ex)
             {

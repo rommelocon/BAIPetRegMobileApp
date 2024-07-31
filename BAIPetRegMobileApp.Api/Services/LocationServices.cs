@@ -1,8 +1,7 @@
-﻿using BAIPetRegMobileApp.Api.Data.User;
-using BAIPetRegMobileApp.Api.Data;
+﻿using BAIPetRegMobileApp.Api.Data;
+using BAIPetRegMobileApp.Api.DTOs;
 using BAIPetRegMobileApp.Api.Interfaces;
 using Microsoft.EntityFrameworkCore;
-using BAIPetRegMobileApp.Api.DTOs;
 
 namespace BAIPetRegMobileApp.Api.Services
 {
@@ -17,25 +16,41 @@ namespace BAIPetRegMobileApp.Api.Services
 
         public async Task<IEnumerable<RegionsDTO>> GetRegionsAsync()
         {
-            return (IEnumerable<RegionsDTO>)await userDbContext.TblBarangays
-                .AsNoTracking()
-                .ToListAsync();
+            var regions = await userDbContext.TblRegions.AsNoTracking().ToListAsync();
+
+            var regionsDto = regions.Select(b => new RegionsDTO
+            {
+                Rcode = b.Rcode,
+                RegionName = b.RegionName,
+            }).ToList();
+
+            return regionsDto;
         }
 
-        public async Task<IEnumerable<Provinces>> GetProvincesByRegionCodeAsync(string regionCode)
+        public async Task<IEnumerable<ProvincesDTO>> GetProvincesByRegionCodeAsync(string regionCode)
         {
-            return await userDbContext.TblProvinces
-                .Where(p => p.Rcode == regionCode)
-                .AsNoTracking()
-                .ToListAsync();
+            var provinces = await userDbContext.TblProvinces.Where(p=>p.Rcode == regionCode).AsNoTracking().ToListAsync();
+
+            var provincesDto = provinces.Select(b => new ProvincesDTO
+            {
+                ProvCode = b.ProvCode,
+                ProvinceName = b.ProvinceName
+            }).ToList();
+
+            return provincesDto;
         }
 
-        public async Task<IEnumerable<Municipalities>> GetMunicipalitiesByProvinceCodeAsync(string provinceCode)
+        public async Task<IEnumerable<MunicipalitiesDTO>> GetMunicipalitiesByProvinceCodeAsync(string provinceCode)
         {
-            return await userDbContext.TblMunicipalities
-                .Where(m => m.ProvCode == provinceCode)
-                .AsNoTracking()
-                .ToListAsync();
+            var municipalities = await userDbContext.TblMunicipalities.Where(p => p.ProvCode == provinceCode).AsNoTracking().ToListAsync();
+
+            var municipalitiesDto = municipalities.Select(b => new MunicipalitiesDTO
+            {
+                MunCode = b.MunCode,
+                MunCity = b.MunCity
+            }).ToList();
+
+            return municipalitiesDto;
         }
 
         public async Task<IEnumerable<BarangaysDTO>> GetBarangaysByMunicipalityCodeAsync(string municipalityCode)
@@ -44,8 +59,8 @@ namespace BAIPetRegMobileApp.Api.Services
                 .Where(b => b.MunCode == municipalityCode)
                 .Select(b => new BarangaysDTO
                 {
+                    Bcode = b.Bcode,
                     BarangayName = b.BarangayName
-                    // Map other properties as needed
                 })
                 .ToListAsync();
         }

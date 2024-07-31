@@ -24,14 +24,14 @@ namespace BAIPetRegMobileApp.Api.Controllers
         }
 
         [HttpGet("provinces/{regionCode}")]
-        public async Task<ActionResult<IEnumerable<Provinces>>> GetProvincesByRegionCode(string regionCode)
+        public async Task<ActionResult<IEnumerable<ProvincesDTO>>> GetProvincesByRegionCode(string regionCode)
         {
             var provinces = await _locationService.GetProvincesByRegionCodeAsync(regionCode);
             return Ok(provinces);
         }
 
         [HttpGet("municipalities/{provinceCode}")]
-        public async Task<ActionResult<IEnumerable<Municipalities>>> GetMunicipalitiesByProvinceCode(string provinceCode)
+        public async Task<ActionResult<IEnumerable<MunicipalitiesDTO>>> GetMunicipalitiesByProvinceCode(string provinceCode)
         {
             var municipalities = await _locationService.GetMunicipalitiesByProvinceCodeAsync(provinceCode);
             return Ok(municipalities);
