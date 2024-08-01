@@ -85,7 +85,7 @@
                     <Frame
                         Margin="0,10"
                         Padding="10"
-                        BackgroundColor="LightGreen"
+                        BackgroundColor="#D6EFD8"
                         CornerRadius="20">
                         <StackLayout HorizontalOptions="Center" Orientation="Vertical">
                             <Image
@@ -128,7 +128,7 @@
                     <Frame
                         Margin="0,10"
                         Padding="10"
-                        BackgroundColor="LightBlue"
+                        BackgroundColor="#80AF81"
                         CornerRadius="20">
                         <StackLayout HorizontalOptions="Center" Orientation="Vertical">
                             <Image
@@ -171,7 +171,7 @@
                     <Frame
                         Margin="0,10"
                         Padding="10"
-                        BackgroundColor="LightCoral"
+                        BackgroundColor="#508D4E"
                         CornerRadius="20">
                         <StackLayout HorizontalOptions="Center" Orientation="Vertical">
                             <Image
@@ -214,7 +214,7 @@
                     <Frame
                         Margin="0,10"
                         Padding="10"
-                        BackgroundColor="LightGoldenrodYellow"
+                        BackgroundColor="#64bf6a"
                         CornerRadius="20">
                         <StackLayout HorizontalOptions="Center" Orientation="Vertical">
                             <Image
@@ -257,7 +257,7 @@
                     <Frame
                         Margin="0,10"
                         Padding="10"
-                        BackgroundColor="LightSalmon"
+                        BackgroundColor="#508D4E"
                         CornerRadius="20">
                         <StackLayout HorizontalOptions="Center" Orientation="Vertical">
                             <Image
@@ -300,7 +300,7 @@
                     <Frame
                         Margin="0,10"
                         Padding="10"
-                        BackgroundColor="LightSteelBlue"
+                        BackgroundColor="#80AF81"
                         CornerRadius="20">
                         <StackLayout HorizontalOptions="Center" Orientation="Vertical">
                             <Image
@@ -343,7 +343,7 @@
                     <Frame
                         Margin="0,10"
                         Padding="10"
-                        BackgroundColor="LightCyan"
+                        BackgroundColor="#D6EFD8"
                         CornerRadius="20">
                         <StackLayout HorizontalOptions="Center" Orientation="Vertical">
                             <Image
@@ -386,7 +386,7 @@
                     <Frame
                         Margin="0,10"
                         Padding="10"
-                        BackgroundColor="LightPink"
+                        BackgroundColor="#80AF81"
                         CornerRadius="20">
                         <StackLayout HorizontalOptions="Center" Orientation="Vertical">
                             <Image
@@ -429,7 +429,7 @@
                     <Frame
                         Margin="0,10"
                         Padding="10"
-                        BackgroundColor="LightGray"
+                        BackgroundColor="#508D4E"
                         CornerRadius="20">
                         <StackLayout HorizontalOptions="Center" Orientation="Vertical">
                             <Image
@@ -472,7 +472,7 @@
                     <Frame
                         Margin="0,10"
                         Padding="10"
-                        BackgroundColor="LightGoldenrodYellow"
+                        BackgroundColor="#64bf6a"
                         CornerRadius="20">
                         <StackLayout HorizontalOptions="Center" Orientation="Vertical">
                             <Image
@@ -515,7 +515,7 @@
                     <Frame
                         Margin="0,10"
                         Padding="10"
-                        BackgroundColor="LightSkyBlue"
+                        BackgroundColor="#508D4E"
                         CornerRadius="20">
                         <StackLayout HorizontalOptions="Center" Orientation="Vertical">
                             <Image
@@ -558,7 +558,7 @@
                     <Frame
                         Margin="0,10"
                         Padding="10"
-                        BackgroundColor="LightYellow"
+                        BackgroundColor="#80AF81"
                         CornerRadius="20">
                         <StackLayout HorizontalOptions="Center" Orientation="Vertical">
                             <Image
@@ -601,7 +601,7 @@
                     <Frame
                         Margin="0,10"
                         Padding="10"
-                        BackgroundColor="LightPink"
+                        BackgroundColor="#D6EFD8"
                         CornerRadius="20">
                         <StackLayout HorizontalOptions="Center" Orientation="Vertical">
                             <Image
@@ -644,7 +644,7 @@
                     <Frame
                         Margin="0,10"
                         Padding="10"
-                        BackgroundColor="LightGreen"
+                        BackgroundColor="#80AF81"
                         CornerRadius="20">
                         <StackLayout HorizontalOptions="Center" Orientation="Vertical">
                             <Image
@@ -689,7 +689,7 @@
                     <Frame
                         Margin="0,10"
                         Padding="10"
-                        BackgroundColor="LightSkyBlue"
+                        BackgroundColor="#508D4E"
                         CornerRadius="20">
                         <StackLayout HorizontalOptions="Center" Orientation="Vertical">
                             <Image
@@ -732,7 +732,7 @@
                     <Frame
                         Margin="0,10"
                         Padding="10"
-                        BackgroundColor="LightGoldenrodYellow"
+                        BackgroundColor="#64bf6a"
                         CornerRadius="20">
                         <StackLayout HorizontalOptions="Center" Orientation="Vertical">
                             <Image
@@ -775,7 +775,7 @@
                     <Frame
                         Margin="0,10"
                         Padding="10"
-                        BackgroundColor="LightCoral"
+                        BackgroundColor="#508D4E"
                         CornerRadius="20">
                         <StackLayout HorizontalOptions="Center" Orientation="Vertical">
                             <Image
@@ -818,7 +818,7 @@
                     <Frame
                         Margin="0,10"
                         Padding="10"
-                        BackgroundColor="LightPink"
+                        BackgroundColor="#80AF81"
                         CornerRadius="20">
                         <StackLayout HorizontalOptions="Center" Orientation="Vertical">
                             <Image
@@ -861,7 +861,7 @@
                     <Frame
                         Margin="0,10"
                         Padding="10"
-                        BackgroundColor="LightSteelBlue"
+                        BackgroundColor="#D6EFD8"
                         CornerRadius="20">
                         <StackLayout HorizontalOptions="Center" Orientation="Vertical">
                             <Image
@@ -904,7 +904,7 @@
                     <Frame
                         Margin="0,10"
                         Padding="10"
-                        BackgroundColor="LightGoldenrodYellow"
+                        BackgroundColor="#80AF81"
                         CornerRadius="20">
                         <StackLayout HorizontalOptions="Center" Orientation="Vertical">
                             <Image
@@ -947,7 +947,7 @@
                     <Frame
                         Margin="0,10"
                         Padding="10"
-                        BackgroundColor="LightSalmon"
+                        BackgroundColor="#508D4E"
                         CornerRadius="20">
                         <StackLayout HorizontalOptions="Center" Orientation="Vertical">
                             <Image
@@ -990,7 +990,7 @@
                     <Frame
                         Margin="0,10"
                         Padding="10"
-                        BackgroundColor="LightPink"
+                        BackgroundColor="#64bf6a"
                         CornerRadius="20">
                         <StackLayout HorizontalOptions="Center" Orientation="Vertical">
                             <Image
@@ -1033,7 +1033,7 @@
                     <Frame
                         Margin="0,10"
                         Padding="10"
-                        BackgroundColor="LightSkyBlue"
+                        BackgroundColor="#508D4E"
                         CornerRadius="20">
                         <StackLayout HorizontalOptions="Center" Orientation="Vertical">
                             <Image
@@ -1076,7 +1076,7 @@
                     <Frame
                         Margin="0,10"
                         Padding="10"
-                        BackgroundColor="LightCoral"
+                        BackgroundColor="#80AF81"
                         CornerRadius="20">
                         <StackLayout HorizontalOptions="Center" Orientation="Vertical">
                             <Image
@@ -1119,7 +1119,7 @@
                     <Frame
                         Margin="0,10"
                         Padding="10"
-                        BackgroundColor="LightGreen"
+                        BackgroundColor="#D6EFD8"
                         CornerRadius="20">
                         <StackLayout HorizontalOptions="Center" Orientation="Vertical">
                             <Image
@@ -1162,7 +1162,7 @@
                     <Frame
                         Margin="0,10"
                         Padding="10"
-                        BackgroundColor="LightGoldenrodYellow"
+                        BackgroundColor="#80AF81"
                         CornerRadius="20">
                         <StackLayout HorizontalOptions="Center" Orientation="Vertical">
                             <Image
@@ -1205,7 +1205,7 @@
                     <Frame
                         Margin="0,10"
                         Padding="10"
-                        BackgroundColor="LightPink"
+                        BackgroundColor="#508D4E"
                         CornerRadius="20">
                         <StackLayout HorizontalOptions="Center" Orientation="Vertical">
                             <Image
@@ -1248,7 +1248,7 @@
                     <Frame
                         Margin="0,10"
                         Padding="10"
-                        BackgroundColor="LightSalmon"
+                        BackgroundColor="#64bf6a"
                         CornerRadius="20">
                         <StackLayout HorizontalOptions="Center" Orientation="Vertical">
                             <Image
@@ -1291,7 +1291,7 @@
                     <Frame
                         Margin="0,10"
                         Padding="10"
-                        BackgroundColor="LightSteelBlue"
+                        BackgroundColor="#508D4E"
                         CornerRadius="20">
                         <StackLayout HorizontalOptions="Center" Orientation="Vertical">
                             <Image
@@ -1334,7 +1334,7 @@
                     <Frame
                         Margin="0,10"
                         Padding="10"
-                        BackgroundColor="LightCoral"
+                        BackgroundColor="#80AF81"
                         CornerRadius="20">
                         <StackLayout HorizontalOptions="Center" Orientation="Vertical">
                             <Image
@@ -1377,7 +1377,7 @@
                     <Frame
                         Margin="0,10"
                         Padding="10"
-                        BackgroundColor="LightGoldenrodYellow"
+                        BackgroundColor="#D6EFD8"
                         CornerRadius="20">
                         <StackLayout HorizontalOptions="Center" Orientation="Vertical">
                             <Image
@@ -1420,7 +1420,7 @@
                     <Frame
                         Margin="0,10"
                         Padding="10"
-                        BackgroundColor="LightSalmon"
+                        BackgroundColor="#80AF81"
                         CornerRadius="20">
                         <StackLayout HorizontalOptions="Center" Orientation="Vertical">
                             <Image
@@ -1465,7 +1465,7 @@
                     <Frame
                         Margin="0,10"
                         Padding="10"
-                        BackgroundColor="LightSkyBlue"
+                        BackgroundColor="#508D4E"
                         CornerRadius="20">
                         <StackLayout HorizontalOptions="Center" Orientation="Vertical">
                             <Image
@@ -1508,7 +1508,7 @@
                     <Frame
                         Margin="0,10"
                         Padding="10"
-                        BackgroundColor="LightCoral"
+                        BackgroundColor="#64bf6a"
                         CornerRadius="20">
                         <StackLayout HorizontalOptions="Center" Orientation="Vertical">
                             <Image
@@ -1551,7 +1551,7 @@
                     <Frame
                         Margin="0,10"
                         Padding="10"
-                        BackgroundColor="LightGoldenrodYellow"
+                        BackgroundColor="#508D4E"
                         CornerRadius="20">
                         <StackLayout HorizontalOptions="Center" Orientation="Vertical">
                             <Image
@@ -1594,7 +1594,7 @@
                     <Frame
                         Margin="0,10"
                         Padding="10"
-                        BackgroundColor="LightPink"
+                        BackgroundColor="#80AF81"
                         CornerRadius="20">
                         <StackLayout HorizontalOptions="Center" Orientation="Vertical">
                             <Image
@@ -1637,7 +1637,7 @@
                     <Frame
                         Margin="0,10"
                         Padding="10"
-                        BackgroundColor="LightSteelBlue"
+                        BackgroundColor="#D6EFD8"
                         CornerRadius="20">
                         <StackLayout HorizontalOptions="Center" Orientation="Vertical">
                             <Image
@@ -1680,7 +1680,7 @@
                     <Frame
                         Margin="0,10"
                         Padding="10"
-                        BackgroundColor="LightSalmon"
+                        BackgroundColor="#80AF81"
                         CornerRadius="20">
                         <StackLayout HorizontalOptions="Center" Orientation="Vertical">
                             <Image
@@ -1723,7 +1723,7 @@
                     <Frame
                         Margin="0,10"
                         Padding="10"
-                        BackgroundColor="LightGoldenrodYellow"
+                        BackgroundColor="#508D4E"
                         CornerRadius="20">
                         <StackLayout HorizontalOptions="Center" Orientation="Vertical">
                             <Image
@@ -1766,7 +1766,7 @@
                     <Frame
                         Margin="0,10"
                         Padding="10"
-                        BackgroundColor="LightPink"
+                        BackgroundColor="#64bf6a"
                         CornerRadius="20">
                         <StackLayout HorizontalOptions="Center" Orientation="Vertical">
                             <Image
@@ -1809,7 +1809,7 @@
                     <Frame
                         Margin="0,10"
                         Padding="10"
-                        BackgroundColor="LightSteelBlue"
+                        BackgroundColor="#508D4E"
                         CornerRadius="20">
                         <StackLayout HorizontalOptions="Center" Orientation="Vertical">
                             <Image
@@ -1855,7 +1855,7 @@
                     <Frame
                         Margin="0,10"
                         Padding="10"
-                        BackgroundColor="LightSkyBlue"
+                        BackgroundColor="#80AF81"
                         CornerRadius="20">
                         <StackLayout HorizontalOptions="Center" Orientation="Vertical">
                             <Image
@@ -1898,7 +1898,7 @@
                     <Frame
                         Margin="0,10"
                         Padding="10"
-                        BackgroundColor="LightCoral"
+                        BackgroundColor="#D6EFD8"
                         CornerRadius="20">
                         <StackLayout HorizontalOptions="Center" Orientation="Vertical">
                             <Image
@@ -1941,7 +1941,7 @@
                     <Frame
                         Margin="0,10"
                         Padding="10"
-                        BackgroundColor="LightGoldenrodYellow"
+                        BackgroundColor="#80AF81"
                         CornerRadius="20">
                         <StackLayout HorizontalOptions="Center" Orientation="Vertical">
                             <Image
@@ -1984,7 +1984,7 @@
                     <Frame
                         Margin="0,10"
                         Padding="10"
-                        BackgroundColor="LightPink"
+                        BackgroundColor="#508D4E"
                         CornerRadius="20">
                         <StackLayout HorizontalOptions="Center" Orientation="Vertical">
                             <Image
@@ -2027,7 +2027,7 @@
                     <Frame
                         Margin="0,10"
                         Padding="10"
-                        BackgroundColor="LightSteelBlue"
+                        BackgroundColor="#64bf6a"
                         CornerRadius="20">
                         <StackLayout HorizontalOptions="Center" Orientation="Vertical">
                             <Image
@@ -2070,7 +2070,7 @@
                     <Frame
                         Margin="0,10"
                         Padding="10"
-                        BackgroundColor="LightCoral"
+                        BackgroundColor="#508D4E"
                         CornerRadius="20">
                         <StackLayout HorizontalOptions="Center" Orientation="Vertical">
                             <Image
@@ -2113,7 +2113,7 @@
                     <Frame
                         Margin="0,10"
                         Padding="10"
-                        BackgroundColor="LightGoldenrodYellow"
+                        BackgroundColor="#80AF81"
                         CornerRadius="20">
                         <StackLayout HorizontalOptions="Center" Orientation="Vertical">
                             <Image
@@ -2156,7 +2156,7 @@
                     <Frame
                         Margin="0,10"
                         Padding="10"
-                        BackgroundColor="LightSalmon"
+                        BackgroundColor="#D6EFD8"
                         CornerRadius="20">
                         <StackLayout HorizontalOptions="Center" Orientation="Vertical">
                             <Image
@@ -2199,7 +2199,7 @@
                     <Frame
                         Margin="0,10"
                         Padding="10"
-                        BackgroundColor="LightSteelBlue"
+                        BackgroundColor="#80AF81"
                         CornerRadius="20">
                         <StackLayout HorizontalOptions="Center" Orientation="Vertical">
                             <Image
@@ -2242,7 +2242,7 @@
                     <Frame
                         Margin="0,10"
                         Padding="10"
-                        BackgroundColor="LightCoral"
+                        BackgroundColor="#508D4E"
                         CornerRadius="20">
                         <StackLayout HorizontalOptions="Center" Orientation="Vertical">
                             <Image
@@ -2285,7 +2285,7 @@
                     <Frame
                         Margin="0,10"
                         Padding="10"
-                        BackgroundColor="LightGoldenrodYellow"
+                        BackgroundColor="#64bf6a"
                         CornerRadius="20">
                         <StackLayout HorizontalOptions="Center" Orientation="Vertical">
                             <Image
@@ -2328,7 +2328,7 @@
                     <Frame
                         Margin="0,10"
                         Padding="10"
-                        BackgroundColor="LightSteelBlue"
+                        BackgroundColor="#508D4E"
                         CornerRadius="20">
                         <StackLayout HorizontalOptions="Center" Orientation="Vertical">
                             <Image
@@ -2371,7 +2371,7 @@
                     <Frame
                         Margin="0,10"
                         Padding="10"
-                        BackgroundColor="LightPink"
+                        BackgroundColor="#80AF81"
                         CornerRadius="20">
                         <StackLayout HorizontalOptions="Center" Orientation="Vertical">
                             <Image
@@ -2414,7 +2414,7 @@
                     <Frame
                         Margin="0,10"
                         Padding="10"
-                        BackgroundColor="LightSalmon"
+                        BackgroundColor="#D6EFD8"
                         CornerRadius="20">
                         <StackLayout HorizontalOptions="Center" Orientation="Vertical">
                             <Image
@@ -2459,7 +2459,7 @@
                 <Frame
                     Margin="0,10"
                     Padding="10"
-                    BackgroundColor="LightPink"
+                    BackgroundColor="#80AF81"
                     CornerRadius="20">
                     <StackLayout HorizontalOptions="Center" Orientation="Vertical">
                         <Image
@@ -2503,7 +2503,7 @@
                 <Frame
                     Margin="0,10"
                     Padding="10"
-                    BackgroundColor="LightSteelBlue"
+                    BackgroundColor="#508D4E"
                     CornerRadius="20">
                     <StackLayout HorizontalOptions="Center" Orientation="Vertical">
                         <Image
@@ -2546,7 +2546,7 @@
                 <Frame
                     Margin="0,10"
                     Padding="10"
-                    BackgroundColor="LightGoldenrodYellow"
+                    BackgroundColor="#64bf6a"
                     CornerRadius="20">
                     <StackLayout HorizontalOptions="Center" Orientation="Vertical">
                         <Image
@@ -2589,7 +2589,7 @@
                 <Frame
                     Margin="0,10"
                     Padding="10"
-                    BackgroundColor="LightCoral"
+                    BackgroundColor="#508D4E"
                     CornerRadius="20">
                     <StackLayout HorizontalOptions="Center" Orientation="Vertical">
                         <Image
@@ -2632,7 +2632,7 @@
                 <Frame
                     Margin="0,10"
                     Padding="10"
-                    BackgroundColor="LightSkyBlue"
+                    BackgroundColor="#80AF81"
                     CornerRadius="20">
                     <StackLayout HorizontalOptions="Center" Orientation="Vertical">
                         <Image
@@ -2675,7 +2675,7 @@
                 <Frame
                     Margin="0,10"
                     Padding="10"
-                    BackgroundColor="LightGoldenrodYellow"
+                    BackgroundColor="#D6EFD8"
                     CornerRadius="20">
                     <StackLayout HorizontalOptions="Center" Orientation="Vertical">
                         <Image
@@ -2718,7 +2718,7 @@
                 <Frame
                     Margin="0,10"
                     Padding="10"
-                    BackgroundColor="LightSteelBlue"
+                    BackgroundColor="#80AF81"
                     CornerRadius="20">
                     <StackLayout HorizontalOptions="Center" Orientation="Vertical">
                         <Image
@@ -2761,7 +2761,7 @@
                 <Frame
                     Margin="0,10"
                     Padding="10"
-                    BackgroundColor="LightCoral"
+                    BackgroundColor="#508D4E"
                     CornerRadius="20">
                     <StackLayout HorizontalOptions="Center" Orientation="Vertical">
                         <Image
@@ -2804,7 +2804,7 @@
                 <Frame
                     Margin="0,10"
                     Padding="10"
-                    BackgroundColor="LightSkyBlue"
+                    BackgroundColor="#64bf6a"
                     CornerRadius="20">
                     <StackLayout HorizontalOptions="Center" Orientation="Vertical">
                         <Image
@@ -2847,7 +2847,7 @@
                 <Frame
                     Margin="0,10"
                     Padding="10"
-                    BackgroundColor="LightGoldenrodYellow"
+                    BackgroundColor="#508D4E"
                     CornerRadius="20">
                     <StackLayout HorizontalOptions="Center" Orientation="Vertical">
                         <Image
@@ -2891,7 +2891,7 @@
                 <Frame
                     Margin="0,10"
                     Padding="10"
-                    BackgroundColor="LightSteelBlue"
+                    BackgroundColor="#80AF81"
                     CornerRadius="20">
                     <StackLayout HorizontalOptions="Center" Orientation="Vertical">
                         <Image
@@ -2934,7 +2934,7 @@
                 <Frame
                     Margin="0,10"
                     Padding="10"
-                    BackgroundColor="LightCoral"
+                    BackgroundColor="#D6EFD8"
                     CornerRadius="20">
                     <StackLayout HorizontalOptions="Center" Orientation="Vertical">
                         <Image
@@ -2977,7 +2977,7 @@
                 <Frame
                     Margin="0,10"
                     Padding="10"
-                    BackgroundColor="LightSkyBlue"
+                    BackgroundColor="#80AF81"
                     CornerRadius="20">
                     <StackLayout HorizontalOptions="Center" Orientation="Vertical">
                         <Image
@@ -3020,7 +3020,7 @@
                 <Frame
                     Margin="0,10"
                     Padding="10"
-                    BackgroundColor="LightGoldenrodYellow"
+                    BackgroundColor="#508D4E"
                     CornerRadius="20">
                     <StackLayout HorizontalOptions="Center" Orientation="Vertical">
                         <Image
@@ -3063,7 +3063,7 @@
                 <Frame
                     Margin="0,10"
                     Padding="10"
-                    BackgroundColor="LightCoral"
+                    BackgroundColor="#64bf6a"
                     CornerRadius="20">
                     <StackLayout HorizontalOptions="Center" Orientation="Vertical">
                         <Image
@@ -3106,7 +3106,7 @@
                 <Frame
                     Margin="0,10"
                     Padding="10"
-                    BackgroundColor="LightSteelBlue"
+                    BackgroundColor="#508D4E"
                     CornerRadius="20">
                     <StackLayout HorizontalOptions="Center" Orientation="Vertical">
                         <Image
@@ -3149,7 +3149,7 @@
                 <Frame
                     Margin="0,10"
                     Padding="10"
-                    BackgroundColor="LightGoldenrodYellow"
+                    BackgroundColor="#80AF81"
                     CornerRadius="20">
                     <StackLayout HorizontalOptions="Center" Orientation="Vertical">
                         <Image
@@ -3192,7 +3192,7 @@
                 <Frame
                     Margin="0,10"
                     Padding="10"
-                    BackgroundColor="LightCoral"
+                    BackgroundColor="#D6EFD8"
                     CornerRadius="20">
                     <StackLayout HorizontalOptions="Center" Orientation="Vertical">
                         <Image
@@ -3235,7 +3235,7 @@
                 <Frame
                     Margin="0,10"
                     Padding="10"
-                    BackgroundColor="LightSkyBlue"
+                    BackgroundColor="#80AF81"
                     CornerRadius="20">
                     <StackLayout HorizontalOptions="Center" Orientation="Vertical">
                         <Image
@@ -3278,7 +3278,7 @@
                 <Frame
                     Margin="0,10"
                     Padding="10"
-                    BackgroundColor="LightGoldenrodYellow"
+                    BackgroundColor="#508D4E"
                     CornerRadius="20">
                     <StackLayout HorizontalOptions="Center" Orientation="Vertical">
                         <Image
@@ -3321,7 +3321,7 @@
                 <Frame
                     Margin="0,10"
                     Padding="10"
-                    BackgroundColor="LightCoral"
+                    BackgroundColor="#64bf6a"
                     CornerRadius="20">
                     <StackLayout HorizontalOptions="Center" Orientation="Vertical">
                         <Image
@@ -3366,7 +3366,7 @@
                 <Frame
                     Margin="0,10"
                     Padding="10"
-                    BackgroundColor="LightSteelBlue"
+                    BackgroundColor="#508D4E"
                     CornerRadius="20">
                     <StackLayout HorizontalOptions="Center" Orientation="Vertical">
                         <Image
@@ -3409,7 +3409,7 @@
                 <Frame
                     Margin="0,10"
                     Padding="10"
-                    BackgroundColor="LightGoldenrodYellow"
+                    BackgroundColor="#80AF81"
                     CornerRadius="20">
                     <StackLayout HorizontalOptions="Center" Orientation="Vertical">
                         <Image
@@ -3452,7 +3452,7 @@
                 <Frame
                     Margin="0,10"
                     Padding="10"
-                    BackgroundColor="LightCoral"
+                    BackgroundColor="#D6EFD8"
                     CornerRadius="20">
                     <StackLayout HorizontalOptions="Center" Orientation="Vertical">
                         <Image
@@ -3495,7 +3495,7 @@
                 <Frame
                     Margin="0,10"
                     Padding="10"
-                    BackgroundColor="LightSkyBlue"
+                    BackgroundColor="#80AF81"
                     CornerRadius="20">
                     <StackLayout HorizontalOptions="Center" Orientation="Vertical">
                         <Image
@@ -3538,7 +3538,7 @@
                 <Frame
                     Margin="0,10"
                     Padding="10"
-                    BackgroundColor="LightGoldenrodYellow"
+                    BackgroundColor="#508D4E"
                     CornerRadius="20">
                     <StackLayout HorizontalOptions="Center" Orientation="Vertical">
                         <Image
@@ -3581,7 +3581,7 @@
                 <Frame
                     Margin="0,10"
                     Padding="10"
-                    BackgroundColor="LightCoral"
+                    BackgroundColor="#64bf6a"
                     CornerRadius="20">
                     <StackLayout HorizontalOptions="Center" Orientation="Vertical">
                         <Image
@@ -3624,7 +3624,7 @@
                 <Frame
                     Margin="0,10"
                     Padding="10"
-                    BackgroundColor="LightSkyBlue"
+                    BackgroundColor="#508D4E"
                     CornerRadius="20">
                     <StackLayout HorizontalOptions="Center" Orientation="Vertical">
                         <Image
@@ -3667,7 +3667,7 @@
                 <Frame
                     Margin="0,10"
                     Padding="10"
-                    BackgroundColor="LightSteelBlue"
+                    BackgroundColor="#80AF81"
                     CornerRadius="20">
                     <StackLayout HorizontalOptions="Center" Orientation="Vertical">
                         <Image
@@ -3710,7 +3710,7 @@
                 <Frame
                     Margin="0,10"
                     Padding="10"
-                    BackgroundColor="LightGoldenrodYellow"
+                    BackgroundColor="#D6EFD8"
                     CornerRadius="20">
                     <StackLayout HorizontalOptions="Center" Orientation="Vertical">
                         <Image
@@ -3753,7 +3753,7 @@
                 <Frame
                     Margin="0,10"
                     Padding="10"
-                    BackgroundColor="LightCoral"
+                    BackgroundColor="#80AF81"
                     CornerRadius="20">
                     <StackLayout HorizontalOptions="Center" Orientation="Vertical">
                         <Image
@@ -3796,7 +3796,7 @@
                 <Frame
                     Margin="0,10"
                     Padding="10"
-                    BackgroundColor="LightSkyBlue"
+                    BackgroundColor="#508D4E"
                     CornerRadius="20">
                     <StackLayout HorizontalOptions="Center" Orientation="Vertical">
                         <Image
@@ -3840,7 +3840,7 @@
                 <Frame
                     Margin="0,10"
                     Padding="10"
-                    BackgroundColor="LightSteelBlue"
+                    BackgroundColor="#64bf6a"
                     CornerRadius="20">
                     <StackLayout HorizontalOptions="Center" Orientation="Vertical">
                         <Image
@@ -3883,7 +3883,7 @@
                 <Frame
                     Margin="0,10"
                     Padding="10"
-                    BackgroundColor="LightCoral"
+                    BackgroundColor="#508D4E"
                     CornerRadius="20">
                     <StackLayout HorizontalOptions="Center" Orientation="Vertical">
                         <Image
@@ -3926,7 +3926,7 @@
                 <Frame
                     Margin="0,10"
                     Padding="10"
-                    BackgroundColor="LightSkyBlue"
+                    BackgroundColor="#80AF81"
                     CornerRadius="20">
                     <StackLayout HorizontalOptions="Center" Orientation="Vertical">
                         <Image
@@ -3969,7 +3969,7 @@
                 <Frame
                     Margin="0,10"
                     Padding="10"
-                    BackgroundColor="LightGoldenrodYellow"
+                    BackgroundColor="#D6EFD8"
                     CornerRadius="20">
                     <StackLayout HorizontalOptions="Center" Orientation="Vertical">
                         <Image
@@ -4012,7 +4012,7 @@
                 <Frame
                     Margin="0,10"
                     Padding="10"
-                    BackgroundColor="LightCoral"
+                    BackgroundColor="#80AF81"
                     CornerRadius="20">
                     <StackLayout HorizontalOptions="Center" Orientation="Vertical">
                         <Image
@@ -4055,7 +4055,7 @@
                 <Frame
                     Margin="0,10"
                     Padding="10"
-                    BackgroundColor="LightSkyBlue"
+                    BackgroundColor="#508D4E"
                     CornerRadius="20">
                     <StackLayout HorizontalOptions="Center" Orientation="Vertical">
                         <Image
@@ -4098,7 +4098,7 @@
                 <Frame
                     Margin="0,10"
                     Padding="10"
-                    BackgroundColor="LightGoldenrodYellow"
+                    BackgroundColor="#64bf6a"
                     CornerRadius="20">
                     <StackLayout HorizontalOptions="Center" Orientation="Vertical">
                         <Image
@@ -4141,7 +4141,7 @@
                 <Frame
                     Margin="0,10"
                     Padding="10"
-                    BackgroundColor="LightCoral"
+                    BackgroundColor="#508D4E"
                     CornerRadius="20">
                     <StackLayout HorizontalOptions="Center" Orientation="Vertical">
                         <Image
@@ -4184,7 +4184,7 @@
                 <Frame
                     Margin="0,10"
                     Padding="10"
-                    BackgroundColor="LightSteelBlue"
+                    BackgroundColor="#80AF81"
                     CornerRadius="20">
                     <StackLayout HorizontalOptions="Center" Orientation="Vertical">
                         <Image
@@ -4227,7 +4227,7 @@
                 <Frame
                     Margin="0,10"
                     Padding="10"
-                    BackgroundColor="LightGoldenrodYellow"
+                    BackgroundColor="#D6EFD8"
                     CornerRadius="20">
                     <StackLayout HorizontalOptions="Center" Orientation="Vertical">
                         <Image
@@ -4270,7 +4270,7 @@
                 <Frame
                     Margin="0,10"
                     Padding="10"
-                    BackgroundColor="LightCoral"
+                    BackgroundColor="#80AF81"
                     CornerRadius="20">
                     <StackLayout HorizontalOptions="Center" Orientation="Vertical">
                         <Image
@@ -4313,7 +4313,7 @@
                 <Frame
                     Margin="0,10"
                     Padding="10"
-                    BackgroundColor="LightSkyBlue"
+                    BackgroundColor="#508D4E"
                     CornerRadius="20">
                     <StackLayout HorizontalOptions="Center" Orientation="Vertical">
                         <Image
@@ -4357,7 +4357,7 @@
                 <Frame
                     Margin="0,10"
                     Padding="10"
-                    BackgroundColor="LightSteelBlue"
+                    BackgroundColor="#64bf6a"
                     CornerRadius="20">
                     <StackLayout HorizontalOptions="Center" Orientation="Vertical">
                         <Image
@@ -4400,7 +4400,7 @@
                 <Frame
                     Margin="0,10"
                     Padding="10"
-                    BackgroundColor="LightCoral"
+                    BackgroundColor="#508D4E"
                     CornerRadius="20">
                     <StackLayout HorizontalOptions="Center" Orientation="Vertical">
                         <Image
@@ -4443,7 +4443,7 @@
                 <Frame
                     Margin="0,10"
                     Padding="10"
-                    BackgroundColor="LightSkyBlue"
+                    BackgroundColor="#80AF81"
                     CornerRadius="20">
                     <StackLayout HorizontalOptions="Center" Orientation="Vertical">
                         <Image
@@ -4486,7 +4486,7 @@
                 <Frame
                     Margin="0,10"
                     Padding="10"
-                    BackgroundColor="LightGoldenrodYellow"
+                    BackgroundColor="#D6EFD8"
                     CornerRadius="20">
                     <StackLayout HorizontalOptions="Center" Orientation="Vertical">
                         <Image
@@ -4529,7 +4529,7 @@
                 <Frame
                     Margin="0,10"
                     Padding="10"
-                    BackgroundColor="LightCoral"
+                    BackgroundColor="#80AF81"
                     CornerRadius="20">
                     <StackLayout HorizontalOptions="Center" Orientation="Vertical">
                         <Image
@@ -4572,7 +4572,7 @@
                 <Frame
                     Margin="0,10"
                     Padding="10"
-                    BackgroundColor="LightSkyBlue"
+                    BackgroundColor="#508D4E"
                     CornerRadius="20">
                     <StackLayout HorizontalOptions="Center" Orientation="Vertical">
                         <Image
@@ -4615,7 +4615,7 @@
                 <Frame
                     Margin="0,10"
                     Padding="10"
-                    BackgroundColor="LightGoldenrodYellow"
+                    BackgroundColor="#64bf6a"
                     CornerRadius="20">
                     <StackLayout HorizontalOptions="Center" Orientation="Vertical">
                         <Image
@@ -4658,7 +4658,7 @@
                 <Frame
                     Margin="0,10"
                     Padding="10"
-                    BackgroundColor="LightCoral"
+                    BackgroundColor="#508D4E"
                     CornerRadius="20">
                     <StackLayout HorizontalOptions="Center" Orientation="Vertical">
                         <Image
@@ -4701,7 +4701,7 @@
                 <Frame
                     Margin="0,10"
                     Padding="10"
-                    BackgroundColor="LightSkyBlue"
+                    BackgroundColor="#80AF81"
                     CornerRadius="20">
                     <StackLayout HorizontalOptions="Center" Orientation="Vertical">
                         <Image
@@ -4744,7 +4744,7 @@
                 <Frame
                     Margin="0,10"
                     Padding="10"
-                    BackgroundColor="LightGoldenrodYellow"
+                    BackgroundColor="#D6EFD8"
                     CornerRadius="20">
                     <StackLayout HorizontalOptions="Center" Orientation="Vertical">
                         <Image
@@ -4787,7 +4787,7 @@
                 <Frame
                     Margin="0,10"
                     Padding="10"
-                    BackgroundColor="LightCoral"
+                    BackgroundColor="#80AF81"
                     CornerRadius="20">
                     <StackLayout HorizontalOptions="Center" Orientation="Vertical">
                         <Image
@@ -4830,7 +4830,7 @@
                 <Frame
                     Margin="0,10"
                     Padding="10"
-                    BackgroundColor="LightSkyBlue"
+                    BackgroundColor="#508D4E"
                     CornerRadius="20">
                     <StackLayout HorizontalOptions="Center" Orientation="Vertical">
                         <Image
@@ -4873,7 +4873,7 @@
                 <Frame
                     Margin="0,10"
                     Padding="10"
-                    BackgroundColor="LightGoldenrodYellow"
+                    BackgroundColor="#64bf6a"
                     CornerRadius="20">
                     <StackLayout HorizontalOptions="Center" Orientation="Vertical">
                         <Image
@@ -4916,7 +4916,7 @@
                 <Frame
                     Margin="0,10"
                     Padding="10"
-                    BackgroundColor="LightCoral"
+                    BackgroundColor="#508D4E"
                     CornerRadius="20">
                     <StackLayout HorizontalOptions="Center" Orientation="Vertical">
                         <Image
@@ -4959,7 +4959,7 @@
                 <Frame
                     Margin="0,10"
                     Padding="10"
-                    BackgroundColor="LightSkyBlue"
+                    BackgroundColor="#80AF81"
                     CornerRadius="20">
                     <StackLayout HorizontalOptions="Center" Orientation="Vertical">
                         <Image
@@ -5003,7 +5003,7 @@
                 <Frame
                     Margin="0,10"
                     Padding="10"
-                    BackgroundColor="LightSteelBlue"
+                    BackgroundColor="#D6EFD8"
                     CornerRadius="20">
                     <StackLayout HorizontalOptions="Center" Orientation="Vertical">
                         <Image
@@ -5046,7 +5046,7 @@
                 <Frame
                     Margin="0,10"
                     Padding="10"
-                    BackgroundColor="LightCoral"
+                    BackgroundColor="#80AF81"
                     CornerRadius="20">
                     <StackLayout HorizontalOptions="Center" Orientation="Vertical">
                         <Image
@@ -5089,7 +5089,7 @@
                 <Frame
                     Margin="0,10"
                     Padding="10"
-                    BackgroundColor="LightSkyBlue"
+                    BackgroundColor="#508D4E"
                     CornerRadius="20">
                     <StackLayout HorizontalOptions="Center" Orientation="Vertical">
                         <Image
@@ -5132,7 +5132,7 @@
                 <Frame
                     Margin="0,10"
                     Padding="10"
-                    BackgroundColor="LightGoldenrodYellow"
+                    BackgroundColor="#64bf6a"
                     CornerRadius="20">
                     <StackLayout HorizontalOptions="Center" Orientation="Vertical">
                         <Image
@@ -5175,7 +5175,7 @@
                 <Frame
                     Margin="0,10"
                     Padding="10"
-                    BackgroundColor="LightCoral"
+                    BackgroundColor="#508D4E"
                     CornerRadius="20">
                     <StackLayout HorizontalOptions="Center" Orientation="Vertical">
                         <Image
@@ -5218,7 +5218,7 @@
                 <Frame
                     Margin="0,10"
                     Padding="10"
-                    BackgroundColor="LightSkyBlue"
+                    BackgroundColor="#80AF81"
                     CornerRadius="20">
                     <StackLayout HorizontalOptions="Center" Orientation="Vertical">
                         <Image
@@ -5261,7 +5261,7 @@
                 <Frame
                     Margin="0,10"
                     Padding="10"
-                    BackgroundColor="LightGoldenrodYellow"
+                    BackgroundColor="#D6EFD8"
                     CornerRadius="20">
                     <StackLayout HorizontalOptions="Center" Orientation="Vertical">
                         <Image
@@ -5304,7 +5304,7 @@
                 <Frame
                     Margin="0,10"
                     Padding="10"
-                    BackgroundColor="LightCoral"
+                    BackgroundColor="#80AF81"
                     CornerRadius="20">
                     <StackLayout HorizontalOptions="Center" Orientation="Vertical">
                         <Image
