@@ -350,7 +350,7 @@
                                 Aspect="AspectFill"
                                 HeightRequest="200"
                                 HorizontalOptions="Center"
-                                Source="african_bulldog.jpg"
+                                Source="african_bulldogg.jpg"
                                 WidthRequest="200" />
                             <StackLayout
                                 Padding="10,0"
@@ -479,7 +479,7 @@
                                 Aspect="AspectFill"
                                 HeightRequest="200"
                                 HorizontalOptions="Center"
-                                Source="australian_dingo.jpg"
+                                Source="australia_dingoo.jpg"
                                 WidthRequest="200" />
                             <StackLayout
                                 Padding="10,0"
@@ -911,7 +911,7 @@
                                 Aspect="AspectFill"
                                 HeightRequest="200"
                                 HorizontalOptions="Center"
-                                Source="belgian_malinois.jpg"
+                                Source="belgian.jpg"
                                 WidthRequest="200" />
                             <StackLayout
                                 Padding="10,0"
@@ -1083,7 +1083,7 @@
                                 Aspect="AspectFill"
                                 HeightRequest="200"
                                 HorizontalOptions="Center"
-                                Source="bloodhound.jpg"
+                                Source="blood_hound.jpg"
                                 WidthRequest="200" />
                             <StackLayout
                                 Padding="10,0"
@@ -1126,7 +1126,7 @@
                                 Aspect="AspectFill"
                                 HeightRequest="200"
                                 HorizontalOptions="Center"
-                                Source="border_collie.jpg"
+                                Source="border_colliee.jpg"
                                 WidthRequest="200" />
                             <StackLayout
                                 Padding="10,0"
@@ -1558,7 +1558,7 @@
                                 Aspect="AspectFill"
                                 HeightRequest="200"
                                 HorizontalOptions="Center"
-                                Source="cavalier_king_charles.jpg"
+                                Source="king_charles_spaniel.jpg"
                                 WidthRequest="200" />
                             <StackLayout
                                 Padding="10,0"
@@ -1730,7 +1730,7 @@
                                 Aspect="AspectFill"
                                 HeightRequest="200"
                                 HorizontalOptions="Center"
-                                Source="cocker_spaniel.jpg"
+                                Source="cocker_spaniels.jpg"
                                 WidthRequest="200" />
                             <StackLayout
                                 Padding="10,0"
@@ -2163,7 +2163,7 @@
                                 Aspect="AspectFill"
                                 HeightRequest="200"
                                 HorizontalOptions="Center"
-                                Source="english_setter.jpg"
+                                Source="english_setterr.jpg"
                                 WidthRequest="200" />
                             <StackLayout
                                 Padding="10,0"
@@ -2206,7 +2206,7 @@
                                 Aspect="AspectFill"
                                 HeightRequest="200"
                                 HorizontalOptions="Center"
-                                Source="english_springer_spaniel.jpg"
+                                Source="english_springer_spaniell.jpg"
                                 WidthRequest="200" />
                             <StackLayout
                                 Padding="10,0"
@@ -2292,7 +2292,7 @@
                                 Aspect="AspectFill"
                                 HeightRequest="200"
                                 HorizontalOptions="Center"
-                                Source="field_spaniel.jpg"
+                                Source="field_spaniell.jpg"
                                 WidthRequest="200" />
                             <StackLayout
                                 Padding="10,0"
@@ -2335,7 +2335,7 @@
                                 Aspect="AspectFill"
                                 HeightRequest="200"
                                 HorizontalOptions="Center"
-                                Source="finnish_spitz.jpg"
+                                Source="finnish_spitzz.jpg"
                                 WidthRequest="200" />
                             <StackLayout
                                 Padding="10,0"
@@ -2421,7 +2421,7 @@
                                 Aspect="AspectFill"
                                 HeightRequest="200"
                                 HorizontalOptions="Center"
-                                Source="fox_terrier.jpg"
+                                Source="fox_terrierr.jpg"
                                 WidthRequest="200" />
                             <StackLayout
                                 Padding="10,0"
@@ -2553,7 +2553,7 @@
                             Aspect="AspectFill"
                             HeightRequest="200"
                             HorizontalOptions="Center"
-                            Source="german_pointer.jpg"
+                            Source="germanpointer.jpg"
                             WidthRequest="200" />
                         <StackLayout
                             Padding="10,0"
@@ -2682,7 +2682,7 @@
                             Aspect="AspectFill"
                             HeightRequest="200"
                             HorizontalOptions="Center"
-                            Source="gordon_setter.jpg"
+                            Source="gordon_setterr.jpg"
                             WidthRequest="200" />
                         <StackLayout
                             Padding="10,0"
@@ -2898,7 +2898,7 @@
                             Aspect="AspectFill"
                             HeightRequest="200"
                             HorizontalOptions="Center"
-                            Source="irish_red_and_white_setter.jpg"
+                            Source="irish_white_and_red.jpg"
                             WidthRequest="200" />
                         <StackLayout
                             Padding="10,0"
@@ -2941,7 +2941,7 @@
                             Aspect="AspectFill"
                             HeightRequest="200"
                             HorizontalOptions="Center"
-                            Source="irish_setter.jpg"
+                            Source="irishsetter.jpg"
                             WidthRequest="200" />
                         <StackLayout
                             Padding="10,0"
@@ -3113,7 +3113,7 @@
                             Aspect="AspectFill"
                             HeightRequest="200"
                             HorizontalOptions="Center"
-                            Source="italian_mastiff.jpg"
+                            Source="italianmastiff.jpg"
                             WidthRequest="200" />
                         <StackLayout
                             Padding="10,0"
@@ -3373,7 +3373,7 @@
                             Aspect="AspectFill"
                             HeightRequest="200"
                             HorizontalOptions="Center"
-                            Source="labrador_retriever.jpg"
+                            Source="labradorretriever.jpg"
                             WidthRequest="200" />
                         <StackLayout
                             Padding="10,0"
@@ -3545,7 +3545,7 @@
                             Aspect="AspectFill"
                             HeightRequest="200"
                             HorizontalOptions="Center"
-                            Source="mexican_hairless_terrier.jpg"
+                            Source="mexicanhairlessdog.jpg"
                             WidthRequest="200" />
                         <StackLayout
                             Padding="10,0"
@@ -3803,7 +3803,7 @@
                             Aspect="AspectFill"
                             HeightRequest="200"
                             HorizontalOptions="Center"
-                            Source="old_english_sheepdog.jpg"
+                            Source="oldenglishsheepdog.jpg"
                             WidthRequest="200" />
                         <StackLayout
                             Padding="10,0"
@@ -3933,7 +3933,7 @@
                             Aspect="AspectFill"
                             HeightRequest="200"
                             HorizontalOptions="Center"
-                            Source="pharoah_hound.jpg"
+                            Source="pharaohhound.jpg"
                             WidthRequest="200" />
                         <StackLayout
                             Padding="10,0"
@@ -3976,7 +3976,7 @@
                             Aspect="AspectFill"
                             HeightRequest="200"
                             HorizontalOptions="Center"
-                            Source="pointer.jpg"
+                            Source="pointers.jpg"
                             WidthRequest="200" />
                         <StackLayout
                             Padding="10,0"
@@ -4320,7 +4320,7 @@
                             Aspect="AspectFill"
                             HeightRequest="200"
                             HorizontalOptions="Center"
-                            Source="rough_collie.jpg"
+                            Source="roughcollie.jpg"
                             WidthRequest="200" />
                         <StackLayout
                             Padding="10,0"
@@ -4364,7 +4364,7 @@
                             Aspect="AspectFill"
                             HeightRequest="200"
                             HorizontalOptions="Center"
-                            Source="salukis.jpg"
+                            Source="salukiii.jpg"
                             WidthRequest="200" />
                         <StackLayout
                             Padding="10,0"
@@ -4536,7 +4536,7 @@
                             Aspect="AspectFill"
                             HeightRequest="200"
                             HorizontalOptions="Center"
-                            Source="scottish_terrier.jpg"
+                            Source="cottish_terrierr.jpg"
                             WidthRequest="200" />
                         <StackLayout
                             Padding="10,0"
@@ -4579,7 +4579,7 @@
                             Aspect="AspectFill"
                             HeightRequest="200"
                             HorizontalOptions="Center"
-                            Source="shar_pei.jpg"
+                            Source="sharpeii.jpg"
                             WidthRequest="200" />
                         <StackLayout
                             Padding="10,0"
@@ -4880,7 +4880,7 @@
                             Aspect="AspectFill"
                             HeightRequest="200"
                             HorizontalOptions="Center"
-                            Source="st_bernand.jpg"
+                            Source="saint_bernand.jpg"
                             WidthRequest="200" />
                         <StackLayout
                             Padding="10,0"
@@ -5268,7 +5268,7 @@
                             Aspect="AspectFill"
                             HeightRequest="200"
                             HorizontalOptions="Center"
-                            Source="whippet.jpg"
+                            Source="whippett.jpg"
                             WidthRequest="200" />
                         <StackLayout
                             Padding="10,0"

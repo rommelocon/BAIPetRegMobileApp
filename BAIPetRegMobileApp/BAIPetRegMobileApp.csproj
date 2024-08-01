@@ -67,8 +67,12 @@
 	  <MauiImage Remove="Resources\Images\Australian_Terrier.jpg" />
 	  <MauiImage Remove="Resources\Images\australian_terriers.jpg" />
 	  <MauiImage Remove="Resources\Images\bernese_mountain_dog.webp" />
+	  <MauiImage Remove="Resources\Images\irish_red_and_white_setter.jpg" />
+	  <MauiImage Remove="Resources\Images\irish_setter.jpg" />
 	  <MauiImage Remove="Resources\Images\javanese.jpg" />
 	  <MauiImage Remove="Resources\Images\saluki.jpg" />
+	  <MauiImage Remove="Resources\Images\salukii.jpg" />
+	  <MauiImage Remove="Resources\Images\salukis.jpg" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -88,11 +92,15 @@
 		<None Remove="Resources\Images\dog_1.jpg" />
 		<None Remove="Resources\Images\dog_2.jpg" />
 		<None Remove="Resources\Images\dog_img.png" />
+		<None Remove="Resources\Images\irish_red_and_white_setter.jpg" />
+		<None Remove="Resources\Images\irish_setter.jpg" />
 		<None Remove="Resources\Images\javanese.jpg" />
 		<None Remove="Resources\Images\profile_pic.png" />
 		<None Remove="Resources\Images\profile_pic_1.jpg" />
 		<None Remove="Resources\Fonts\MaterialIcons-Regular.ttf" />
 		<None Remove="Resources\Fonts\MaterialIconsOutlined-Regular.otf" />
+		<None Remove="Resources\Images\salukii.jpg" />
+		<None Remove="Resources\Images\salukis.jpg" />
 	</ItemGroup>
 
 	<ItemGroup>
