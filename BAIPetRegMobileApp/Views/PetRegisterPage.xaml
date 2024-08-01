@@ -42,7 +42,6 @@
                     TextColor="#096B00" />
 
                 <!--  Pet's Name Entry  -->
-
                 <StackLayout>
                     <Label
                         Margin="40,20,0,0"
@@ -78,11 +77,40 @@
                             </Entry.Behaviors>
                         </Entry>
                     </Frame>
+                </StackLayout>
 
+                <!--  Alias Entry  -->
+                <StackLayout>
+                    <Label
+                        Margin="40,20,0,0"
+                        FontAttributes="Bold"
+                        FontSize="20"
+                        Text="Alias"
+                        TextColor="Black" />
+                    <Frame
+                        Margin="30,10"
+                        Padding="10"
+                        BackgroundColor="#DCF4DA"
+                        BorderColor="Transparent"
+                        CornerRadius="15"
+                        HasShadow="False"
+                        HorizontalOptions="FillAndExpand">
+                        <Entry
+                            x:Name="EntryAlias"
+                            BackgroundColor="Transparent"
+                            FontAttributes="None"
+                            FontSize="20"
+                            HorizontalOptions="FillAndExpand"
+                            IsSpellCheckEnabled="False"
+                            IsTextPredictionEnabled="False"
+                            Placeholder="Alias"
+                            PlaceholderColor="Black"
+                            Text="{Binding PetRegistration.Alias}"
+                            VerticalOptions="Center" />
+                    </Frame>
                 </StackLayout>
 
                 <!--  Type OwnerShip Picker  -->
-
                 <StackLayout>
                     <Label
                         Margin="40,20,0,0"
@@ -282,6 +310,61 @@
                                 VerticalOptions="Center" />
                         </Grid>
                     </Frame>
+
+                    <StackLayout IsVisible="{Binding IsFemaleSelected}">
+                        <Label
+                            Margin="40,20,0,0"
+                            FontAttributes="Bold"
+                            FontSize="20"
+                            Text="Female Classification *"
+                            TextColor="Black" />
+                        <Frame
+                            Margin="30,10"
+                            Padding="10"
+                            BackgroundColor="#DCF4DA"
+                            BorderColor="Transparent"
+                            CornerRadius="15"
+                            HasShadow="False"
+                            HorizontalOptions="FillAndExpand">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Picker
+                                    x:Name="FemaleClassificationList"
+                                    Title="Select Female Classification"
+                                    Grid.Row="0"
+                                    Grid.Column="0"
+                                    FontSize="20"
+                                    ItemDisplayBinding="{Binding AnimalFemalClassification}"
+                                    ItemsSource="{Binding AnimalFemaleClassifications}"
+                                    SelectedItem="{Binding SelectedAnimalFemaleClassification, Mode=TwoWay}"
+                                    Style="{StaticResource NoUnderlinePicker}"
+                                    TitleColor="Black" />
+                                <Label
+                                    Grid.Row="0"
+                                    Grid.Column="1"
+                                    Margin="0,0,10,0"
+                                    FontFamily="MaterialIconsOutlined-Regular"
+                                    FontSize="40"
+                                    HorizontalOptions="End"
+                                    Text="arrow_drop_down"
+                                    TextColor="Black"
+                                    VerticalOptions="Center" />
+                                <Entry
+                                    Grid.Row="1"
+                                    IsVisible="{Binding IsLactatingSelected}"
+                                    Keyboard="Numeric"
+                                    Placeholder="Tag Number"
+                                    Text="{Binding PetRegistration.NumberOffspring}" />
+                            </Grid>
+                        </Frame>
+                    </StackLayout>
                 </StackLayout>
 
                 <!--  Animal Color  -->
@@ -327,48 +410,6 @@
                         </Grid>
                     </Frame>
                 </StackLayout>
-
-                <!--  Habitat  -->
-                <!--
-                <StackLayout>
-                    <Label
-                        Margin="40,20,0,0"
-                        FontAttributes="Bold"
-                        FontSize="20"
-                        Text="Habitat *"
-                        TextColor="Black" />
-                    <Frame
-                        Margin="30,10"
-                        Padding="10"
-                        BackgroundColor="#DCF4DA"
-                        BorderColor="Transparent"
-                        CornerRadius="15"
-                        HasShadow="False"
-                        HorizontalOptions="FillAndExpand">
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="Auto" />
-                            </Grid.ColumnDefinitions>
-                            <Picker
-                                x:Name="HabitatList"
-                                Title="Select Habitat"
-                                Grid.Column="0"
-                                FontSize="20"
-                                Style="{StaticResource NoUnderlinePicker}"
-                                TitleColor="Black" />
-                            <Label
-                                Grid.Column="1"
-                                Margin="0,0,10,0"
-                                FontFamily="MaterialIconsOutlined-Regular"
-                                FontSize="40"
-                                HorizontalOptions="End"
-                                Text="arrow_drop_down"
-                                TextColor="Black"
-                                VerticalOptions="Center" />
-                        </Grid>
-                    </Frame>
-                </StackLayout>-->
 
                 <!--  Contact with Other Animals?  -->
                 <StackLayout>
@@ -447,164 +488,89 @@
                     </Frame>
                 </StackLayout>
 
-                <!--  Pet Tag Type  -->
-                <StackLayout Padding="20">
+                <!--  Tag Type  -->
+                <StackLayout>
                     <Label
+                        Margin="40,20,0,0"
                         FontAttributes="Bold"
-                        FontSize="Medium"
-                        HorizontalOptions="Center"
+                        FontSize="20"
                         Text="Tag Type *"
-                        TextColor="Black"
-                        VerticalOptions="Start" />
-
+                        TextColor="Black" />
                     <Frame
+                        Margin="30,10"
                         Padding="10"
                         BackgroundColor="#DCF4DA"
-                        BorderColor="Black"
-                        CornerRadius="5"
-                        HorizontalOptions="FillAndExpand"
-                        VerticalOptions="Start">
-                        <StackLayout>
-                            <StackLayout Orientation="Vertical">
-                                <Picker
-                                    Title="Select Pet Tag Type"
-                                    Grid.Column="0"
-                                    FontSize="20"
-                                    ItemDisplayBinding="{Binding TagDescription}"
-                                    ItemsSource="{Binding TagTypes}"
-                                    SelectedItem="{Binding SelectedTagType, Mode=TwoWay}"
-                                    Style="{StaticResource NoUnderlinePicker}"
-                                    TitleColor="Black" />
-
-                                <Entry
-                                    IsVisible="{Binding IsTagNumberVisible}"
-                                    Keyboard="Numeric"
-                                    Placeholder="Tag Number"
-                                    Text="{Binding PetRegistration.TagNo}" />
-                            </StackLayout>
-                        </StackLayout>
-                    </Frame>
-                </StackLayout>
-
-                <!--  Pet Origin  -->
-
-                <StackLayout Padding="20">
-                    <Label
-                        FontAttributes="Bold"
-                        FontSize="Medium"
-                        HorizontalOptions="Center"
-                        Text="PET ORIGIN *"
-                        TextColor="Black"
-                        VerticalOptions="Start" />
-
-                    <Frame
-                        Padding="10"
-                        BackgroundColor="#DCF4DA"
-                        BorderColor="Black"
-                        CornerRadius="5"
-                        HorizontalOptions="FillAndExpand"
-                        VerticalOptions="Start">
-                        <StackLayout>
-                            <StackLayout Orientation="Horizontal">
-                                <RadioButton
-                                    x:Name="LocalRadioButton"
-                                    Content="Local (within the Barangay)"
-                                    FontSize="20"
-                                    GroupName="PetOriginGroup"
-                                    TextColor="Black" />
-                            </StackLayout>
-                            <StackLayout Orientation="Horizontal">
-                                <RadioButton
-                                    x:Name="OtherRadioButton"
-                                    Content="Other (Outside the Barangay)"
-                                    FontSize="20"
-                                    GroupName="PetOriginGroup"
-                                    TextColor="Black" />
-                            </StackLayout>
-
-                            <StackLayout x:Name="OtherOriginEntryStack" IsVisible="False">
-                                <Label
-                                    Margin="10,10"
-                                    FontAttributes="Bold"
-                                    FontSize="20"
-                                    HorizontalOptions="Start"
-                                    Text="Indicate the Origin"
-                                    TextColor="Black"
-                                    VerticalOptions="Start" />
-                                <Editor
-                                    x:Name="OtherOriginEntry"
-                                    Margin="10,10"
-                                    AutoSize="TextChanges"
-                                    FontSize="20"
-                                    HeightRequest="100"
-                                    HorizontalOptions="FillAndExpand"
-                                    Placeholder="Enter origin here"
-                                    TextColor="Black"
-                                    VerticalOptions="Start" />
-                            </StackLayout>
-                        </StackLayout>
-                    </Frame>
-                </StackLayout>
-
-                <!--  Pet Status  -->
-
-                <StackLayout Padding="20">
-                    <!--  Existing Content  -->
-
-                    <!--  STATUS Section  -->
-                    <Label
-                        Margin="10,20,10,0"
-                        FontAttributes="Bold"
-                        FontSize="Medium"
-                        HorizontalOptions="Center"
-                        Text="STATUS *"
-                        TextColor="Black"
-                        VerticalOptions="Start" />
-                    <Frame
-                        Padding="10"
-                        BackgroundColor="#DCF4DA"
-                        BorderColor="Black"
-                        CornerRadius="5"
-                        HorizontalOptions="FillAndExpand"
-                        VerticalOptions="Start">
-                        <StackLayout>
-                            <RadioButton
-                                x:Name="AliveRadioButton"
-                                Content="Alive"
+                        BorderColor="Transparent"
+                        CornerRadius="15"
+                        HasShadow="False"
+                        HorizontalOptions="FillAndExpand">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <Picker
+                                x:Name="TagType"
+                                Title="Select Tag Type"
+                                Grid.Row="0"
+                                Grid.Column="0"
                                 FontSize="20"
-                                GroupName="StatusGroup" />
-                            <RadioButton
-                                x:Name="DeadRadioButton"
-                                Content="Dead"
-                                FontSize="20"
-                                GroupName="StatusGroup" />
-
-                            <StackLayout
-                                x:Name="DatePickerStack"
-                                Margin="10,0,10,0"
-                                IsVisible="False">
-                                <Label
-                                    Margin="10,20"
-                                    FontAttributes="Bold"
-                                    FontSize="20"
-                                    HorizontalOptions="Start"
-                                    Text="Date of Death"
-                                    TextColor="Black"
-                                    VerticalOptions="Start" />
-                                <DatePicker
-                                    x:Name="DeathDatePicker"
-                                    Margin="5,0"
-                                    FontSize="20"
-                                    HeightRequest="50"
-                                    HorizontalOptions="FillAndExpand"
-                                    VerticalOptions="Start" />
-                            </StackLayout>
-                        </StackLayout>
+                                ItemDisplayBinding="{Binding TagDescription}"
+                                ItemsSource="{Binding TagTypes}"
+                                SelectedItem="{Binding SelectedTagType, Mode=TwoWay}"
+                                Style="{StaticResource NoUnderlinePicker}"
+                                TitleColor="Black" />
+                            <Label
+                                Grid.Row="0"
+                                Grid.Column="1"
+                                Margin="0,0,10,0"
+                                FontFamily="MaterialIconsOutlined-Regular"
+                                FontSize="40"
+                                HorizontalOptions="End"
+                                Text="arrow_drop_down"
+                                TextColor="Black"
+                                VerticalOptions="Center" />
+                            <Entry
+                                Grid.Row="1"
+                                IsVisible="{Binding IsTagNumberVisible}"
+                                Keyboard="Numeric"
+                                Placeholder="Tag Number"
+                                Text="{Binding PetRegistration.TagNo}" />
+                        </Grid>
                     </Frame>
                 </StackLayout>
 
+                <!--  Remarks  -->
+                <StackLayout>
+                    <Label
+                        Margin="40,20,0,0"
+                        FontAttributes="Bold"
+                        FontSize="20"
+                        Text="Remarks *"
+                        TextColor="Black" />
+                    <Frame
+                        Margin="30,10"
+                        Padding="10"
+                        BackgroundColor="#DCF4DA"
+                        BorderColor="Transparent"
+                        CornerRadius="15"
+                        HasShadow="False"
+                        HorizontalOptions="FillAndExpand">
+                        <Editor
+                            AutoSize="TextChanges"
+                            FontSize="18"
+                            HeightRequest="150"
+                            Placeholder="Enter your remarks..."
+                            Text="{Binding PetRegistration.Remarks, Mode=TwoWay}"
+                            TextColor="Black" />
+                    </Frame>
+                </StackLayout>
 
-                <!--  ImagePicker  -->
+                <!--  Image Picker Section  -->
                 <StackLayout Padding="10">
                     <Label
                         FontAttributes="Bold"
@@ -616,156 +582,25 @@
                         FontSize="Medium"
                         HorizontalOptions="Center"
                         Text="Pet’s Image" />
-                    <Grid
+
+                    <!--  Image Frame  --><!--
+                    <Frame
                         Padding="10"
-                        ColumnSpacing="10"
-                        RowSpacing="10">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="*" />
-                            <RowDefinition Height="*" />
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="*" />
-                        </Grid.ColumnDefinitions>
-
-                        <!--  Image Frame 1  -->
-                        <Frame
-                            Grid.Row="0"
-                            Grid.Column="0"
-                            Padding="10"
-                            BorderColor="Gray"
-                            HasShadow="False">
-                            <StackLayout>
-                                <Image
-                                    x:Name="Image1"
-                                    Aspect="AspectFit"
-                                    HeightRequest="100"
-                                    Source="default_image_placeholder.png"
-                                    WidthRequest="100" />
-                                <Label
-                                    Padding="5,30,0,0"
-                                    FontSize="Medium"
-                                    Text="Image 1:*" />
-                                <Button
-                                    Margin="0,10,0,0"
-                                    BackgroundColor="#096B00"
-                                    CornerRadius="10"
-                                    Text="Upload Image"
-                                    TextColor="White" />
-                                <Button
-                                    Margin="0,10,0,0"
-                                    BackgroundColor="#096B00"
-                                    CornerRadius="10"
-                                    Text="Take a Photo"
-                                    TextColor="White" />
-                            </StackLayout>
-                        </Frame>
-
-                        <!--  Image Frame 2  -->
-                        <Frame
-                            Grid.Row="0"
-                            Grid.Column="1"
-                            Padding="10"
-                            BorderColor="Gray"
-                            HasShadow="False">
-                            <StackLayout>
-                                <Image
-                                    x:Name="Image2"
-                                    Aspect="AspectFit"
-                                    HeightRequest="100"
-                                    Source="default_image_placeholder.png"
-                                    WidthRequest="100" />
-                                <Label
-                                    Padding="5,30,0,0"
-                                    FontSize="Medium"
-                                    Text="Image 2:" />
-                                <Button
-                                    Margin="0,10,0,0"
-                                    BackgroundColor="#096B00"
-                                    CornerRadius="10"
-                                    Text="Upload Image"
-                                    TextColor="White" />
-                                <Button
-                                    Margin="0,10,0,0"
-                                    BackgroundColor="#096B00"
-                                    CornerRadius="10"
-                                    Text="Take a Photo"
-                                    TextColor="White" />
-                            </StackLayout>
-                        </Frame>
-
-                        <!--  Image Frame 3  -->
-                        <Frame
-                            Grid.Row="1"
-                            Grid.Column="0"
-                            Padding="10"
-                            BorderColor="Gray"
-                            HasShadow="False">
-                            <StackLayout>
-                                <Image
-                                    x:Name="Image3"
-                                    Aspect="AspectFit"
-                                    HeightRequest="100"
-                                    Source="default_image_placeholder.png"
-                                    WidthRequest="100" />
-                                <Label
-                                    Padding="5,30,0,0"
-                                    FontSize="Medium"
-                                    Text="Image 3:" />
-                                <Button
-                                    Margin="0,10,0,0"
-                                    BackgroundColor="#096B00"
-                                    CornerRadius="10"
-                                    Text="Upload Image"
-                                    TextColor="White" />
-                                <Button
-                                    Margin="0,10,0,0"
-                                    BackgroundColor="#096B00"
-                                    CornerRadius="10"
-                                    Text="Take a Photo"
-                                    TextColor="White" />
-                            </StackLayout>
-                        </Frame>
-
-                        <!--  Image Frame 4  -->
-                        <Frame
-                            Grid.Row="1"
-                            Grid.Column="1"
-                            Padding="10"
-                            BorderColor="Gray"
-                            HasShadow="False">
-                            <StackLayout>
-                                <Image
-                                    x:Name="Image4"
-                                    Aspect="AspectFit"
-                                    HeightRequest="100"
-                                    Source="default_image_placeholder.png"
-                                    WidthRequest="100" />
-                                <Label
-                                    Padding="5,30,0,0"
-                                    FontSize="Medium"
-                                    Text="Image 4:" />
-                                <Button
-                                    Margin="0,10,0,0"
-                                    BackgroundColor="#096B00"
-                                    CornerRadius="10"
-                                    Text="Upload Image"
-                                    TextColor="White" />
-                                <Button
-                                    Margin="0,10,0,0"
-                                    BackgroundColor="#096B00"
-                                    CornerRadius="10"
-                                    Text="Take a Photo"
-                                    TextColor="White" />
-                            </StackLayout>
-                        </Frame>
-                    </Grid>
+                        BorderColor="Gray"
+                        HasShadow="False">
+                        <StackLayout>
+                            <Image
+                                x:Name="Image1"
+                                Aspect="AspectFit"
+                                HeightRequest="100"
+                                Source="{Binding PetImage}"
+                                WidthRequest="100" />
+                            <Button Command="{Binding PickImageCommand}" Text="Pick Image" />
+                        </StackLayout>
+                    </Frame>-->
                 </StackLayout>
 
-
                 <!--  Button for Submit  -->
-
                 <Button
                     x:Name="BtnSubmit"
                     Margin="60"
@@ -777,11 +612,9 @@
                     FontSize="20"
                     Text="SUBMIT"
                     TextColor="White" />
-
             </VerticalStackLayout>
         </ScrollView>
     </Grid>
-
 
     <ContentPage.Resources>
         <Style x:Key="NoUnderlinePicker" TargetType="Picker">

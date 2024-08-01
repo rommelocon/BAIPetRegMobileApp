@@ -1,6 +1,7 @@
 ﻿using BAIPetRegMobileApp.Models.User;
 using BAIPetRegMobileApp.Services;
 using CommunityToolkit.Mvvm.ComponentModel;
+using System.Collections.ObjectModel;
 using System.Text.Json;
 
 namespace BAIPetRegMobileApp.ViewModels
@@ -106,6 +107,23 @@ namespace BAIPetRegMobileApp.ViewModels
                 FullName = $"{Firstname} {MiddleName} {Lastname} {ExtensionName}".Trim();
                 WelcomeMessage = $"Welcome {(string.IsNullOrEmpty(Firstname) ? UserName : Firstname)}!";
             });
+        }
+
+        public async Task LoadCollectionAsync<T>(Func<Task<IEnumerable<T>>> loadFunc, ObservableCollection<T> collection)
+        {
+            collection.Clear();
+            try
+            {
+                var items = await loadFunc();
+                foreach (var item in items)
+                {
+                    collection.Add(item);
+                }
+            }
+            catch (Exception ex)
+            {
+                await Shell.Current.DisplayAlert("Error", $"An error occurred while loading data: {ex.Message}", "OK");
+            }
         }
     }
 }

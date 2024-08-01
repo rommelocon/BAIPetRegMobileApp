@@ -158,7 +158,7 @@ namespace BAIPetRegMobileApp.Services
             throw new InvalidOperationException("Authentication data not found.");
         }
 
-        public async Task<List<PetRegistration>> GetPetRegistrationsAsync()
+        public async Task<IEnumerable<PetRegistration>> GetPetRegistrationsAsync()
         {
             var loginResponse = await GetStoredLoginResponseAsync();
             if (loginResponse != null && !string.IsNullOrEmpty(loginResponse.UserName) && !string.IsNullOrEmpty(loginResponse.AccessToken))
@@ -173,35 +173,36 @@ namespace BAIPetRegMobileApp.Services
                         PropertyNameCaseInsensitive = true,
                     };
                     var petRegistrations = JsonSerializer.Deserialize<List<PetRegistration>>(content, options);
-                    return petRegistrations;
+                    return petRegistrations ?? Enumerable.Empty<PetRegistration>();
                 }
-                return null;
+                return Enumerable.Empty<PetRegistration>();
             }
             throw new InvalidOperationException("Authentication data not found.");
         }
 
-        private async Task<List<T>> GetListAsync<T>(string endpoint)
+        private async Task<IEnumerable<T>> GetListAsync<T>(string endpoint)
         {
             var httpClient = httpClientFactory.CreateClient("custom-httpclient");
             var response = await httpClient.GetAsync(endpoint);
             response.EnsureSuccessStatusCode();
             var jsonResponse = await response.Content.ReadAsStringAsync();
-            
-            return JsonSerializer.Deserialize<List<T>>(jsonResponse, new JsonSerializerOptions { PropertyNamingPolicy = JsonNamingPolicy.CamelCase })!;
+
+            return JsonSerializer.Deserialize<List<T>>(jsonResponse, new JsonSerializerOptions { PropertyNamingPolicy = JsonNamingPolicy.CamelCase }) ?? Enumerable.Empty<T>();
         }
 
-        public Task<List<Regions>> GetRegionsAsync() => GetListAsync<Regions>("/api/Location/regions");
-        public Task<List<Provinces>> GetProvincesByRegionCodeAsync(string regionCode) => GetListAsync<Provinces>($"/api/Location/provinces/{regionCode}");
-        public Task<List<Municipalities>> GetMunicipalitiesByProvinceCodeAsync(string provinceCode) => GetListAsync<Municipalities>($"/api/Location/municipalities/{provinceCode}");
-        public Task<List<Barangays>> GetBarangaysByMunicipalityCodeAsync(string municipalityCode) => GetListAsync<Barangays>($"/api/Location/barangays/{municipalityCode}");
-        public Task<List<SexType>> GetSexType() => GetListAsync<SexType>("/api/SexType/sex");
-        public Task<List<OwnerShipType>> GetOwnerShipTypes() => GetListAsync<OwnerShipType>("/api/PetRegistration/ownershipType");
-        public Task<List<AnimalColor>> GetAnimalColors() => GetListAsync<AnimalColor>("/api/PetRegistration/animalColor");
-        public Task<List<AnimalContact>> GetAnimalContactsAsync() => GetListAsync<AnimalContact>("/api/PetRegistration/animalContacts");
-        public Task<List<AnimalFemaleClassification>> GetAnimalFemaleClassificationsAsync() => GetListAsync<AnimalFemaleClassification>("/api/PetRegistration/animalFemaleClassificator");
-        public Task<List<PetTagType>> GetPetTagTypesAsync() => GetListAsync<PetTagType>("/api/PetRegistration/petTagType");
-        public Task<List<SpeciesBreed>> GetSpeciesBreedsAsync(string speciesCode) => GetListAsync<SpeciesBreed>($"/api/PetRegistration/speciesBreed/{speciesCode}");
-        public Task<List<SpeciesGroup>> GetSpeciesGroupsAsync() => GetListAsync<SpeciesGroup>("/api/PetRegistration/speciesGroup");
-        public Task<List<TagType>> GetTagTypesAsync() => GetListAsync<TagType>("/api/PetRegistration/tagType");
+        public Task<IEnumerable<Regions>> GetRegionsAsync() => GetListAsync<Regions>("/api/Location/regions");
+        public Task<IEnumerable<Provinces>> GetProvincesByRegionCodeAsync(string regionCode) => GetListAsync<Provinces>($"/api/Location/provinces/{regionCode}");
+        public Task<IEnumerable<Municipalities>> GetMunicipalitiesByProvinceCodeAsync(string provinceCode) => GetListAsync<Municipalities>($"/api/Location/municipalities/{provinceCode}");
+        public Task<IEnumerable<Barangays>> GetBarangaysByMunicipalityCodeAsync(string municipalityCode) => GetListAsync<Barangays>($"/api/Location/barangays/{municipalityCode}");
+        public Task<IEnumerable<SexType>> GetSexType() => GetListAsync<SexType>("/api/SexType/sex");
+        public Task<IEnumerable<OwnerShipType>> GetOwnerShipTypes() => GetListAsync<OwnerShipType>("/api/PetRegistration/ownershipType");
+        public Task<IEnumerable<AnimalColor>> GetAnimalColors() => GetListAsync<AnimalColor>("/api/PetRegistration/animalColor");
+        public Task<IEnumerable<AnimalContact>> GetAnimalContactsAsync() => GetListAsync<AnimalContact>("/api/PetRegistration/animalContacts");
+        public Task<IEnumerable<AnimalFemaleClassification>> GetAnimalFemaleClassificationsAsync() => GetListAsync<AnimalFemaleClassification>("/api/PetRegistration/animalFemaleClassificator");
+        public Task<IEnumerable<PetTagType>> GetPetTagTypesAsync() => GetListAsync<PetTagType>("/api/PetRegistration/petTagType");
+        public Task<IEnumerable<SpeciesBreed>> GetSpeciesBreedsAsync(string speciesCode) => GetListAsync<SpeciesBreed>($"/api/PetRegistration/speciesBreed/{speciesCode}");
+        public Task<IEnumerable<SpeciesGroup>> GetSpeciesGroupsAsync() => GetListAsync<SpeciesGroup>("/api/PetRegistration/speciesGroup");
+        public Task<IEnumerable<TagType>> GetTagTypesAsync() => GetListAsync<TagType>("/api/PetRegistration/tagType");
+
     }
 }

@@ -8,31 +8,8 @@ namespace BAIPetRegMobileApp.ViewModels
 {
     public partial class HomePageViewModel : BaseViewModel
     {
-        public HomePageViewModel(ClientService clientService) : base(clientService)
-        {
-            PetRegistrations = new ObservableCollection<PetRegistration>();
-            LoadPetRegistrationCommand = new AsyncRelayCommand(LoadPetRegistration);
-            LoadPetRegistrationCommand.ExecuteAsync(null);
-            ExpandCommand = new RelayCommand<PetRegistration>(ToggleExpand);
-        }
-        public IRelayCommand<PetRegistration> ExpandCommand { get; }
-        private void ToggleExpand(PetRegistration item)
-        {
-            if (PetRegistration == item)
-            {
-                // Collapse the currently expanded item
-                PetRegistration = null;
-            }
-            else
-            {
-                // Expand the new item
-                PetRegistration = item;
-            }
-        }
-        public ObservableCollection<PetRegistration> PetRegistrations { get; set; }
-     
         [ObservableProperty]
-        private PetRegistration _petRegistration;
+        private PetRegistration? _petRegistration;
 
         [ObservableProperty]
         private string? petRegistrationID;
@@ -178,25 +155,27 @@ namespace BAIPetRegMobileApp.ViewModels
         [ObservableProperty]
         private string? remarks;
 
-        public IAsyncRelayCommand LoadPetRegistrationCommand { get; }
+        [ObservableProperty]
+        private bool _isDetailsVisible = false;
 
+        [ObservableProperty]
+        private string? toggleDetailsButtonText = "Show";
+
+        public HomePageViewModel(ClientService clientService) : base(clientService)
+        {
+            PetRegistrations = new ObservableCollection<PetRegistration>();
+            LoadPetRegistrationCommand.ExecuteAsync(null);
+        }
+      
+        public ObservableCollection<PetRegistration> PetRegistrations { get; set; }
+
+
+        [RelayCommand]
         private async Task LoadPetRegistration()
         {
             try
             {
-                var petRegistrations = await clientService.GetPetRegistrationsAsync();
-                if (petRegistrations != null)
-                {
-                    PetRegistrations.Clear();
-                    foreach (var pet in petRegistrations)
-                    {
-                        PetRegistrations.Add(pet);
-                    }
-                }
-                else
-                {
-                    await Shell.Current.DisplayAlert("Error", "No pet registration data found.", "OK");
-                }
+                await LoadCollectionAsync(() => clientService.GetPetRegistrationsAsync(), PetRegistrations);
             }
             catch (Exception ex)
             {
@@ -204,22 +183,9 @@ namespace BAIPetRegMobileApp.ViewModels
             }
         }
 
-        public async Task RefreshPetRegistrations()
+        private void ToggleDetails()
         {
-            // Clear the existing collection and reload data
-            PetRegistrations.Clear();
-            var petRegistrations = await clientService.GetPetRegistrationsAsync();
-            if (petRegistrations != null)
-            {
-                foreach (var pet in petRegistrations)
-                {
-                    PetRegistrations.Add(pet);
-                }
-            }
-            else
-            {
-                await Shell.Current.DisplayAlert("Error", "No pet registration data found.", "OK");
-            }
+            IsDetailsVisible = !IsDetailsVisible;
         }
     }
 }

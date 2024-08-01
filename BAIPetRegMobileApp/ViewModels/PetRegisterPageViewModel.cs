@@ -11,41 +11,27 @@ namespace BAIPetRegMobileApp.ViewModels
     public partial class PetRegisterPageViewModel : BaseViewModel
     {
         private readonly ClientService _clientService;
-        private readonly HomePageViewModel viewModel;
+        private readonly HomePageViewModel _viewModel;
 
         public PetRegisterPageViewModel(ClientService clientService, HomePageViewModel viewModel) : base(clientService)
         {
             _clientService = clientService;
-            this.viewModel = viewModel;
-
-            // Initialize collections
-            PetRegistrations = new ObservableCollection<PetRegistration>();
-            OwnerShipTypes = new ObservableCollection<OwnerShipType>();
-            AnimalColors = new ObservableCollection<AnimalColor>();
-            AnimalContacts = new ObservableCollection<AnimalContact>();
-            AnimalFemaleClassifications = new ObservableCollection<AnimalFemaleClassification>();
-            PetTagTypes = new ObservableCollection<PetTagType>();
-            SpeciesBreeds = new ObservableCollection<SpeciesBreed>();
-            SpeciesGroups = new ObservableCollection<SpeciesGroup>();
-            TagTypes = new ObservableCollection<TagType>();
-            SexTypes = new ObservableCollection<SexType>();
-
-            // Load initial data
+            _viewModel = viewModel;
+            InitializeCollections();
             LoadDataCommand.ExecuteAsync(null);
-            this.viewModel = viewModel;
         }
 
         // Properties
-        public ObservableCollection<PetRegistration> PetRegistrations { get; }
-        public ObservableCollection<OwnerShipType> OwnerShipTypes { get; }
-        public ObservableCollection<AnimalColor> AnimalColors { get; }
-        public ObservableCollection<AnimalContact> AnimalContacts { get; }
-        public ObservableCollection<AnimalFemaleClassification> AnimalFemaleClassifications { get; }
-        public ObservableCollection<PetTagType> PetTagTypes { get; }
-        public ObservableCollection<SpeciesBreed> SpeciesBreeds { get; }
-        public ObservableCollection<SpeciesGroup> SpeciesGroups { get; }
-        public ObservableCollection<TagType> TagTypes { get; }
-        public ObservableCollection<SexType> SexTypes { get; }
+        public ObservableCollection<PetRegistration> PetRegistrations { get; private set; }
+        public ObservableCollection<OwnerShipType> OwnerShipTypes { get; private set; }
+        public ObservableCollection<AnimalColor> AnimalColors { get; private set; }
+        public ObservableCollection<AnimalContact> AnimalContacts { get; private set; }
+        public ObservableCollection<AnimalFemaleClassification> AnimalFemaleClassifications { get; private set; }
+        public ObservableCollection<PetTagType> PetTagTypes { get; private set; }
+        public ObservableCollection<SpeciesBreed> SpeciesBreeds { get; private set; }
+        public ObservableCollection<SpeciesGroup> SpeciesGroups { get; private set; }
+        public ObservableCollection<TagType> TagTypes { get; private set; }
+        public ObservableCollection<SexType> SexTypes { get; private set; }
 
         // Observable properties
         [ObservableProperty]
@@ -67,21 +53,57 @@ namespace BAIPetRegMobileApp.ViewModels
         private AnimalColor _selectedAnimalColor;
 
         [ObservableProperty]
+        private AnimalFemaleClassification _selectedAnimalFemaleClassification;
+
+        [ObservableProperty]
         private PetTagType _selectedPetTagType;
 
         [ObservableProperty]
         private TagType _selectedTagType;
 
         [ObservableProperty]
-        private PetRegistration _petRegistration = new PetRegistration();
+        private PetRegistration _petRegistration = new();
 
         [ObservableProperty]
-        private bool _isTagNumberVisible;  // Visibility for Tag Number entry
+        private bool _isTagNumberVisible;
 
-        // Handle tag type selection change
+        [RelayCommand]
+        public async Task RefreshPetRegistrations()
+        {
+            if (IsBusy) return;
+
+            try
+            {
+                IsBusy = true;
+                var petRegistrations = await _clientService.GetPetRegistrationsAsync();
+                // Update your observable collection or other properties
+            }
+            catch (Exception ex)
+            {
+                await Shell.Current.DisplayAlert("Error", $"An error occurred while refreshing data: {ex.Message}", "OK");
+            }
+            finally
+            {
+                IsBusy = false;
+            }
+        }
+
+        public bool IsFemaleSelected => SelectedSexType?.SexID == 2;
+        public bool IsLactatingSelected => SelectedAnimalFemaleClassification?.AnimalFemaleClassID == 2;
+
+        partial void OnSelectedAnimalFemaleClassificationChanged(AnimalFemaleClassification value)
+        {
+            OnPropertyChanged(nameof(IsLactatingSelected));
+        }
+
+        partial void OnSelectedSexTypeChanged(SexType value)
+        {
+            OnPropertyChanged(nameof(IsFemaleSelected));
+        }
+
         partial void OnSelectedTagTypeChanged(TagType value)
         {
-            IsTagNumberVisible = value != null && value.TagID != "NO";
+            IsTagNumberVisible = value?.TagID != "NO";
         }
 
         partial void OnSelectedSpeciesGroupChanged(SpeciesGroup value)
@@ -118,41 +140,13 @@ namespace BAIPetRegMobileApp.ViewModels
             {
                 IsBusy = true;
 
-                // Load various types of data from the client service
-                OwnerShipTypes.Clear();
-                var ownershipTypes = await _clientService.GetOwnerShipTypes();
-                foreach (var item in ownershipTypes)
-                    OwnerShipTypes.Add(item);
-
-                AnimalColors.Clear();
-                var animalColors = await _clientService.GetAnimalColors();
-                foreach (var item in animalColors)
-                    AnimalColors.Add(item);
-
-                AnimalContacts.Clear();
-                var animalContacts = await _clientService.GetAnimalContactsAsync();
-                foreach (var item in animalContacts)
-                    AnimalContacts.Add(item);
-
-                AnimalFemaleClassifications.Clear();
-                var animalFemaleClassifications = await _clientService.GetAnimalFemaleClassificationsAsync();
-                foreach (var item in animalFemaleClassifications)
-                    AnimalFemaleClassifications.Add(item);
-
-                TagTypes.Clear();
-                var tagTypes = await _clientService.GetTagTypesAsync();
-                foreach (var item in tagTypes)
-                    TagTypes.Add(item);
-
-                SpeciesGroups.Clear();
-                var speciesGroups = await _clientService.GetSpeciesGroupsAsync();
-                foreach (var item in speciesGroups)
-                    SpeciesGroups.Add(item);
-
-                SexTypes.Clear();
-                var sexTypes = await _clientService.GetSexType();
-                foreach (var item in sexTypes)
-                    SexTypes.Add(item);
+                await LoadCollectionAsync(() => _clientService.GetOwnerShipTypes(), OwnerShipTypes);
+                await LoadCollectionAsync(() => _clientService.GetAnimalColors(), AnimalColors);
+                await LoadCollectionAsync(() => _clientService.GetAnimalContactsAsync(), AnimalContacts);
+                await LoadCollectionAsync(() => _clientService.GetAnimalFemaleClassificationsAsync(), AnimalFemaleClassifications);
+                await LoadCollectionAsync(() => _clientService.GetTagTypesAsync(), TagTypes);
+                await LoadCollectionAsync(() => _clientService.GetSpeciesGroupsAsync(), SpeciesGroups);
+                await LoadCollectionAsync(() => _clientService.GetSexType(), SexTypes);
             }
             catch (Exception ex)
             {
@@ -167,7 +161,6 @@ namespace BAIPetRegMobileApp.ViewModels
         [RelayCommand]
         public async Task PetRegistrationSubmit()
         {
-            // Create your PetRegistration object and populate it
             var petRegistration = new PetRegistration
             {
                 DateRegistered = DateTime.Now,
@@ -179,7 +172,7 @@ namespace BAIPetRegMobileApp.ViewModels
                 SpeciesCode = SelectedSpeciesGroup.SpeciesCode,
                 SpeciesCommonName = SelectedSpeciesGroup.SpeciesCommonName,
                 BreedID = SelectedSpeciesBreed.BreedID,
-                BreedDescription= SelectedSpeciesBreed.BreedDescription,
+                BreedDescription = SelectedSpeciesBreed.BreedDescription,
                 PetSexID = SelectedSexType.SexID,
                 PetSexDescription = SelectedSexType.SexDescription,
                 TagID = SelectedTagType.TagID,
@@ -187,19 +180,44 @@ namespace BAIPetRegMobileApp.ViewModels
                 TagNo = PetRegistration.TagNo,
                 AnimalColorDescription = SelectedAnimalColor.AnimalColorDescription,
                 AnimalColorID = SelectedAnimalColor.AnimalColorID,
-                PetDateofBirth = this.PetRegistration.PetDateofBirth,
+                PetDateofBirth = PetRegistration.PetDateofBirth,
+                AnimalFemalClassification = PetRegistration.AnimalFemalClassification,
+                AnimalFemaleClassID = PetRegistration.AnimalFemaleClassID,
+                NumberOffspring = PetRegistration.NumberOffspring,
+                PetImage1 = PetRegistration.PetImage1,
+                PetImage2 = PetRegistration.PetImage2,
+                PetImage3 = PetRegistration.PetImage3,
+                PetImage4 = PetRegistration.PetImage4,
+                PetOrigin = PetRegistration.PetOrigin,
+                Remarks = PetRegistration.Remarks,
+                Alias = PetRegistration.Alias,
             };
 
-            // Call your API to submit the registration
-            await clientService.RegisterPetAsync(petRegistration);
+            await _clientService.RegisterPetAsync(petRegistration);
+            await Shell.Current.DisplayAlert("Alert", "Successfully Registered.", "Ok");
 
-            // Refresh the pet registrations collection
-            await viewModel.RefreshPetRegistrations();
+            // Refresh HomePageViewModel
+            await RefreshPetRegistrations();
 
-            await Shell.Current.DisplayAlert("Alert", "Succesfully Registered.", "Ok");
+            // Navigate to the final checking page
             await Shell.Current.GoToAsync(nameof(FinalCheckingPage));
         }
 
+        private void InitializeCollections()
+        {
+            PetRegistrations = new ObservableCollection<PetRegistration>();
+            OwnerShipTypes = new ObservableCollection<OwnerShipType>();
+            AnimalColors = new ObservableCollection<AnimalColor>();
+            AnimalContacts = new ObservableCollection<AnimalContact>();
+            AnimalFemaleClassifications = new ObservableCollection<AnimalFemaleClassification>();
+            PetTagTypes = new ObservableCollection<PetTagType>();
+            SpeciesBreeds = new ObservableCollection<SpeciesBreed>();
+            SpeciesGroups = new ObservableCollection<SpeciesGroup>();
+            TagTypes = new ObservableCollection<TagType>();
+            SexTypes = new ObservableCollection<SexType>();
+        }
+
+      
 
     }
 }
