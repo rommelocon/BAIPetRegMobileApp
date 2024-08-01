@@ -1,11 +1,15 @@
+using BAIPetRegMobileApp.ViewModels;
+
 namespace BAIPetRegMobileApp.Views;
 
 public partial class PetInformationPage : ContentPage
 {
-	public PetInformationPage()
+    private readonly PetInformationPageViewModel viewModel;
+
+	public PetInformationPage(PetInformationPageViewModel viewModel)
 	{
 		InitializeComponent();
-        Application.Current.UserAppTheme = AppTheme.Light;
-
+        this.viewModel = viewModel;
+        BindingContext = viewModel;
     }
 }

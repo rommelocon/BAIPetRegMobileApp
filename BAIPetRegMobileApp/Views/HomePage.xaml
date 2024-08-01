@@ -3,12 +3,13 @@
     x:Class="BAIPetRegMobileApp.HomePage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:viewmodels="clr-namespace:BAIPetRegMobileApp.ViewModels"
-    x:DataType="viewmodels:HomePageViewModel"
+    xmlns:local="clr-namespace:BAIPetRegMobileApp.ViewModels"
+    x:DataType="local:HomePageViewModel"
     FlyoutItem.IsVisible="False"
     Shell.BackgroundColor="#57C84D"
     Shell.FlyoutBehavior="Flyout"
     Shell.NavBarIsVisible="True">
+
     <Shell.BackButtonBehavior>
         <BackButtonBehavior IsEnabled="False" IsVisible="False" />
     </Shell.BackButtonBehavior>
@@ -49,7 +50,6 @@
             <!--  Empty element to fill the right column  -->
         </Grid>
     </Shell.TitleView>
-
     <Grid>
         <Grid.RowDefinitions>
             <!--  Define rows for your banner, search frame, and content  -->
@@ -115,113 +115,65 @@
                     Text="Register a Pet"
                     TextColor="White" />
 
-                <!--  Pet Gallery - 1  -->
-                <StackLayout Padding="10">
-                    <Frame
-                        Padding="15"
-                        BackgroundColor="#98FB98"
-                        CornerRadius="30">
-                        <StackLayout>
-                            <!--  Image  -->
-                            <Image
-                                Margin="0,0,0,40"
-                                HeightRequest="250"
-                                HorizontalOptions="Center"
-                                Source="dog1.jpeg" />
+                <CollectionView ItemsSource="{Binding PetRegistrations}">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <StackLayout Padding="10">
+                                <Frame
+                                    Padding="15"
+                                    BackgroundColor="#98FB98"
+                                    CornerRadius="30">
+                                    <StackLayout>
+                                        <!--  Image  -->
+                                        <Image
+                                            Margin="0,0,0,40"
+                                            HeightRequest="250"
+                                            HorizontalOptions="Center"
+                                            Source="profile_pic_1.jpg" />
 
-                            <!--  Labels  -->
-                            <Label
-                                FontAttributes="Bold"
-                                Text="REG ID: 01022023 JUDELA CRUZBLACKIENO"
-                                TextColor="#2E8B26" />
-                            <Label Text="Date Registered: 22/03/2024" TextColor="#2E8B26" />
-                            <Label Text="Date Of Birth: 02/01/2023" TextColor="#2E8B26" />
-                            <Label Text="Alias: Jaguar" TextColor="#2E8B26" />
+                                        <!--  Labels  -->
+                                        <Label
+                                            FontAttributes="Bold"
+                                            Text="{Binding PetRegistrationID}"
+                                            TextColor="#000000" />
+                                        <Label Text="{Binding DateRegistered, StringFormat='Date Registered: {0:dd/MM/yyyy}'}" TextColor="#000000" />
+                                        <Label Text="{Binding PetDateofBirth, StringFormat='Date Of Birth: {0:dd/MM/yyyy}'}" TextColor="#000000" />
+                                        <Label Text="{Binding PetName, StringFormat='Pet Name: {0}'}" TextColor="#000000" />
 
-                            <!--  Button  -->
+                                        <!--  Button to expand  -->
+                                        <!--
+                                        <Button
+                                            Margin="0,20,0,20"
+                                            Padding="20"
+                                            BackgroundColor="#008000"
+                                            Command="{Binding Source={RelativeSource AncestorType={x:Type local:HomePageViewModel}}, Path=ExpandCommand}"
+                                            CommandParameter="{Binding .}"
+                                            CornerRadius="20"
+                                            Text="Show Full Information"
+                                            TextColor="White" />-->
 
-                            <Button
-                                x:Name="PetinfoBtn"
-                                Margin="0,40,0,0"
-                                Padding="20"
-                                BackgroundColor="#008000"
-                                Clicked="PetinfoBtn_Clicked"
-                                CornerRadius="20"
-                                Text="Show Full Information"
-                                TextColor="White" />
-                        </StackLayout>
-                    </Frame>
-                </StackLayout>
-
-                <!--  Pet Gallery - 2  -->
-                <StackLayout Padding="10">
-                    <Frame
-                        Padding="15"
-                        BackgroundColor="#98FB98"
-                        CornerRadius="30">
-                        <StackLayout>
-                            <!--  Image  -->
-                            <Image
-                                Margin="0,0,0,40"
-                                HeightRequest="250"
-                                HorizontalOptions="Center"
-                                Source="dog_img.png" />
-
-                            <!--  Labels  -->
-                            <Label
-                                FontAttributes="Bold"
-                                Text="REG ID: 01022023 JUDELA CRUZBLACKIENO"
-                                TextColor="#2E8B26" />
-                            <Label Text="Date Registered: 22/03/2024" TextColor="#2E8B26" />
-                            <Label Text="Date Of Birth: 02/01/2023" TextColor="#2E8B26" />
-                            <Label Text="Alias: Jaguar" TextColor="#2E8B26" />
-
-                            <!--  Button  -->
-                            <Button
-                                Margin="0,40,0,0"
-                                Padding="20"
-                                BackgroundColor="#008000"
-                                CornerRadius="20"
-                                Text="Show Full Information"
-                                TextColor="White" />
-                        </StackLayout>
-                    </Frame>
-                </StackLayout>
-
-                <!--  Pet Gallery - 3  -->
-                <StackLayout Padding="10">
-                    <Frame
-                        Padding="15"
-                        BackgroundColor="#98FB98"
-                        CornerRadius="30">
-                        <StackLayout>
-                            <!--  Image  -->
-                            <Image
-                                Margin="0,0,0,40"
-                                HeightRequest="250"
-                                HorizontalOptions="Center"
-                                Source="dog_img.png" />
-
-                            <!--  Labels  -->
-                            <Label
-                                FontAttributes="Bold"
-                                Text="REG ID: 01022023 JUDELA CRUZBLACKIENO"
-                                TextColor="#2E8B26" />
-                            <Label Text="Date Registered: 22/03/2024" TextColor="#2E8B26" />
-                            <Label Text="Date Of Birth: 02/01/2023" TextColor="#2E8B26" />
-                            <Label Text="Alias: Jaguar" TextColor="#2E8B26" />
-
-                            <!--  Button  -->
-                            <Button
-                                Margin="0,40,0,0"
-                                Padding="20"
-                                BackgroundColor="#008000"
-                                CornerRadius="20"
-                                Text="Show Full Information"
-                                TextColor="White" />
-                        </StackLayout>
-                    </Frame>
-                </StackLayout>
+                                        <!--  Expanded Information  -->
+                                        <StackLayout IsVisible="{Binding Path=BindingContext.ExpandedPetRegistration, Source={RelativeSource AncestorType={x:Type CollectionView}}, Converter={StaticResource PetRegistrationToVisibilityConverter}}">
+                                            <Label Text="{Binding AnimalColorDescription, StringFormat='Animal Color: {0}'}" TextColor="#000000" />
+                                            <Label Text="{Binding OwnershipTypeDescription, StringFormat='Ownership Type: {0}'}" TextColor="#000000" />
+                                            <Label Text="{Binding AnimalFemalClassification, StringFormat='Animal Female Classification: {0}'}" TextColor="#000000" />
+                                            <Label Text="{Binding BreedDescription, StringFormat='Breed: {0}'}" TextColor="#000000" />
+                                            <Label Text="{Binding ClientRegion, StringFormat='Region: {0}'}" TextColor="#000000" />
+                                            <Label Text="{Binding ClientProvinceName, StringFormat='Province: {0}'}" TextColor="#000000" />
+                                            <Label Text="{Binding ClientMunicipalities, StringFormat='Municipalities: {0}'}" TextColor="#000000" />
+                                            <Label Text="{Binding ClientBarangayName, StringFormat='Barangay: {0}'}" TextColor="#000000" />
+                                            <Label Text="{Binding PetSexDescription, StringFormat='Sex: {0}'}" TextColor="#000000" />
+                                            <Label Text="{Binding PetOrigin, StringFormat='Origin: {0}'}" TextColor="#000000" />
+                                            <Label Text="{Binding SpeciesCommonName, StringFormat='Species Common Name: {0}'}" TextColor="#000000" />
+                                            <Label Text="{Binding TagDescription, StringFormat='Tag: {0}'}" TextColor="#000000" />
+                                            <Label Text="{Binding TagNo, StringFormat='Tag No.: {0}'}" TextColor="#000000" />
+                                        </StackLayout>
+                                    </StackLayout>
+                                </Frame>
+                            </StackLayout>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
 
             </VerticalStackLayout>
         </ScrollView>

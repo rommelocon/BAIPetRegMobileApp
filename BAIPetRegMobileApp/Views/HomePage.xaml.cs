@@ -1,6 +1,5 @@
 using BAIPetRegMobileApp.ViewModels;
 using BAIPetRegMobileApp.Views;
-using CommunityToolkit.Maui.Views;
 
 namespace BAIPetRegMobileApp;
 

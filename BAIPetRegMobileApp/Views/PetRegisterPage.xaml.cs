@@ -1,3 +1,4 @@
+using AndroidX.Lifecycle;
 using BAIPetRegMobileApp.ViewModels;
 
 namespace BAIPetRegMobileApp.Views;

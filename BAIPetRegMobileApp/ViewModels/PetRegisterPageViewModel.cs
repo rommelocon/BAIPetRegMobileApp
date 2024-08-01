@@ -4,16 +4,19 @@ using System.Collections.ObjectModel;
 using CommunityToolkit.Mvvm.Input;
 using CommunityToolkit.Mvvm.ComponentModel;
 using BAIPetRegMobileApp.Models.User;
+using BAIPetRegMobileApp.Views;
 
 namespace BAIPetRegMobileApp.ViewModels
 {
     public partial class PetRegisterPageViewModel : BaseViewModel
     {
         private readonly ClientService _clientService;
+        private readonly HomePageViewModel viewModel;
 
-        public PetRegisterPageViewModel(ClientService clientService) : base(clientService)
+        public PetRegisterPageViewModel(ClientService clientService, HomePageViewModel viewModel) : base(clientService)
         {
             _clientService = clientService;
+            this.viewModel = viewModel;
 
             // Initialize collections
             PetRegistrations = new ObservableCollection<PetRegistration>();
@@ -29,6 +32,7 @@ namespace BAIPetRegMobileApp.ViewModels
 
             // Load initial data
             LoadDataCommand.ExecuteAsync(null);
+            this.viewModel = viewModel;
         }
 
         // Properties
@@ -188,6 +192,14 @@ namespace BAIPetRegMobileApp.ViewModels
 
             // Call your API to submit the registration
             await clientService.RegisterPetAsync(petRegistration);
+
+            // Refresh the pet registrations collection
+            await viewModel.RefreshPetRegistrations();
+
+            await Shell.Current.DisplayAlert("Alert", "Succesfully Registered.", "Ok");
+            await Shell.Current.GoToAsync(nameof(FinalCheckingPage));
         }
+
+
     }
 }

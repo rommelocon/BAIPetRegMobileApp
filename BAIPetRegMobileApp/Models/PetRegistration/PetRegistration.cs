@@ -4,6 +4,7 @@ namespace BAIPetRegMobileApp.Models.PetRegistration
 {
     public class PetRegistration
     {
+        public string? PetRegistrationID { get; set; }
         public DateTime? DateEncocde { get; set; }
         public DateTime? DateRegistered { get; set; }
 

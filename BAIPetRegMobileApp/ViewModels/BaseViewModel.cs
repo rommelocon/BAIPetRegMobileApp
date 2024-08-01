@@ -1,8 +1,6 @@
 ﻿using BAIPetRegMobileApp.Models.User;
 using BAIPetRegMobileApp.Services;
 using CommunityToolkit.Mvvm.ComponentModel;
-using CommunityToolkit.Mvvm.Input;
-using Microsoft.IdentityModel.Tokens;
 using System.Text.Json;
 
 namespace BAIPetRegMobileApp.ViewModels

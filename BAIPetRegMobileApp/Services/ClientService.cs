@@ -3,6 +3,7 @@ using System.Text.Json;
 using System.Net.Http.Headers;
 using BAIPetRegMobileApp.Models.User;
 using BAIPetRegMobileApp.Models.PetRegistration;
+using BAIPetRegMobileApp.Views;
 
 namespace BAIPetRegMobileApp.Services
 {
@@ -148,7 +149,33 @@ namespace BAIPetRegMobileApp.Services
             {
                 var httpClient = CreateClientWithAuthorization(loginResponse.AccessToken);
                 var response = await httpClient.PostAsJsonAsync("/api/PetRegistration/register", model);
-                return response.IsSuccessStatusCode;
+                if (response.IsSuccessStatusCode)
+                {
+                    return true;
+                }
+                return false;
+            }
+            throw new InvalidOperationException("Authentication data not found.");
+        }
+
+        public async Task<List<PetRegistration>> GetPetRegistrationsAsync()
+        {
+            var loginResponse = await GetStoredLoginResponseAsync();
+            if (loginResponse != null && !string.IsNullOrEmpty(loginResponse.UserName) && !string.IsNullOrEmpty(loginResponse.AccessToken))
+            {
+                var httpClient = CreateClientWithAuthorization(loginResponse.AccessToken);
+                var response = await httpClient.GetAsync("/api/PetRegistration");
+                if (response.IsSuccessStatusCode)
+                {
+                    var content = await response.Content.ReadAsStringAsync();
+                    var options = new JsonSerializerOptions
+                    {
+                        PropertyNameCaseInsensitive = true,
+                    };
+                    var petRegistrations = JsonSerializer.Deserialize<List<PetRegistration>>(content, options);
+                    return petRegistrations;
+                }
+                return null;
             }
             throw new InvalidOperationException("Authentication data not found.");
         }
