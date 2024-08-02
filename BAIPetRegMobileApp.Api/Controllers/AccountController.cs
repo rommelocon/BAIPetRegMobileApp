@@ -46,7 +46,26 @@ namespace BAIPetRegMobileApp.Api.Controllers
 
             return Ok(model);
         }
+        [HttpPost("register")]
+        public async Task<IActionResult> Register(RegisterDTO model)
+        {
+            var user = new ApplicationUser
+            {
+                UserName = model.UserName,
+                Email = model.Email,
+                DateRegistered = DateTime.UtcNow // Set the registration date
+            };
 
+            var result = await _userManager.CreateAsync(user, model.Password!);
+            if (result.Succeeded)
+            {
+                return Ok("User registered successfully");
+            }
+            else
+            {
+                return BadRequest(result.Errors);
+            }
+        }
         [HttpPost("login")]
         public async Task<IActionResult> Login([FromBody] LoginDTO model)
         {

@@ -183,6 +183,7 @@ namespace BAIPetRegMobileApp.ViewModels
             }
         }
 
+        [RelayCommand]
         private void ToggleDetails()
         {
             IsDetailsVisible = !IsDetailsVisible;
