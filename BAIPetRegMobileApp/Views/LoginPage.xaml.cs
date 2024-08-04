@@ -1,6 +1,6 @@
 using BAIPetRegMobileApp.ViewModels;
 
-namespace BAIPetRegMobileApp
+namespace BAIPetRegMobileApp.Views
 {
     public partial class LoginPage : ContentPage
     {
@@ -8,7 +8,6 @@ namespace BAIPetRegMobileApp
         {
             InitializeComponent();
             BindingContext = vm;
-            Application.Current.UserAppTheme = AppTheme.Light;
         }
 
         private async void ClickableLabel_Tapped(object sender, TappedEventArgs e)

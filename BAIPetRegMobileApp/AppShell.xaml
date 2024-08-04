@@ -4,194 +4,62 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:BAIPetRegMobileApp"
-    Title="BAIPetRegMobileApp"
+    xmlns:view="clr-namespace:BAIPetRegMobileApp.Views"
     x:DataType="local:AppShell"
-    Shell.FlyoutBehavior="Disabled"
-    Shell.NavBarIsVisible="False">
-
-    <FlyoutItem FlyoutDisplayOptions="AsMultipleItems" Route="ParentRoute">
-        <ShellContent
-            Title="MainPage"
-            ContentTemplate="{DataTemplate local:MainPage}"
-            FlyoutItem.IsVisible="True"
-            Route="MainPage" />
-    </FlyoutItem>
+    Shell.BackgroundColor="#096B00"
+    Shell.FlyoutBehavior="Flyout"
+    Shell.TitleColor="#FFFFFF">
 
     <Shell.FlyoutHeader>
-        <Frame
-            Margin="0"
-            Padding="10"
-            BackgroundColor="#57C84D"
-            BorderColor="Transparent"
-            CornerRadius="0">
-            <Button
-                x:Name="ClostMenuButton"
-                BackgroundColor="Transparent"
-                Clicked="ClostMenuButton_Clicked"
-                FontAttributes="Bold"
-                FontFamily="MaterialIconsOutlined-Regular"
-                FontSize="30"
-                HorizontalOptions="End"
-                Text="close"
-                TextColor="White"
-                VerticalOptions="EndAndExpand" />
-        </Frame>
+        <StackLayout Padding="20">
+            <Image
+                Aspect="AspectFit"
+                MaximumWidthRequest="200"
+                Source="bai_logo.png" />
+        </StackLayout>
     </Shell.FlyoutHeader>
 
-    <Shell.FlyoutContent>
-        <VerticalStackLayout Margin="0" Background="White">
-            <!--  Profile Button  -->
-            <Frame
-                Margin="12,30,12,0"
-                Padding="20,10"
-                BackgroundColor="#12DC00"
-                CornerRadius="10"
-                HasShadow="False">
-                <Frame.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="OnProfileButtonTapped" />
-                </Frame.GestureRecognizers>
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto" />
-                        <ColumnDefinition Width="*" />
-                    </Grid.ColumnDefinitions>
-                    <Label
-                        FontFamily="MaterialIcons-Regular"
-                        FontSize="24"
-                        Text="person"
-                        TextColor="White"
-                        VerticalOptions="Center" />
-                    <Label
-                        Grid.Column="1"
-                        FontFamily="Poppins-Regular"
-                        FontSize="24"
-                        HorizontalOptions="Center"
-                        Text="PROFILE"
-                        TextColor="White"
-                        VerticalOptions="Center" />
-                </Grid>
-            </Frame>
-
-            <!--  Register a Pet Button  -->
-            <Frame
-                Margin="12,30,12,0"
-                Padding="20,10"
-                BackgroundColor="#12DC00"
-                CornerRadius="10"
-                HasShadow="False">
-                <Frame.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="OnRegisterPetButtonTapped" />
-                </Frame.GestureRecognizers>
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto" />
-                        <ColumnDefinition Width="*" />
-                    </Grid.ColumnDefinitions>
-                    <Label
-                        FontFamily="MaterialIcons-Regular"
-                        FontSize="24"
-                        Text="pets"
-                        TextColor="White"
-                        VerticalOptions="Center" />
-                    <Label
-                        Grid.Column="1"
-                        FontFamily="Poppins-Regular"
-                        FontSize="24"
-                        HorizontalOptions="Center"
-                        Text="REGISTER A PET"
-                        TextColor="White"
-                        VerticalOptions="Center" />
-                </Grid>
-            </Frame>
-
-            <!--  Dog Pet Button  -->
-            <Frame
-                Margin="12,30,12,0"
-                Padding="20,10"
-                BackgroundColor="#12DC00"
-                CornerRadius="10"
-                HasShadow="False">
-                <Frame.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="OnDogPetButtonTapped" />
-                </Frame.GestureRecognizers>
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto" />
-                        <ColumnDefinition Width="*" />
-                    </Grid.ColumnDefinitions>
-                    <Label
-                        FontFamily="MaterialIconsOutlined-Regular"
-                        FontSize="24"
-                        Text="list_alt"
-                        TextColor="White"
-                        VerticalOptions="Center" />
-                    <Label
-                        Grid.Column="1"
-                        FontFamily="Poppins-Regular"
-                        FontSize="24"
-                        HorizontalOptions="Center"
-                        Text="DOG BREEDS"
-                        TextColor="White"
-                        VerticalOptions="Center" />
-                </Grid>
-            </Frame>
-
-            <!--  Cat Pet Button  -->
-            <Frame
-                Margin="12,30,12,0"
-                Padding="20,10"
-                BackgroundColor="#12DC00"
-                CornerRadius="10"
-                HasShadow="False">
-                <Frame.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="OnCatPetButtonTapped" />
-                </Frame.GestureRecognizers>
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto" />
-                        <ColumnDefinition Width="*" />
-                    </Grid.ColumnDefinitions>
-                    <Label
-                        FontFamily="MaterialIconsOutlined-Regular"
-                        FontSize="24"
-                        Text="list_alt"
-                        TextColor="White"
-                        VerticalOptions="Center" />
-                    <Label
-                        Grid.Column="1"
-                        FontFamily="Poppins-Regular"
-                        FontSize="24"
-                        HorizontalOptions="Center"
-                        Text="CAT BREEDS"
-                        TextColor="White"
-                        VerticalOptions="Center" />
-                </Grid>
-            </Frame>
-        </VerticalStackLayout>
-    </Shell.FlyoutContent>
-
     <Shell.FlyoutFooter>
-        <VerticalStackLayout Margin="0" Background="White">
-            <StackLayout
-                Margin="0,0,0,20"
-                HorizontalOptions="Center"
-                Orientation="Horizontal">
-                <Label
-                    Margin="30,0,0,0"
-                    FontFamily="MaterialIconsOutlined-Regular"
-                    FontSize="60"
-                    Text="logout"
-                    TextColor="#096B00" />
-                <Button
-                    x:Name="BtnLogOut"
-                    Margin="30,0,30,0"
-                    BackgroundColor="#096B00"
-                    Command="{Binding LogoutCommand}"
-                    CornerRadius="50"
-                    Text="LogOut"
-                    TextColor="White"
-                    WidthRequest="180" />
-            </StackLayout>
+        <VerticalStackLayout Padding="10">
+            <Button
+                BackgroundColor="#096B00"
+                Command="{Binding LogoutCommand}"
+                FontSize="20"
+                Text="Logout"
+                WidthRequest="150" />
         </VerticalStackLayout>
     </Shell.FlyoutFooter>
+
+    <FlyoutItem Title="Dashboard" FlyoutDisplayOptions="AsMultipleItems">
+        <ShellContent
+            Title="Home"
+            ContentTemplate="{DataTemplate view:HomePage}"
+            Icon="home.png"
+            Route="HomePage" />
+
+        <ShellContent
+            Title="Profile"
+            ContentTemplate="{DataTemplate view:ProfilePage}"
+            Icon="profile_user.png"
+            Route="ProfilePage" />
+
+        <ShellContent
+            Title="Register Pet"
+            ContentTemplate="{DataTemplate view:PetRegisterPage}"
+            Icon="pawprint.png"
+            Route="PetRegisterPage" />
+
+        <ShellContent
+            Title="Dog"
+            ContentTemplate="{DataTemplate view:DogBreedPage}"
+            Icon="dog.png"
+            Route="DogBreedPage" />
+
+        <ShellContent
+            Title="Cat"
+            ContentTemplate="{DataTemplate view:CatBreedPage}"
+            Icon="cat.png"
+            Route="CatBreedPage" />
+    </FlyoutItem>
+
 </Shell>

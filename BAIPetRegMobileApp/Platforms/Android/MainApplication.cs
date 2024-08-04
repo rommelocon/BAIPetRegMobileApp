@@ -6,11 +6,7 @@ using Microsoft.Maui.Controls.Compatibility.Platform.Android;
 
 namespace BAIPetRegMobileApp
 {
-#if DEBUG
-    [Application(UsesCleartextTraffic = true)]
-#else
-[Application]
-#endif
+    [Application]
     public class MainApplication : MauiApplication
     {
         public MainApplication(IntPtr handle, JniHandleOwnership ownership)

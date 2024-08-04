@@ -11,15 +11,4 @@ public partial class EditProfilePage : ContentPage
         this.viewModel = viewModel;
         BindingContext = viewModel;
     }
-    protected override async void OnAppearing()
-    {
-        base.OnAppearing();
-        await viewModel.InitializeProfileAsync();
-        await SaveProfileAsync();
-    }
-
-    private async Task SaveProfileAsync()
-    {
-        await viewModel.SaveProfile();
-    }
 }

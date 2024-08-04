@@ -66,7 +66,7 @@ namespace BAIPetRegMobileApp.Api.DTOs
         [StringLength(100)]
         public string? PetName { get; set; }
 
-        public DateTime? PetDateofBirth { get; set; }
+        public DateOnly? PetDateofBirth { get; set; }
 
         public int? PetSexID { get; set; }
 

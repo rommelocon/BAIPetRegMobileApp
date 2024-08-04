@@ -8,21 +8,17 @@
     x:DataType="views:PetRegisterPageViewModel">
     <Grid>
         <Grid.RowDefinitions>
-            <!--  Define rows for your banner, search frame, and content  -->
             <RowDefinition Height="Auto" />
-            <!--  Banner  -->
-            <RowDefinition Height="Auto" />
-            <!--  Search Frame  -->
             <RowDefinition Height="*" />
-            <!--  Content  -->
         </Grid.RowDefinitions>
+
         <Image
-            Grid.Row="1"
+            Grid.Row="0"
             HorizontalOptions="Center"
             Source="bai_banner.jpg"
             VerticalOptions="Center" />
 
-        <ScrollView Grid.Row="2">
+        <ScrollView Grid.Row="1">
             <VerticalStackLayout>
                 <Label
                     Margin="0,30,0,0"
@@ -262,7 +258,7 @@
                         HorizontalOptions="FillAndExpand">
                         <DatePicker
                             x:Name="BirtDate"
-                            Date="{Binding PetRegistration.PetDateofBirth}"
+                            Date="{Binding PetDateofBirth, Mode=TwoWay}"
                             FontSize="20"
                             Format="D" />
                     </Frame>
@@ -570,8 +566,7 @@
                     </Frame>
                 </StackLayout>
 
-                <!--  Image Picker Section  -->
-                <StackLayout Padding="10">
+                <StackLayout Margin="20,0,20,0">
                     <Label
                         FontAttributes="Bold"
                         FontSize="Large"
@@ -583,22 +578,79 @@
                         HorizontalOptions="Center"
                         Text="Pet’s Image" />
 
-                    <!--  Image Frame  --><!--
+                    <!--  Image Frame  -->
                     <Frame
-                        Padding="10"
+                        Margin="20"
+                        Padding="1"
                         BorderColor="Gray"
-                        HasShadow="False">
+                        CornerRadius="0"
+                        HasShadow="False"
+                        HeightRequest="500">
                         <StackLayout>
                             <Image
                                 x:Name="Image1"
                                 Aspect="AspectFit"
-                                HeightRequest="100"
-                                Source="{Binding PetImage}"
-                                WidthRequest="100" />
-                            <Button Command="{Binding PickImageCommand}" Text="Pick Image" />
+                                HeightRequest="500"
+                                Source="{Binding SelectedImage1}" />
                         </StackLayout>
-                    </Frame>-->
+                    </Frame>
+                    <Button Command="{Binding PickImage1Command}" Text="Pick Image 1" />
+
+                    <!--  Image Frame  -->
+                    <Frame
+                        Margin="20"
+                        Padding="1"
+                        BorderColor="Gray"
+                        CornerRadius="0"
+                        HasShadow="False"
+                        HeightRequest="500">
+                        <StackLayout>
+                            <Image
+                                x:Name="Image2"
+                                Aspect="AspectFit"
+                                HeightRequest="500"
+                                Source="{Binding SelectedImage2}" />
+                        </StackLayout>
+                    </Frame>
+                    <Button Command="{Binding PickImage2Command}" Text="Pick Image 2" />
+
+                    <!--  Image Frame  -->
+                    <Frame
+                        Margin="20"
+                        Padding="1"
+                        BorderColor="Gray"
+                        CornerRadius="0"
+                        HasShadow="False"
+                        HeightRequest="500">
+                        <StackLayout>
+                            <Image
+                                x:Name="Image3"
+                                Aspect="AspectFit"
+                                HeightRequest="500"
+                                Source="{Binding SelectedImage3}" />
+                        </StackLayout>
+                    </Frame>
+                    <Button Command="{Binding PickImage3Command}" Text="Pick Image 3" />
+
+                    <!--  Image Frame  -->
+                    <Frame
+                        Margin="20"
+                        Padding="1"
+                        BorderColor="Gray"
+                        CornerRadius="0"
+                        HasShadow="False"
+                        HeightRequest="500">
+                        <StackLayout>
+                            <Image
+                                x:Name="Image4"
+                                Aspect="AspectFit"
+                                HeightRequest="500"
+                                Source="{Binding SelectedImage4}" />
+                        </StackLayout>
+                    </Frame>
+                    <Button Command="{Binding PickImage4Command}" Text="Pick Image 4" />
                 </StackLayout>
+
 
                 <!--  Button for Submit  -->
                 <Button
@@ -614,6 +666,20 @@
                     TextColor="White" />
             </VerticalStackLayout>
         </ScrollView>
+
+        <StackLayout
+            Grid.Row="1"
+            AbsoluteLayout.LayoutBounds="0,0,1,1"
+            AbsoluteLayout.LayoutFlags="All"
+            BackgroundColor="#80000000"
+            IsEnabled="False"
+            IsVisible="{Binding IsBusy}">
+            <ActivityIndicator
+                HorizontalOptions="CenterAndExpand"
+                IsRunning="{Binding IsBusy}"
+                VerticalOptions="CenterAndExpand"
+                Color="White" />
+        </StackLayout>
     </Grid>
 
     <ContentPage.Resources>

@@ -1,20 +1,20 @@
-using AndroidX.Lifecycle;
 using BAIPetRegMobileApp.ViewModels;
 
-namespace BAIPetRegMobileApp.Views;
-
-public partial class PetRegisterPage : ContentPage
+namespace BAIPetRegMobileApp.Views
 {
-    private readonly PetRegisterPageViewModel petRegisterPageViewModel;
-    public PetRegisterPage(PetRegisterPageViewModel petRegisterPageViewModel)
+    public partial class PetRegisterPage : ContentPage
     {
-        InitializeComponent();
-        this.petRegisterPageViewModel = petRegisterPageViewModel;
-        BindingContext = petRegisterPageViewModel;
-    }
+        private readonly PetRegisterPageViewModel viewModel;
+        public PetRegisterPage(PetRegisterPageViewModel viewModel)
+        {
+            InitializeComponent();
+            this.viewModel = viewModel;
+            BindingContext = viewModel;
+        }
 
-    private async Task PetRegistrationSubmitAsync()
-    {
-        await petRegisterPageViewModel.PetRegistrationSubmit();
+        private async Task PetRegistrationSubmitAsync()
+        {
+            await viewModel.PetRegistrationSubmit();
+        }
     }
 }

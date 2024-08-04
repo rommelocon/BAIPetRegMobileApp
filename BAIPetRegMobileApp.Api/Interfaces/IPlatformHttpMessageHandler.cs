@@ -1,4 +1,4 @@
-﻿namespace BAIPetRegMobileApp.Api
+﻿namespace BAIPetRegMobileApp.Api.Interfaces
 {
     public interface IPlatformHttpMessageHandler
     {

@@ -1,4 +1,5 @@
-﻿using BAIPetRegMobileApp.Models.User;
+﻿using BAIPetRegMobileApp.Models.PetRegistration;
+using BAIPetRegMobileApp.Models.User;
 using BAIPetRegMobileApp.Services;
 using CommunityToolkit.Mvvm.ComponentModel;
 using System.Collections.ObjectModel;
@@ -9,7 +10,7 @@ namespace BAIPetRegMobileApp.ViewModels
     public partial class BaseViewModel : ObservableObject
     {
         protected readonly ClientService clientService;
-        private bool isProfileLoaded;
+        [ObservableProperty] private bool isProfileLoaded;
         [ObservableProperty] private bool isBusy;
         [ObservableProperty] private User? userViewModel;
         [ObservableProperty] private string? userName;
@@ -35,6 +36,7 @@ namespace BAIPetRegMobileApp.ViewModels
         [ObservableProperty] private string? fullAddress;
         [ObservableProperty] private string? fullName;
         [ObservableProperty] private string? welcomeMessage;
+        [ObservableProperty] private ObservableCollection<PetRegistration> petRegistrations = new ObservableCollection<PetRegistration>();
 
         public BaseViewModel(ClientService clientService)
         {
@@ -52,27 +54,18 @@ namespace BAIPetRegMobileApp.ViewModels
         {
             try
             {
-                if (isProfileLoaded) return;
-
-                var serializedResponse = await SecureStorage.GetAsync("Authentication");
-                if (serializedResponse != null)
+                //if (isProfileLoaded) return;
+                var user = await clientService.GetProfile();
+                if (user != null)
                 {
-                    var loginResponse = JsonSerializer.Deserialize<LoginResponse>(serializedResponse);
-
-                    if (loginResponse != null)
-                    {
-                        var user = await clientService.GetProfile();
-                        if (user != null)
-                        {
-                            updateProperties.Invoke(user);
-                            isProfileLoaded = true;
-                        }
-                        else
-                        {
-                            await Shell.Current.DisplayAlert("Error", "No profile data found.", "OK");
-                        }
-                    }
+                    updateProperties.Invoke(user);
+                    //isProfileLoaded = true;
                 }
+                else
+                {
+                    await Shell.Current.DisplayAlert("Error", "No profile data found.", "OK");
+                }
+
             }
             catch (Exception ex)
             {
@@ -82,8 +75,10 @@ namespace BAIPetRegMobileApp.ViewModels
 
         public async Task InitializeProfileAsync()
         {
+            IsBusy = true;
             await LoadProfile(user =>
             {
+                WelcomeMessage = $"Welcome {(string.IsNullOrEmpty(user.Firstname) ? user.UserName : user.Firstname)}!";
                 Firstname = user.Firstname;
                 Lastname = user.Lastname;
                 MiddleName = user.MiddleName;
@@ -95,7 +90,7 @@ namespace BAIPetRegMobileApp.ViewModels
                 UserName = user.UserName;
                 Email = user.Email;
                 RcodeNum = user.RcodeNum;
-                Region =  user.Region;
+                Region = user.Region;
                 PcodeNum = user.PcodeNum;
                 ProvinceName = user.ProvinceName;
                 McodeNum = user.McodeNum;
@@ -105,8 +100,8 @@ namespace BAIPetRegMobileApp.ViewModels
                 ProfilePicture = user.ProfilePicture;
                 FullAddress = user.FullAddress;
                 FullName = $"{Firstname} {MiddleName} {Lastname} {ExtensionName}".Trim();
-                WelcomeMessage = $"Welcome {(string.IsNullOrEmpty(Firstname) ? UserName : Firstname)}!";
             });
+            IsBusy = false;
         }
 
         public async Task LoadCollectionAsync<T>(Func<Task<IEnumerable<T>>> loadFunc, ObservableCollection<T> collection)
@@ -122,7 +117,7 @@ namespace BAIPetRegMobileApp.ViewModels
             }
             catch (Exception ex)
             {
-                await Shell.Current.DisplayAlert("Error", $"An error occurred while loading data: {ex.Message}", "OK");
+                await HandleException(ex);
             }
         }
     }

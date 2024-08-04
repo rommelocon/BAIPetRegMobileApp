@@ -10,9 +10,9 @@ namespace BAIPetRegMobileApp
         public AppShell(ClientService clientService)
         {
             InitializeComponent();
-            this.clientService = clientService;
-            BindingContext = clientService;
             RegisterRoutes();
+            this.clientService = clientService;
+            BindingContext = this;
         }
 
         private void RegisterRoutes()
@@ -28,46 +28,11 @@ namespace BAIPetRegMobileApp
             Routing.RegisterRoute(nameof(DogBreedPage), typeof(DogBreedPage));
             Routing.RegisterRoute(nameof(TOAPage), typeof(TOAPage));
             Routing.RegisterRoute(nameof(EditProfilePage), typeof(EditProfilePage));
-        }
-
-        private void ClostMenuButton_Clicked(object sender, EventArgs e)
-        {
-            Shell.Current.FlyoutIsPresented = false;
-        }
-
-        private void PetRegisterBtn_Clicked(object sender, EventArgs e)
-        {
-            Shell.Current.GoToAsync(nameof(PetRegisterPage));
-            Shell.Current.FlyoutIsPresented = false;
-        }
-
-        private void OnProfileButtonTapped(object sender, TappedEventArgs e)
-        {
-            Shell.Current.GoToAsync(nameof(ProfilePage));
-            Shell.Current.FlyoutIsPresented = false;
-        }
-
-        private void OnRegisterPetButtonTapped(object sender, TappedEventArgs e)
-        {
-            Shell.Current.GoToAsync(nameof(PetRegisterPage));
-            Shell.Current.FlyoutIsPresented = false;
-
-        }
-
-        private void OnDogPetButtonTapped(object sender, TappedEventArgs e)
-        {
-            Shell.Current.GoToAsync(nameof(DogBreedPage));
-            Shell.Current.FlyoutIsPresented = false;
-        }
-
-        private void OnCatPetButtonTapped(object sender, TappedEventArgs e)
-        {
-            Shell.Current.GoToAsync(nameof(CatBreedPage));
-            Shell.Current.FlyoutIsPresented = false;
+            Routing.RegisterRoute(nameof(SplashPage), typeof(SplashPage));
         }
 
         [RelayCommand]
-        public async Task Logout()
+        private async Task Logout()
         {
             try
             {
@@ -76,8 +41,7 @@ namespace BAIPetRegMobileApp
             }
             catch (Exception ex)
             {
-                // Handle the exception (logging, showing message, etc.)
-                await Shell.Current.DisplayAlert("Error", $"An error occurred: {ex.Message}", "OK");
+                await DisplayAlert("Error", "Logout failed. Please try again.", "Ok");
             }
         }
     }

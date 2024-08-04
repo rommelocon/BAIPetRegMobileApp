@@ -4,31 +4,21 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:viewmodels="clr-namespace:BAIPetRegMobileApp.ViewModels"
-    x:DataType="viewmodels:ProfilePageViewModel"
-    Background="White"
-    FlyoutItem.IsVisible="False"
-    Shell.BackgroundColor="#57C84D"
-    Shell.FlyoutBehavior="Flyout"
-    Shell.NavBarIsVisible="True">
+    x:DataType="viewmodels:ProfilePageViewModel">
 
     <Grid>
 
         <Grid.RowDefinitions>
-            <!--  Define rows for your banner, search frame, and content  -->
             <RowDefinition Height="Auto" />
-            <!--  Banner  -->
-            <RowDefinition Height="Auto" />
-            <!--  Search Frame  -->
             <RowDefinition Height="*" />
-            <!--  Content  -->
         </Grid.RowDefinitions>
         <Image
-            Grid.Row="1"
+            Grid.Row="0"
             HorizontalOptions="Center"
             Source="bai_banner.jpg"
             VerticalOptions="Center" />
 
-        <ScrollView Grid.Row="2">
+        <ScrollView Grid.Row="1">
             <VerticalStackLayout>
                 <VerticalStackLayout Spacing="2">
                     <!--  Profile Picture with Circular Border  -->
@@ -79,7 +69,6 @@
                         TextColor="#096B00" />
 
                     <Label
-                        Margin="0,20,0,0"
                         FontAttributes="Bold"
                         FontSize="20"
                         SemanticProperties.HeadingLevel="Level1"
@@ -89,76 +78,59 @@
 
                     <Label
                         Padding="20"
-                        BackgroundColor="#12DC00"
+                        BackgroundColor="#096B00"
                         FontAttributes="Bold"
                         FontSize="24"
                         HorizontalTextAlignment="Center"
                         Text="REGISTERED PETS"
                         TextColor="White" />
 
-                    <HorizontalStackLayout HorizontalOptions="Center" Spacing="20">
-                        <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center">
-
-                            <Frame
-                                Margin="0,30,20,0"
-                                Padding="10"
-                                BackgroundColor="#7FFF7F"
-                                CornerRadius="20"
-                                HasShadow="True"
-                                HeightRequest="150"
-                                WidthRequest="150">
-
-                                <Label
-                                    FontAttributes="Bold"
-                                    FontSize="96"
-                                    HorizontalTextAlignment="Center"
-                                    Text="5"
-                                    TextColor="White"
-                                    VerticalOptions="Center" />
-
-                            </Frame>
-                            <Label
-                                FontAttributes="Bold"
-                                FontSize="20"
-                                HorizontalTextAlignment="Center"
-                                Text="Dogs"
-                                TextColor="Green"
-                                VerticalOptions="Center" />
-
-                        </VerticalStackLayout>
-                        <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center">
-                            <Frame
-                                Margin="0,30,0,0"
-                                Padding="10"
-                                BackgroundColor="#7FFF7F"
-                                CornerRadius="20"
-                                HasShadow="True"
-                                HeightRequest="150"
-                                WidthRequest="150">
-
-                                <Label
-                                    FontAttributes="Bold"
-                                    FontSize="96"
-                                    HorizontalTextAlignment="Center"
-                                    Text="8"
-                                    TextColor="White"
-                                    VerticalOptions="Center" />
-                            </Frame>
-                            <Label
-                                FontAttributes="Bold"
-                                FontSize="20"
-                                HorizontalTextAlignment="Center"
-                                Text="Cats"
-                                TextColor="Green"
-                                VerticalOptions="Center" />
-
-                        </VerticalStackLayout>
-                    </HorizontalStackLayout>
+                    <Grid
+                        ColumnSpacing="50"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="100" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="120" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <Label
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            FontAttributes="Bold"
+                            FontSize="96"
+                            Text="{Binding DogCount}"
+                            TextColor="#096B00" />
+                        <Label
+                            Grid.Row="1"
+                            Grid.Column="0"
+                            FontAttributes="Bold"
+                            FontSize="20"
+                            Text="Dogs"
+                            TextColor="#096B00" />
+                        <Label
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            FontAttributes="Bold"
+                            FontSize="96"
+                            Text="{Binding CatCount}"
+                            TextColor="#096B00" />
+                        <Label
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            FontAttributes="Bold"
+                            FontSize="20"
+                            Text="Cats"
+                            TextColor="#096B00" />
+                    </Grid>
 
                     <Label
-                        Margin="0,30,0,30"
-                        Padding="10"
-                        BackgroundColor="#12DC00"
+                        Margin="0,20,0,20"
+                        Padding="20"
+                        BackgroundColor="#096B00"
                         FontAttributes="Bold"
                         FontSize="24"
                         HorizontalTextAlignment="Center"
@@ -386,6 +358,20 @@
                             TextColor="White" />
                     </StackLayout>
                 </VerticalStackLayout>
+                
+                <!--  Overlay Grid  -->
+                <Grid
+                    BackgroundColor="#80000000"
+                    HorizontalOptions="FillAndExpand"
+                    IsEnabled="False"
+                    IsVisible="{Binding IsBusy}"
+                    VerticalOptions="FillAndExpand">
+                    <ActivityIndicator
+                        HorizontalOptions="Center"
+                        IsRunning="{Binding IsBusy}"
+                        VerticalOptions="Center"
+                        Color="White" />
+                </Grid>
             </VerticalStackLayout>
         </ScrollView>
     </Grid>

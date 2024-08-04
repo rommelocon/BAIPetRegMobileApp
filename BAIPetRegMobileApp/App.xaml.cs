@@ -1,18 +1,30 @@
 ﻿using BAIPetRegMobileApp.Services;
+using BAIPetRegMobileApp.ViewModels;
+using BAIPetRegMobileApp.Views;
 
 namespace BAIPetRegMobileApp
 {
     public partial class App : Application
     {
-        public App(ClientService clientService)
+        private readonly ClientService _clientService;
+        private readonly LoginPageViewModel _loginPageViewModel;
+        public App(ClientService clientService, LoginPageViewModel loginPageViewModel)
         {
             InitializeComponent();
-            MainPage = new AppShell(clientService);
+            _clientService = clientService;
+            _loginPageViewModel = loginPageViewModel;
+            bool isAuthenticated = CheckIfUserIsAuthenticated();
+
+            if (!isAuthenticated)
+                MainPage = new LoginPage(_loginPageViewModel);
+            else
+                MainPage = new AppShell(_clientService);
         }
 
-        private void CloseButton_Clicked(object sender, EventArgs e)
+        private bool CheckIfUserIsAuthenticated()
         {
-            Shell.Current.FlyoutIsPresented = false;
+            var token = SecureStorage.GetAsync("Authentication").Result;
+            return !string.IsNullOrEmpty(token);
         }
     }
 }

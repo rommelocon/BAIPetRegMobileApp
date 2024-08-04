@@ -11,14 +11,15 @@ namespace BAIPetRegMobileApp.ViewModels
     {
         public EditProfilePageViewModel(ClientService clientService) : base(clientService)
         {
-            _ = InitializeProfileAsync();
             Regions = new ObservableCollection<Regions>();
             Provinces = new ObservableCollection<Provinces>();
             Municipalities = new ObservableCollection<Municipalities>();
             Barangays = new ObservableCollection<Barangays>();
             SexType = new ObservableCollection<SexType>();
-            LoadRegionsCommand.ExecuteAsync(null);
-            LoadSexTypeCommand.ExecuteAsync(null);
+
+            _ = InitializeProfileAsync();
+            _ = LoadRegionsAsync();
+            _ = LoadSexTypeAsync();
         }
 
         public ObservableCollection<Regions> Regions { get; }
@@ -29,133 +30,182 @@ namespace BAIPetRegMobileApp.ViewModels
 
         [ObservableProperty]
         private Regions selectedRegion;
-        partial void OnSelectedRegionChanged(Regions value)
-        {
-            // Clear related selections
-            SelectedProvince = null;
-            SelectedMunicipality = null;
-            SelectedBarangay = null;
-            Provinces.Clear();
-            Municipalities.Clear();
-            Barangays.Clear();
-
-            // Load provinces for the selected region
-            LoadProvincesCommand.ExecuteAsync(null);
-        }
-
         [ObservableProperty]
         private Provinces selectedProvince;
-        partial void OnSelectedProvinceChanged(Provinces value)
-        {
-            // Clear related selections
-            SelectedMunicipality = null;
-            SelectedBarangay = null;
-            Municipalities.Clear();
-            Barangays.Clear();
-
-            // Load municipalities for the selected province
-            LoadMunicipalitiesCommand.ExecuteAsync(null);
-        }
-
         [ObservableProperty]
         private Municipalities selectedMunicipality;
-        partial void OnSelectedMunicipalityChanged(Municipalities value)
-        {
-            // Clear related selection
-            SelectedBarangay = null;
-            Barangays.Clear();
-
-            // Load barangays for the selected municipality
-            LoadBarangaysCommand.ExecuteAsync(null);
-        }
-
         [ObservableProperty]
         private Barangays selectedBarangay;
-
         [ObservableProperty]
         private SexType selectedSexType;
 
-        [RelayCommand]
-        private async Task LoadRegions()
+        partial void OnSelectedRegionChanged(Regions value)
         {
-            var regionsResponse = await clientService.GetRegionsAsync();
-            Regions.Clear();
-            foreach (var r in regionsResponse)
+            if (value != null)
             {
-                Regions.Add(r);
+                Provinces.Clear();
+                SelectedProvince = null;
+                Municipalities.Clear();
+                SelectedMunicipality = null;
+                Barangays.Clear();
+                SelectedBarangay = null;
+
+                _ = LoadProvincesAsync();
             }
         }
 
-        [RelayCommand]
-        private async Task LoadProvinces()
+        partial void OnSelectedProvinceChanged(Provinces value)
         {
-            if (SelectedRegion != null)
+            if (value != null)
             {
-                var provinces = await clientService.GetProvincesByRegionCodeAsync(SelectedRegion.Rcode);
+                Municipalities.Clear();
+                SelectedMunicipality = null;
+                Barangays.Clear();
+                SelectedBarangay = null;
+
+                _ = LoadMunicipalitiesAsync();
+            }
+        }
+
+        partial void OnSelectedMunicipalityChanged(Municipalities value)
+        {
+            if (value != null)
+            {
+                Barangays.Clear();
+                SelectedBarangay = null;
+
+                _ = LoadBarangaysAsync();
+            }
+        }
+
+        private async Task LoadRegionsAsync()
+        {
+            IsBusy = true;
+            try
+            {
+                var regions = await clientService.GetRegionsAsync();
+                Regions.Clear();
+                foreach (var region in regions)
+                {
+                    Regions.Add(region);
+                }
+            }
+            catch (Exception ex)
+            {
+                await HandleException(ex);
+            }
+            finally
+            {
+                IsBusy = false;
+            }
+        }
+
+        private async Task LoadProvincesAsync()
+        {
+            IsBusy = true;
+            try
+            {
+                var provinces = await clientService.GetProvincesByRegionCodeAsync(SelectedRegion?.Rcode);
                 Provinces.Clear();
                 foreach (var province in provinces)
                 {
                     Provinces.Add(province);
                 }
             }
+            catch (Exception ex)
+            {
+                await HandleException(ex);
+            }
+            finally
+            {
+                IsBusy = false;
+            }
         }
 
-        [RelayCommand]
-        private async Task LoadMunicipalities()
+        private async Task LoadMunicipalitiesAsync()
         {
-            if (SelectedProvince != null)
+            IsBusy = true;
+            try
             {
-                var municipalities = await clientService.GetMunicipalitiesByProvinceCodeAsync(SelectedProvince.ProvCode);
+                var municipalities = await clientService.GetMunicipalitiesByProvinceCodeAsync(SelectedProvince?.ProvCode);
                 Municipalities.Clear();
                 foreach (var municipality in municipalities)
                 {
                     Municipalities.Add(municipality);
                 }
             }
+            catch (Exception ex)
+            {
+                await HandleException(ex);
+            }
+            finally
+            {
+                IsBusy = false;
+            }
         }
 
-        [RelayCommand]
-        private async Task LoadBarangays()
+        private async Task LoadBarangaysAsync()
         {
-            if (SelectedMunicipality != null)
+            IsBusy = true;
+            try
             {
-                var barangays = await clientService.GetBarangaysByMunicipalityCodeAsync(SelectedMunicipality.MunCode);
+                var barangays = await clientService.GetBarangaysByMunicipalityCodeAsync(SelectedMunicipality?.MunCode);
                 Barangays.Clear();
                 foreach (var barangay in barangays)
                 {
                     Barangays.Add(barangay);
                 }
             }
+            catch (Exception ex)
+            {
+                await HandleException(ex);
+            }
+            finally
+            {
+                IsBusy = false;
+            }
         }
 
-        [RelayCommand]
-        private async Task LoadSexType()
+        private async Task LoadSexTypeAsync()
         {
-            var sexTypes = await clientService.GetSexType();
-            SexType.Clear();
-            foreach (var sexType in sexTypes)
+            IsBusy = true;
+            try
             {
-                SexType.Add(sexType);
+                var sexTypes = await clientService.GetSexType();
+                SexType.Clear();
+                foreach (var sexType in sexTypes)
+                {
+                    SexType.Add(sexType);
+                }
+            }
+            catch (Exception ex)
+            {
+                await HandleException(ex);
+            }
+            finally
+            {
+                IsBusy = false;
             }
         }
 
         [RelayCommand]
-        public async Task SaveProfile()
+        public async Task SaveProfileAsync()
         {
+            IsBusy = true;
             try
             {
                 var updatedUser = new User
                 {
-                    UserName = this.UserName,
-                    Email = this.Email,
-                    Firstname = this.Firstname,
-                    Lastname = this.Lastname,
-                    MiddleName = this.MiddleName,
-                    ExtensionName = this.ExtensionName,
-                    SexID = SelectedSexType.SexID,
-                    SexDescription = SelectedSexType.SexDescription,
-                    Birthday = this.Birthday,
-                    MobileNumber = this.MobileNumber,
+                    UserName = UserName,
+                    Email = Email,
+                    Firstname = Firstname,
+                    Lastname = Lastname,
+                    MiddleName = MiddleName,
+                    ExtensionName = ExtensionName,
+                    SexID = SelectedSexType?.SexID,
+                    SexDescription = SelectedSexType?.SexDescription,
+                    Birthday = Birthday,
+                    MobileNumber = MobileNumber,
                     RcodeNum = SelectedRegion?.Rcode,
                     Region = SelectedRegion?.RegionName,
                     PcodeNum = SelectedProvince?.ProvCode,
@@ -164,7 +214,7 @@ namespace BAIPetRegMobileApp.ViewModels
                     MunicipalitiesCities = SelectedMunicipality?.MunCity,
                     Bcode = SelectedBarangay?.Bcode,
                     BarangayName = SelectedBarangay?.BarangayName,
-                    ProfilePicture = this.ProfilePicture,
+                    ProfilePicture = ProfilePicture,
                     FullAddress = $"{SelectedRegion?.RegionName} {SelectedProvince?.ProvinceName} {SelectedMunicipality?.MunCity} {SelectedBarangay?.BarangayName}".Trim(),
                 };
 
@@ -178,6 +228,10 @@ namespace BAIPetRegMobileApp.ViewModels
             catch (Exception ex)
             {
                 await HandleException(ex);
+            }
+            finally
+            {
+                IsBusy = false;
             }
         }
     }

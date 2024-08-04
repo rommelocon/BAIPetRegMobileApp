@@ -2,50 +2,11 @@
 <ContentPage
     x:Class="BAIPetRegMobileApp.Views.DogBreedPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    FlyoutItem.IsVisible="False"
-    Shell.BackgroundColor="#57C84D"
-    Shell.FlyoutBehavior="Flyout"
-    Shell.NavBarIsVisible="True">
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
 
     <Shell.BackButtonBehavior>
         <BackButtonBehavior IsEnabled="False" IsVisible="False" />
     </Shell.BackButtonBehavior>
-    <Shell.TitleView>
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="Auto" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
-
-            <Button
-                x:Name="MenuBtnClicked"
-                Grid.Column="0"
-                BackgroundColor="Transparent"
-                Clicked="MenuBtnClicked_Clicked"
-                FontFamily="MaterialIconsOutlined-Regular"
-                FontSize="30"
-                HorizontalOptions="Start"
-                Text="menu"
-                TextColor="White" />
-
-            <Button
-                x:Name="HomepageBtn"
-                Grid.Column="2"
-                Margin="0,0,20,0"
-                BackgroundColor="Transparent"
-                Clicked="HomepageBtn_Clicked"
-                FontFamily="MaterialIconsOutlined-Regular"
-                FontSize="30"
-                HorizontalOptions="EndAndExpand"
-                Text="pets"
-                TextColor="White" />
-
-            <!--  Empty element to fill the right column  -->
-
-        </Grid>
-    </Shell.TitleView>
 
     <Grid>
         <Grid.RowDefinitions>

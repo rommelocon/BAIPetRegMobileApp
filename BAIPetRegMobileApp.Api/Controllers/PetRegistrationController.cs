@@ -120,6 +120,24 @@ namespace BAIPetRegMobileApp.Api.Controllers
             var petRegistration = await _context.TblPetRegistration
                 .Where(p => p.ClientID == userId)
                 .AsNoTracking()
+                .OrderByDescending(p => p.DateRegistered) // Sort by DateRegistered, most recent first
+                .ToListAsync();
+            if (petRegistration == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(petRegistration);
+        }
+
+        [HttpGet("{petId}")]
+        [Authorize]
+        public async Task<IActionResult> GetPetRegistration(string petId)
+        {
+            var userId = _userManager.GetUserId(User);
+            var petRegistration = await _context.TblPetRegistration
+                .Where(p => p.ClientID == userId  && p.PetRegistrationID == petId)
+                .AsNoTracking()
                 .ToListAsync();
             if (petRegistration == null)
             {

@@ -22,13 +22,14 @@ namespace BAIPetRegMobileApp.ViewModels
         private async Task Login()
         {
             await clientService.Login(LoginModel);
-        }
-
-        [RelayCommand]
-        private async Task Logout()
-        {
-            Console.WriteLine("Logout Command Call");
-            await clientService.Logout();
+            if (Application.Current != null)
+            {
+                Application.Current.MainPage = new AppShell(clientService);
+            }
+            else
+            {
+                throw new InvalidOperationException("Application.Current is null. Unable to set MainPage.");
+            }
         }
     }
 }

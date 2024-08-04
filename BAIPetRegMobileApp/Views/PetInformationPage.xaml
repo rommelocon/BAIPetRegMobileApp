@@ -3,18 +3,13 @@
     x:Class="BAIPetRegMobileApp.Views.PetInformationPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    FlyoutItem.IsVisible="False"
-    Shell.BackgroundColor="#57C84D"
-    Shell.FlyoutBehavior="Flyout"
-    Shell.NavBarIsVisible="True">
+    xmlns:viewmodel="clr-namespace:BAIPetRegMobileApp.ViewModels"
+    x:DataType="viewmodel:PetInformationPageViewModel">
 
     <Grid>
         <Grid.RowDefinitions>
-
             <RowDefinition Height="Auto" />
-            <!--  Banner  -->
             <RowDefinition Height="*" />
-            <!--  Content  -->
         </Grid.RowDefinitions>
         <Image
             Grid.Row="0"
@@ -27,8 +22,6 @@
                 Padding="20"
                 BackgroundColor="#A3EBA3"
                 Spacing="20">
-
-                <!--  Pet Card  -->
                 <Frame
                     Padding="20"
                     BackgroundColor="#6AE96A"
@@ -51,25 +44,23 @@
                             FontAttributes="Bold"
                             FontSize="24"
                             HorizontalOptions="Center"
-                            Text="Jaguar" />
+                            Text="{Binding PetRegistration.PetName}" />
                         <Label
                             FontSize="18"
                             HorizontalOptions="Center"
-                            Text="Shih Tzu" />
+                            Text="{Binding PetRegistration.SpeciesCommonName}" />
 
                         <Label
                             FontSize="18"
                             HorizontalOptions="Center"
-                            Text="1 Year Old" />
+                            Text="{Binding PetRegistration.BreedDescription}" />
                         <Label
                             FontSize="18"
                             HorizontalOptions="Center"
-                            Text="8 Kilogram" />
+                            Text="{Binding PetRegistration.Weight, StringFormat='{0}kg'}" />
                     </StackLayout>
                 </Frame>
                 <StackLayout Orientation="Horizontal" />
-
-                <!--  Pet Information  -->
                 <Frame
                     Padding="20"
                     BackgroundColor="#A3EBA3"
@@ -78,40 +69,67 @@
                         <Label
                             FontAttributes="Bold"
                             FontSize="24"
+                            HorizontalOptions="Center"
                             Text="Pet Information"
                             TextColor="#001400" />
                         <Label
                             FontSize="18"
-                            Text="Date Registered: 22/03/2024"
+                            Text="{Binding PetRegistration.Alias, StringFormat='Alias: {0}'}"
                             TextColor="#001400" />
                         <Label
                             FontSize="18"
-                            Text="Pet Origin: Local within Barangay"
+                            Text="{Binding PetRegistration.DateRegistered, StringFormat='Registered: {0}'}"
                             TextColor="#001400" />
                         <Label
                             FontSize="18"
-                            Text="Date Of Birth: 02/01/2023"
+                            Text="{Binding PetRegistration.PetDateofBirth, StringFormat='Date Of Birth: {0}'}"
                             TextColor="#001400" />
                         <Label
                             FontSize="18"
-                            Text="Habitat Description: Household"
+                            Text="{Binding PetRegistration.PetSexDescription, StringFormat='Sex: {0}'}"
                             TextColor="#001400" />
                         <Label
                             FontSize="18"
-                            Text="Animal Color: White"
+                            Text="{Binding PetRegistration.AnimalFemalClassification, StringFormat='Female Classification: {0}'}"
                             TextColor="#001400" />
                         <Label
                             FontSize="18"
-                            Text="Tag Number: 000-111-2222"
+                            Text="{Binding PetRegistration.NumberOffspring, StringFormat='Number of Offspring: {0}'}"
                             TextColor="#001400" />
                         <Label
                             FontSize="18"
-                            Text="Status of Pet: Alive"
+                            Text="{Binding PetRegistration.OwnershipTypeDescription, StringFormat='Habitat Description: {0}'}"
+                            TextColor="#001400" />
+                        <Label
+                            FontSize="18"
+                            Text="{Binding PetRegistration.AnimalColorDescription, StringFormat='Color: {0}'}"
+                            TextColor="#001400" />
+                        <Label
+                            FontSize="18"
+                            Text="{Binding PetRegistration.TagDescription, StringFormat='Tag Description: {0}'}"
+                            TextColor="#001400" />
+                        <Label
+                            FontSize="18"
+                            Text="{Binding PetRegistration.TagID, StringFormat='Tag ID: {0}'}"
+                            TextColor="#001400" />
+                        <Label
+                            FontSize="18"
+                            Text="{Binding PetRegistration.TagNo, StringFormat='Tag Number: {0}'}"
+                            TextColor="#001400" />
+                        <Label
+                            FontSize="18"
+                            Text="{Binding PetRegistration.StatusDescription, StringFormat='Status Description: {0}'}"
+                            TextColor="#001400" />
+                        <Label
+                            FontSize="18"
+                            Text="{Binding PetRegistration.DateDied, StringFormat='Date Died: {0}'}"
+                            TextColor="#001400" />
+                        <Label
+                            FontSize="18"
+                            Text="{Binding PetRegistration.Remarks, StringFormat='Remarks: {0}'}"
                             TextColor="#001400" />
                     </StackLayout>
                 </Frame>
-
-                <!--  Pet's Image Upload Section  -->
                 <Frame
                     Padding="20"
                     BackgroundColor="#6AE96A"
@@ -222,21 +240,21 @@
                         </Grid>
                     </StackLayout>
                 </Frame>
-
-
-
-                <!--  Continue Button  -->
-                <!--
-                <Button
-                    BackgroundColor="Green"
-                    CornerRadius="20"
-                    HeightRequest="60"
-                    HorizontalOptions="FillAndExpand"
-                    Text="CONTINUE"
-                    TextColor="White" />-->
-
             </StackLayout>
         </ScrollView>
+        <StackLayout
+            Grid.Row="1"
+            AbsoluteLayout.LayoutBounds="0,0,1,1"
+            AbsoluteLayout.LayoutFlags="All"
+            BackgroundColor="#80000000"
+            IsEnabled="False"
+            IsVisible="{Binding IsBusy}">
+            <ActivityIndicator
+                HorizontalOptions="CenterAndExpand"
+                IsRunning="{Binding IsBusy}"
+                VerticalOptions="CenterAndExpand"
+                Color="White" />
+        </StackLayout>
     </Grid>
 
 </ContentPage>

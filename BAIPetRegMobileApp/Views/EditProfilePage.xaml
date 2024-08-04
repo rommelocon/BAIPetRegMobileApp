@@ -4,237 +4,267 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:viewmodels="clr-namespace:BAIPetRegMobileApp.ViewModels"
-    Title="EditProfilePage"
+    Title="Edit Profile"
     x:DataType="viewmodels:EditProfilePageViewModel">
-    <ScrollView>
-        <StackLayout Orientation="Vertical">
-            <!--  firstname  -->
-            <Label
-                Margin="20,0,0,0"
-                FontSize="20"
-                HorizontalTextAlignment="Start"
-                Text="First Name"
-                TextColor="Black" />
-            <Entry
-                Margin="20,0,20,40"
-                BackgroundColor="#e2f2e1"
-                FontSize="20"
-                HorizontalTextAlignment="Start"
-                Placeholder="Enter First Name"
-                PlaceholderColor="#808080"
-                Text="{Binding Firstname}"
-                TextColor="Black" />
 
-            <!--  middlename  -->
-            <Label
-                Margin="20,0,0,0"
-                FontSize="20"
-                HorizontalTextAlignment="Start"
-                Text="Middle Name"
-                TextColor="Black" />
-            <Entry
-                Margin="20,0,20,40"
-                BackgroundColor="#e2f2e1"
-                FontSize="20"
-                HorizontalTextAlignment="Start"
-                Placeholder="Enter Middle Name"
-                PlaceholderColor="#808080"
-                Text="{Binding MiddleName}"
-                TextColor="Black" />
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <ScrollView Grid.Row="0">
+            <VerticalStackLayout>
+                <!--  firstname  -->
+                <Label
+                    Margin="20,0,0,0"
+                    FontSize="20"
+                    HorizontalTextAlignment="Start"
+                    Text="First Name"
+                    TextColor="Black" />
+                <Entry
+                    Margin="20,0,20,40"
+                    BackgroundColor="#e2f2e1"
+                    FontSize="20"
+                    HorizontalTextAlignment="Start"
+                    Placeholder="Enter First Name"
+                    PlaceholderColor="#808080"
+                    Text="{Binding Firstname}"
+                    TextColor="Black" />
 
-            <!--  lastname  -->
-            <Label
-                Margin="20,0,0,0"
-                FontSize="20"
-                HorizontalTextAlignment="Start"
-                Text="Last Name"
-                TextColor="Black" />
-            <Entry
-                Margin="20,0,20,40"
-                BackgroundColor="#e2f2e1"
-                FontSize="20"
-                HorizontalTextAlignment="Start"
-                Placeholder="Enter Last Name"
-                PlaceholderColor="#808080"
-                Text="{Binding Lastname}"
-                TextColor="Black" />
+                <!--  middlename  -->
+                <Label
+                    Margin="20,0,0,0"
+                    FontSize="20"
+                    HorizontalTextAlignment="Start"
+                    Text="Middle Name"
+                    TextColor="Black" />
+                <Entry
+                    Margin="20,0,20,40"
+                    BackgroundColor="#e2f2e1"
+                    FontSize="20"
+                    HorizontalTextAlignment="Start"
+                    Placeholder="Enter Middle Name"
+                    PlaceholderColor="#808080"
+                    Text="{Binding MiddleName}"
+                    TextColor="Black" />
 
-            <!--  extension name  -->
-            <Label
-                Margin="20,0,0,0"
-                FontSize="20"
-                HorizontalTextAlignment="Start"
-                Text="Extension Name"
-                TextColor="Black" />
-            <Entry
-                Margin="20,0,20,40"
-                BackgroundColor="#e2f2e1"
-                FontSize="20"
-                HorizontalTextAlignment="Start"
-                Placeholder="Enter Extension Name"
-                PlaceholderColor="#808080"
-                Text="{Binding ExtensionName}"
-                TextColor="Black" />
+                <!--  lastname  -->
+                <Label
+                    Margin="20,0,0,0"
+                    FontSize="20"
+                    HorizontalTextAlignment="Start"
+                    Text="Last Name"
+                    TextColor="Black" />
+                <Entry
+                    Margin="20,0,20,40"
+                    BackgroundColor="#e2f2e1"
+                    FontSize="20"
+                    HorizontalTextAlignment="Start"
+                    Placeholder="Enter Last Name"
+                    PlaceholderColor="#808080"
+                    Text="{Binding Lastname}"
+                    TextColor="Black" />
 
-            <!--  birthday  -->
-            <Label
-                Margin="20,0,0,0"
-                FontSize="20"
-                HorizontalTextAlignment="Start"
-                Text="Birthday"
-                TextColor="Black" />
-            <Entry
-                Margin="20,0,20,40"
-                BackgroundColor="#e2f2e1"
-                FontSize="20"
-                HorizontalTextAlignment="Start"
-                Placeholder="Enter Birthday"
-                PlaceholderColor="#808080"
-                Text="{Binding Birthday}"
-                TextColor="Black" />
+                <!--  extension name  -->
+                <Label
+                    Margin="20,0,0,0"
+                    FontSize="20"
+                    HorizontalTextAlignment="Start"
+                    Text="Extension Name"
+                    TextColor="Black" />
+                <Entry
+                    Margin="20,0,20,40"
+                    BackgroundColor="#e2f2e1"
+                    FontSize="20"
+                    HorizontalTextAlignment="Start"
+                    Placeholder="Enter Extension Name"
+                    PlaceholderColor="#808080"
+                    Text="{Binding ExtensionName}"
+                    TextColor="Black" />
 
-            <!--  sex  -->
-            <Label
-                Margin="20,0,0,0"
-                FontSize="20"
-                HorizontalTextAlignment="Start"
-                Text="Sex"
-                TextColor="Black" />
-            <Picker
-                x:Name="sexTypePicker"
-                Title="Gender"
-                Margin="20,0,20,40"
-                BackgroundColor="#e2f2e1"
-                FontSize="20"
-                HorizontalTextAlignment="Start"
-                ItemDisplayBinding="{Binding SexDescription}"
-                ItemsSource="{Binding SexType}"
-                SelectedItem="{Binding SelectedSexType, Mode=TwoWay}"
-                TextColor="Black" />
+                <!--  birthday  -->
+                <Label
+                    Margin="20,0,0,0"
+                    FontSize="20"
+                    HorizontalTextAlignment="Start"
+                    Text="Birthday"
+                    TextColor="Black" />
+                <DatePicker
+                    Margin="20,0,20,40"
+                    BackgroundColor="#e2f2e1"
+                    Date="{Binding Birthday}"
+                    FontSize="20"
+                    TextColor="Black" />
 
-            <!--  email  -->
-            <Label
-                Margin="20,0,0,0"
-                FontSize="20"
-                HorizontalTextAlignment="Start"
-                Text="Email"
-                TextColor="Black" />
-            <Entry
-                Margin="20,0,20,40"
-                BackgroundColor="#e2f2e1"
-                FontSize="20"
-                HorizontalTextAlignment="Start"
-                Placeholder="Enter Email"
-                PlaceholderColor="#808080"
-                Text="{Binding Email}"
-                TextColor="Black" />
+                <!--  sex  -->
+                <Label
+                    Margin="20,0,0,0"
+                    FontSize="20"
+                    HorizontalTextAlignment="Start"
+                    Text="Sex"
+                    TextColor="Black" />
+                <Picker
+                    x:Name="sexTypePicker"
+                    Title="Gender"
+                    Margin="20,0,20,40"
+                    BackgroundColor="#e2f2e1"
+                    FontSize="20"
+                    HorizontalTextAlignment="Start"
+                    ItemDisplayBinding="{Binding SexDescription}"
+                    ItemsSource="{Binding SexType}"
+                    SelectedItem="{Binding SelectedSexType, Mode=TwoWay}"
+                    TextColor="Black" />
 
-            <!--  Contact Number  -->
-            <Label
-                Margin="20,0,0,0"
-                FontSize="20"
-                HorizontalTextAlignment="Start"
-                Text="Contact Number"
-                TextColor="Black" />
-            <Entry
-                Margin="20,0,20,40"
-                BackgroundColor="#e2f2e1"
-                FontSize="20"
-                HorizontalTextAlignment="Start"
-                Placeholder="Enter Contact Number"
-                PlaceholderColor="#808080"
-                Text="{Binding MobileNumber}"
-                TextColor="Black" />
+                <!--  email  -->
+                <Label
+                    Margin="20,0,0,0"
+                    FontSize="20"
+                    HorizontalTextAlignment="Start"
+                    Text="Email"
+                    TextColor="Black" />
+                <Entry
+                    Margin="20,0,20,40"
+                    BackgroundColor="#e2f2e1"
+                    FontSize="20"
+                    HorizontalTextAlignment="Start"
+                    Placeholder="Enter Email"
+                    PlaceholderColor="#808080"
+                    Text="{Binding Email}"
+                    TextColor="Black" />
 
-            <!--  Region  -->
-            <Label
-                Margin="20,0,0,0"
-                FontSize="20"
-                HorizontalTextAlignment="Start"
-                Text="Region"
-                TextColor="Black" />
-            <Picker
-                x:Name="regionPicker"
-                Title="Select Region"
-                Margin="20,0,20,40"
-                BackgroundColor="#e2f2e1"
-                FontSize="20"
-                HorizontalTextAlignment="Start"
-                ItemDisplayBinding="{Binding RegionName}"
-                ItemsSource="{Binding Regions}"
-                SelectedItem="{Binding SelectedRegion, Mode=TwoWay}"
-                TextColor="Black" />
+                <!--  Contact Number  -->
+                <Label
+                    Margin="20,0,0,0"
+                    FontSize="20"
+                    HorizontalTextAlignment="Start"
+                    Text="Contact Number"
+                    TextColor="Black" />
+                <Entry
+                    Margin="20,0,20,40"
+                    BackgroundColor="#e2f2e1"
+                    FontSize="20"
+                    HorizontalTextAlignment="Start"
+                    Placeholder="Enter Contact Number"
+                    PlaceholderColor="#808080"
+                    Text="{Binding MobileNumber}"
+                    TextColor="Black" />
 
-            <!--  Province  -->
-            <Label
-                Margin="20,0,0,0"
-                FontSize="20"
-                HorizontalTextAlignment="Start"
-                Text="Province"
-                TextColor="Black" />
-            <Picker
-                x:Name="provincePicker"
-                Title="Select Province"
-                Margin="20,0,20,40"
-                BackgroundColor="#e2f2e1"
-                FontSize="20"
-                HorizontalTextAlignment="Start"
-                ItemDisplayBinding="{Binding ProvinceName}"
-                ItemsSource="{Binding Provinces}"
-                SelectedItem="{Binding SelectedProvince, Mode=TwoWay}"
-                TextColor="Black" />
+                <!--  Region  -->
+                <Label
+                    Margin="20,0,0,0"
+                    FontSize="20"
+                    HorizontalTextAlignment="Start"
+                    Text="Region"
+                    TextColor="Black" />
+                <Picker
+                    x:Name="regionPicker"
+                    Title="Select Region"
+                    Margin="20,0,20,40"
+                    BackgroundColor="#e2f2e1"
+                    FontSize="20"
+                    HorizontalTextAlignment="Start"
+                    ItemDisplayBinding="{Binding RegionName}"
+                    ItemsSource="{Binding Regions}"
+                    SelectedItem="{Binding SelectedRegion, Mode=TwoWay}"
+                    TextColor="Black" />
 
-            <!--  Municipality  -->
-            <Label
-                Margin="20,0,0,0"
-                FontSize="20"
-                HorizontalTextAlignment="Start"
-                Text="Municipality"
-                TextColor="Black" />
-            <Picker
-                x:Name="municipalityPicker"
-                Title="Select Municipality"
-                Margin="20,0,20,40"
-                BackgroundColor="#e2f2e1"
-                FontSize="20"
-                HorizontalTextAlignment="Start"
-                ItemDisplayBinding="{Binding MunCity}"
-                ItemsSource="{Binding Municipalities}"
-                SelectedItem="{Binding SelectedMunicipality, Mode=TwoWay}"
-                TextColor="Black" />
+                <!--  Province  -->
+                <Label
+                    Margin="20,0,0,0"
+                    FontSize="20"
+                    HorizontalTextAlignment="Start"
+                    Text="Province"
+                    TextColor="Black" />
+                <Picker
+                    x:Name="provincePicker"
+                    Title="Select Province"
+                    Margin="20,0,20,40"
+                    BackgroundColor="#e2f2e1"
+                    FontSize="20"
+                    HorizontalTextAlignment="Start"
+                    ItemDisplayBinding="{Binding ProvinceName}"
+                    ItemsSource="{Binding Provinces}"
+                    SelectedItem="{Binding SelectedProvince, Mode=TwoWay}"
+                    TextColor="Black" />
 
-            <!--  Barangay  -->
-            <Label
-                Margin="20,0,0,0"
-                FontSize="20"
-                HorizontalTextAlignment="Start"
-                Text="Barangay"
-                TextColor="Black" />
-            <Picker
-                x:Name="barangayPicker"
-                Title="Select Barangay"
-                Margin="20,0,20,40"
-                BackgroundColor="#e2f2e1"
-                FontSize="20"
-                HorizontalTextAlignment="Start"
-                ItemDisplayBinding="{Binding BarangayName}"
-                ItemsSource="{Binding Barangays}"
-                SelectedItem="{Binding SelectedBarangay, Mode=TwoWay}"
-                TextColor="Black" />
+                <!--  Municipality  -->
+                <Label
+                    Margin="20,0,0,0"
+                    FontSize="20"
+                    HorizontalTextAlignment="Start"
+                    Text="Municipality"
+                    TextColor="Black" />
+                <Picker
+                    x:Name="municipalityPicker"
+                    Title="Select Municipality"
+                    Margin="20,0,20,40"
+                    BackgroundColor="#e2f2e1"
+                    FontSize="20"
+                    HorizontalTextAlignment="Start"
+                    ItemDisplayBinding="{Binding MunCity}"
+                    ItemsSource="{Binding Municipalities}"
+                    SelectedItem="{Binding SelectedMunicipality, Mode=TwoWay}"
+                    TextColor="Black" />
 
-            <Button
-                x:Name="SaveProfile"
-                Margin="10"
-                Padding="20"
-                BackgroundColor="#096B00"
-                Command="{Binding SaveProfileCommand}"
-                CornerRadius="10"
-                FontAttributes="Bold"
-                FontSize="20"
-                HorizontalOptions="FillAndExpand"
-                Text="Save Profile"
-                TextColor="White"
-                VerticalOptions="CenterAndExpand" />
+                <!--  Barangay  -->
+                <Label
+                    Margin="20,0,0,0"
+                    FontSize="20"
+                    HorizontalTextAlignment="Start"
+                    Text="Barangay"
+                    TextColor="Black" />
+                <Picker
+                    x:Name="barangayPicker"
+                    Title="Select Barangay"
+                    Margin="20,0,20,40"
+                    BackgroundColor="#e2f2e1"
+                    FontSize="20"
+                    HorizontalTextAlignment="Start"
+                    ItemDisplayBinding="{Binding BarangayName}"
+                    ItemsSource="{Binding Barangays}"
+                    SelectedItem="{Binding SelectedBarangay, Mode=TwoWay}"
+                    TextColor="Black" />
+
+                <Button
+                    x:Name="SaveProfile"
+                    Margin="10"
+                    Padding="20"
+                    BackgroundColor="#096B00"
+                    Command="{Binding SaveProfileCommand}"
+                    CornerRadius="10"
+                    FontAttributes="Bold"
+                    FontSize="20"
+                    HorizontalOptions="FillAndExpand"
+                    Text="Save Profile"
+                    TextColor="White"
+                    VerticalOptions="CenterAndExpand" />
+
+                <!--  Overlay Grid  -->
+                <Grid
+                    BackgroundColor="#80000000"
+                    HorizontalOptions="FillAndExpand"
+                    IsEnabled="False"
+                    IsVisible="{Binding IsBusy}"
+                    VerticalOptions="FillAndExpand">
+                    <ActivityIndicator
+                        HorizontalOptions="Center"
+                        IsRunning="{Binding IsBusy}"
+                        VerticalOptions="Center"
+                        Color="White" />
+                </Grid>
+            </VerticalStackLayout>
+        </ScrollView>
+        <StackLayout
+            Grid.Row="0"
+            AbsoluteLayout.LayoutBounds="0,0,1,1"
+            AbsoluteLayout.LayoutFlags="All"
+            BackgroundColor="#80000000"
+            IsEnabled="False"
+            IsVisible="{Binding IsBusy}">
+            <ActivityIndicator
+                HorizontalOptions="CenterAndExpand"
+                IsRunning="{Binding IsBusy}"
+                VerticalOptions="CenterAndExpand"
+                Color="White" />
         </StackLayout>
-    </ScrollView>
+    </Grid>
 </ContentPage>

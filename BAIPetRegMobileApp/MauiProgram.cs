@@ -13,9 +13,7 @@ public static class MauiProgram
         var builder = MauiApp.CreateBuilder();
         builder
             .UseMauiApp<App>()
-            // Initialize the .NET MAUI Community Toolkit by adding the below line of code
             .UseMauiCommunityToolkit()
-            // After initializing the .NET MAUI Community Toolkit, optionally add additional fonts
             .ConfigureFonts(fonts =>
             {
                 fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
@@ -37,8 +35,8 @@ public static class MauiProgram
         builder.Services.AddHttpClient("custom-httpclient", httpClient =>
         {
             var baseAddress = DeviceInfo.Platform == DevicePlatform.Android ? "https://10.0.2.2:5001" : "https://localhost:5001";
-            //var baseAddress = "https://tzgh6qwb-5001.asse.devtunnels.ms/";
-            httpClient.BaseAddress = new Uri(baseAddress);
+            var baseAddressDevTunnel = "https://mzwtqd2v-5001.asse.devtunnels.ms";
+            httpClient.BaseAddress = new Uri(baseAddressDevTunnel);
         }).ConfigurePrimaryHttpMessageHandler(() =>
         {
             var platformMessageHandler = builder.Services.BuildServiceProvider().GetRequiredService<IPlatformHttpMessageHandler>();
@@ -56,13 +54,16 @@ public static class MauiProgram
         builder.Services.AddSingleton<CatBreedPage>();
         builder.Services.AddSingleton<PetInformationPage>();
         builder.Services.AddSingleton<EditProfilePage>();
-     
+        builder.Services.AddSingleton<TOAPage>();
+        builder.Services.AddSingleton<SplashPage>();
+
         // View Models
         builder.Services.AddSingleton<LoginPageViewModel>();
         builder.Services.AddSingleton<HomePageViewModel>();
         builder.Services.AddSingleton<ProfilePageViewModel>();
         builder.Services.AddSingleton<EditProfilePageViewModel>();
         builder.Services.AddSingleton<PetRegisterPageViewModel>();
+        builder.Services.AddSingleton<PetInformationPageViewModel>();
 
         // Services
         builder.Services.AddSingleton<ClientService>();

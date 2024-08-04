@@ -3,18 +3,13 @@ using System.Text.Json;
 using System.Net.Http.Headers;
 using BAIPetRegMobileApp.Models.User;
 using BAIPetRegMobileApp.Models.PetRegistration;
-using BAIPetRegMobileApp.Views;
+using System.Net;
 
 namespace BAIPetRegMobileApp.Services
 {
-    public class ClientService
+    public class ClientService(IHttpClientFactory httpClientFactory)
     {
-        private readonly IHttpClientFactory httpClientFactory;
-
-        public ClientService(IHttpClientFactory httpClientFactory)
-        {
-            this.httpClientFactory = httpClientFactory;
-        }
+        private readonly IHttpClientFactory httpClientFactory = httpClientFactory;
 
         private HttpClient CreateClientWithAuthorization(string accessToken)
         {
@@ -54,8 +49,6 @@ namespace BAIPetRegMobileApp.Services
                 {
                     var serializedResponse = JsonSerializer.Serialize(response);
                     await SecureStorage.SetAsync("Authentication", serializedResponse);
-
-                    await Shell.Current.GoToAsync(nameof(HomePage));
                 }
                 else
                 {
@@ -75,9 +68,8 @@ namespace BAIPetRegMobileApp.Services
             if (loginResponse != null && !string.IsNullOrEmpty(loginResponse.UserName) && !string.IsNullOrEmpty(loginResponse.AccessToken))
             {
                 var httpClient = CreateClientWithAuthorization(loginResponse.AccessToken);
-                var result = await httpClient.PostAsync("/api/Account/logout", null);
+                await httpClient.PostAsync("/api/Account/logout", null);
                 SecureStorage.Default.Remove("Authentication");
-                await Shell.Current.GoToAsync(nameof(LoginPage));
             }
             else
             {
@@ -137,7 +129,6 @@ namespace BAIPetRegMobileApp.Services
 
                 return response;
             }
-
             throw new InvalidOperationException("Authentication data not found.");
         }
 
@@ -180,6 +171,43 @@ namespace BAIPetRegMobileApp.Services
             throw new InvalidOperationException("Authentication data not found.");
         }
 
+        public async Task<PetRegistration?> GetPetRegistrationByIdAsync(string id)
+        {
+            var loginResponse = await GetStoredLoginResponseAsync();
+            if (loginResponse != null && !string.IsNullOrEmpty(loginResponse.UserName) && !string.IsNullOrEmpty(loginResponse.AccessToken))
+            {
+                var httpClient = CreateClientWithAuthorization(loginResponse.AccessToken);
+                var response = await httpClient.GetAsync($"/api/PetRegistration/{id}"); // Ensure this endpoint returns a single PetRegistration object
+                if (response.IsSuccessStatusCode)
+                {
+                    var content = await response.Content.ReadAsStringAsync();
+
+                    var options = new JsonSerializerOptions
+                    {
+                        PropertyNameCaseInsensitive = true
+                    };
+
+                    try
+                    {
+                        // Deserialize JSON array
+                        var petRegistrations = JsonSerializer.Deserialize<List<PetRegistration>>(content, options);
+
+                        // Return the first item if available
+                        return petRegistrations?.FirstOrDefault();
+                    }
+                    catch (JsonException ex)
+                    {
+                        // Log or handle the deserialization error
+                        Console.WriteLine($"JSON Deserialization Error: {ex.Message}");
+                        return null;
+                    }
+                }
+                return null;
+            }
+            throw new InvalidOperationException("Authentication data not found.");
+        }
+
+
         private async Task<IEnumerable<T>> GetListAsync<T>(string endpoint)
         {
             var httpClient = httpClientFactory.CreateClient("custom-httpclient");
@@ -204,5 +232,23 @@ namespace BAIPetRegMobileApp.Services
         public Task<IEnumerable<SpeciesGroup>> GetSpeciesGroupsAsync() => GetListAsync<SpeciesGroup>("/api/PetRegistration/speciesGroup");
         public Task<IEnumerable<TagType>> GetTagTypesAsync() => GetListAsync<TagType>("/api/PetRegistration/tagType");
 
+        public async Task<string> UploadImageAsync(Stream imageStream, string fileName)
+        {
+            using var httpContent = new MultipartFormDataContent();
+            using var fileStreamContent = new StreamContent(imageStream);
+            httpContent.Add(fileStreamContent, "file", fileName);
+
+            var httpClient = httpClientFactory.CreateClient("custom-httpclient");
+            var response = await httpClient.PostAsync("/api/UploadFile", httpContent);
+            if (response.IsSuccessStatusCode)
+            {
+                var result = await response.Content.ReadAsStringAsync();
+                return result;
+            }
+            else
+            {
+                throw new InvalidOperationException("Upload image failed.");
+            }
+        }
     }
 }

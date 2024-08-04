@@ -1,17 +1,17 @@
-﻿using BAIPetRegMobileApp.ViewModels;
+﻿using BAIPetRegMobileApp.Views;
 
-namespace BAIPetRegMobileApp;
-public partial class MainPage : ContentPage
+namespace BAIPetRegMobileApp
 {
-    private readonly LoginPageViewModel viewModel;
-    public MainPage()
+    public partial class MainPage : ContentPage
     {
-        InitializeComponent();
-        viewModel = (LoginPageViewModel)BindingContext;
-    }
+        public MainPage()
+        {
+            InitializeComponent();
+        }
 
-    private async void BtnGetStarted_Clicked(object sender, EventArgs e)
-    {
-        await Shell.Current.GoToAsync(nameof(LoginPage));
+        private async void BtnGetStarted_Clicked(object sender, EventArgs e)
+        {
+            await Shell.Current.GoToAsync(nameof(LoginPage));
+        }
     }
 }
