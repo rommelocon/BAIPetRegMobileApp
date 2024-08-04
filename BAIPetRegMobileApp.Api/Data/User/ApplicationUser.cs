@@ -42,7 +42,6 @@ namespace BAIPetRegMobileApp.Api.Data.User
         public DateTime? OTPSent { get; set; }
         public int? OTPSentAttempt { get; set; }
         public DateTime? OTPDateSent { get; set; }
-        public string? CivilStatusName { get; set; }
         public int? RegOptID { get; set; }
 
         // Navigation properties for foreign keys

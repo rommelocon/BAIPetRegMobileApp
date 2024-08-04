@@ -1,4 +1,5 @@
-﻿using BAIPetRegMobileApp.Api.Data.User;
+﻿using BAIPetRegMobileApp.Api.Data;
+using BAIPetRegMobileApp.Api.Data.User;
 using BAIPetRegMobileApp.Api.DTOs;
 using BAIPetRegMobileApp.Api.Interfaces;
 using Microsoft.AspNetCore.Mvc;
@@ -10,7 +11,7 @@ namespace BAIPetRegMobileApp.Api.Controllers
     public class LocationController : ControllerBase
     {
         private readonly ILocationService _locationService;
-
+        
         public LocationController(ILocationService locationService)
         {
             _locationService = locationService;
@@ -33,8 +34,9 @@ namespace BAIPetRegMobileApp.Api.Controllers
         [HttpGet("municipalities/{provinceCode}")]
         public async Task<ActionResult<IEnumerable<MunicipalitiesDTO>>> GetMunicipalitiesByProvinceCode(string provinceCode)
         {
-            var municipalities = await _locationService.GetMunicipalitiesByProvinceCodeAsync(provinceCode);
-            return Ok(municipalities);
+             var municipalities = await _locationService.GetMunicipalitiesByProvinceCodeAsync(provinceCode);
+          
+            return  Ok(municipalities);
         }
 
         [HttpGet("barangays/{municipalityCode}")]
