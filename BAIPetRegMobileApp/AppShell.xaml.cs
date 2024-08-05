@@ -16,8 +16,8 @@ namespace BAIPetRegMobileApp
             Routing.RegisterRoute(nameof(RegisterPage), typeof(RegisterPage));
             Routing.RegisterRoute(nameof(ProfilePage), typeof(ProfilePage));
             Routing.RegisterRoute(nameof(PetInformationPage), typeof(PetInformationPage));
-            Routing.RegisterRoute(nameof(CatBreedPage), typeof(CatBreedPage));
-            Routing.RegisterRoute(nameof(DogBreedPage), typeof(DogBreedPage));
+            Routing.RegisterRoute(nameof(CatBreed), typeof(CatBreed));
+            Routing.RegisterRoute(nameof(DogBreed), typeof(DogBreed));
             Routing.RegisterRoute(nameof(TOAPage), typeof(TOAPage));
 
         }
@@ -62,13 +62,13 @@ namespace BAIPetRegMobileApp
 
         private void OnDogPetButtonTapped(object sender, TappedEventArgs e)
         {
-            Shell.Current.GoToAsync(nameof(DogBreedPage));
+            Shell.Current.GoToAsync(nameof(DogBreed));
             Shell.Current.FlyoutIsPresented = false;
         }
 
         private void OnCatPetButtonTapped(object sender, TappedEventArgs e)
         {
-            Shell.Current.GoToAsync(nameof(CatBreedPage));
+            Shell.Current.GoToAsync(nameof(CatBreed));
             Shell.Current.FlyoutIsPresented = false;
         }
     }

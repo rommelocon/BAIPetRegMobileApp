@@ -77,52 +77,12 @@
                 Placeholder="Search"
                 VerticalOptions="Center" />
         </Frame>
-
+        
         <ScrollView Grid.Row="2">
             <StackLayout Padding="10">
                 <StackLayout Orientation="Vertical">
                     <!--  Aspin  -->
-                    <Frame
-                        Margin="0,10"
-                        Padding="10"
-                        BackgroundColor="#D6EFD8"
-                        CornerRadius="20">
-                        <StackLayout HorizontalOptions="Center" Orientation="Vertical">
-                            <Image
-                                Aspect="AspectFill"
-                                HeightRequest="200"
-                                HorizontalOptions="Center"
-                                Source="aspin.jpg"
-                                WidthRequest="200" />
-                            <StackLayout
-                                Padding="10,0"
-                                HorizontalOptions="Center"
-                                Orientation="Vertical"
-                                VerticalOptions="CenterAndExpand">
-                                <Label
-                                    FontSize="Large"
-                                    HorizontalOptions="Center"
-                                    Text="Breed: Aspin"
-                                    TextColor="Black" />
-                                <Label
-                                    FontSize="Small"
-                                    Text="Life Expectancy: 10 - 15 years"
-                                    TextColor="Black" />
-                                <Label
-                                    FontSize="Small"
-                                    Text="Temperament: Loyal, friendly, adaptable; good with training and socialization."
-                                    TextColor="Black" />
-                                <Label
-                                    FontSize="Small"
-                                    Text="Weight / Height: 4.5-14 kg, 30-50 cm"
-                                    TextColor="Black" />
-                                <Label
-                                    FontSize="Small"
-                                    Text="Colors: Black, brown, white, tan, gray; various patterns and coat types"
-                                    TextColor="Black" />
-                            </StackLayout>
-                        </StackLayout>
-                    </Frame>
+                 
 
                     <!--  Affenpinscher  -->
                     <Frame

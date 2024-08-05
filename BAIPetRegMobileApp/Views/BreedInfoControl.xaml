@@ -1,0 +1,78 @@
+<ContentView
+    x:Class="BAIPetRegMobileApp.Views.BreedInfoControl"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+    <Frame
+        Margin="10,10"
+        Padding="15"
+        BackgroundColor="#D6EFD8"
+        CornerRadius="15"
+        HasShadow="True"
+        BorderColor="#57C84D">
+        <StackLayout
+            Orientation="Vertical"
+            HorizontalOptions="Fill"
+            VerticalOptions="FillAndExpand">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="200" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Image
+                    x:Name="ImageControl"
+                    Aspect="AspectFill"
+                    HeightRequest="200"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    WidthRequest="200"
+                    Source="{Binding ImageSource}" 
+                    Grid.Row="0" />
+
+                <StackLayout
+                    Padding="10"
+                    Orientation="Vertical"
+                    VerticalOptions="Start"
+                    Grid.Row="1"
+                    Spacing="5">
+                    <Label
+                        x:Name="BreedNameLabel"
+                        FontSize="24"
+                        FontAttributes="Bold"
+                        HorizontalOptions="Center"
+                        Text="{Binding BreedName}"
+                        TextColor="#333" />
+
+                    <BoxView HeightRequest="1" Color="#57C84D" Margin="0,5" />
+
+                    <Label
+                        x:Name="LifeExpectancyLabel"
+                        FontSize="Medium"
+                        Text="{Binding LifeExpectancy}"
+                        TextColor="#666" />
+
+                    <Label
+                        x:Name="TemperamentLabel"
+                        FontSize="Medium"
+                        Text="{Binding Temperament}"
+                        TextColor="#666" />
+
+                    <Label
+                        x:Name="WeightHeightLabel"
+                        FontSize="Medium"
+                        Text="{Binding WeightHeight}"
+                        TextColor="#666" />
+
+                    <Label
+                        x:Name="ColorsLabel"
+                        FontSize="Medium"
+                        Text="{Binding Colors}"
+                        TextColor="#666" />
+                </StackLayout>
+            </Grid>
+        </StackLayout>
+    </Frame>
+</ContentView>
