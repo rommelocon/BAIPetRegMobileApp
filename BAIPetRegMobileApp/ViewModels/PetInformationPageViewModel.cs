@@ -1,6 +1,8 @@
 ﻿using BAIPetRegMobileApp.Models.PetRegistration;
 using BAIPetRegMobileApp.Services;
 using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
+using System.ComponentModel;
 
 namespace BAIPetRegMobileApp.ViewModels
 {
@@ -9,11 +11,13 @@ namespace BAIPetRegMobileApp.ViewModels
         [ObservableProperty]
         private PetRegistration petRegistration;
 
+
         private readonly ClientService clientService;
 
         public PetInformationPageViewModel(ClientService clientService) : base(clientService)
         {
             this.clientService = clientService;
+            IsProfileLoaded = false;
         }
 
         public async void ApplyQueryAttributes(IDictionary<string, object> query)
@@ -23,8 +27,17 @@ namespace BAIPetRegMobileApp.ViewModels
                 string id = query["PetRegistrationID"].ToString();
                 if (!string.IsNullOrEmpty(id))
                 {
-                    // Load the pet registration details based on this ID
-                    await LoadPetRegistrationDetailsAsync(id);
+                    try
+                    {
+                            // Load the pet registration details based on this ID
+                            await LoadPetRegistrationDetailsAsync(id);
+                            await LoadPetImagesAsync(id);
+                       
+                    }
+                    catch (Exception ex)
+                    {
+                        await HandleException(ex);
+                    }
                 }
             }
         }
@@ -34,8 +47,6 @@ namespace BAIPetRegMobileApp.ViewModels
             try
             {
                 IsBusy = true;
-
-                // Fetch pet registration details using the ClientService
                 PetRegistration = await clientService.GetPetRegistrationByIdAsync(id);
             }
             catch (Exception ex)
@@ -45,6 +56,7 @@ namespace BAIPetRegMobileApp.ViewModels
             finally
             {
                 IsBusy = false;
+                IsProfileLoaded = true;
             }
         }
     }

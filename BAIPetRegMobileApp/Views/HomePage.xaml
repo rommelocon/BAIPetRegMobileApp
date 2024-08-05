@@ -62,7 +62,7 @@
                                                 Grid.Column="0"
                                                 Aspect="AspectFill"
                                                 HeightRequest="300"
-                                                Source="profile_pic_1.jpg" />
+                                                Source="{Binding PetImageSource}" />
 
                                             <!--  Labels  -->
                                             <VerticalStackLayout
@@ -87,7 +87,6 @@
                                                     CommandParameter="{Binding PetRegistrationID}"
                                                     Text="Show More"
                                                     TextColor="Black" />
-
                                             </VerticalStackLayout>
                                         </Grid>
                                     </Frame>
@@ -96,9 +95,9 @@
                         </CollectionView.ItemTemplate>
                     </CollectionView>
                 </VerticalStackLayout>
-                <!--  Overlay Grid  -->
             </ScrollView>
-
+            
+            <!--  Overlay Grid  -->
             <StackLayout
                 Grid.Row="1"
                 AbsoluteLayout.LayoutBounds="0,0,1,1"

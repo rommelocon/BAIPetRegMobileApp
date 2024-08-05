@@ -26,7 +26,7 @@ namespace BAIPetRegMobileApp.Api.Data.PetRegistration
         public string? OwnershipType { get; set; }
         public string? OwnershipTypeDescription { get; set; }
         public string? PetName { get; set; }
-        public DateOnly? PetDateofBirth { get; set; }
+        public DateTime? PetDateofBirth { get; set; }
         public int? PetSexID { get; set; }
         public string? PetSexDescription { get; set; }
         public int? AnimalFemaleClassID { get; set; }

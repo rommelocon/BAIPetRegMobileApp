@@ -19,6 +19,13 @@ namespace BAIPetRegMobileApp.Models.PetRegistration
             set => SetProperty(ref _fileName, value);
         }
 
+        private string _fullPath;
+        public string FullPath
+        {
+            get => _fullPath;
+            set => SetProperty(ref _fullPath, value);
+        }
+
         public ICommand PickImageCommand { get; set; }
     }
 }

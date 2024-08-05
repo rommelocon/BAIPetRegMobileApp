@@ -46,6 +46,7 @@ namespace BAIPetRegMobileApp.Api.Controllers
 
             return Ok(model);
         }
+
         [HttpPost("register")]
         public async Task<IActionResult> Register(RegisterDTO model)
         {
@@ -66,6 +67,7 @@ namespace BAIPetRegMobileApp.Api.Controllers
                 return BadRequest(result.Errors);
             }
         }
+
         [HttpPost("login")]
         public async Task<IActionResult> Login([FromBody] LoginDTO model)
         {
@@ -87,6 +89,11 @@ namespace BAIPetRegMobileApp.Api.Controllers
             if (result.IsLockedOut)
             {
                 return Unauthorized("User account locked out.");
+            }
+
+            if (result.IsNotAllowed)
+            {
+                return Unauthorized("User is not allowed to sign in.");
             }
 
             return Unauthorized("Invalid login attempt.");

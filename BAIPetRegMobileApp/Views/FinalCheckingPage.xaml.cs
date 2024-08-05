@@ -9,7 +9,6 @@ public partial class FinalCheckingPage : ContentPage
 
     private void BtnContinue_Clicked(object sender, EventArgs e)
     {
-        Shell.Current.GoToAsync(nameof(HomePage));
-        ;
+        Shell.Current.GoToAsync("//HomePage");
     }
 }

@@ -258,9 +258,10 @@
                         HorizontalOptions="FillAndExpand">
                         <DatePicker
                             x:Name="BirtDate"
-                            Date="{Binding PetDateofBirth, Mode=TwoWay}"
+                            Date="{Binding SelectedPetDateofBirth, Mode=TwoWay}"
                             FontSize="20"
-                            Format="D" />
+                            Format="dd/MM/yyyy"
+                            MaximumDate="{Binding MaximumDate}" />
                     </Frame>
                 </StackLayout>
 

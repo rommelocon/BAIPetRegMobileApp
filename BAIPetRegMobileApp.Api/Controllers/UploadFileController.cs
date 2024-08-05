@@ -8,11 +8,13 @@ namespace BAIPetRegMobileApp.Api.Controllers
     {
         private readonly ILogger<UploadFileController> logger;
         private readonly IWebHostEnvironment webHostEnvironment;
+        private readonly string _imageFolderPath;
 
         public UploadFileController(ILogger<UploadFileController> logger, IWebHostEnvironment webHostEnvironment)
         {
             this.logger = logger;
-            this.webHostEnvironment = webHostEnvironment;
+            this.webHostEnvironment = webHostEnvironment; 
+            _imageFolderPath = Path.Combine(webHostEnvironment.ContentRootPath, "Resources", "Images");
         }
 
         [HttpPost]
@@ -33,18 +35,15 @@ namespace BAIPetRegMobileApp.Api.Controllers
                     // Loop through
                     foreach (var file in httpContent.Form.Files)
                     {
-                        // Get File Path
-                        var filePath = Path.Combine(webHostEnvironment.ContentRootPath, "Resources/Images");
-
                         // Check if director exist; if NO then create.
-                        if (!Directory.Exists(filePath))
-                            Directory.CreateDirectory(filePath);
+                        if (!Directory.Exists(_imageFolderPath))
+                            Directory.CreateDirectory(_imageFolderPath);
 
                         // Copy the file to the folder
                         using (var memoryStream = new MemoryStream())
                         {
                             await file.CopyToAsync(memoryStream);
-                            System.IO.File.WriteAllBytes(Path.Combine(filePath, file.FileName), memoryStream.ToArray());
+                            System.IO.File.WriteAllBytes(Path.Combine(_imageFolderPath, file.FileName), memoryStream.ToArray());
                         }
                     }
                     return Ok(httpContent.Form.Files.Count.ToString() + " file(s) upload");
@@ -53,6 +52,29 @@ namespace BAIPetRegMobileApp.Api.Controllers
             }
             catch (Exception ex)
             {
+                logger.LogError(ex, ex.Message);
+                return new StatusCodeResult(500);
+            }
+        }
+
+        [HttpGet("images/{fileName}")]
+        public IActionResult GetImage(string fileName)
+        {
+            try
+            {
+                var filePath = Path.Combine(_imageFolderPath, fileName);
+
+                if (!System.IO.File.Exists(filePath))
+                {
+                    return NotFound("Image not found");
+                }
+
+                var image = System.IO.File.OpenRead(filePath);
+                return File(image, "image/jpeg"); // Adjust MIME type according to your image format
+            }
+            catch (Exception ex)
+            {
+                // Log the error
                 logger.LogError(ex, ex.Message);
                 return new StatusCodeResult(500);
             }

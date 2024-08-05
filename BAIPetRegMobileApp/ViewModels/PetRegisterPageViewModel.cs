@@ -43,7 +43,8 @@ namespace BAIPetRegMobileApp.ViewModels
         [ObservableProperty] private string _selectedImage2;
         [ObservableProperty] private string _selectedImage3;
         [ObservableProperty] private string _selectedImage4;
-        [ObservableProperty] private DateOnly _petDateofBirth;
+        [ObservableProperty] private DateTime? _maximumDate = DateTime.Today;
+        [ObservableProperty] private DateTime? _selectedPetDateofBirth;
         [ObservableProperty] private SpeciesGroup _selectedSpeciesGroup;
         [ObservableProperty] private OwnerShipType _selectedOwnerShipType;
         [ObservableProperty] private SpeciesBreed _selectedSpeciesBreed;
@@ -141,6 +142,42 @@ namespace BAIPetRegMobileApp.ViewModels
         [RelayCommand]
         public async Task PetRegistrationSubmit()
         {
+            if (IsBusy) return;
+            try
+            {
+                IsBusy = true;
+                var uploadFileNames = new List<string>();
+                foreach (var imageItem in ImageItems)
+                {
+                    if (!string.IsNullOrEmpty(imageItem.FileName))
+                    {
+                        using (var stream = File.OpenRead(imageItem.FullPath))
+                        using (var content = new MultipartFormDataContent())
+                        {
+                            content.Add(new StreamContent(stream), "file", imageItem.FileName);
+                            var responseImage = await clientService.UploadImageAsync(content);
+
+                            if (responseImage.IsSuccessStatusCode)
+                            {
+                                var uploadedFileName = await responseImage.Content.ReadAsStringAsync();
+                                uploadFileNames.Add(uploadedFileName);
+                            }
+                            else
+                            {
+                                // Handle the error (e.g., show a message to the user)
+                                await Shell.Current.DisplayAlert("Error", "Image upload failed.", "Ok");
+                                return;
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                //
+            }
+            finally { IsBusy = false; }
+
             var petRegistration = new PetRegistration
             {
                 DateRegistered = DateTime.Now,
@@ -160,7 +197,7 @@ namespace BAIPetRegMobileApp.ViewModels
                 TagNo = PetRegistration.TagNo,
                 AnimalColorDescription = SelectedAnimalColor?.AnimalColorDescription,
                 AnimalColorID = SelectedAnimalColor?.AnimalColorID,
-                PetDateofBirth = PetDateofBirth,
+                PetDateofBirth = SelectedPetDateofBirth,
                 AnimalFemalClassification = PetRegistration.AnimalFemalClassification,
                 AnimalFemaleClassID = PetRegistration.AnimalFemaleClassID,
                 NumberOffspring = PetRegistration.NumberOffspring,
@@ -198,6 +235,7 @@ namespace BAIPetRegMobileApp.ViewModels
             SelectedTagType = null;
             IsTagNumberVisible = false;
             SpeciesBreeds.Clear();
+            ImageItems.Clear();
         }
 
         [RelayCommand]
@@ -215,18 +253,26 @@ namespace BAIPetRegMobileApp.ViewModels
         private async Task PickImageAsync(ImageItem imageItem)
         {
             var uploadFile = await MediaPicker.PickPhotoAsync();
-            if (uploadFile == null) return;
+            if (uploadFile is null) return;
+
+            // Get the original file extension
+            var extension = Path.GetExtension(uploadFile.FileName);
+
+            // Generate a random filename
+            var randomFilename = GenerateRandomFilename(extension);
 
             var stream = await uploadFile.OpenReadAsync();
+
             imageItem.ImageSource = ImageSource.FromStream(() => stream);
-            imageItem.FileName = uploadFile.FileName;
+            imageItem.FileName = randomFilename;
+            imageItem.FullPath = uploadFile.FullPath;
 
             // Update the corresponding SelectedImage property
             int index = ImageItems.IndexOf(imageItem);
             switch (index)
             {
                 case 0:
-                    SelectedImage1 = uploadFile.FullPath; // Use the file path or URL if needed
+                    SelectedImage1 = uploadFile.FullPath;
                     break;
                 case 1:
                     SelectedImage2 = uploadFile.FullPath;
@@ -238,6 +284,11 @@ namespace BAIPetRegMobileApp.ViewModels
                     SelectedImage4 = uploadFile.FullPath;
                     break;
             }
+        }
+
+        string GenerateRandomFilename(string extension)
+        {
+            return $"{Guid.NewGuid()}{extension}";
         }
     }
 }

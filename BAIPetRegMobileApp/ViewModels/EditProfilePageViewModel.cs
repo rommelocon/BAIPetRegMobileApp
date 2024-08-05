@@ -222,7 +222,8 @@ namespace BAIPetRegMobileApp.ViewModels
 
                 if (response.IsSuccessStatusCode)
                 {
-                    await Shell.Current.GoToAsync(nameof(ProfilePage));
+                    // Go back to Profile Page
+                    await Shell.Current.GoToAsync("//ProfilePage");
                 }
             }
             catch (Exception ex)

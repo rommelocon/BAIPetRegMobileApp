@@ -1,5 +1,4 @@
-﻿using BAIPetRegMobileApp.Models.PetRegistration;
-using BAIPetRegMobileApp.Services;
+﻿using BAIPetRegMobileApp.Services;
 using BAIPetRegMobileApp.Views;
 using CommunityToolkit.Mvvm.Input;
 
@@ -9,21 +8,20 @@ namespace BAIPetRegMobileApp.ViewModels
     {
         public HomePageViewModel(ClientService clientService) : base(clientService)
         {
-            LoadPetRegistrationsCommand.ExecuteAsync(null);
+            if (!IsPetRegisteredLoaded)
+                LoadPetRegistrationsCommand.ExecuteAsync(null);
+            IsPetRegisteredLoaded = true;
         }
 
         [RelayCommand]
         public async Task ShowMoreAsync(string id)
         {
             if (string.IsNullOrWhiteSpace(id)) return;
-
             await Shell.Current.GoToAsync(nameof(PetInformationPage), new Dictionary<string, object>
-{
-    { "PetRegistrationID", id }
-});
-
+            {
+                { "PetRegistrationID", id }
+            });
         }
-
 
         [RelayCommand]
         private async Task LoadPetRegistrationsAsync()
@@ -36,6 +34,9 @@ namespace BAIPetRegMobileApp.ViewModels
                 foreach (var registration in registrations)
                 {
                     PetRegistrations.Add(registration);
+                    var fileName = registration.PetImage1;
+                    if (fileName != null)
+                        registration.PetImageSource = ImageSource.FromStream(() => clientService.GetPetImageAsync(fileName).Result);
                 }
             }
             catch (Exception ex)

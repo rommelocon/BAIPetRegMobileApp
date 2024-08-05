@@ -120,7 +120,7 @@ namespace BAIPetRegMobileApp.Api.Controllers
             var petRegistration = await _context.TblPetRegistration
                 .Where(p => p.ClientID == userId)
                 .AsNoTracking()
-                .OrderByDescending(p => p.DateRegistered) // Sort by DateRegistered, most recent first
+                .OrderByDescending(p => p.DateRegistered)
                 .ToListAsync();
             if (petRegistration == null)
             {

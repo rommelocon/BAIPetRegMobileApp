@@ -31,7 +31,7 @@
                         <Image
                             Aspect="AspectFill"
                             HeightRequest="150"
-                            Source="dog1.jpeg"
+                            Source="{Binding PetGetImage1}"
                             WidthRequest="150" />
 
                         <Label
@@ -152,6 +152,7 @@
                             <Frame
                                 Grid.Row="0"
                                 Grid.Column="0"
+                                Padding="0"
                                 BackgroundColor="White"
                                 BorderColor="Gray"
                                 CornerRadius="10">
@@ -162,8 +163,9 @@
                                     </Grid.RowDefinitions>
                                     <Image
                                         Grid.Row="0"
-                                        Aspect="AspectFit"
-                                        Source="dog1.jpeg" />
+                                        Aspect="AspectFill"
+                                        HeightRequest="200"
+                                        Source="{Binding PetGetImage1}" />
                                     <Label
                                         Grid.Row="1"
                                         HorizontalOptions="Center"
@@ -174,6 +176,7 @@
                             <Frame
                                 Grid.Row="0"
                                 Grid.Column="1"
+                                Padding="0"
                                 BackgroundColor="White"
                                 BorderColor="Gray"
                                 CornerRadius="10">
@@ -184,8 +187,9 @@
                                     </Grid.RowDefinitions>
                                     <Image
                                         Grid.Row="0"
-                                        Aspect="AspectFit"
-                                        Source="dog2.jpeg" />
+                                        Aspect="AspectFill"
+                                        HeightRequest="200"
+                                        Source="{Binding PetGetImage2}" />
                                     <Label
                                         Grid.Row="1"
                                         HorizontalOptions="Center"
@@ -196,6 +200,7 @@
                             <Frame
                                 Grid.Row="1"
                                 Grid.Column="0"
+                                Padding="0"
                                 BackgroundColor="White"
                                 BorderColor="Gray"
                                 CornerRadius="10">
@@ -206,8 +211,9 @@
                                     </Grid.RowDefinitions>
                                     <Image
                                         Grid.Row="0"
-                                        Aspect="AspectFit"
-                                        Source="dog3.jpeg" />
+                                        Aspect="AspectFill"
+                                        HeightRequest="200"
+                                        Source="{Binding PetGetImage3}" />
                                     <Label
                                         Grid.Row="1"
                                         HorizontalOptions="Center"
@@ -218,6 +224,7 @@
                             <Frame
                                 Grid.Row="1"
                                 Grid.Column="1"
+                                Padding="0"
                                 BackgroundColor="White"
                                 BorderColor="Gray"
                                 CornerRadius="10">
@@ -228,8 +235,9 @@
                                     </Grid.RowDefinitions>
                                     <Image
                                         Grid.Row="0"
-                                        Aspect="AspectFit"
-                                        Source="dog4.jpeg" />
+                                        Aspect="AspectFill"
+                                        HeightRequest="200"
+                                        Source="{Binding PetGetImage4}" />
                                     <Label
                                         Grid.Row="1"
                                         HorizontalOptions="Center"

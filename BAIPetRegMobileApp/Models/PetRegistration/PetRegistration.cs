@@ -62,7 +62,7 @@ namespace BAIPetRegMobileApp.Models.PetRegistration
 
         [StringLength(100)]
         public string? PetName { get; set; }
-        public DateOnly? PetDateofBirth { get; set; }
+        public DateTime? PetDateofBirth { get; set; }
         public int? PetSexID { get; set; }
 
         [StringLength(20)]
@@ -119,5 +119,6 @@ namespace BAIPetRegMobileApp.Models.PetRegistration
 
         [StringLength(300)]
         public string? Remarks { get; set; }
+        public ImageSource? PetImageSource { get; set; }  // Add this property
     }
 }

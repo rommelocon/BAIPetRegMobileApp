@@ -4,6 +4,8 @@ using System.Net.Http.Headers;
 using BAIPetRegMobileApp.Models.User;
 using BAIPetRegMobileApp.Models.PetRegistration;
 using System.Net;
+using System.Net.Http;
+using Org.Apache.Http.Client;
 
 namespace BAIPetRegMobileApp.Services
 {
@@ -159,14 +161,10 @@ namespace BAIPetRegMobileApp.Services
                 if (response.IsSuccessStatusCode)
                 {
                     var content = await response.Content.ReadAsStringAsync();
-                    var options = new JsonSerializerOptions
-                    {
-                        PropertyNameCaseInsensitive = true,
-                    };
+                    var options = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
                     var petRegistrations = JsonSerializer.Deserialize<List<PetRegistration>>(content, options);
                     return petRegistrations ?? Enumerable.Empty<PetRegistration>();
                 }
-                return Enumerable.Empty<PetRegistration>();
             }
             throw new InvalidOperationException("Authentication data not found.");
         }
@@ -232,22 +230,24 @@ namespace BAIPetRegMobileApp.Services
         public Task<IEnumerable<SpeciesGroup>> GetSpeciesGroupsAsync() => GetListAsync<SpeciesGroup>("/api/PetRegistration/speciesGroup");
         public Task<IEnumerable<TagType>> GetTagTypesAsync() => GetListAsync<TagType>("/api/PetRegistration/tagType");
 
-        public async Task<string> UploadImageAsync(Stream imageStream, string fileName)
+        public async Task<HttpResponseMessage> UploadImageAsync(MultipartFormDataContent content)
         {
-            using var httpContent = new MultipartFormDataContent();
-            using var fileStreamContent = new StreamContent(imageStream);
-            httpContent.Add(fileStreamContent, "file", fileName);
-
             var httpClient = httpClientFactory.CreateClient("custom-httpclient");
-            var response = await httpClient.PostAsync("/api/UploadFile", httpContent);
-            if (response.IsSuccessStatusCode)
+            return await httpClient.PostAsync("/api/UploadFile", content);
+        }
+
+        public async Task<Stream> GetPetImageAsync(string fileName)
+        {
+            try
             {
-                var result = await response.Content.ReadAsStringAsync();
-                return result;
+                var httpClient = httpClientFactory.CreateClient("custom-httpclient");
+                var stream = await httpClient.GetStreamAsync($"/api/UploadFile/images/{fileName}");
+                return stream;
             }
-            else
+            catch (Exception ex)
             {
-                throw new InvalidOperationException("Upload image failed.");
+                // Handle exceptions as needed, e.g., log the error
+                throw new Exception("Failed to fetch image.", ex);
             }
         }
     }

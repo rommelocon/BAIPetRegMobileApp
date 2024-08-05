@@ -7,10 +7,22 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+		<Compile Remove="Configurations\**" />
 		<Compile Remove="Data\Migrations\**" />
+		<Compile Remove="Migrations\**" />
+		<Compile Remove="Models\**" />
+		<Content Remove="Configurations\**" />
 		<Content Remove="Data\Migrations\**" />
+		<Content Remove="Migrations\**" />
+		<Content Remove="Models\**" />
+		<EmbeddedResource Remove="Configurations\**" />
 		<EmbeddedResource Remove="Data\Migrations\**" />
+		<EmbeddedResource Remove="Migrations\**" />
+		<EmbeddedResource Remove="Models\**" />
+		<None Remove="Configurations\**" />
 		<None Remove="Data\Migrations\**" />
+		<None Remove="Migrations\**" />
+		<None Remove="Models\**" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -24,9 +36,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<Folder Include="Configurations\" />
-		<Folder Include="Migrations\" />
-		<Folder Include="Models\" />
+	  <Folder Include="Resources\Images\" />
 	</ItemGroup>
 
 </Project>

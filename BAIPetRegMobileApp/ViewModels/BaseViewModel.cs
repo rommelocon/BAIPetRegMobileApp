@@ -2,8 +2,9 @@
 using BAIPetRegMobileApp.Models.User;
 using BAIPetRegMobileApp.Services;
 using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
+using Kotlin.Properties;
 using System.Collections.ObjectModel;
-using System.Text.Json;
 
 namespace BAIPetRegMobileApp.ViewModels
 {
@@ -11,6 +12,7 @@ namespace BAIPetRegMobileApp.ViewModels
     {
         protected readonly ClientService clientService;
         [ObservableProperty] private bool isProfileLoaded;
+        [ObservableProperty] private bool isPetRegisteredLoaded = false;
         [ObservableProperty] private bool isBusy;
         [ObservableProperty] private User? userViewModel;
         [ObservableProperty] private string? userName;
@@ -18,7 +20,7 @@ namespace BAIPetRegMobileApp.ViewModels
         [ObservableProperty] private string? firstname;
         [ObservableProperty] private string? lastname;
         [ObservableProperty] private int? civilStatusCode;
-        [ObservableProperty] private DateOnly? birthday;
+        [ObservableProperty] private DateTime? birthday;
         [ObservableProperty] private int? sexID;
         [ObservableProperty] private string? sexDescription;
         [ObservableProperty] private string? mobileNumber;
@@ -37,6 +39,14 @@ namespace BAIPetRegMobileApp.ViewModels
         [ObservableProperty] private string? fullName;
         [ObservableProperty] private string? welcomeMessage;
         [ObservableProperty] private ObservableCollection<PetRegistration> petRegistrations = new ObservableCollection<PetRegistration>();
+        [ObservableProperty]
+        private ImageSource _petGetImage1;
+        [ObservableProperty]
+        private ImageSource _petGetImage2;
+        [ObservableProperty]
+        private ImageSource _petGetImage3;
+        [ObservableProperty]
+        private ImageSource _petGetImage4;
 
         public BaseViewModel(ClientService clientService)
         {
@@ -118,6 +128,28 @@ namespace BAIPetRegMobileApp.ViewModels
             catch (Exception ex)
             {
                 await HandleException(ex);
+            }
+        }
+
+        [RelayCommand]
+        public async Task LoadPetImagesAsync(string id)
+        {
+            try
+            {
+                IsBusy = true;
+                var registrations = await clientService.GetPetRegistrationByIdAsync(id);
+                PetGetImage1 = ImageSource.FromStream(() => clientService.GetPetImageAsync(registrations.PetImage1).Result);
+                PetGetImage2 = ImageSource.FromStream(() => clientService.GetPetImageAsync(registrations.PetImage2).Result);
+                PetGetImage3 = ImageSource.FromStream(() => clientService.GetPetImageAsync(registrations.PetImage3).Result);
+                PetGetImage4 = ImageSource.FromStream(() => clientService.GetPetImageAsync(registrations.PetImage4).Result);
+            }
+            catch (Exception ex)
+            {
+                await HandleException(ex);
+            }
+            finally
+            {
+                IsBusy = false;
             }
         }
     }
