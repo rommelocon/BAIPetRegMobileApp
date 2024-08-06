@@ -1973,7 +1973,7 @@
                                     TextColor="Black" />
                                 <Label
                                     FontSize="Small"
-                                    Text="Weight / Height: 27-45 kg, 61-71 cm"
+                                    Text="Weight / Height: c"
                                     TextColor="Black" />
                                 <Label
                                     FontSize="Small"
@@ -2415,7 +2415,7 @@
                 </StackLayout>
 
 
-                <!--  French Bulldog Breed  -->
+                <!--  French Bulldog -->
                 <Frame
                     Margin="0,10"
                     Padding="10"
@@ -2789,7 +2789,7 @@
                                 TextColor="Black" />
                             <Label
                                 FontSize="Small"
-                                Text="Temperament: Affectionate, playful, friendly; known for its long, silky coat."
+                                Text="Temperament: v"
                                 TextColor="Black" />
                             <Label
                                 FontSize="Small"
@@ -3091,7 +3091,7 @@
                                 TextColor="Black" />
                             <Label
                                 FontSize="Small"
-                                Text="Temperament: Loyal, protective, affectionate; known for its impressive strength and size."
+                                Text="Temperament:"
                                 TextColor="Black" />
                             <Label
                                 FontSize="Small"
@@ -3440,7 +3440,7 @@
                                 Text="Temperament: Cheerful, alert, affectionate; known for its distinctive lion-like appearance."
                                 TextColor="Black" />
                             <Label
-                                FontSize="Small"
+                                FontSize="Small" 
                                 Text="Weight / Height: 4-8 kg, 25-33 cm"
                                 TextColor="Black" />
                             <Label
