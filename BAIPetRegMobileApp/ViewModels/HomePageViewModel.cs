@@ -1,15 +1,21 @@
 ﻿using BAIPetRegMobileApp.Services;
 using BAIPetRegMobileApp.Views;
 using CommunityToolkit.Mvvm.Input;
+using Microsoft.Maui.Graphics.Platform;
+using IImage = Microsoft.Maui.Graphics.IImage;
 
 namespace BAIPetRegMobileApp.ViewModels
 {
     public partial class HomePageViewModel : BaseViewModel
     {
+        private IImage? image;
+
         public HomePageViewModel(ClientService clientService) : base(clientService)
         {
             if (!IsPetRegisteredLoaded)
+            {
                 LoadPetRegistrationsCommand.ExecuteAsync(null);
+            }
             IsPetRegisteredLoaded = true;
         }
 
@@ -33,10 +39,17 @@ namespace BAIPetRegMobileApp.ViewModels
                 PetRegistrations.Clear();
                 foreach (var registration in registrations)
                 {
-                    PetRegistrations.Add(registration);
+                    
                     var fileName = registration.PetImage1;
                     if (fileName != null)
-                        registration.PetImageSource = ImageSource.FromStream(() => clientService.GetPetImageAsync(fileName).Result);
+                    {
+                        IsBusy = true;
+                        var imageStream = await clientService.GetPetImageAsync(fileName);
+                        registration.PetImageSource = ImageSource.FromStream(() => imageStream);
+                        IsBusy = false;
+                    }
+                    PetRegistrations.Add(registration);
+                    continue;
                 }
             }
             catch (Exception ex)

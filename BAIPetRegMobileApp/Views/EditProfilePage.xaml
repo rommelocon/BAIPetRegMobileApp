@@ -27,7 +27,7 @@
                     HorizontalTextAlignment="Start"
                     Placeholder="Enter First Name"
                     PlaceholderColor="#808080"
-                    Text="{Binding Firstname}"
+                    Text="{Binding UserViewModel.Firstname}"
                     TextColor="Black" />
 
                 <!--  middlename  -->
@@ -44,7 +44,7 @@
                     HorizontalTextAlignment="Start"
                     Placeholder="Enter Middle Name"
                     PlaceholderColor="#808080"
-                    Text="{Binding MiddleName}"
+                    Text="{Binding UserViewModel.MiddleName}"
                     TextColor="Black" />
 
                 <!--  lastname  -->
@@ -61,7 +61,7 @@
                     HorizontalTextAlignment="Start"
                     Placeholder="Enter Last Name"
                     PlaceholderColor="#808080"
-                    Text="{Binding Lastname}"
+                    Text="{Binding UserViewModel.Lastname}"
                     TextColor="Black" />
 
                 <!--  extension name  -->
@@ -78,7 +78,7 @@
                     HorizontalTextAlignment="Start"
                     Placeholder="Enter Extension Name"
                     PlaceholderColor="#808080"
-                    Text="{Binding ExtensionName}"
+                    Text="{Binding UserViewModel.ExtensionName}"
                     TextColor="Black" />
 
                 <!--  birthday  -->
@@ -91,7 +91,7 @@
                 <DatePicker
                     Margin="20,0,20,40"
                     BackgroundColor="#e2f2e1"
-                    Date="{Binding Birthday}"
+                    Date="{Binding UserViewModel.Birthday}"
                     FontSize="20"
                     TextColor="Black" />
 
@@ -128,7 +128,7 @@
                     HorizontalTextAlignment="Start"
                     Placeholder="Enter Email"
                     PlaceholderColor="#808080"
-                    Text="{Binding Email}"
+                    Text="{Binding UserViewModel.Email}"
                     TextColor="Black" />
 
                 <!--  Contact Number  -->
@@ -145,7 +145,7 @@
                     HorizontalTextAlignment="Start"
                     Placeholder="Enter Contact Number"
                     PlaceholderColor="#808080"
-                    Text="{Binding MobileNumber}"
+                    Text="{Binding UserViewModel.MobileNumber}"
                     TextColor="Black" />
 
                 <!--  Region  -->
@@ -237,22 +237,9 @@
                     Text="Save Profile"
                     TextColor="White"
                     VerticalOptions="CenterAndExpand" />
-
-                <!--  Overlay Grid  -->
-                <Grid
-                    BackgroundColor="#80000000"
-                    HorizontalOptions="FillAndExpand"
-                    IsEnabled="False"
-                    IsVisible="{Binding IsBusy}"
-                    VerticalOptions="FillAndExpand">
-                    <ActivityIndicator
-                        HorizontalOptions="Center"
-                        IsRunning="{Binding IsBusy}"
-                        VerticalOptions="Center"
-                        Color="White" />
-                </Grid>
             </VerticalStackLayout>
         </ScrollView>
+        
         <StackLayout
             Grid.Row="0"
             AbsoluteLayout.LayoutBounds="0,0,1,1"

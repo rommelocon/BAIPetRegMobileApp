@@ -13,6 +13,11 @@ namespace BAIPetRegMobileApp.Services
     {
         private readonly IHttpClientFactory httpClientFactory = httpClientFactory;
 
+        protected async Task HandleException(Exception ex)
+        {
+            await Shell.Current.DisplayAlert("Error", $"An error occurred: {ex.Message}", "OK");
+        }
+
         private HttpClient CreateClientWithAuthorization(string accessToken)
         {
             var httpClient = httpClientFactory.CreateClient("custom-httpclient");
@@ -238,17 +243,9 @@ namespace BAIPetRegMobileApp.Services
 
         public async Task<Stream> GetPetImageAsync(string fileName)
         {
-            try
-            {
-                var httpClient = httpClientFactory.CreateClient("custom-httpclient");
-                var stream = await httpClient.GetStreamAsync($"/api/UploadFile/images/{fileName}");
-                return stream;
-            }
-            catch (Exception ex)
-            {
-                // Handle exceptions as needed, e.g., log the error
-                throw new Exception("Failed to fetch image.", ex);
-            }
+            var httpClient = httpClientFactory.CreateClient("custom-httpclient");
+            var stream = await httpClient.GetStreamAsync($"/api/UploadFile/images/{fileName}");
+            return stream;
         }
     }
 }

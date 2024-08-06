@@ -65,7 +65,7 @@
                         FontSize="40"
                         SemanticProperties.HeadingLevel="Level4"
                         Style="{StaticResource Headline}"
-                        Text="{Binding FullName}"
+                        Text="{Binding UserViewModel.UserName}"
                         TextColor="#096B00" />
 
                     <Label
@@ -151,7 +151,7 @@
                             Background="#e2f2e1"
                             FontSize="20"
                             HorizontalTextAlignment="Start"
-                            Text="{Binding Firstname}"
+                            Text="{Binding UserViewModel.Firstname}"
                             TextColor="Black" />
                         <!--  middlename  -->
                         <Label
@@ -166,7 +166,7 @@
                             Background="#e2f2e1"
                             FontSize="20"
                             HorizontalTextAlignment="Start"
-                            Text="{Binding MiddleName}"
+                            Text="{Binding UserViewModel.MiddleName}"
                             TextColor="Black" />
                         <!--  lastname  -->
                         <Label
@@ -181,7 +181,7 @@
                             Background="#e2f2e1"
                             FontSize="20"
                             HorizontalTextAlignment="Start"
-                            Text="{Binding Lastname}"
+                            Text="{Binding UserViewModel.Lastname}"
                             TextColor="Black" />
                         <!--  extension name  -->
                         <Label
@@ -196,7 +196,7 @@
                             Background="#e2f2e1"
                             FontSize="20"
                             HorizontalTextAlignment="Start"
-                            Text="{Binding ExtensionName}"
+                            Text="{Binding UserViewModel.ExtensionName}"
                             TextColor="Black" />
                         <!--  birthday  -->
                         <Label
@@ -211,7 +211,7 @@
                             Background="#e2f2e1"
                             FontSize="20"
                             HorizontalTextAlignment="Start"
-                            Text="{Binding Birthday}"
+                            Text="{Binding UserViewModel.Birthday}"
                             TextColor="Black" />
                         <!--  sex  -->
                         <Label
@@ -226,7 +226,7 @@
                             Background="#e2f2e1"
                             FontSize="20"
                             HorizontalTextAlignment="Start"
-                            Text="{Binding SexDescription}"
+                            Text="{Binding UserViewModel.SexDescription}"
                             TextColor="Black" />
                         <!--  email  -->
                         <Label
@@ -241,7 +241,7 @@
                             Background="#e2f2e1"
                             FontSize="20"
                             HorizontalTextAlignment="Start"
-                            Text="{Binding Email}"
+                            Text="{Binding UserViewModel.Email}"
                             TextColor="Black" />
 
                         <!--  Contact Number  -->
@@ -258,7 +258,7 @@
                             FontAttributes="Italic"
                             FontSize="20"
                             HorizontalTextAlignment="Start"
-                            Text="{Binding MobileNumber}"
+                            Text="{Binding UserViewModel.MobileNumber}"
                             TextColor="Black" />
 
                         <!--  Region  -->
@@ -275,7 +275,7 @@
                             FontAttributes="Italic"
                             FontSize="20"
                             HorizontalTextAlignment="Start"
-                            Text="{Binding Region}"
+                            Text="{Binding UserViewModel.Region}"
                             TextColor="Black" />
 
                         <!--  Province  -->
@@ -292,7 +292,7 @@
                             FontAttributes="Italic"
                             FontSize="20"
                             HorizontalTextAlignment="Start"
-                            Text="{Binding ProvinceName}"
+                            Text="{Binding UserViewModel.ProvinceName}"
                             TextColor="Black" />
 
                         <!--  Municapality  -->
@@ -309,7 +309,7 @@
                             FontAttributes="Italic"
                             FontSize="20"
                             HorizontalTextAlignment="Start"
-                            Text="{Binding MunicipalitiesCities}"
+                            Text="{Binding UserViewModel.MunicipalitiesCities}"
                             TextColor="Black" />
 
                         <!--  Barangay  -->
@@ -326,7 +326,7 @@
                             FontAttributes="Italic"
                             FontSize="20"
                             HorizontalTextAlignment="Start"
-                            Text="{Binding BarangayName}"
+                            Text="{Binding UserViewModel.BarangayName}"
                             TextColor="Black" />
 
                         <!--  Full Address  -->
@@ -343,7 +343,7 @@
                             FontAttributes="Italic"
                             FontSize="20"
                             HorizontalTextAlignment="Start"
-                            Text="{Binding FullAddress}"
+                            Text="{Binding UserViewModel.FullAddress}"
                             TextColor="Black" />
                         <Button
                             x:Name="EditProfile"
@@ -358,7 +358,7 @@
                             TextColor="White" />
                     </StackLayout>
                 </VerticalStackLayout>
-                
+
                 <!--  Overlay Grid  -->
                 <Grid
                     BackgroundColor="#80000000"

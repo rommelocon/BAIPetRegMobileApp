@@ -5,6 +5,8 @@ using CommunityToolkit.Mvvm.Input;
 using CommunityToolkit.Mvvm.ComponentModel;
 using BAIPetRegMobileApp.Models.User;
 using BAIPetRegMobileApp.Views;
+using IImage = Microsoft.Maui.Graphics.IImage;
+using Microsoft.Maui.Graphics.Platform;
 
 namespace BAIPetRegMobileApp.ViewModels
 {
@@ -142,11 +144,11 @@ namespace BAIPetRegMobileApp.ViewModels
         [RelayCommand]
         public async Task PetRegistrationSubmit()
         {
-            if (IsBusy) return;
             try
             {
                 IsBusy = true;
                 var uploadFileNames = new List<string>();
+
                 foreach (var imageItem in ImageItems)
                 {
                     if (!string.IsNullOrEmpty(imageItem.FileName))
@@ -164,7 +166,6 @@ namespace BAIPetRegMobileApp.ViewModels
                             }
                             else
                             {
-                                // Handle the error (e.g., show a message to the user)
                                 await Shell.Current.DisplayAlert("Error", "Image upload failed.", "Ok");
                                 return;
                             }
@@ -174,7 +175,7 @@ namespace BAIPetRegMobileApp.ViewModels
             }
             catch (Exception ex)
             {
-                //
+                await HandleException(ex);
             }
             finally { IsBusy = false; }
 
@@ -261,28 +262,50 @@ namespace BAIPetRegMobileApp.ViewModels
             // Generate a random filename
             var randomFilename = GenerateRandomFilename(extension);
 
-            var stream = await uploadFile.OpenReadAsync();
-
-            imageItem.ImageSource = ImageSource.FromStream(() => stream);
-            imageItem.FileName = randomFilename;
-            imageItem.FullPath = uploadFile.FullPath;
-
-            // Update the corresponding SelectedImage property
-            int index = ImageItems.IndexOf(imageItem);
-            switch (index)
+            using (var originalStream = await uploadFile.OpenReadAsync())
             {
-                case 0:
-                    SelectedImage1 = uploadFile.FullPath;
-                    break;
-                case 1:
-                    SelectedImage2 = uploadFile.FullPath;
-                    break;
-                case 2:
-                    SelectedImage3 = uploadFile.FullPath;
-                    break;
-                case 3:
-                    SelectedImage4 = uploadFile.FullPath;
-                    break;
+                // Load the image from the stream
+                IImage image = PlatformImage.FromStream(originalStream);
+
+                // Downsize the image, maintaining aspect ratio, with max dimension of 100 pixels
+                IImage downsizedImage = image.Downsize(360, true);
+
+                if (downsizedImage is not null)
+                {
+                    // Convert the downsized image back to a stream for setting ImageSource and saving
+                    using (var downsizedStream = new MemoryStream())
+                    {
+                        downsizedImage.Save(downsizedStream);
+                        downsizedStream.Seek(0, SeekOrigin.Begin);
+
+                        // Set the downsized image as the ImageSource
+                        imageItem.ImageSource = ImageSource.FromStream(() => new MemoryStream(downsizedStream.ToArray()));
+                        imageItem.FileName = randomFilename;
+
+                        // Save the downsized image to a temporary location for later upload
+                        var tempFilePath = Path.Combine(FileSystem.CacheDirectory, randomFilename);
+                        await File.WriteAllBytesAsync(tempFilePath, downsizedStream.ToArray());
+                        imageItem.FullPath = tempFilePath;
+
+                        // Update the corresponding SelectedImage property
+                        int index = ImageItems.IndexOf(imageItem);
+                        switch (index)
+                        {
+                            case 0:
+                                SelectedImage1 = tempFilePath;
+                                break;
+                            case 1:
+                                SelectedImage2 = tempFilePath;
+                                break;
+                            case 2:
+                                SelectedImage3 = tempFilePath;
+                                break;
+                            case 3:
+                                SelectedImage4 = tempFilePath;
+                                break;
+                        }
+                    }
+                }
             }
         }
 
