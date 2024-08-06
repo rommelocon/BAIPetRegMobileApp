@@ -14,16 +14,11 @@ namespace BAIPetRegMobileApp.Api.Controllers
     public class PetRegistrationController : ControllerBase
     {
         private readonly UserManager<ApplicationUser> _userManager;
-        private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly PetRegistrationDbContext _context;
 
-        public PetRegistrationController(
-            UserManager<ApplicationUser> userManager,
-            SignInManager<ApplicationUser> signInManager,
-            PetRegistrationDbContext context)
+        public PetRegistrationController(UserManager<ApplicationUser> userManager, PetRegistrationDbContext context)
         {
             _userManager = userManager;
-            _signInManager = signInManager;
             _context = context;
         }
 
@@ -31,20 +26,12 @@ namespace BAIPetRegMobileApp.Api.Controllers
         public async Task<IActionResult> RegisterPet([FromBody] PetRegistrationDTO model)
         {
             if (!ModelState.IsValid)
-            {
-                var errors = ModelState.Values.SelectMany(v => v.Errors);
-                var errorMessages = errors.Select(e => e.ErrorMessage).ToList();
-                return BadRequest(new { Errors = errorMessages });
-            }
+                return BadRequest(new { Errors = ModelState.Values.SelectMany(v => v.Errors).Select(e => e.ErrorMessage).ToList() });
 
             var user = await _userManager.GetUserAsync(User);
-
             if (user == null)
-            {
                 return Unauthorized("User is not authenticated.");
-            }
 
-            // Create a new PetRegistration entity
             var petRegistration = new PetRegistration
             {
                 PetRegistrationID = Guid.NewGuid().ToString(),
@@ -76,7 +63,7 @@ namespace BAIPetRegMobileApp.Api.Controllers
                 AnimalFemalClassification = model.PetSexID == 2 ? model.AnimalFemalClassification : null,
                 NumberOffspring = model.NumberOffspring,
                 Weight = model.Weight,
-                AgeInMonth = model.AgeInMonth,
+                AgeInMonth = CalculateAgeInMonths(model.PetDateofBirth),
                 SpeciesCode = model.SpeciesCode,
                 SpeciesCommonName = model.SpeciesCommonName,
                 BreedID = model.BreedID,
@@ -96,20 +83,31 @@ namespace BAIPetRegMobileApp.Api.Controllers
                 Remarks = model.Remarks
             };
 
-            // Add to the database
-            _context.TblPetRegistration.Add(petRegistration);
+            // Method to calculate the age in months
+            int CalculateAgeInMonths(DateTime? birthDate)
+            {
+                var today = DateTime.Today;
+                int ageInMonths = (today.Year - birthDate!.Value.Year) * 12 + today.Month - birthDate.Value.Month;
+
+                // If the birth date hasn't occurred yet this month, subtract 1
+                if (today.Day < birthDate.Value.Day)
+                {
+                    ageInMonths--;
+                }
+
+                return ageInMonths;
+            }
 
             try
             {
+                _context.TblPetRegistration.Add(petRegistration);
                 await _context.SaveChangesAsync();
+                return Ok("Pet registration successful.");
             }
             catch (DbUpdateException ex)
             {
-                // Log and handle the exception
                 return StatusCode(StatusCodes.Status500InternalServerError, $"{ex}: An error occurred while saving the pet registration.");
             }
-
-            return Ok("Pet registration successful.");
         }
 
         [HttpGet]
@@ -117,17 +115,16 @@ namespace BAIPetRegMobileApp.Api.Controllers
         public async Task<IActionResult> GetPetRegistration()
         {
             var userId = _userManager.GetUserId(User);
-            var petRegistration = await _context.TblPetRegistration
+            var petRegistrations = await _context.TblPetRegistration
                 .Where(p => p.ClientID == userId)
                 .AsNoTracking()
                 .OrderByDescending(p => p.DateRegistered)
                 .ToListAsync();
-            if (petRegistration == null)
-            {
-                return NotFound();
-            }
 
-            return Ok(petRegistration);
+            if (!petRegistrations.Any())
+                return NotFound();
+
+            return Ok(petRegistrations);
         }
 
         [HttpGet("{petId}")]
@@ -136,73 +133,51 @@ namespace BAIPetRegMobileApp.Api.Controllers
         {
             var userId = _userManager.GetUserId(User);
             var petRegistration = await _context.TblPetRegistration
-                .Where(p => p.ClientID == userId  && p.PetRegistrationID == petId)
                 .AsNoTracking()
-                .ToListAsync();
+                .FirstOrDefaultAsync(p => p.ClientID == userId && p.PetRegistrationID == petId);
+
             if (petRegistration == null)
-            {
                 return NotFound();
-            }
 
             return Ok(petRegistration);
         }
 
         [HttpGet("ownershipType")]
-        public async Task<ActionResult<IEnumerable<OwnerShipType>>> GetOwnerShipType()
-        {
-            return await _context.TblOwnerShipType.AsNoTracking().ToListAsync();
-        }
+        public async Task<ActionResult<IEnumerable<OwnerShipType>>> GetOwnerShipType() =>
+            await _context.TblOwnerShipType.AsNoTracking().ToListAsync();
 
         [HttpGet("animalColor")]
-        public async Task<ActionResult<IEnumerable<AnimalColor>>> GetAnimalColor()
-        {
-            return await _context.TblAnimalColor.AsNoTracking().ToListAsync();
-        }
+        public async Task<ActionResult<IEnumerable<AnimalColor>>> GetAnimalColor() =>
+            await _context.TblAnimalColor.AsNoTracking().ToListAsync();
 
         [HttpGet("animalContacts")]
-        public async Task<ActionResult<IEnumerable<AnimalContact>>> GetAnimalContact()
-        {
-            return await _context.TblAnimalContact.AsNoTracking().ToListAsync();
-        }
+        public async Task<ActionResult<IEnumerable<AnimalContact>>> GetAnimalContact() =>
+            await _context.TblAnimalContact.AsNoTracking().ToListAsync();
 
         [HttpGet("animalFemaleClassificator")]
-        public async Task<ActionResult<IEnumerable<AnimalFemaleClassification>>> GetAnimalFemaleClassificator()
-        {
-            return await _context.TblAnimalFemalClassification.AsNoTracking().ToListAsync();
-        }
+        public async Task<ActionResult<IEnumerable<AnimalFemaleClassification>>> GetAnimalFemaleClassificator() =>
+            await _context.TblAnimalFemalClassification.AsNoTracking().ToListAsync();
 
         [HttpGet("petTagType")]
-        public async Task<ActionResult<IEnumerable<PetTagType>>> GetPetTagType()
-        {
-            return await _context.TblPetTagType.AsNoTracking().ToListAsync();
-        }
+        public async Task<ActionResult<IEnumerable<PetTagType>>> GetPetTagType() =>
+            await _context.TblPetTagType.AsNoTracking().ToListAsync();
 
         [HttpGet("speciesBreed/{speciesCode}")]
-        public async Task<ActionResult<IEnumerable<SpeciesBreed>>> GetSpeciesBreed(string speciesCode)
-        {
-            var speciesBreed = await _context.TblSpeciesBreed
+        public async Task<ActionResult<IEnumerable<SpeciesBreed>>> GetSpeciesBreed(string speciesCode) =>
+            await _context.TblSpeciesBreed
                 .Where(e => e.SpeciesCode == speciesCode)
                 .AsNoTracking()
                 .ToListAsync();
 
-            return speciesBreed;
-        }
-
         [HttpGet("speciesGroup")]
-        public async Task<ActionResult<IEnumerable<SpeciesGroup>>> GetSpeciesGroup()
-        {
-            var speciesGroup = await _context.TblSpeciesGroup
+        public async Task<ActionResult<IEnumerable<SpeciesGroup>>> GetSpeciesGroup() =>
+            await _context.TblSpeciesGroup
                 .Where(e => e.SpeciesCommonName == "Dog" || e.SpeciesCommonName == "Cat")
                 .AsNoTracking()
                 .ToListAsync();
 
-            return speciesGroup;
-        }
-
         [HttpGet("tagType")]
-        public async Task<ActionResult<IEnumerable<TagType>>> GetTagType()
-        {
-            return await _context.TblTagType.AsNoTracking().ToListAsync();
-        }
+        public async Task<ActionResult<IEnumerable<TagType>>> GetTagType() =>
+            await _context.TblTagType.AsNoTracking().ToListAsync();
     }
 }

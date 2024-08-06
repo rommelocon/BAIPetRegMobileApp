@@ -16,8 +16,8 @@ namespace BAIPetRegMobileApp.Views
         protected override async void OnAppearing()
         {
             base.OnAppearing();
-            await viewModel.InitializeProfileAsync();
             await viewModel.RefreshPetRegistrationsAsync();
+            await viewModel.InitializeProfileAsync();
         }
 
         protected override bool OnBackButtonPressed()

@@ -3,9 +3,6 @@ using System.Text.Json;
 using System.Net.Http.Headers;
 using BAIPetRegMobileApp.Models.User;
 using BAIPetRegMobileApp.Models.PetRegistration;
-using System.Net;
-using System.Net.Http;
-using Org.Apache.Http.Client;
 
 namespace BAIPetRegMobileApp.Services
 {
@@ -159,7 +156,7 @@ namespace BAIPetRegMobileApp.Services
         public async Task<IEnumerable<PetRegistration>> GetPetRegistrationsAsync()
         {
             var loginResponse = await GetStoredLoginResponseAsync();
-            if (loginResponse != null && !string.IsNullOrEmpty(loginResponse.UserName) && !string.IsNullOrEmpty(loginResponse.AccessToken))
+            if (loginResponse != null && loginResponse.AccessToken != null)
             {
                 var httpClient = CreateClientWithAuthorization(loginResponse.AccessToken);
                 var response = await httpClient.GetAsync("/api/PetRegistration");
@@ -171,7 +168,7 @@ namespace BAIPetRegMobileApp.Services
                     return petRegistrations ?? Enumerable.Empty<PetRegistration>();
                 }
             }
-            throw new InvalidOperationException("Authentication data not found.");
+            return Enumerable.Empty<PetRegistration>();
         }
 
         public async Task<PetRegistration?> GetPetRegistrationByIdAsync(string id)

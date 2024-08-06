@@ -18,10 +18,4 @@ public partial class ProfilePage : ContentPage
         base.OnAppearing();
         await viewModel.InitializeProfileAsync();
     }
-
-
-    private void EditProfile_Clicked(object sender, EventArgs e)
-    {
-        Shell.Current.GoToAsync(nameof(EditProfilePage));
-    }
 }

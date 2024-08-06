@@ -41,12 +41,18 @@ namespace BAIPetRegMobileApp.ViewModels
             {
                 IsBusy = true;
                 var registrations = await clientService.GetPetRegistrationsAsync();
-                PetRegistrations.Clear();
-                foreach (var registration in registrations)
+                if (registrations != null)
                 {
-                    var imagePetSource = await clientService.GetPetImageAsync(registration.PetImage1!);
-                    registration.PetImageSource = ImageSource.FromStream(() => imagePetSource);
-                    PetRegistrations.Add(registration);
+                    PetRegistrations.Clear();
+                    foreach (var registration in registrations)
+                    {
+                        if (!string.IsNullOrEmpty(registration.PetImage1))
+                        {
+                            var imagePetSource = await clientService.GetPetImageAsync(registration.PetImage1!);
+                            registration.PetImageSource = ImageSource.FromStream(() => imagePetSource);
+                        }
+                        PetRegistrations.Add(registration);
+                    }
                 }
             }
             catch (Exception ex)

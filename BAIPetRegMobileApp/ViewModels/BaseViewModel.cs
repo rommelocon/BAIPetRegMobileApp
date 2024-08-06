@@ -36,6 +36,7 @@ namespace BAIPetRegMobileApp.ViewModels
 
             try
             {
+                IsBusy = true;
                 UserViewModel = await clientService.GetProfile();
                 if (UserViewModel != null)
                 {
@@ -51,6 +52,7 @@ namespace BAIPetRegMobileApp.ViewModels
             {
                 await HandleException(ex);
             }
+            finally { IsBusy = false; }
         }
 
         public async Task InitializeProfileAsync()
@@ -62,6 +64,7 @@ namespace BAIPetRegMobileApp.ViewModels
         {
             try
             {
+                IsBusy = true;
                 collection.Clear();
                 var items = await loadFunc();
                 foreach (var item in items) collection.Add(item);
@@ -70,6 +73,7 @@ namespace BAIPetRegMobileApp.ViewModels
             {
                 await HandleException(ex);
             }
+            finally { IsBusy = false; }
         }
 
         [RelayCommand]

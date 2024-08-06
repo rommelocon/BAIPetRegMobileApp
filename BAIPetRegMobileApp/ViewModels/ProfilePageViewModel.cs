@@ -1,5 +1,7 @@
 ﻿using BAIPetRegMobileApp.Services;
+using BAIPetRegMobileApp.Views;
 using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 
 namespace BAIPetRegMobileApp.ViewModels
 {
@@ -32,6 +34,12 @@ namespace BAIPetRegMobileApp.ViewModels
             {
                 await HandleException(ex);
             }
+        }
+
+        [RelayCommand]
+        private async Task EditProfileButton()
+        {
+            await Shell.Current.GoToAsync(nameof(EditProfilePage));
         }
     }
 }

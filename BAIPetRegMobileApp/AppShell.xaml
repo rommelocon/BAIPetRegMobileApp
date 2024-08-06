@@ -8,8 +8,59 @@
     x:DataType="local:AppShell"
     Shell.BackgroundColor="#096B00"
     Shell.FlyoutBehavior="Flyout"
-    Shell.TabBarIsVisible="False"
+    Shell.TabBarForegroundColor="#096B00"
+    Shell.TabBarTitleColor="#096B00"
     Shell.TitleColor="#FFFFFF">
+
+    <!--  Flyout Items  -->
+    <FlyoutItem FlyoutDisplayOptions="AsMultipleItems">
+        <ShellContent
+            Title="Home"
+            ContentTemplate="{DataTemplate view:HomePage}"
+            Icon="home.png" />
+        <ShellContent
+            Title="Profile"
+            ContentTemplate="{DataTemplate view:ProfilePage}"
+            Icon="profile_user.png" />
+        <ShellContent
+            Title="Register Pet"
+            ContentTemplate="{DataTemplate view:PetRegisterPage}"
+            Icon="pawprint.png" />
+        <ShellContent
+            Title="Edit Profile"
+            ContentTemplate="{DataTemplate view:EditProfilePage}"
+            IsVisible="False" />
+
+        <!--  Tab within FlyoutItem  -->
+        <Tab
+            Title="Species"
+            Icon="animals.png"
+            IsVisible="False">
+            <ShellContent
+                Title="Dog"
+                ContentTemplate="{DataTemplate view:DogBreedPage}"
+                Icon="dog.png" />
+            <ShellContent
+                Title="Cat"
+                ContentTemplate="{DataTemplate view:CatBreedPage}"
+                Icon="cat.png" />
+        </Tab>
+    </FlyoutItem>
+
+    <Shell.ItemTemplate>
+        <DataTemplate>
+            <Grid ColumnDefinitions="0.2*,0.7*">
+                <Image
+                    Margin="5"
+                    HeightRequest="40"
+                    Source="{Binding FlyoutIcon}" />
+                <Label
+                    Grid.Column="1"
+                    Text="{Binding Title}"
+                    VerticalTextAlignment="Center" />
+            </Grid>
+        </DataTemplate>
+    </Shell.ItemTemplate>
 
     <Shell.FlyoutHeader>
         <StackLayout Padding="20">
@@ -30,32 +81,4 @@
                 WidthRequest="150" />
         </VerticalStackLayout>
     </Shell.FlyoutFooter>
-
-    <FlyoutItem FlyoutDisplayOptions="AsMultipleItems">
-        <ShellContent
-            Title="Home"
-            ContentTemplate="{DataTemplate view:HomePage}"
-            Icon="home.png" />
-        <ShellContent
-            Title="Profile"
-            ContentTemplate="{DataTemplate view:ProfilePage}"
-            Icon="profile_user.png" />
-        <ShellContent
-            Title="Register Pet"
-            ContentTemplate="{DataTemplate view:PetRegisterPage}"
-            Icon="pawprint.png"
-            Route="PetRegisterPage" />
-        <Tab Title="Species" Icon="animals.png">
-            <ShellContent
-                Title="Dog"
-                ContentTemplate="{DataTemplate view:DogBreedPage}"
-                Icon="dog.png"
-                Route="DogBreedPage" />
-            <ShellContent
-                Title="Cat"
-                ContentTemplate="{DataTemplate view:CatBreedPage}"
-                Icon="cat.png"
-                Route="CatBreedPage" />
-        </Tab>
-    </FlyoutItem>
 </Shell>

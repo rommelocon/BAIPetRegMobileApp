@@ -350,7 +350,7 @@
                             Margin="10"
                             Padding="20"
                             BackgroundColor="#096B00"
-                            Clicked="EditProfile_Clicked"
+                            Command="{Binding EditProfileButtonCommand}"
                             CornerRadius="10"
                             FontAttributes="Bold"
                             FontSize="20"

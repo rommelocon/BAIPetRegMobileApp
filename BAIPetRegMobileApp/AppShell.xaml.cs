@@ -37,6 +37,7 @@ namespace BAIPetRegMobileApp
             try
             {
                 await clientService.Logout();
+                Shell.Current.FlyoutIsPresented = false;
                 await Shell.Current.GoToAsync(nameof(LoginPage));
             }
             catch (Exception ex)

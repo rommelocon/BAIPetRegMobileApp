@@ -7,6 +7,7 @@ using BAIPetRegMobileApp.Models.User;
 using BAIPetRegMobileApp.Views;
 using IImage = Microsoft.Maui.Graphics.IImage;
 using Microsoft.Maui.Graphics.Platform;
+using Java.Time;
 
 namespace BAIPetRegMobileApp.ViewModels
 {
@@ -207,7 +208,7 @@ namespace BAIPetRegMobileApp.ViewModels
                 PetImage4 = ImageItems[3].FileName,
                 PetOrigin = PetRegistration.PetOrigin,
                 Remarks = PetRegistration.Remarks,
-                Alias = PetRegistration.Alias
+                Alias = PetRegistration.Alias,
             };
 
             var response = await clientService.RegisterPetAsync(petRegistration);

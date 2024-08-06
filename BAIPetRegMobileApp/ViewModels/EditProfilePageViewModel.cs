@@ -15,7 +15,6 @@ namespace BAIPetRegMobileApp.ViewModels
             Municipalities = new ObservableCollection<Municipalities>();
             Barangays = new ObservableCollection<Barangays>();
             SexType = new ObservableCollection<SexType>();
-
             InitializeAsync();
         }
 
@@ -50,7 +49,7 @@ namespace BAIPetRegMobileApp.ViewModels
             }
         }
 
-        partial void OnSelectedRegionChanged(Regions value)
+        async partial void OnSelectedRegionChanged(Regions value)
         {
             Provinces.Clear();
             Municipalities.Clear();
@@ -58,23 +57,23 @@ namespace BAIPetRegMobileApp.ViewModels
             SelectedProvince = null;
             SelectedMunicipality = null;
             SelectedBarangay = null;
-            _ = LoadProvincesAsync();
+            await LoadProvincesAsync();
         }
 
-        partial void OnSelectedProvinceChanged(Provinces value)
+        async partial void OnSelectedProvinceChanged(Provinces value)
         {
             Municipalities.Clear();
             Barangays.Clear();
             SelectedMunicipality = null;
             SelectedBarangay = null;
-            _ = LoadMunicipalitiesAsync();
+            await LoadMunicipalitiesAsync();
         }
 
-        partial void OnSelectedMunicipalityChanged(Municipalities value)
+        async partial void OnSelectedMunicipalityChanged(Municipalities value)
         {
             Barangays.Clear();
             SelectedBarangay = null;
-            _ = LoadBarangaysAsync();
+            await LoadBarangaysAsync();
         }
 
         private async Task LoadRegionsAsync()

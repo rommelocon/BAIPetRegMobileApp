@@ -1,6 +1,4 @@
-﻿using BAIPetRegMobileApp.Api.Data;
-using BAIPetRegMobileApp.Api.Data.User;
-using BAIPetRegMobileApp.Api.DTOs;
+﻿using BAIPetRegMobileApp.Api.DTOs;
 using BAIPetRegMobileApp.Api.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
@@ -11,7 +9,7 @@ namespace BAIPetRegMobileApp.Api.Controllers
     public class LocationController : ControllerBase
     {
         private readonly ILocationService _locationService;
-        
+
         public LocationController(ILocationService locationService)
         {
             _locationService = locationService;
@@ -19,32 +17,19 @@ namespace BAIPetRegMobileApp.Api.Controllers
 
         [HttpGet("regions")]
         public async Task<ActionResult<IEnumerable<RegionsDTO>>> GetRegions()
-        {
-            var regions = await _locationService.GetRegionsAsync();
-            return Ok(regions);
-        }
+            => Ok(await _locationService.GetRegionsAsync());
 
         [HttpGet("provinces/{regionCode}")]
         public async Task<ActionResult<IEnumerable<ProvincesDTO>>> GetProvincesByRegionCode(string regionCode)
-        {
-            var provinces = await _locationService.GetProvincesByRegionCodeAsync(regionCode);
-            return Ok(provinces);
-        }
+            => Ok(await _locationService.GetProvincesByRegionCodeAsync(regionCode));
 
         [HttpGet("municipalities/{provinceCode}")]
         public async Task<ActionResult<IEnumerable<MunicipalitiesDTO>>> GetMunicipalitiesByProvinceCode(string provinceCode)
-        {
-             var municipalities = await _locationService.GetMunicipalitiesByProvinceCodeAsync(provinceCode);
-          
-            return  Ok(municipalities);
-        }
+            => Ok(await _locationService.GetMunicipalitiesByProvinceCodeAsync(provinceCode));
 
         [HttpGet("barangays/{municipalityCode}")]
         public async Task<ActionResult<IEnumerable<BarangaysDTO>>> GetBarangaysByMunicipalityCode(string municipalityCode)
-        {
-            var barangays = await _locationService.GetBarangaysByMunicipalityCodeAsync(municipalityCode);
-            return Ok(barangays);
-        }
-
+            => Ok(await _locationService.GetBarangaysByMunicipalityCodeAsync(municipalityCode));
     }
 }
+
