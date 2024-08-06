@@ -8,6 +8,7 @@
     x:DataType="local:AppShell"
     Shell.BackgroundColor="#096B00"
     Shell.FlyoutBehavior="Flyout"
+    Shell.TabBarIsVisible="False"
     Shell.TitleColor="#FFFFFF">
 
     <Shell.FlyoutHeader>
@@ -30,36 +31,31 @@
         </VerticalStackLayout>
     </Shell.FlyoutFooter>
 
-    <FlyoutItem Title="Dashboard" FlyoutDisplayOptions="AsMultipleItems">
+    <FlyoutItem FlyoutDisplayOptions="AsMultipleItems">
         <ShellContent
             Title="Home"
             ContentTemplate="{DataTemplate view:HomePage}"
-            Icon="home.png"
-            Route="HomePage" />
-
+            Icon="home.png" />
         <ShellContent
             Title="Profile"
             ContentTemplate="{DataTemplate view:ProfilePage}"
-            Icon="profile_user.png"
-            Route="ProfilePage" />
-
+            Icon="profile_user.png" />
         <ShellContent
             Title="Register Pet"
             ContentTemplate="{DataTemplate view:PetRegisterPage}"
             Icon="pawprint.png"
             Route="PetRegisterPage" />
-
-        <ShellContent
-            Title="Dog"
-            ContentTemplate="{DataTemplate view:DogBreedPage}"
-            Icon="dog.png"
-            Route="DogBreedPage" />
-
-        <ShellContent
-            Title="Cat"
-            ContentTemplate="{DataTemplate view:CatBreedPage}"
-            Icon="cat.png"
-            Route="CatBreedPage" />
+        <Tab Title="Species" Icon="animals.png">
+            <ShellContent
+                Title="Dog"
+                ContentTemplate="{DataTemplate view:DogBreedPage}"
+                Icon="dog.png"
+                Route="DogBreedPage" />
+            <ShellContent
+                Title="Cat"
+                ContentTemplate="{DataTemplate view:CatBreedPage}"
+                Icon="cat.png"
+                Route="CatBreedPage" />
+        </Tab>
     </FlyoutItem>
-
 </Shell>

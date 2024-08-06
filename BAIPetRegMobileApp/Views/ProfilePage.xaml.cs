@@ -19,6 +19,7 @@ public partial class ProfilePage : ContentPage
         await viewModel.InitializeProfileAsync();
     }
 
+
     private void EditProfile_Clicked(object sender, EventArgs e)
     {
         Shell.Current.GoToAsync(nameof(EditProfilePage));

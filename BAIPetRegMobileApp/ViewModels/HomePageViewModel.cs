@@ -1,7 +1,8 @@
-﻿using BAIPetRegMobileApp.Services;
+﻿using AndroidX.Lifecycle;
+using BAIPetRegMobileApp.Services;
 using BAIPetRegMobileApp.Views;
+using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using Microsoft.Maui.Graphics.Platform;
 using IImage = Microsoft.Maui.Graphics.IImage;
 
 namespace BAIPetRegMobileApp.ViewModels
@@ -9,14 +10,12 @@ namespace BAIPetRegMobileApp.ViewModels
     public partial class HomePageViewModel : BaseViewModel
     {
         private IImage? image;
+        [ObservableProperty]
+        private bool isRefreshing;
 
         public HomePageViewModel(ClientService clientService) : base(clientService)
         {
-            if (!IsPetRegisteredLoaded)
-            {
-                LoadPetRegistrationsCommand.ExecuteAsync(null);
-            }
-            IsPetRegisteredLoaded = true;
+           
         }
 
         [RelayCommand]
@@ -30,6 +29,12 @@ namespace BAIPetRegMobileApp.ViewModels
         }
 
         [RelayCommand]
+        private async Task ExecuteRefresh()
+        {
+            await LoadPetRegistrationsAsync();
+            IsRefreshing = false;
+        }
+
         private async Task LoadPetRegistrationsAsync()
         {
             try
@@ -39,17 +44,9 @@ namespace BAIPetRegMobileApp.ViewModels
                 PetRegistrations.Clear();
                 foreach (var registration in registrations)
                 {
-                    
-                    var fileName = registration.PetImage1;
-                    if (fileName != null)
-                    {
-                        IsBusy = true;
-                        var imageStream = await clientService.GetPetImageAsync(fileName);
-                        registration.PetImageSource = ImageSource.FromStream(() => imageStream);
-                        IsBusy = false;
-                    }
+                    var imagePetSource = await clientService.GetPetImageAsync(registration.PetImage1!);
+                    registration.PetImageSource = ImageSource.FromStream(() => imagePetSource);
                     PetRegistrations.Add(registration);
-                    continue;
                 }
             }
             catch (Exception ex)
@@ -65,6 +62,15 @@ namespace BAIPetRegMobileApp.ViewModels
         public async Task RefreshPetRegistrationsAsync()
         {
             await LoadPetRegistrationsAsync();
+        }
+
+        [RelayCommand]
+        private async Task GoBack()
+        {
+            if (Shell.Current.Navigation.NavigationStack.Count > 1)
+            {
+                await Shell.Current.Navigation.PopAsync();
+            }
         }
     }
 }

@@ -17,7 +17,6 @@ namespace BAIPetRegMobileApp.ViewModels
         [ObservableProperty] private User? userViewModel;
         [ObservableProperty] private string? welcomeMessage;
         [ObservableProperty] private ObservableCollection<PetRegistration> petRegistrations = new();
-
         [ObservableProperty] private ImageSource? petGetImage1;
         [ObservableProperty] private ImageSource? petGetImage2;
         [ObservableProperty] private ImageSource? petGetImage3;
@@ -56,9 +55,7 @@ namespace BAIPetRegMobileApp.ViewModels
 
         public async Task InitializeProfileAsync()
         {
-            IsBusy = true;
             await LoadProfile();
-            IsBusy = false;
         }
 
         public async Task LoadCollectionAsync<T>(Func<Task<IEnumerable<T>>> loadFunc, ObservableCollection<T> collection)
@@ -82,10 +79,10 @@ namespace BAIPetRegMobileApp.ViewModels
             try
             {
                 var registrations = await clientService.GetPetRegistrationByIdAsync(id);
-                PetGetImage1 = await LoadImageAsync(registrations.PetImage1);
-                PetGetImage2 = await LoadImageAsync(registrations.PetImage2);
-                PetGetImage3 = await LoadImageAsync(registrations.PetImage3);
-                PetGetImage4 = await LoadImageAsync(registrations.PetImage4);
+                PetGetImage1 = LoadImage(registrations.PetImage1);
+                PetGetImage2 = LoadImage(registrations.PetImage2);
+                PetGetImage3 = LoadImage(registrations.PetImage3);
+                PetGetImage4 = LoadImage(registrations.PetImage4);
             }
             catch (Exception ex)
             {
@@ -97,7 +94,7 @@ namespace BAIPetRegMobileApp.ViewModels
             }
         }
 
-        private async Task<ImageSource> LoadImageAsync(string imageName) =>
+        private ImageSource LoadImage(string imageName) =>
             ImageSource.FromStream(() => clientService.GetPetImageAsync(imageName).Result);
     }
 }

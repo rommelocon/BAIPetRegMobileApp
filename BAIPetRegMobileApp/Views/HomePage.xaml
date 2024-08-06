@@ -34,83 +34,82 @@
                 Source="bai_banner.jpg"
                 VerticalOptions="FillAndExpand" />
 
-            <ScrollView Grid.Row="1">
-                <VerticalStackLayout>
-                    <Label
-                        Margin="20,20,20,0"
-                        FontAttributes="Bold"
-                        FontSize="Large"
-                        SemanticProperties.HeadingLevel="Level1"
-                        Style="{StaticResource Headline}"
-                        Text="{Binding WelcomeMessage}"
-                        TextColor="#096B00" />
-                    <CollectionView ItemsSource="{Binding PetRegistrations}">
-                        <CollectionView.ItemTemplate>
-                            <DataTemplate>
-                                <StackLayout Padding="12">
-                                    <Frame
-                                        Padding="0"
-                                        BackgroundColor="#18900D"
-                                        CornerRadius="30">
-                                        <Grid>
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="*" />
-                                                <ColumnDefinition Width="*" />
-                                            </Grid.ColumnDefinitions>
-                                            <!--  Image  -->
-                                            <Image
-                                                Grid.Column="0"
-                                                Aspect="AspectFill"
-                                                HeightRequest="300"
-                                                Source="{Binding PetImageSource}" />
-
-                                            <!--  Labels  -->
-                                            <VerticalStackLayout
-                                                Grid.Column="1"
-                                                Padding="10"
-                                                VerticalOptions="CenterAndExpand">
-                                                <Label
-                                                    FontAttributes="Bold"
-                                                    FontSize="26"
-                                                    HorizontalOptions="CenterAndExpand"
-                                                    Style="{StaticResource DetailLabelStyle}"
-                                                    Text="{Binding PetName}" />
-                                                <Label Style="{StaticResource DetailLabelStyle}" Text="{Binding PetRegistrationID, StringFormat='ID: {0}'}" />
-                                                <Label Style="{StaticResource DetailLabelStyle}" Text="{Binding DateRegistered, StringFormat='Date Registered: {0:dd/MM/yyyy}'}" />
-                                                <Label Style="{StaticResource DetailLabelStyle}" Text="{Binding PetDateofBirth, StringFormat='Birthdate: {0:dd/MM/yyyy}'}" />
-                                                <Label Style="{StaticResource DetailLabelStyle}" Text="{Binding AnimalColorDescription, StringFormat='Color: {0}'}" />
-                                                <Label Style="{StaticResource DetailLabelStyle}" Text="{Binding OwnershipTypeDescription, StringFormat='Ownership Type: {0}'}" />
-
-                                                <Button
-                                                    BackgroundColor="White"
-                                                    Command="{Binding Source={RelativeSource AncestorType={x:Type local:HomePageViewModel}}, Path=ShowMoreCommand}"
-                                                    CommandParameter="{Binding PetRegistrationID}"
-                                                    Text="Show More"
-                                                    TextColor="Black" />
-                                            </VerticalStackLayout>
-                                        </Grid>
-                                    </Frame>
-                                </StackLayout>
-                            </DataTemplate>
-                        </CollectionView.ItemTemplate>
-                    </CollectionView>
-                </VerticalStackLayout>
-            </ScrollView>
-            
-            <!--  Overlay Grid  -->
-            <StackLayout
+            <!--  Add RefreshView around ScrollView  -->
+            <RefreshView
                 Grid.Row="1"
-                AbsoluteLayout.LayoutBounds="0,0,1,1"
-                AbsoluteLayout.LayoutFlags="All"
-                BackgroundColor="#80000000"
-                IsEnabled="False"
-                IsVisible="{Binding IsBusy}">
-                <ActivityIndicator
-                    HorizontalOptions="CenterAndExpand"
-                    IsRunning="{Binding IsBusy}"
-                    VerticalOptions="CenterAndExpand"
-                    Color="White" />
-            </StackLayout>
+                Command="{Binding ExecuteRefreshCommand}"
+                IsRefreshing="{Binding IsRefreshing}">
+                <ScrollView>
+                    <VerticalStackLayout>
+                        <ActivityIndicator
+                            Grid.Row="1"
+                            Margin="10"
+                            HorizontalOptions="CenterAndExpand"
+                            IsRunning="{Binding IsBusy}"
+                            IsVisible="{Binding IsBusy}"
+                            VerticalOptions="CenterAndExpand"
+                            Color="Black" />
+                        <Label
+                            Margin="20,20,20,0"
+                            FontAttributes="Bold"
+                            FontSize="Large"
+                            SemanticProperties.HeadingLevel="Level1"
+                            Style="{StaticResource Headline}"
+                            Text="{Binding WelcomeMessage}"
+                            TextColor="#096B00" />
+                        <CollectionView ItemsSource="{Binding PetRegistrations}">
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <StackLayout Padding="12">
+                                        <Frame
+                                            Padding="0"
+                                            BackgroundColor="#18900D"
+                                            CornerRadius="30">
+                                            <Grid>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*" />
+                                                    <ColumnDefinition Width="*" />
+                                                </Grid.ColumnDefinitions>
+                                                <!--  Image  -->
+                                                <Image
+                                                    Grid.Column="0"
+                                                    Aspect="AspectFill"
+                                                    HeightRequest="300"
+                                                    Source="{Binding PetImageSource}" />
+
+                                                <!--  Labels  -->
+                                                <VerticalStackLayout
+                                                    Grid.Column="1"
+                                                    Padding="10"
+                                                    VerticalOptions="CenterAndExpand">
+                                                    <Label
+                                                        FontAttributes="Bold"
+                                                        FontSize="26"
+                                                        HorizontalOptions="CenterAndExpand"
+                                                        Style="{StaticResource DetailLabelStyle}"
+                                                        Text="{Binding PetName}" />
+                                                    <Label Style="{StaticResource DetailLabelStyle}" Text="{Binding PetRegistrationID, StringFormat='ID: {0}'}" />
+                                                    <Label Style="{StaticResource DetailLabelStyle}" Text="{Binding DateRegistered, StringFormat='Date Registered: {0:dd/MM/yyyy}'}" />
+                                                    <Label Style="{StaticResource DetailLabelStyle}" Text="{Binding PetDateofBirth, StringFormat='Birthdate: {0:dd/MM/yyyy}'}" />
+                                                    <Label Style="{StaticResource DetailLabelStyle}" Text="{Binding AnimalColorDescription, StringFormat='Color: {0}'}" />
+                                                    <Label Style="{StaticResource DetailLabelStyle}" Text="{Binding OwnershipTypeDescription, StringFormat='Ownership Type: {0}'}" />
+
+                                                    <Button
+                                                        BackgroundColor="White"
+                                                        Command="{Binding Source={RelativeSource AncestorType={x:Type local:HomePageViewModel}}, Path=ShowMoreCommand}"
+                                                        CommandParameter="{Binding PetRegistrationID}"
+                                                        Text="Show More"
+                                                        TextColor="Black" />
+                                                </VerticalStackLayout>
+                                            </Grid>
+                                        </Frame>
+                                    </StackLayout>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                    </VerticalStackLayout>
+                </ScrollView>
+            </RefreshView>
         </Grid>
     </AbsoluteLayout>
 </ContentPage>

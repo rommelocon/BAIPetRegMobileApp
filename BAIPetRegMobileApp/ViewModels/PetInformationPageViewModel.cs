@@ -29,7 +29,6 @@ namespace BAIPetRegMobileApp.ViewModels
                 {
                     try
                     {
-                            // Load the pet registration details based on this ID
                             await LoadPetRegistrationDetailsAsync(id);
                             await LoadPetImagesAsync(id);
                        

@@ -18,7 +18,7 @@ namespace BAIPetRegMobileApp.ViewModels
             : base(clientService)
         {
             _viewModel = viewModel;
-            LoadDataCommand.ExecuteAsync(null);
+            _ = LoadDataAsync();
             InitializeCollections();
             // Initialize with empty image items
             for (int i = 0; i < 4; i++)
@@ -112,7 +112,6 @@ namespace BAIPetRegMobileApp.ViewModels
             }
         }
 
-        [RelayCommand]
         private async Task LoadDataAsync()
         {
             if (IsBusy) return;
