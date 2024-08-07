@@ -1,52 +1,47 @@
 ﻿using BAIPetRegMobileApp.Models.PetRegistration;
 using BAIPetRegMobileApp.Services;
 using CommunityToolkit.Mvvm.ComponentModel;
-using CommunityToolkit.Mvvm.Input;
-using System.ComponentModel;
 
 namespace BAIPetRegMobileApp.ViewModels
 {
     public partial class PetInformationPageViewModel : BaseViewModel, IQueryAttributable
     {
         [ObservableProperty]
-        private PetRegistration petRegistration;
-
-
-        private readonly ClientService clientService;
+        private PetRegistration? petRegistration;
 
         public PetInformationPageViewModel(ClientService clientService) : base(clientService)
-        {
-            this.clientService = clientService;
-            IsProfileLoaded = false;
-        }
+        { }
 
         public async void ApplyQueryAttributes(IDictionary<string, object> query)
         {
             if (query.ContainsKey("PetRegistrationID"))
             {
-                string id = query["PetRegistrationID"].ToString();
+                string id = query["PetRegistrationID"].ToString()!;
                 if (!string.IsNullOrEmpty(id))
                 {
                     try
                     {
-                            await LoadPetRegistrationDetailsAsync(id);
-                            await LoadPetImagesAsync(id);
-                       
+                        PetRegistration = await clientService.GetPetRegistrationByIdAsync(id);
+                        await LoadPetImagesAsync(id);
                     }
                     catch (Exception ex)
                     {
                         await HandleException(ex);
                     }
-                }
+                };
             }
         }
 
-        private async Task LoadPetRegistrationDetailsAsync(string id)
+        private async Task LoadPetImagesAsync(string id)
         {
+            IsBusy = true;
             try
             {
-                IsBusy = true;
-                PetRegistration = await clientService.GetPetRegistrationByIdAsync(id);
+                var registrations = await clientService.GetPetRegistrationByIdAsync(id);
+                PetGetImage1 = LoadImage(registrations.PetImage1!);
+                PetGetImage2 = LoadImage(registrations.PetImage2!);
+                PetGetImage3 = LoadImage(registrations.PetImage3!);
+                PetGetImage4 = LoadImage(registrations.PetImage4!);
             }
             catch (Exception ex)
             {
@@ -55,7 +50,6 @@ namespace BAIPetRegMobileApp.ViewModels
             finally
             {
                 IsBusy = false;
-                IsProfileLoaded = true;
             }
         }
     }

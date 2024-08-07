@@ -1,7 +1,9 @@
-﻿using BAIPetRegMobileApp.Services;
+﻿using BAIPetRegMobileApp.Models.User;
+using BAIPetRegMobileApp.Services;
 using BAIPetRegMobileApp.Views;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using System.Collections.ObjectModel;
 
 namespace BAIPetRegMobileApp.ViewModels
 {
@@ -15,10 +17,14 @@ namespace BAIPetRegMobileApp.ViewModels
 
         public ProfilePageViewModel(ClientService clientService) : base(clientService)
         {
-            _ = InitializeProfileAsync();
+            InitializeProfilePage();
             _ = LoadPetCountsAsync();
         }
 
+        private async void InitializeProfilePage()
+        {
+            UserData = await clientService.GetProfile();
+        }
         private async Task LoadPetCountsAsync()
         {
             try

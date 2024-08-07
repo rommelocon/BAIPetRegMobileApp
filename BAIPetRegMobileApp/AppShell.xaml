@@ -8,8 +8,7 @@
     x:DataType="local:AppShell"
     Shell.BackgroundColor="#096B00"
     Shell.FlyoutBehavior="Flyout"
-    Shell.TabBarForegroundColor="#096B00"
-    Shell.TabBarTitleColor="#096B00"
+    Shell.TabBarIsVisible="False"
     Shell.TitleColor="#FFFFFF">
 
     <!--  Flyout Items  -->

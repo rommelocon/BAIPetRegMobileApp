@@ -171,7 +171,7 @@ namespace BAIPetRegMobileApp.Services
             return Enumerable.Empty<PetRegistration>();
         }
 
-        public async Task<PetRegistration?> GetPetRegistrationByIdAsync(string id)
+        public async Task<PetRegistration> GetPetRegistrationByIdAsync(string id)
         {
             var loginResponse = await GetStoredLoginResponseAsync();
             if (loginResponse != null && !string.IsNullOrEmpty(loginResponse.UserName) && !string.IsNullOrEmpty(loginResponse.AccessToken))
@@ -181,32 +181,16 @@ namespace BAIPetRegMobileApp.Services
                 if (response.IsSuccessStatusCode)
                 {
                     var content = await response.Content.ReadAsStringAsync();
-
                     var options = new JsonSerializerOptions
                     {
                         PropertyNameCaseInsensitive = true
                     };
-
-                    try
-                    {
-                        // Deserialize JSON array
-                        var petRegistrations = JsonSerializer.Deserialize<List<PetRegistration>>(content, options);
-
-                        // Return the first item if available
-                        return petRegistrations?.FirstOrDefault();
-                    }
-                    catch (JsonException ex)
-                    {
-                        // Log or handle the deserialization error
-                        Console.WriteLine($"JSON Deserialization Error: {ex.Message}");
-                        return null;
-                    }
+                    return JsonSerializer.Deserialize<PetRegistration>(content, options)!;
                 }
-                return null;
+                return null!;
             }
             throw new InvalidOperationException("Authentication data not found.");
         }
-
 
         private async Task<IEnumerable<T>> GetListAsync<T>(string endpoint)
         {

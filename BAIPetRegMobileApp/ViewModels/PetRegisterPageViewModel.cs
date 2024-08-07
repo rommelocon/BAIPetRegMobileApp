@@ -7,7 +7,6 @@ using BAIPetRegMobileApp.Models.User;
 using BAIPetRegMobileApp.Views;
 using IImage = Microsoft.Maui.Graphics.IImage;
 using Microsoft.Maui.Graphics.Platform;
-using Java.Time;
 
 namespace BAIPetRegMobileApp.ViewModels
 {
@@ -21,6 +20,7 @@ namespace BAIPetRegMobileApp.ViewModels
             _viewModel = viewModel;
             _ = LoadDataAsync();
             InitializeCollections();
+
             // Initialize with empty image items
             for (int i = 0; i < 4; i++)
             {
@@ -60,8 +60,8 @@ namespace BAIPetRegMobileApp.ViewModels
         [ObservableProperty] private PetRegistration _petRegistration = new();
         [ObservableProperty] private bool _isTagNumberVisible;
 
-        public bool IsFemaleSelected => SelectedSexType?.SexID == 2;
-        public bool IsLactatingSelected => SelectedAnimalFemaleClassification?.AnimalFemaleClassID == 2;
+        public bool IsFemaleSelected => SelectedSexType.SexID == 2;
+        public bool IsLactatingSelected => SelectedAnimalFemaleClassification.AnimalFemaleClassID == 2;
 
 
         private void InitializeCollections()
@@ -185,19 +185,19 @@ namespace BAIPetRegMobileApp.ViewModels
                 DateEncocde = DateTime.Now,
                 PetName = PetRegistration.PetName,
                 Weight = PetRegistration.Weight,
-                OwnershipType = SelectedOwnerShipType?.OwnerShipTypeID,
-                OwnershipTypeDescription = SelectedOwnerShipType?.OwnerShipDescription,
-                SpeciesCode = SelectedSpeciesGroup?.SpeciesCode,
-                SpeciesCommonName = SelectedSpeciesGroup?.SpeciesCommonName,
-                BreedID = SelectedSpeciesBreed?.BreedID,
-                BreedDescription = SelectedSpeciesBreed?.BreedDescription,
-                PetSexID = SelectedSexType?.SexID,
-                PetSexDescription = SelectedSexType?.SexDescription,
-                TagID = SelectedTagType?.TagID,
-                TagDescription = SelectedTagType?.TagDescription,
+                OwnershipType = SelectedOwnerShipType.OwnerShipTypeID,
+                OwnershipTypeDescription = SelectedOwnerShipType.OwnerShipDescription,
+                SpeciesCode = SelectedSpeciesGroup.SpeciesCode,
+                SpeciesCommonName = SelectedSpeciesGroup.SpeciesCommonName,
+                BreedID = SelectedSpeciesBreed.BreedID,
+                BreedDescription = SelectedSpeciesBreed.BreedDescription,
+                PetSexID = SelectedSexType.SexID,
+                PetSexDescription = SelectedSexType.SexDescription,
+                TagID = SelectedTagType.TagID,
+                TagDescription = SelectedTagType.TagDescription,
                 TagNo = PetRegistration.TagNo,
-                AnimalColorDescription = SelectedAnimalColor?.AnimalColorDescription,
-                AnimalColorID = SelectedAnimalColor?.AnimalColorID,
+                AnimalColorDescription = SelectedAnimalColor.AnimalColorDescription,
+                AnimalColorID = SelectedAnimalColor.AnimalColorID,
                 PetDateofBirth = SelectedPetDateofBirth,
                 AnimalFemalClassification = PetRegistration.AnimalFemalClassification,
                 AnimalFemaleClassID = PetRegistration.AnimalFemaleClassID,
@@ -215,7 +215,6 @@ namespace BAIPetRegMobileApp.ViewModels
             if (response)
             {
                 await Shell.Current.DisplayAlert("Alert", "Successfully Registered.", "Ok");
-                // Refresh homepage
                 await _viewModel.RefreshPetRegistrationsAsync();
                 ClearAllFields();
                 await Shell.Current.GoToAsync(nameof(FinalCheckingPage));
@@ -234,6 +233,10 @@ namespace BAIPetRegMobileApp.ViewModels
             SelectedAnimalFemaleClassification = null;
             SelectedPetTagType = null;
             SelectedTagType = null;
+            SelectedImage1 = null;
+            SelectedImage2 = null;
+            SelectedImage3 = null;
+            SelectedImage4 = null;
             IsTagNumberVisible = false;
             SpeciesBreeds.Clear();
             ImageItems.Clear();

@@ -1,5 +1,6 @@
 ﻿using BAIPetRegMobileApp.Models.User;
 using BAIPetRegMobileApp.Services;
+using BAIPetRegMobileApp.Views;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using System.Collections.ObjectModel;
@@ -107,27 +108,27 @@ namespace BAIPetRegMobileApp.ViewModels
             IsBusy = true;
             try
             {
-                // Update UserViewModel with selected values
-                if (UserViewModel != null)
+                // Update UserData with selected values
+                if (UserData != null)
                 {
-                    UserViewModel.SexID = SelectedSexType?.SexID;
-                    UserViewModel.SexDescription = SelectedSexType?.SexDescription;
-                    UserViewModel.RcodeNum = SelectedRegion?.Rcode;
-                    UserViewModel.Region = SelectedRegion?.RegionName;
-                    UserViewModel.PcodeNum = SelectedProvince?.ProvCode;
-                    UserViewModel.ProvinceName = SelectedProvince?.ProvinceName;
-                    UserViewModel.McodeNum = SelectedMunicipality?.MunCode;
-                    UserViewModel.MunicipalitiesCities = SelectedMunicipality?.MunCity;
-                    UserViewModel.Bcode = SelectedBarangay?.Bcode;
-                    UserViewModel.BarangayName = SelectedBarangay?.BarangayName;
-                    UserViewModel.FullAddress = $"{SelectedRegion?.RegionName} {SelectedProvince?.ProvinceName} {SelectedMunicipality?.MunCity} {SelectedBarangay?.BarangayName}".Trim();
+                    UserData.SexID = SelectedSexType?.SexID;
+                    UserData.SexDescription = SelectedSexType?.SexDescription;
+                    UserData.RcodeNum = SelectedRegion?.Rcode;
+                    UserData.Region = SelectedRegion?.RegionName;
+                    UserData.PcodeNum = SelectedProvince?.ProvCode;
+                    UserData.PcodeNum = SelectedProvince?.ProvinceName;
+                    UserData.McodeNum = SelectedMunicipality?.MunCode;
+                    UserData.MunicipalitiesCities = SelectedMunicipality?.MunCity;
+                    UserData.Bcode = SelectedBarangay?.Bcode;
+                    UserData.BarangayName = SelectedBarangay?.BarangayName;
+                    UserData.FullAddress = $"{SelectedRegion?.RegionName} {SelectedProvince?.ProvinceName} {SelectedMunicipality?.MunCity} {SelectedBarangay?.BarangayName}".Trim();
                 }
 
-                var response = await clientService.UpdateProfileAsync(UserViewModel);
+                var response = await clientService.UpdateProfileAsync(UserData!);
 
                 if (response.IsSuccessStatusCode)
                 {
-                    await Shell.Current.GoToAsync("//ProfilePage");
+                    await Shell.Current.GoToAsync(nameof(ProfilePage));
                 }
             }
             catch (Exception ex)

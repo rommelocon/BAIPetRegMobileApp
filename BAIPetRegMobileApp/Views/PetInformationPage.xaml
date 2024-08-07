@@ -6,140 +6,79 @@
     xmlns:viewmodel="clr-namespace:BAIPetRegMobileApp.ViewModels"
     x:DataType="viewmodel:PetInformationPageViewModel">
 
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <!--  Common Label Style  -->
+            <Style x:Key="DetailLabelStyle" TargetType="Label">
+                <Setter Property="FontSize" Value="18" />
+                <Setter Property="HorizontalOptions" Value="Start" />
+                <Setter Property="TextColor" Value="Black" />
+                <Setter Property="Padding" Value="0,-5,0,-5" />
+            </Style>
+            <Style x:Key="SectionTitleStyle" TargetType="Label">
+                <Setter Property="FontSize" Value="36" />
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="TextColor" Value="Black" />
+                <Setter Property="HorizontalOptions" Value="Center" />
+                <Setter Property="TextTransform" Value="Uppercase" />
+
+            </Style>
+            <Style x:Key="ImageFrameStyle" TargetType="Frame">
+                <Setter Property="Padding" Value="0" />
+                <Setter Property="BackgroundColor" Value="White" />
+                <Setter Property="BorderColor" Value="Gray" />
+                <Setter Property="CornerRadius" Value="10" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <Image
-            Grid.Row="0"
-            HorizontalOptions="Center"
-            Source="bai_banner.jpg"
-            VerticalOptions="Center" />
 
-        <ScrollView Grid.Row="1">
-            <StackLayout
-                Padding="20"
-                BackgroundColor="#A3EBA3"
-                Spacing="20">
+        <ScrollView Grid.Row="0">
+            <VerticalStackLayout>
+                <!--  Pet Information Frame  -->
                 <Frame
+                    Margin="20"
                     Padding="20"
-                    BackgroundColor="#6AE96A"
-                    CornerRadius="20"
-                    VerticalOptions="Start">
-                    <StackLayout HorizontalOptions="Center">
-                        <Image
-                            Aspect="AspectFill"
-                            HeightRequest="150"
-                            Source="{Binding PetGetImage1}"
-                            WidthRequest="150" />
-
-                        <Label
-                            Margin="20"
-                            FontFamily="MaterialIconsOutlined-Regular"
-                            FontSize="70"
-                            HorizontalOptions="Center"
-                            Text="male" />
-                        <Label
-                            FontAttributes="Bold"
-                            FontSize="24"
-                            HorizontalOptions="Center"
-                            Text="{Binding PetRegistration.PetName}" />
-                        <Label
-                            FontSize="18"
-                            HorizontalOptions="Center"
-                            Text="{Binding PetRegistration.SpeciesCommonName}" />
-
-                        <Label
-                            FontSize="18"
-                            HorizontalOptions="Center"
-                            Text="{Binding PetRegistration.BreedDescription}" />
-                        <Label
-                            FontSize="18"
-                            HorizontalOptions="Center"
-                            Text="{Binding PetRegistration.Weight, StringFormat='{0}kg'}" />
-                    </StackLayout>
-                </Frame>
-                <StackLayout Orientation="Horizontal" />
-                <Frame
-                    Padding="20"
-                    BackgroundColor="#A3EBA3"
                     CornerRadius="20">
-                    <StackLayout Spacing="10">
+                    <VerticalStackLayout Spacing="10">
                         <Label
-                            FontAttributes="Bold"
-                            FontSize="24"
-                            HorizontalOptions="Center"
+                            Style="{StaticResource SectionTitleStyle}"
                             Text="Pet Information"
                             TextColor="#001400" />
-                        <Label
-                            FontSize="18"
-                            Text="{Binding PetRegistration.Alias, StringFormat='Alias: {0}'}"
-                            TextColor="#001400" />
-                        <Label
-                            FontSize="18"
-                            Text="{Binding PetRegistration.DateRegistered, StringFormat='Registered: {0}'}"
-                            TextColor="#001400" />
-                        <Label
-                            FontSize="18"
-                            Text="{Binding PetRegistration.PetDateofBirth, StringFormat='Date Of Birth: {0}'}"
-                            TextColor="#001400" />
-                        <Label
-                            FontSize="18"
-                            Text="{Binding PetRegistration.PetSexDescription, StringFormat='Sex: {0}'}"
-                            TextColor="#001400" />
-                        <Label
-                            FontSize="18"
-                            Text="{Binding PetRegistration.AnimalFemalClassification, StringFormat='Female Classification: {0}'}"
-                            TextColor="#001400" />
-                        <Label
-                            FontSize="18"
-                            Text="{Binding PetRegistration.NumberOffspring, StringFormat='Number of Offspring: {0}'}"
-                            TextColor="#001400" />
-                        <Label
-                            FontSize="18"
-                            Text="{Binding PetRegistration.OwnershipTypeDescription, StringFormat='Habitat Description: {0}'}"
-                            TextColor="#001400" />
-                        <Label
-                            FontSize="18"
-                            Text="{Binding PetRegistration.AnimalColorDescription, StringFormat='Color: {0}'}"
-                            TextColor="#001400" />
-                        <Label
-                            FontSize="18"
-                            Text="{Binding PetRegistration.TagDescription, StringFormat='Tag Description: {0}'}"
-                            TextColor="#001400" />
-                        <Label
-                            FontSize="18"
-                            Text="{Binding PetRegistration.TagID, StringFormat='Tag ID: {0}'}"
-                            TextColor="#001400" />
-                        <Label
-                            FontSize="18"
-                            Text="{Binding PetRegistration.TagNo, StringFormat='Tag Number: {0}'}"
-                            TextColor="#001400" />
-                        <Label
-                            FontSize="18"
-                            Text="{Binding PetRegistration.StatusDescription, StringFormat='Status Description: {0}'}"
-                            TextColor="#001400" />
-                        <Label
-                            FontSize="18"
-                            Text="{Binding PetRegistration.DateDied, StringFormat='Date Died: {0}'}"
-                            TextColor="#001400" />
-                        <Label
-                            FontSize="18"
-                            Text="{Binding PetRegistration.Remarks, StringFormat='Remarks: {0}'}"
-                            TextColor="#001400" />
-                    </StackLayout>
+                        <Frame>
+                            <Label Style="{StaticResource DetailLabelStyle}" Text="{Binding PetRegistration.PetRegistrationID, StringFormat='ID: {0}', TargetNullValue=''}" />
+                        </Frame>
+                        <Label Style="{StaticResource DetailLabelStyle}" Text="{Binding PetRegistration.PetName, StringFormat='Name: {0}', TargetNullValue=''}" />
+                        <Label Style="{StaticResource DetailLabelStyle}" Text="{Binding PetRegistration.SpeciesCommonName, StringFormat='Species: {0}', TargetNullValue=''}" />
+                        <Label Style="{StaticResource DetailLabelStyle}" Text="{Binding PetRegistration.BreedDescription, StringFormat='Breed: {0}', TargetNullValue=''}" />
+                        <Label Style="{StaticResource DetailLabelStyle}" Text="{Binding PetRegistration.Weight, StringFormat='Weight: {0}kg', TargetNullValue=''}" />
+                        <Label Style="{StaticResource DetailLabelStyle}" Text="{Binding PetRegistration.Alias, StringFormat='Alias: {0}', TargetNullValue=''}" />
+                        <Label Style="{StaticResource DetailLabelStyle}" Text="{Binding PetRegistration.DateRegistered, StringFormat='Registered: {0:MMM dd, yyyy}', TargetNullValue=''}" />
+                        <Label Style="{StaticResource DetailLabelStyle}" Text="{Binding PetRegistration.PetDateofBirth, StringFormat='Date Of Birth: {0:MMM dd, yyyy}', TargetNullValue=''}" />
+                        <Label Style="{StaticResource DetailLabelStyle}" Text="{Binding PetRegistration.AgeInMonth, StringFormat='Age In Month: {0}', TargetNullValue=''}" />
+                        <Label Style="{StaticResource DetailLabelStyle}" Text="{Binding PetRegistration.PetSexDescription, StringFormat='Sex: {0}', TargetNullValue=''}" />
+                        <Label Style="{StaticResource DetailLabelStyle}" Text="{Binding PetRegistration.AnimalFemalClassification, StringFormat='Female Classification: {0}', TargetNullValue='Female Classification: N/A'}" />
+                        <Label Style="{StaticResource DetailLabelStyle}" Text="{Binding PetRegistration.NumberOffspring, StringFormat='Number of Offspring: {0}', TargetNullValue='Number of Offspring: 0'}" />
+                        <Label Style="{StaticResource DetailLabelStyle}" Text="{Binding PetRegistration.OwnershipTypeDescription, StringFormat='Habitat Description: {0}', TargetNullValue=''}" />
+                        <Label Style="{StaticResource DetailLabelStyle}" Text="{Binding PetRegistration.AnimalColorDescription, StringFormat='Color: {0}', TargetNullValue=''}" />
+                        <Label Style="{StaticResource DetailLabelStyle}" Text="{Binding PetRegistration.TagDescription, StringFormat='Tag Description: {0}', TargetNullValue=''}" />
+                        <Label Style="{StaticResource DetailLabelStyle}" Text="{Binding PetRegistration.TagID, StringFormat='Tag ID: {0}', TargetNullValue=''}" />
+                        <Label Style="{StaticResource DetailLabelStyle}" Text="{Binding PetRegistration.TagNo, StringFormat='Tag Number: {0}', TargetNullValue='Tag Number: None'}" />
+                        <Label Style="{StaticResource DetailLabelStyle}" Text="{Binding PetRegistration.Remarks, StringFormat='Remarks: {0}', TargetNullValue=''}" />
+                    </VerticalStackLayout>
                 </Frame>
+
+                <!--  Pet's Image Grid  -->
                 <Frame
+                    Margin="20"
                     Padding="20"
-                    BackgroundColor="#6AE96A"
                     CornerRadius="20">
-                    <StackLayout>
-                        <Label
-                            FontAttributes="Bold"
-                            FontSize="24"
-                            HorizontalOptions="Center"
-                            Text="Pet's Image" />
+                    <VerticalStackLayout>
+                        <Label Style="{StaticResource SectionTitleStyle}" Text="Pet's Image" />
                         <Grid ColumnSpacing="10" RowSpacing="10">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*" />
@@ -149,109 +88,100 @@
                                 <RowDefinition Height="*" />
                                 <RowDefinition Height="*" />
                             </Grid.RowDefinitions>
+
+                            <!--  Image 1  -->
                             <Frame
                                 Grid.Row="0"
                                 Grid.Column="0"
-                                Padding="0"
-                                BackgroundColor="White"
-                                BorderColor="Gray"
-                                CornerRadius="10">
+                                Style="{StaticResource ImageFrameStyle}">
                                 <Grid>
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="*" />
-                                        <RowDefinition Height="Auto" />
-                                    </Grid.RowDefinitions>
                                     <Image
-                                        Grid.Row="0"
                                         Aspect="AspectFill"
                                         HeightRequest="200"
                                         Source="{Binding PetGetImage1}" />
                                     <Label
-                                        Grid.Row="1"
-                                        HorizontalOptions="Center"
+                                        BackgroundColor="Black"
+                                        HorizontalOptions="FillAndExpand"
+                                        HorizontalTextAlignment="Center"
+                                        Opacity=".5"
                                         Text="Image 1"
+                                        TextColor="White"
                                         VerticalOptions="End" />
                                 </Grid>
                             </Frame>
+
+                            <!--  Image 2  -->
                             <Frame
                                 Grid.Row="0"
                                 Grid.Column="1"
-                                Padding="0"
-                                BackgroundColor="White"
-                                BorderColor="Gray"
-                                CornerRadius="10">
+                                Style="{StaticResource ImageFrameStyle}">
                                 <Grid>
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="*" />
-                                        <RowDefinition Height="Auto" />
-                                    </Grid.RowDefinitions>
                                     <Image
-                                        Grid.Row="0"
                                         Aspect="AspectFill"
                                         HeightRequest="200"
                                         Source="{Binding PetGetImage2}" />
                                     <Label
-                                        Grid.Row="1"
-                                        HorizontalOptions="Center"
+                                        BackgroundColor="Black"
+                                        HorizontalOptions="FillAndExpand"
+                                        HorizontalTextAlignment="Center"
+                                        Opacity=".5"
                                         Text="Image 2"
+                                        TextColor="White"
                                         VerticalOptions="End" />
                                 </Grid>
                             </Frame>
+
+                            <!--  Image 3  -->
                             <Frame
                                 Grid.Row="1"
                                 Grid.Column="0"
-                                Padding="0"
-                                BackgroundColor="White"
-                                BorderColor="Gray"
-                                CornerRadius="10">
+                                Style="{StaticResource ImageFrameStyle}">
                                 <Grid>
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="*" />
-                                        <RowDefinition Height="Auto" />
-                                    </Grid.RowDefinitions>
                                     <Image
-                                        Grid.Row="0"
                                         Aspect="AspectFill"
                                         HeightRequest="200"
                                         Source="{Binding PetGetImage3}" />
                                     <Label
-                                        Grid.Row="1"
-                                        HorizontalOptions="Center"
+                                        BackgroundColor="Black"
+                                        HorizontalOptions="FillAndExpand"
+                                        HorizontalTextAlignment="Center"
+                                        Opacity=".5"
                                         Text="Image 3"
+                                        TextColor="White"
                                         VerticalOptions="End" />
                                 </Grid>
                             </Frame>
+
+                            <!--  Image 4  -->
                             <Frame
                                 Grid.Row="1"
                                 Grid.Column="1"
-                                Padding="0"
-                                BackgroundColor="White"
-                                BorderColor="Gray"
-                                CornerRadius="10">
+                                Style="{StaticResource ImageFrameStyle}">
                                 <Grid>
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="*" />
-                                        <RowDefinition Height="Auto" />
-                                    </Grid.RowDefinitions>
                                     <Image
-                                        Grid.Row="0"
                                         Aspect="AspectFill"
                                         HeightRequest="200"
                                         Source="{Binding PetGetImage4}" />
                                     <Label
-                                        Grid.Row="1"
-                                        HorizontalOptions="Center"
+                                        BackgroundColor="Black"
+                                        HorizontalOptions="FillAndExpand"
+                                        HorizontalTextAlignment="Center"
+                                        Opacity=".5"
                                         Text="Image 4"
+                                        TextColor="White"
                                         VerticalOptions="End" />
                                 </Grid>
                             </Frame>
+
                         </Grid>
-                    </StackLayout>
+                    </VerticalStackLayout>
                 </Frame>
-            </StackLayout>
+            </VerticalStackLayout>
         </ScrollView>
+
+        <!--  Loading Indicator  -->
         <StackLayout
-            Grid.Row="1"
+            Grid.Row="0"
             AbsoluteLayout.LayoutBounds="0,0,1,1"
             AbsoluteLayout.LayoutFlags="All"
             BackgroundColor="#80000000"

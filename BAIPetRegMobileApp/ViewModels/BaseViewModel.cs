@@ -1,8 +1,8 @@
-﻿using BAIPetRegMobileApp.Models.PetRegistration;
+﻿using Android.Service.Autofill;
+using BAIPetRegMobileApp.Models.PetRegistration;
 using BAIPetRegMobileApp.Models.User;
 using BAIPetRegMobileApp.Services;
 using CommunityToolkit.Mvvm.ComponentModel;
-using CommunityToolkit.Mvvm.Input;
 using System.Collections.ObjectModel;
 
 namespace BAIPetRegMobileApp.ViewModels
@@ -14,13 +14,13 @@ namespace BAIPetRegMobileApp.ViewModels
         [ObservableProperty] private bool isProfileLoaded;
         [ObservableProperty] private bool isPetRegisteredLoaded;
         [ObservableProperty] private bool isBusy;
-        [ObservableProperty] private User? userViewModel;
         [ObservableProperty] private string? welcomeMessage;
         [ObservableProperty] private ObservableCollection<PetRegistration> petRegistrations = new();
         [ObservableProperty] private ImageSource? petGetImage1;
         [ObservableProperty] private ImageSource? petGetImage2;
         [ObservableProperty] private ImageSource? petGetImage3;
         [ObservableProperty] private ImageSource? petGetImage4;
+        [ObservableProperty] private User? userData;
 
         public BaseViewModel(ClientService clientService)
         {
@@ -37,10 +37,10 @@ namespace BAIPetRegMobileApp.ViewModels
             try
             {
                 IsBusy = true;
-                UserViewModel = await clientService.GetProfile();
-                if (UserViewModel != null)
+                UserData = await clientService.GetProfile();
+                if (UserData != null)
                 {
-                    WelcomeMessage = $"Welcome {UserViewModel.Firstname ?? UserViewModel.UserName}!";
+                    WelcomeMessage = $"Welcome {UserData.Firstname ?? UserData.UserName}!";
                     IsProfileLoaded = true;
                 }
                 else
@@ -76,29 +76,7 @@ namespace BAIPetRegMobileApp.ViewModels
             finally { IsBusy = false; }
         }
 
-        [RelayCommand]
-        public async Task LoadPetImagesAsync(string id)
-        {
-            IsBusy = true;
-            try
-            {
-                var registrations = await clientService.GetPetRegistrationByIdAsync(id);
-                PetGetImage1 = LoadImage(registrations.PetImage1);
-                PetGetImage2 = LoadImage(registrations.PetImage2);
-                PetGetImage3 = LoadImage(registrations.PetImage3);
-                PetGetImage4 = LoadImage(registrations.PetImage4);
-            }
-            catch (Exception ex)
-            {
-                await HandleException(ex);
-            }
-            finally
-            {
-                IsBusy = false;
-            }
-        }
-
-        private ImageSource LoadImage(string imageName) =>
+        public ImageSource LoadImage(string imageName) =>
             ImageSource.FromStream(() => clientService.GetPetImageAsync(imageName).Result);
     }
 }

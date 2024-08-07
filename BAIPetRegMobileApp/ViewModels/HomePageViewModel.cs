@@ -1,5 +1,4 @@
-﻿using AndroidX.Lifecycle;
-using BAIPetRegMobileApp.Services;
+﻿using BAIPetRegMobileApp.Services;
 using BAIPetRegMobileApp.Views;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
@@ -14,9 +13,7 @@ namespace BAIPetRegMobileApp.ViewModels
         private bool isRefreshing;
 
         public HomePageViewModel(ClientService clientService) : base(clientService)
-        {
-           
-        }
+        {}
 
         [RelayCommand]
         public async Task ShowMoreAsync(string id)
@@ -48,8 +45,7 @@ namespace BAIPetRegMobileApp.ViewModels
                     {
                         if (!string.IsNullOrEmpty(registration.PetImage1))
                         {
-                            var imagePetSource = await clientService.GetPetImageAsync(registration.PetImage1!);
-                            registration.PetImageSource = ImageSource.FromStream(() => imagePetSource);
+                            registration.PetImageSource = LoadImage(registration.PetImage1);
                         }
                         PetRegistrations.Add(registration);
                     }

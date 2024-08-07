@@ -26,7 +26,7 @@
                     HorizontalTextAlignment="Start"
                     Placeholder="Enter First Name"
                     PlaceholderColor="#808080"
-                    Text="{Binding UserViewModel.Firstname}"
+                    Text="{Binding UserData.Firstname}"
                     TextColor="Black" />
 
                 <!--  middlename  -->
@@ -43,7 +43,7 @@
                     HorizontalTextAlignment="Start"
                     Placeholder="Enter Middle Name"
                     PlaceholderColor="#808080"
-                    Text="{Binding UserViewModel.MiddleName}"
+                    Text="{Binding UserData.MiddleName}"
                     TextColor="Black" />
 
                 <!--  lastname  -->
@@ -60,7 +60,7 @@
                     HorizontalTextAlignment="Start"
                     Placeholder="Enter Last Name"
                     PlaceholderColor="#808080"
-                    Text="{Binding UserViewModel.Lastname}"
+                    Text="{Binding UserData.Lastname}"
                     TextColor="Black" />
 
                 <!--  extension name  -->
@@ -77,7 +77,7 @@
                     HorizontalTextAlignment="Start"
                     Placeholder="Enter Extension Name"
                     PlaceholderColor="#808080"
-                    Text="{Binding UserViewModel.ExtensionName}"
+                    Text="{Binding UserData.ExtensionName}"
                     TextColor="Black" />
 
                 <!--  birthday  -->
@@ -90,7 +90,7 @@
                 <DatePicker
                     Margin="20,0,20,40"
                     BackgroundColor="#e2f2e1"
-                    Date="{Binding UserViewModel.Birthday}"
+                    Date="{Binding UserData.Birthday}"
                     FontSize="20"
                     Format="dd/MM/yyyy"
                     TextColor="Black" />
@@ -128,7 +128,7 @@
                     HorizontalTextAlignment="Start"
                     Placeholder="Enter Email"
                     PlaceholderColor="#808080"
-                    Text="{Binding UserViewModel.Email}"
+                    Text="{Binding UserData.Email}"
                     TextColor="Black" />
 
                 <!--  Contact Number  -->
@@ -145,7 +145,7 @@
                     HorizontalTextAlignment="Start"
                     Placeholder="Enter Contact Number"
                     PlaceholderColor="#808080"
-                    Text="{Binding UserViewModel.MobileNumber}"
+                    Text="{Binding UserData.MobileNumber}"
                     TextColor="Black" />
 
                 <!--  Region  -->
