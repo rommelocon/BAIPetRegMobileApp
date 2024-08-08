@@ -6,6 +6,7 @@
     xmlns:local="clr-namespace:BAIPetRegMobileApp"
     xmlns:view="clr-namespace:BAIPetRegMobileApp.Views"
     x:DataType="local:AppShell"
+    FlyoutBackground="White"
     Shell.BackgroundColor="#096B00"
     Shell.FlyoutBehavior="Flyout"
     Shell.TabBarIsVisible="False"
@@ -13,6 +14,7 @@
 
     <!--  Flyout Items  -->
     <FlyoutItem FlyoutDisplayOptions="AsMultipleItems">
+
         <ShellContent
             Title="Home"
             ContentTemplate="{DataTemplate view:HomePage}"
@@ -34,35 +36,35 @@
         <Tab
             Title="Species"
             Icon="animals.png"
-            IsVisible="False">
+            IsVisible="True">
             <ShellContent
                 Title="Dog"
-                ContentTemplate="{DataTemplate view:DogBreedPage}"
+                ContentTemplate="{DataTemplate view:DogBreed}"
                 Icon="dog.png" />
             <ShellContent
                 Title="Cat"
-                ContentTemplate="{DataTemplate view:CatBreedPage}"
+                ContentTemplate="{DataTemplate view:CatBreed}"
                 Icon="cat.png" />
         </Tab>
     </FlyoutItem>
 
     <Shell.ItemTemplate>
         <DataTemplate>
-            <Grid ColumnDefinitions="0.2*,0.7*">
+            <Grid BackgroundColor="White" ColumnDefinitions="0.2*,0.7*">
                 <Image
-                    Margin="5"
-                    HeightRequest="40"
-                    Source="{Binding FlyoutIcon}" />
+                        Margin="5"
+                        HeightRequest="40"
+                        Source="{Binding FlyoutIcon}" />
                 <Label
-                    Grid.Column="1"
-                    Text="{Binding Title}"
-                    VerticalTextAlignment="Center" />
+                        Grid.Column="1"
+                        Text="{Binding Title}"
+                        VerticalTextAlignment="Center" />
             </Grid>
         </DataTemplate>
     </Shell.ItemTemplate>
 
     <Shell.FlyoutHeader>
-        <StackLayout Padding="20">
+        <StackLayout Padding="20" BackgroundColor="White">
             <Image
                 Aspect="AspectFit"
                 MaximumWidthRequest="200"
@@ -71,7 +73,7 @@
     </Shell.FlyoutHeader>
 
     <Shell.FlyoutFooter>
-        <VerticalStackLayout Padding="10">
+        <VerticalStackLayout Padding="10" BackgroundColor="White">
             <Button
                 BackgroundColor="#096B00"
                 Command="{Binding LogoutCommand}"

@@ -35,7 +35,7 @@ public static class MauiProgram
         builder.Services.AddHttpClient("custom-httpclient", httpClient =>
         {
             var baseAddress = DeviceInfo.Platform == DevicePlatform.Android ? "https://10.0.2.2:5001" : "https://localhost:5001";
-            var baseAddressDevTunnel = "https://mzwtqd2v-5001.asse.devtunnels.ms";
+            var baseAddressDevTunnel = "https://sq428ngv-5001.asse.devtunnels.ms";
             httpClient.BaseAddress = new Uri(baseAddressDevTunnel);
         }).ConfigurePrimaryHttpMessageHandler(() =>
         {
@@ -50,8 +50,8 @@ public static class MauiProgram
         builder.Services.AddSingleton<PetRegisterPage>();
         builder.Services.AddSingleton<RegisterPage>();
         builder.Services.AddSingleton<ProfilePage>();
-        builder.Services.AddSingleton<DogBreedPage>();
-        builder.Services.AddSingleton<CatBreedPage>();
+        builder.Services.AddSingleton<DogBreed>();
+        builder.Services.AddSingleton<CatBreed>();
         builder.Services.AddSingleton<PetInformationPage>();
         builder.Services.AddSingleton<EditProfilePage>();
         builder.Services.AddSingleton<TOAPage>();

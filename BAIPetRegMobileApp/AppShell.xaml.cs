@@ -24,8 +24,8 @@ namespace BAIPetRegMobileApp
             Routing.RegisterRoute(nameof(RegisterPage), typeof(RegisterPage));
             Routing.RegisterRoute(nameof(ProfilePage), typeof(ProfilePage));
             Routing.RegisterRoute(nameof(PetInformationPage), typeof(PetInformationPage));
-            Routing.RegisterRoute(nameof(CatBreedPage), typeof(CatBreedPage));
-            Routing.RegisterRoute(nameof(DogBreedPage), typeof(DogBreedPage));
+            Routing.RegisterRoute(nameof(CatBreed), typeof(CatBreed));
+            Routing.RegisterRoute(nameof(DogBreed), typeof(DogBreed));
             Routing.RegisterRoute(nameof(TOAPage), typeof(TOAPage));
             Routing.RegisterRoute(nameof(EditProfilePage), typeof(EditProfilePage));
             Routing.RegisterRoute(nameof(SplashPage), typeof(SplashPage));
