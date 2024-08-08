@@ -19,7 +19,7 @@ namespace BAIPetRegMobileApp.ViewModels
         public async Task ShowMoreAsync(string id)
         {
             if (string.IsNullOrWhiteSpace(id)) return;
-            await Shell.Current.GoToAsync(nameof(PetInformationPage), new Dictionary<string, object>
+            await Shell.Current.GoToAsync("pet_information", new Dictionary<string, object>
             {
                 { "PetRegistrationID", id }
             });

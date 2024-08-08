@@ -17,18 +17,17 @@ namespace BAIPetRegMobileApp
 
         private void RegisterRoutes()
         {
-            Routing.RegisterRoute(nameof(LoginPage), typeof(LoginPage));
-            Routing.RegisterRoute(nameof(HomePage), typeof(HomePage));
-            Routing.RegisterRoute(nameof(FinalCheckingPage), typeof(FinalCheckingPage));
-            Routing.RegisterRoute(nameof(PetRegisterPage), typeof(PetRegisterPage));
-            Routing.RegisterRoute(nameof(RegisterPage), typeof(RegisterPage));
-            Routing.RegisterRoute(nameof(ProfilePage), typeof(ProfilePage));
-            Routing.RegisterRoute(nameof(PetInformationPage), typeof(PetInformationPage));
-            Routing.RegisterRoute(nameof(CatBreedPage), typeof(CatBreedPage));
-            Routing.RegisterRoute(nameof(DogBreedPage), typeof(DogBreedPage));
-            Routing.RegisterRoute(nameof(TOAPage), typeof(TOAPage));
-            Routing.RegisterRoute(nameof(EditProfilePage), typeof(EditProfilePage));
-            Routing.RegisterRoute(nameof(SplashPage), typeof(SplashPage));
+            Routing.RegisterRoute("login", typeof(LoginPage));
+            Routing.RegisterRoute("home", typeof(HomePage));
+            Routing.RegisterRoute("final_checking", typeof(FinalCheckingPage));
+            Routing.RegisterRoute("pet_registration", typeof(PetRegisterPage));
+            Routing.RegisterRoute("register", typeof(RegisterPage));
+            Routing.RegisterRoute("profile", typeof(ProfilePage));
+            Routing.RegisterRoute("pet_information", typeof(PetInformationPage));
+            Routing.RegisterRoute("cat_breed", typeof(CatBreedPage));
+            Routing.RegisterRoute("dog_breed", typeof(DogBreedPage));
+            Routing.RegisterRoute("TOA", typeof(TOAPage));
+            Routing.RegisterRoute("edit_profile", typeof(EditProfilePage));
         }
 
         [RelayCommand]
@@ -38,7 +37,7 @@ namespace BAIPetRegMobileApp
             {
                 await clientService.Logout();
                 Shell.Current.FlyoutIsPresented = false;
-                await Shell.Current.GoToAsync(nameof(LoginPage));
+                await Shell.Current.GoToAsync("login");
             }
             catch (Exception ex)
             {

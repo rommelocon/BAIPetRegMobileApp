@@ -21,7 +21,7 @@ namespace BAIPetRegMobileApp.ViewModels
             _ = LoadPetCountsAsync();
         }
 
-        private async void InitializeProfilePage()
+        public async void InitializeProfilePage()
         {
             UserData = await clientService.GetProfile();
         }
@@ -45,7 +45,7 @@ namespace BAIPetRegMobileApp.ViewModels
         [RelayCommand]
         private async Task EditProfileButton()
         {
-            await Shell.Current.GoToAsync(nameof(EditProfilePage));
+            await Shell.Current.GoToAsync("edit_profile");
         }
     }
 }

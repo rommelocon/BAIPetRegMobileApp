@@ -11,7 +11,7 @@ namespace BAIPetRegMobileApp
 
         private async void BtnGetStarted_Clicked(object sender, EventArgs e)
         {
-            await Shell.Current.GoToAsync(nameof(LoginPage));
+            await Shell.Current.GoToAsync("login");
         }
     }
 }

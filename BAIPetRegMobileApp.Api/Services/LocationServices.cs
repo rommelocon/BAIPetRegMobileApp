@@ -27,7 +27,7 @@ namespace BAIPetRegMobileApp.Api.Services
                     Rcode = r.Rcode,
                     RegionName = r.RegionName
                 })
-                .OrderByDescending(p => p.RegionName)
+                .OrderBy(p => p.Rcode)
                 .ToListAsync();
         }
 
@@ -42,7 +42,7 @@ namespace BAIPetRegMobileApp.Api.Services
                     ProvCode = p.ProvCode,
                     ProvinceName = p.ProvinceName
                 })
-                .OrderByDescending(p => p.ProvinceName)
+                .OrderBy(p => p.ProvinceName)
                 .ToListAsync();
         }
 
@@ -57,7 +57,7 @@ namespace BAIPetRegMobileApp.Api.Services
                     MunCode = m.MunCode,
                     MunCity = m.MunCity
                 })
-                .OrderByDescending(p => p.MunCity)
+                .OrderBy(p => p.MunCity)
                 .ToListAsync();
         }
 
@@ -72,7 +72,7 @@ namespace BAIPetRegMobileApp.Api.Services
                     Bcode = b.Bcode,
                     BarangayName = b.BarangayName
                 })
-                .OrderByDescending(p => p.BarangayName)
+                .OrderBy(p => p.BarangayName)
                 .ToListAsync();
         }
     }

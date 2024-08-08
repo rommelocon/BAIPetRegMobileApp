@@ -8,7 +8,8 @@
     x:DataType="local:AppShell"
     Shell.BackgroundColor="#096B00"
     Shell.FlyoutBehavior="Flyout"
-    Shell.TabBarIsVisible="False"
+    Shell.TabBarForegroundColor="#096B00"
+    Shell.TabBarTitleColor="#096B00"
     Shell.TitleColor="#FFFFFF">
 
     <!--  Flyout Items  -->
@@ -16,33 +17,56 @@
         <ShellContent
             Title="Home"
             ContentTemplate="{DataTemplate view:HomePage}"
-            Icon="home.png" />
+            Icon="home.png"
+            Route="home" />
         <ShellContent
             Title="Profile"
             ContentTemplate="{DataTemplate view:ProfilePage}"
-            Icon="profile_user.png" />
+            Icon="profile_user.png"
+            Route="profile" />
         <ShellContent
             Title="Register Pet"
             ContentTemplate="{DataTemplate view:PetRegisterPage}"
-            Icon="pawprint.png" />
+            Icon="pawprint.png"
+            Route="register_pet" />
         <ShellContent
             Title="Edit Profile"
             ContentTemplate="{DataTemplate view:EditProfilePage}"
-            IsVisible="False" />
+            IsVisible="False"
+            Route="edit_profile" />
+        <ShellContent
+            Title="Succesfully Registered Pet"
+            ContentTemplate="{DataTemplate view:FinalCheckingPage}"
+            IsVisible="False"
+            Route="final_checking" />
+        <ShellContent
+            Title="Terms of Agreement"
+            ContentTemplate="{DataTemplate view:TOAPage}"
+            IsVisible="False"
+            Route="TOA" />
+        <ShellContent
+            Title="Details"
+            ContentTemplate="{DataTemplate view:PetInformationPage}"
+            IsVisible="False"
+            Route="pet_information" />
+        <ShellContent
+            Title="Login"
+            ContentTemplate="{DataTemplate view:LoginPage}"
+            IsVisible="False"
+            Route="login" />
 
         <!--  Tab within FlyoutItem  -->
-        <Tab
-            Title="Species"
-            Icon="animals.png"
-            IsVisible="False">
+        <Tab Title="Species" Icon="animals.png">
             <ShellContent
                 Title="Dog"
                 ContentTemplate="{DataTemplate view:DogBreedPage}"
-                Icon="dog.png" />
+                Icon="dog.png"
+                Route="dogbreed" />
             <ShellContent
                 Title="Cat"
                 ContentTemplate="{DataTemplate view:CatBreedPage}"
-                Icon="cat.png" />
+                Icon="cat.png"
+                Route="catbreed" />
         </Tab>
     </FlyoutItem>
 

@@ -40,9 +40,14 @@
                 Command="{Binding ExecuteRefreshCommand}"
                 IsRefreshing="{Binding IsRefreshing}">
                 <ScrollView>
-                    <VerticalStackLayout>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
                         <ActivityIndicator
-                            Grid.Row="1"
+                            Grid.Row="0"
                             Margin="10"
                             HorizontalOptions="CenterAndExpand"
                             IsRunning="{Binding IsBusy}"
@@ -50,6 +55,7 @@
                             VerticalOptions="CenterAndExpand"
                             Color="Black" />
                         <Label
+                            Grid.Row="0"
                             Margin="20,20,20,0"
                             FontAttributes="Bold"
                             FontSize="Large"
@@ -57,7 +63,7 @@
                             Style="{StaticResource Headline}"
                             Text="{Binding WelcomeMessage}"
                             TextColor="#096B00" />
-                        <CollectionView ItemsSource="{Binding PetRegistrations}">
+                        <CollectionView Grid.Row="1" ItemsSource="{Binding PetRegistrations}">
                             <CollectionView.ItemTemplate>
                                 <DataTemplate>
                                     <StackLayout Padding="12">
@@ -129,7 +135,7 @@
                                 </DataTemplate>
                             </CollectionView.ItemTemplate>
                         </CollectionView>
-                    </VerticalStackLayout>
+                    </Grid>
                 </ScrollView>
             </RefreshView>
         </Grid>

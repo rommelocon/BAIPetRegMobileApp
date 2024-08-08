@@ -26,7 +26,7 @@ public partial class TOAPage : ContentPage
         if (AcceptCheckBox.IsChecked)
         {
             // Navigate to another page
-            await Shell.Current.GoToAsync(nameof(PetRegisterPage));
+            await Shell.Current.GoToAsync("pet_registration");
         }
     }
 }

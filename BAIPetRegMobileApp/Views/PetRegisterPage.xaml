@@ -4,8 +4,46 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
-    xmlns:views="clr-namespace:BAIPetRegMobileApp.ViewModels"
-    x:DataType="views:PetRegisterPageViewModel">
+    xmlns:views="clr-namespace:BAIPetRegMobileApp.ViewModels">
+
+    <ContentPage.Resources>
+        <!--  Define common styles  -->
+        <Style x:Key="CommonLabelStyle" TargetType="Label">
+            <Setter Property="FontAttributes" Value="Bold" />
+            <Setter Property="FontSize" Value="20" />
+            <Setter Property="TextColor" Value="Black" />
+            <Setter Property="Margin" Value="40,20,0,0" />
+        </Style>
+
+        <Style x:Key="EntryBorderStyle" TargetType="Border">
+            <Setter Property="Margin" Value="20,0,20,0" />
+            <Setter Property="BackgroundColor" Value="#DCF4DA" />
+            <Setter Property="Padding" Value="10" />
+            <Setter Property="StrokeShape">
+                <Setter.Value>
+                    <RoundRectangle CornerRadius="15" />
+                </Setter.Value>
+            </Setter>
+            <Setter Property="StrokeThickness" Value="0" />
+            <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+        </Style>
+
+        <Style x:Key="CommonEntryStyle" TargetType="Entry">
+            <Setter Property="BackgroundColor" Value="Transparent" />
+            <Setter Property="FontSize" Value="20" />
+            <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+            <Setter Property="IsSpellCheckEnabled" Value="False" />
+            <Setter Property="IsTextPredictionEnabled" Value="False" />
+            <Setter Property="VerticalOptions" Value="Center" />
+        </Style>
+
+        <Style x:Key="CommonPickerStyle" TargetType="Picker">
+            <Setter Property="FontSize" Value="20" />
+            <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+            <Setter Property="TitleColor" Value="Black" />
+        </Style>
+    </ContentPage.Resources>
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -20,6 +58,7 @@
 
         <ScrollView Grid.Row="1">
             <VerticalStackLayout>
+                <!--  Page Title  -->
                 <Label
                     Margin="0,30,0,0"
                     FontAttributes="Bold"
@@ -28,6 +67,8 @@
                     HorizontalOptions="Center"
                     Text="Pet Registration"
                     TextColor="#096B00" />
+
+                <!--  Animal Information Label  -->
                 <Label
                     Margin="40,50,0,0"
                     FontAttributes="Bold"
@@ -37,106 +78,48 @@
                     Text="Animal Information"
                     TextColor="#096B00" />
 
-                <!--  Pet's Name Entry  -->
+                <!--  Pet's Name  -->
                 <StackLayout>
-                    <Label
-                        Margin="40,20,0,0"
-                        FontAttributes="Bold"
-                        FontSize="20"
-                        Text="Pet's Name *"
-                        TextColor="Black" />
-                    <Frame
-                        Margin="30,10"
-                        Padding="10"
-                        BackgroundColor="#DCF4DA"
-                        BorderColor="Transparent"
-                        CornerRadius="15"
-                        HasShadow="False"
-                        HorizontalOptions="FillAndExpand">
+                    <Label Style="{StaticResource CommonLabelStyle}" Text="Pet's Name*" />
+                    <Border Style="{StaticResource EntryBorderStyle}">
                         <Entry
-                            x:Name="EntryPetName"
-                            BackgroundColor="Transparent"
-                            FontAttributes="None"
-                            FontSize="20"
-                            HorizontalOptions="FillAndExpand"
-                            IsSpellCheckEnabled="False"
-                            IsTextPredictionEnabled="False"
+                            x:DataType="views:PetRegisterPageViewModel"
                             Placeholder="Pet's Name"
                             PlaceholderColor="Black"
-                            Text="{Binding PetRegistration.PetName}"
-                            VerticalOptions="Center">
-                            <Entry.Behaviors>
-                                <toolkit:TextValidationBehavior
-                                    x:Name="petNameValidator"
-                                    Flags="ValidateOnAttaching,ValidateOnValueChanged"
-                                    MinimumLength="1" />
-                            </Entry.Behaviors>
-                        </Entry>
-                    </Frame>
+                            Style="{StaticResource CommonEntryStyle}"
+                            Text="{Binding PetRegistration.PetName}" />
+                    </Border>
                 </StackLayout>
 
                 <!--  Alias Entry  -->
                 <StackLayout>
-                    <Label
-                        Margin="40,20,0,0"
-                        FontAttributes="Bold"
-                        FontSize="20"
-                        Text="Alias"
-                        TextColor="Black" />
-                    <Frame
-                        Margin="30,10"
-                        Padding="10"
-                        BackgroundColor="#DCF4DA"
-                        BorderColor="Transparent"
-                        CornerRadius="15"
-                        HasShadow="False"
-                        HorizontalOptions="FillAndExpand">
+                    <Label Style="{StaticResource CommonLabelStyle}" Text="Alias" />
+                    <Border Style="{StaticResource EntryBorderStyle}">
                         <Entry
-                            x:Name="EntryAlias"
-                            BackgroundColor="Transparent"
-                            FontAttributes="None"
-                            FontSize="20"
-                            HorizontalOptions="FillAndExpand"
-                            IsSpellCheckEnabled="False"
-                            IsTextPredictionEnabled="False"
+                            x:DataType="views:PetRegisterPageViewModel"
                             Placeholder="Alias"
                             PlaceholderColor="Black"
-                            Text="{Binding PetRegistration.Alias}"
-                            VerticalOptions="Center" />
-                    </Frame>
+                            Style="{StaticResource CommonEntryStyle}"
+                            Text="{Binding PetRegistration.Alias}" />
+                    </Border>
                 </StackLayout>
 
-                <!--  Type OwnerShip Picker  -->
+                <!--  Type of Ownership Picker  -->
                 <StackLayout>
-                    <Label
-                        Margin="40,20,0,0"
-                        FontAttributes="Bold"
-                        FontSize="20"
-                        Text="Type of Ownership *"
-                        TextColor="Black" />
-                    <Frame
-                        Margin="30,10"
-                        Padding="10"
-                        BackgroundColor="#DCF4DA"
-                        BorderColor="Transparent"
-                        CornerRadius="15"
-                        HasShadow="False"
-                        HorizontalOptions="FillAndExpand">
+                    <Label Style="{StaticResource CommonLabelStyle}" Text="Type of Ownership*" />
+                    <Border Style="{StaticResource EntryBorderStyle}">
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="Auto" />
                             </Grid.ColumnDefinitions>
                             <Picker
-                                x:Name="OwnershipList"
                                 Title="Type of Ownership"
-                                Grid.Column="0"
-                                FontSize="20"
+                                x:DataType="views:PetRegisterPageViewModel"
                                 ItemDisplayBinding="{Binding OwnerShipDescription}"
                                 ItemsSource="{Binding OwnerShipTypes}"
                                 SelectedItem="{Binding SelectedOwnerShipType, Mode=TwoWay}"
-                                Style="{StaticResource NoUnderlinePicker}"
-                                TitleColor="Black" />
+                                Style="{StaticResource CommonPickerStyle}" />
                             <Label
                                 Grid.Column="1"
                                 Margin="0,0,10,0"
@@ -147,40 +130,25 @@
                                 TextColor="Black"
                                 VerticalOptions="Center" />
                         </Grid>
-                    </Frame>
+                    </Border>
                 </StackLayout>
 
                 <!--  Species Picker  -->
                 <StackLayout>
-                    <Label
-                        Margin="40,20,0,0"
-                        FontAttributes="Bold"
-                        FontSize="20"
-                        Text="Species *"
-                        TextColor="Black" />
-                    <Frame
-                        Margin="30,10"
-                        Padding="10"
-                        BackgroundColor="#DCF4DA"
-                        BorderColor="Transparent"
-                        CornerRadius="15"
-                        HasShadow="False"
-                        HorizontalOptions="FillAndExpand">
+                    <Label Style="{StaticResource CommonLabelStyle}" Text="Species*" />
+                    <Border Style="{StaticResource EntryBorderStyle}">
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="Auto" />
                             </Grid.ColumnDefinitions>
                             <Picker
-                                x:Name="SpeciesList"
-                                Title="Select Species"
-                                Grid.Column="0"
-                                FontSize="20"
+                                Title="Species"
+                                x:DataType="views:PetRegisterPageViewModel"
                                 ItemDisplayBinding="{Binding SpeciesCommonName}"
                                 ItemsSource="{Binding SpeciesGroups}"
                                 SelectedItem="{Binding SelectedSpeciesGroup, Mode=TwoWay}"
-                                Style="{StaticResource NoUnderlinePicker}"
-                                TitleColor="Black" />
+                                Style="{StaticResource CommonPickerStyle}" />
                             <Label
                                 Grid.Column="1"
                                 Margin="0,0,10,0"
@@ -191,40 +159,25 @@
                                 TextColor="Black"
                                 VerticalOptions="Center" />
                         </Grid>
-                    </Frame>
+                    </Border>
                 </StackLayout>
 
-                <!--  Breed Picker  -->
+                <!--  BreedPicker  -->
                 <StackLayout>
-                    <Label
-                        Margin="40,20,0,0"
-                        FontAttributes="Bold"
-                        FontSize="20"
-                        Text="Breed *"
-                        TextColor="Black" />
-                    <Frame
-                        Margin="30,10"
-                        Padding="10"
-                        BackgroundColor="#DCF4DA"
-                        BorderColor="Transparent"
-                        CornerRadius="15"
-                        HasShadow="False"
-                        HorizontalOptions="FillAndExpand">
+                    <Label Style="{StaticResource CommonLabelStyle}" Text="Breed*" />
+                    <Border Style="{StaticResource EntryBorderStyle}">
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="Auto" />
                             </Grid.ColumnDefinitions>
                             <Picker
-                                x:Name="BreedList"
-                                Title="Select Breed"
-                                Grid.Column="0"
-                                FontSize="20"
+                                Title="Breed"
+                                x:DataType="views:PetRegisterPageViewModel"
                                 ItemDisplayBinding="{Binding BreedDescription}"
                                 ItemsSource="{Binding SpeciesBreeds}"
                                 SelectedItem="{Binding SelectedSpeciesBreed, Mode=TwoWay}"
-                                Style="{StaticResource NoUnderlinePicker}"
-                                TitleColor="Black" />
+                                Style="{StaticResource CommonPickerStyle}" />
                             <Label
                                 Grid.Column="1"
                                 Margin="0,0,10,0"
@@ -234,68 +187,26 @@
                                 Text="arrow_drop_down"
                                 TextColor="Black"
                                 VerticalOptions="Center" />
-
                         </Grid>
-                    </Frame>
-
+                    </Border>
                 </StackLayout>
 
-                <!--  Date Picker  -->
+                <!--  Gender  -->
                 <StackLayout>
-                    <Label
-                        Margin="40,20,0,0"
-                        FontAttributes="Bold"
-                        FontSize="20"
-                        Text="Date of Birth *"
-                        TextColor="Black" />
-                    <Frame
-                        Margin="30,10"
-                        Padding="10"
-                        BackgroundColor="#DCF4DA"
-                        BorderColor="Transparent"
-                        CornerRadius="15"
-                        HasShadow="False"
-                        HorizontalOptions="FillAndExpand">
-                        <DatePicker
-                            x:Name="BirtDate"
-                            Date="{Binding SelectedPetDateofBirth, Mode=TwoWay}"
-                            FontSize="20"
-                            Format="dd/MM/yyyy"
-                            MaximumDate="{Binding MaximumDate}" />
-                    </Frame>
-                </StackLayout>
-
-                <!--  Sex  -->
-                <StackLayout>
-                    <Label
-                        Margin="40,20,0,0"
-                        FontAttributes="Bold"
-                        FontSize="20"
-                        Text="Sex *"
-                        TextColor="Black" />
-                    <Frame
-                        Margin="30,10"
-                        Padding="10"
-                        BackgroundColor="#DCF4DA"
-                        BorderColor="Transparent"
-                        CornerRadius="15"
-                        HasShadow="False"
-                        HorizontalOptions="FillAndExpand">
+                    <Label Style="{StaticResource CommonLabelStyle}" Text="Gender" />
+                    <Border Style="{StaticResource EntryBorderStyle}">
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="Auto" />
                             </Grid.ColumnDefinitions>
                             <Picker
-                                x:Name="SexList"
-                                Title="Select Sex"
-                                Grid.Column="0"
-                                FontSize="20"
+                                Title="Select Gender"
+                                x:DataType="views:PetRegisterPageViewModel"
                                 ItemDisplayBinding="{Binding SexDescription}"
                                 ItemsSource="{Binding SexTypes}"
                                 SelectedItem="{Binding SelectedSexType, Mode=TwoWay}"
-                                Style="{StaticResource NoUnderlinePicker}"
-                                TitleColor="Black" />
+                                Style="{StaticResource CommonPickerStyle}" />
                             <Label
                                 Grid.Column="1"
                                 Margin="0,0,10,0"
@@ -306,201 +217,13 @@
                                 TextColor="Black"
                                 VerticalOptions="Center" />
                         </Grid>
-                    </Frame>
-
-                    <StackLayout IsVisible="{Binding IsFemaleSelected}">
-                        <Label
-                            Margin="40,20,0,0"
-                            FontAttributes="Bold"
-                            FontSize="20"
-                            Text="Female Classification *"
-                            TextColor="Black" />
-                        <Frame
-                            Margin="30,10"
-                            Padding="10"
-                            BackgroundColor="#DCF4DA"
-                            BorderColor="Transparent"
-                            CornerRadius="15"
-                            HasShadow="False"
-                            HorizontalOptions="FillAndExpand">
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*" />
-                                    <ColumnDefinition Width="Auto" />
-                                </Grid.ColumnDefinitions>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="*" />
-                                    <RowDefinition Height="Auto" />
-                                </Grid.RowDefinitions>
-                                <Picker
-                                    x:Name="FemaleClassificationList"
-                                    Title="Select Female Classification"
-                                    Grid.Row="0"
-                                    Grid.Column="0"
-                                    FontSize="20"
-                                    ItemDisplayBinding="{Binding AnimalFemalClassification}"
-                                    ItemsSource="{Binding AnimalFemaleClassifications}"
-                                    SelectedItem="{Binding SelectedAnimalFemaleClassification, Mode=TwoWay}"
-                                    Style="{StaticResource NoUnderlinePicker}"
-                                    TitleColor="Black" />
-                                <Label
-                                    Grid.Row="0"
-                                    Grid.Column="1"
-                                    Margin="0,0,10,0"
-                                    FontFamily="MaterialIconsOutlined-Regular"
-                                    FontSize="40"
-                                    HorizontalOptions="End"
-                                    Text="arrow_drop_down"
-                                    TextColor="Black"
-                                    VerticalOptions="Center" />
-                                <Entry
-                                    Grid.Row="1"
-                                    IsVisible="{Binding IsLactatingSelected}"
-                                    Keyboard="Numeric"
-                                    Placeholder="Tag Number"
-                                    Text="{Binding PetRegistration.NumberOffspring}" />
-                            </Grid>
-                        </Frame>
-                    </StackLayout>
+                    </Border>
                 </StackLayout>
 
-                <!--  Animal Color  -->
-                <StackLayout>
-                    <Label
-                        Margin="40,20,0,0"
-                        FontAttributes="Bold"
-                        FontSize="20"
-                        Text="Animal Color *"
-                        TextColor="Black" />
-                    <Frame
-                        Margin="30,10"
-                        Padding="10"
-                        BackgroundColor="#DCF4DA"
-                        BorderColor="Transparent"
-                        CornerRadius="15"
-                        HasShadow="False"
-                        HorizontalOptions="FillAndExpand">
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="Auto" />
-                            </Grid.ColumnDefinitions>
-                            <Picker
-                                x:Name="AnimalColorList"
-                                Title="Select Animal Color"
-                                Grid.Column="0"
-                                FontSize="20"
-                                ItemDisplayBinding="{Binding AnimalColorDescription}"
-                                ItemsSource="{Binding AnimalColors}"
-                                SelectedItem="{Binding SelectedAnimalColor, Mode=TwoWay}"
-                                Style="{StaticResource NoUnderlinePicker}"
-                                TitleColor="Black" />
-                            <Label
-                                Grid.Column="1"
-                                Margin="0,0,10,0"
-                                FontFamily="MaterialIconsOutlined-Regular"
-                                FontSize="40"
-                                HorizontalOptions="End"
-                                Text="arrow_drop_down"
-                                TextColor="Black"
-                                VerticalOptions="Center" />
-                        </Grid>
-                    </Frame>
-                </StackLayout>
-
-                <!--  Contact with Other Animals?  -->
-                <StackLayout>
-                    <Label
-                        Margin="40,20,0,0"
-                        FontAttributes="Bold"
-                        FontSize="20"
-                        Text="Contact with other Animals? *"
-                        TextColor="Black" />
-                    <Frame
-                        Margin="30,10"
-                        Padding="10"
-                        BackgroundColor="#DCF4DA"
-                        BorderColor="Transparent"
-                        CornerRadius="15"
-                        HasShadow="False"
-                        HorizontalOptions="FillAndExpand">
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="Auto" />
-                            </Grid.ColumnDefinitions>
-                            <Picker
-                                x:Name="ContactwOtherAnimals"
-                                Title="Select"
-                                Grid.Column="0"
-                                FontSize="20"
-                                ItemDisplayBinding="{Binding AnimalContactDescription}"
-                                ItemsSource="{Binding AnimalContacts}"
-                                SelectedItem="{Binding SelectedAnimalContact, Mode=TwoWay}"
-                                Style="{StaticResource NoUnderlinePicker}"
-                                TitleColor="Black" />
-                            <Label
-                                Grid.Column="1"
-                                Margin="0,0,10,0"
-                                FontFamily="MaterialIconsOutlined-Regular"
-                                FontSize="40"
-                                HorizontalOptions="End"
-                                Text="arrow_drop_down"
-                                TextColor="Black"
-                                VerticalOptions="Center" />
-                        </Grid>
-                    </Frame>
-                </StackLayout>
-
-                <!--  Weight Entry  -->
-                <StackLayout>
-                    <Label
-                        Margin="40,20,0,0"
-                        FontAttributes="Bold"
-                        FontSize="20"
-                        Text="Weight(KGS) *"
-                        TextColor="Black" />
-                    <Frame
-                        Margin="30,10"
-                        Padding="10"
-                        BackgroundColor="#DCF4DA"
-                        BorderColor="Transparent"
-                        CornerRadius="15"
-                        HasShadow="False"
-                        HorizontalOptions="FillAndExpand">
-                        <Entry
-                            x:Name="PetWeight"
-                            BackgroundColor="Transparent"
-                            FontAttributes="None"
-                            FontSize="20"
-                            HorizontalOptions="FillAndExpand"
-                            IsSpellCheckEnabled="False"
-                            IsTextPredictionEnabled="False"
-                            Keyboard="Numeric"
-                            MaxLength="5"
-                            Placeholder="Input Weight(KGS)"
-                            PlaceholderColor="Black"
-                            Text="{Binding PetRegistration.Weight}"
-                            VerticalOptions="Center" />
-                    </Frame>
-                </StackLayout>
-
-                <!--  Tag Type  -->
-                <StackLayout>
-                    <Label
-                        Margin="40,20,0,0"
-                        FontAttributes="Bold"
-                        FontSize="20"
-                        Text="Tag Type *"
-                        TextColor="Black" />
-                    <Frame
-                        Margin="30,10"
-                        Padding="10"
-                        BackgroundColor="#DCF4DA"
-                        BorderColor="Transparent"
-                        CornerRadius="15"
-                        HasShadow="False"
-                        HorizontalOptions="FillAndExpand">
+                <!--  Female Classification  -->
+                <StackLayout IsVisible="{Binding IsFemaleSelected}">
+                    <Label Style="{StaticResource CommonLabelStyle}" Text="Female Classification" />
+                    <Border Style="{StaticResource EntryBorderStyle}">
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*" />
@@ -508,19 +231,158 @@
                             </Grid.ColumnDefinitions>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="*" />
-                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="*" />
                             </Grid.RowDefinitions>
                             <Picker
-                                x:Name="TagType"
-                                Title="Select Tag Type"
+                                Title="Select Female Classification"
+                                Grid.Row="0"
+                                x:DataType="views:PetRegisterPageViewModel"
+                                ItemDisplayBinding="{Binding AnimalFemalClassification}"
+                                ItemsSource="{Binding AnimalFemaleClassifications}"
+                                SelectedItem="{Binding SelectedAnimalFemaleClassification, Mode=TwoWay}"
+                                Style="{StaticResource CommonPickerStyle}" />
+                            <Label
                                 Grid.Row="0"
                                 Grid.Column="0"
+                                Margin="0,0,10,0"
+                                FontFamily="MaterialIconsOutlined-Regular"
+                                FontSize="40"
+                                HorizontalOptions="End"
+                                Text="arrow_drop_down"
+                                TextColor="Black"
+                                VerticalOptions="Center" />
+                            <Entry
+                                Grid.Row="1"
+                                IsVisible="{Binding IsLactatingSelected}"
+                                Keyboard="Numeric"
+                                Placeholder="Number of Offspring"
+                                Text="{Binding PetRegistration.NumberOffspring}" />
+                        </Grid>
+                    </Border>
+                </StackLayout>
+
+                <!--  AnimalColor  -->
+                <StackLayout>
+                    <Label Style="{StaticResource CommonLabelStyle}" Text="Color" />
+                    <Border Style="{StaticResource EntryBorderStyle}">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <Picker
+                                Title="Select Gender"
+                                x:DataType="views:PetRegisterPageViewModel"
+                                ItemDisplayBinding="{Binding AnimalColorDescription}"
+                                ItemsSource="{Binding AnimalColors}"
+                                SelectedItem="{Binding SelectedAnimalColor, Mode=TwoWay}"
+                                Style="{StaticResource CommonPickerStyle}" />
+                            <Label
+                                Grid.Column="1"
+                                Margin="0,0,10,0"
+                                FontFamily="MaterialIconsOutlined-Regular"
+                                FontSize="40"
+                                HorizontalOptions="End"
+                                Text="arrow_drop_down"
+                                TextColor="Black"
+                                VerticalOptions="Center" />
+                        </Grid>
+                    </Border>
+                </StackLayout>
+
+                <!--  ContactwithOtherAnimals?  -->
+                <StackLayout>
+                    <Label Style="{StaticResource CommonLabelStyle}" Text="Contact with other Animals" />
+                    <Border Style="{StaticResource EntryBorderStyle}">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <Picker
+                                Title="Contact with other Animals"
+                                x:DataType="views:PetRegisterPageViewModel"
+                                ItemDisplayBinding="{Binding AnimalContactDescription}"
+                                ItemsSource="{Binding AnimalContacts}"
+                                SelectedItem="{Binding SelectedAnimalContact, Mode=TwoWay}"
+                                Style="{StaticResource CommonPickerStyle}" />
+                            <Label
+                                Grid.Column="1"
+                                Margin="0,0,10,0"
+                                FontFamily="MaterialIconsOutlined-Regular"
+                                FontSize="40"
+                                HorizontalOptions="End"
+                                Text="arrow_drop_down"
+                                TextColor="Black"
+                                VerticalOptions="Center" />
+                        </Grid>
+                    </Border>
+                </StackLayout>
+
+                <!--  Weight Entry  -->
+                <StackLayout>
+                    <Label Style="{StaticResource CommonLabelStyle}" Text="Weight" />
+                    <Border Style="{StaticResource EntryBorderStyle}">
+                        <Entry
+                            x:DataType="views:PetRegisterPageViewModel"
+                            Keyboard="Numeric"
+                            Placeholder="Weight"
+                            PlaceholderColor="Black"
+                            Style="{StaticResource CommonEntryStyle}"
+                            Text="{Binding PetRegistration.Weight}" />
+                    </Border>
+                </StackLayout>
+
+                <!--  Date of Birth  -->
+                <StackLayout>
+                    <Label Style="{StaticResource CommonLabelStyle}" Text="Date of Birth" />
+                    <Border Style="{StaticResource EntryBorderStyle}">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <DatePicker
+                                x:DataType="views:PetRegisterPageViewModel"
+                                Date="{Binding PetRegistration.PetDateofBirth, Mode=TwoWay}"
                                 FontSize="20"
+                                Format="dd/MM/yyyy"
+                                HorizontalOptions="FillAndExpand"
+                                MaximumDate="{Binding MaximumDate}"
+                                TextColor="Black" />
+                            <Label
+                                Grid.Column="1"
+                                Margin="0,0,10,0"
+                                FontFamily="MaterialIconsOutlined-Regular"
+                                FontSize="40"
+                                HorizontalOptions="End"
+                                Text="calendar_today"
+                                TextColor="Black"
+                                VerticalOptions="Center" />
+                        </Grid>
+                    </Border>
+                </StackLayout>
+
+                <!--  Tag Type  -->
+                <StackLayout>
+                    <Label Style="{StaticResource CommonLabelStyle}" Text="Tag Type" />
+                    <Border Style="{StaticResource EntryBorderStyle}">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+                            <Picker
+                                Title="Select Tag Type"
+                                x:DataType="views:PetRegisterPageViewModel"
                                 ItemDisplayBinding="{Binding TagDescription}"
                                 ItemsSource="{Binding TagTypes}"
                                 SelectedItem="{Binding SelectedTagType, Mode=TwoWay}"
-                                Style="{StaticResource NoUnderlinePicker}"
-                                TitleColor="Black" />
+                                Style="{StaticResource CommonPickerStyle}" />
                             <Label
                                 Grid.Row="0"
                                 Grid.Column="1"
@@ -538,126 +400,51 @@
                                 Placeholder="Tag Number"
                                 Text="{Binding PetRegistration.TagNo}" />
                         </Grid>
-                    </Frame>
+                    </Border>
                 </StackLayout>
 
                 <!--  Remarks  -->
                 <StackLayout>
-                    <Label
-                        Margin="40,20,0,0"
-                        FontAttributes="Bold"
-                        FontSize="20"
-                        Text="Remarks *"
-                        TextColor="Black" />
-                    <Frame
-                        Margin="30,10"
-                        Padding="10"
-                        BackgroundColor="#DCF4DA"
-                        BorderColor="Transparent"
-                        CornerRadius="15"
-                        HasShadow="False"
-                        HorizontalOptions="FillAndExpand">
+                    <Label Style="{StaticResource CommonLabelStyle}" Text="Remarks*" />
+                    <Border Style="{StaticResource EntryBorderStyle}">
                         <Editor
+                            x:DataType="views:PetRegisterPageViewModel"
                             AutoSize="TextChanges"
                             FontSize="18"
                             HeightRequest="150"
                             Placeholder="Enter your remarks..."
                             Text="{Binding PetRegistration.Remarks, Mode=TwoWay}"
                             TextColor="Black" />
-                    </Frame>
+                    </Border>
                 </StackLayout>
 
-                <StackLayout Margin="20,0,20,0">
-                    <Label
-                        FontAttributes="Bold"
-                        FontSize="Large"
-                        HorizontalOptions="Center"
-                        Text="Animal Images"
-                        TextColor="Green" />
-                    <Label
-                        FontSize="Medium"
-                        HorizontalOptions="Center"
-                        Text="Pet’s Image" />
+                <CollectionView ItemsSource="{Binding ImageItems}">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <VerticalStackLayout Margin="20">
+                                <Border HeightRequest="320" WidthRequest="320">
+                                    <Image
+                                        Margin="0"
+                                        Aspect="AspectFill"
+                                        HeightRequest="320"
+                                        Source="{Binding ImageSource}"
+                                        WidthRequest="320" />
+                                </Border>
+                                <Button
+                                    BackgroundColor="#096B00"
+                                    Command="{Binding PickImageCommand}"
+                                    Text="Pick Image"
+                                    WidthRequest="320" />
+                            </VerticalStackLayout>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
 
-                    <!--  Image Frame  -->
-                    <Frame
-                        Margin="20"
-                        Padding="1"
-                        BorderColor="Gray"
-                        CornerRadius="0"
-                        HasShadow="False"
-                        HeightRequest="500">
-                        <StackLayout>
-                            <Image
-                                x:Name="Image1"
-                                Aspect="AspectFit"
-                                HeightRequest="500"
-                                Source="{Binding SelectedImage1}" />
-                        </StackLayout>
-                    </Frame>
-                    <Button Command="{Binding PickImage1Command}" Text="Pick Image 1" />
-
-                    <!--  Image Frame  -->
-                    <Frame
-                        Margin="20"
-                        Padding="1"
-                        BorderColor="Gray"
-                        CornerRadius="0"
-                        HasShadow="False"
-                        HeightRequest="500">
-                        <StackLayout>
-                            <Image
-                                x:Name="Image2"
-                                Aspect="AspectFit"
-                                HeightRequest="500"
-                                Source="{Binding SelectedImage2}" />
-                        </StackLayout>
-                    </Frame>
-                    <Button Command="{Binding PickImage2Command}" Text="Pick Image 2" />
-
-                    <!--  Image Frame  -->
-                    <Frame
-                        Margin="20"
-                        Padding="1"
-                        BorderColor="Gray"
-                        CornerRadius="0"
-                        HasShadow="False"
-                        HeightRequest="500">
-                        <StackLayout>
-                            <Image
-                                x:Name="Image3"
-                                Aspect="AspectFit"
-                                HeightRequest="500"
-                                Source="{Binding SelectedImage3}" />
-                        </StackLayout>
-                    </Frame>
-                    <Button Command="{Binding PickImage3Command}" Text="Pick Image 3" />
-
-                    <!--  Image Frame  -->
-                    <Frame
-                        Margin="20"
-                        Padding="1"
-                        BorderColor="Gray"
-                        CornerRadius="0"
-                        HasShadow="False"
-                        HeightRequest="500">
-                        <StackLayout>
-                            <Image
-                                x:Name="Image4"
-                                Aspect="AspectFit"
-                                HeightRequest="500"
-                                Source="{Binding SelectedImage4}" />
-                        </StackLayout>
-                    </Frame>
-                    <Button Command="{Binding PickImage4Command}" Text="Pick Image 4" />
-                </StackLayout>
-
-
-                <!--  Button for Submit  -->
+                <!--  Submit Button  -->
                 <Button
-                    x:Name="BtnSubmit"
                     Margin="60"
                     Padding="20"
+                    x:DataType="views:PetRegisterPageViewModel"
                     BackgroundColor="#096B00"
                     Command="{Binding PetRegistrationSubmitCommand}"
                     CornerRadius="10"
@@ -665,6 +452,7 @@
                     FontSize="20"
                     Text="SUBMIT"
                     TextColor="White" />
+
             </VerticalStackLayout>
         </ScrollView>
 
@@ -681,12 +469,6 @@
                 VerticalOptions="CenterAndExpand"
                 Color="White" />
         </StackLayout>
-    </Grid>
 
-    <ContentPage.Resources>
-        <Style x:Key="NoUnderlinePicker" TargetType="Picker">
-            <Setter Property="BackgroundColor" Value="Transparent" />
-            <Setter Property="FontSize" Value="20" />
-        </Style>
-    </ContentPage.Resources>
+    </Grid>
 </ContentPage>

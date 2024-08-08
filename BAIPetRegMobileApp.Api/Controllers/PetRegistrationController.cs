@@ -144,30 +144,30 @@ namespace BAIPetRegMobileApp.Api.Controllers
 
         [HttpGet("ownershipType")]
         public async Task<ActionResult<IEnumerable<OwnerShipType>>> GetOwnerShipType() =>
-            await _context.TblOwnerShipType.AsNoTracking().OrderByDescending(p => p.OwnerShipDescription).ToListAsync();
+            await _context.TblOwnerShipType.AsNoTracking().OrderBy(p => p.OwnerShipDescription).ToListAsync();
 
         [HttpGet("animalColor")]
         public async Task<ActionResult<IEnumerable<AnimalColor>>> GetAnimalColor() =>
-            await _context.TblAnimalColor.AsNoTracking().OrderByDescending(p => p.AnimalColorDescription).ToListAsync();
+            await _context.TblAnimalColor.AsNoTracking().OrderBy(p => p.AnimalColorDescription).ToListAsync();
 
         [HttpGet("animalContacts")]
         public async Task<ActionResult<IEnumerable<AnimalContact>>> GetAnimalContact() =>
-            await _context.TblAnimalContact.AsNoTracking().OrderByDescending(p => p.AnimalContactDescription).ToListAsync();
+            await _context.TblAnimalContact.AsNoTracking().OrderBy(p => p.AnimalContactDescription).ToListAsync();
 
         [HttpGet("animalFemaleClassificator")]
         public async Task<ActionResult<IEnumerable<AnimalFemaleClassification>>> GetAnimalFemaleClassificator() =>
-            await _context.TblAnimalFemalClassification.AsNoTracking().OrderByDescending(p => p.AnimalFemalClassification).ToListAsync();
+            await _context.TblAnimalFemalClassification.AsNoTracking().OrderBy(p => p.AnimalFemalClassification).ToListAsync();
 
         [HttpGet("petTagType")]
         public async Task<ActionResult<IEnumerable<PetTagType>>> GetPetTagType() =>
-            await _context.TblPetTagType.AsNoTracking().OrderByDescending(p => p.TagDescription).ToListAsync();
+            await _context.TblPetTagType.AsNoTracking().OrderBy(p => p.TagDescription).ToListAsync();
 
         [HttpGet("speciesBreed/{speciesCode}")]
         public async Task<ActionResult<IEnumerable<SpeciesBreed>>> GetSpeciesBreed(string speciesCode) =>
             await _context.TblSpeciesBreed
                 .Where(e => e.SpeciesCode == speciesCode)
                 .AsNoTracking()
-            .OrderByDescending(p => p.BreedDescription)
+                .OrderBy(p => p.BreedDescription)
                 .ToListAsync();
 
         [HttpGet("speciesGroup")]
@@ -175,11 +175,11 @@ namespace BAIPetRegMobileApp.Api.Controllers
             await _context.TblSpeciesGroup
                 .Where(e => e.SpeciesCommonName == "Dog" || e.SpeciesCommonName == "Cat")
                 .AsNoTracking()
-            .OrderByDescending(p => p.SpeciesCommonName)
+                .OrderBy(p => p.SpeciesCommonName)
                 .ToListAsync();
 
         [HttpGet("tagType")]
         public async Task<ActionResult<IEnumerable<TagType>>> GetTagType() =>
-            await _context.TblTagType.AsNoTracking().OrderByDescending(p => p.TagDescription).ToListAsync();
+            await _context.TblTagType.AsNoTracking().OrderBy(p => p.TagDescription).ToListAsync();
     }
 }

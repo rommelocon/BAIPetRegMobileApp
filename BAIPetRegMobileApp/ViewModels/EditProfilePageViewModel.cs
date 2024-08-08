@@ -9,13 +9,15 @@ namespace BAIPetRegMobileApp.ViewModels
 {
     public partial class EditProfilePageViewModel : BaseViewModel
     {
-        public EditProfilePageViewModel(ClientService clientService) : base(clientService)
+        private readonly ProfilePageViewModel _profilePageViewModel;
+        public EditProfilePageViewModel(ClientService clientService, ProfilePageViewModel profilePageViewModel) : base(clientService)
         {
             Regions = new ObservableCollection<Regions>();
             Provinces = new ObservableCollection<Provinces>();
             Municipalities = new ObservableCollection<Municipalities>();
             Barangays = new ObservableCollection<Barangays>();
             SexType = new ObservableCollection<SexType>();
+            _profilePageViewModel = profilePageViewModel;
             InitializeAsync();
         }
 
@@ -39,6 +41,28 @@ namespace BAIPetRegMobileApp.ViewModels
                 await InitializeProfileAsync();
                 await LoadRegionsAsync();
                 await LoadSexTypeAsync();
+
+                // Set the initial selected values based on UserData
+                SelectedSexType = SexType.FirstOrDefault(s => s.SexID == UserData?.SexID);
+                SelectedRegion = Regions.FirstOrDefault(r => r.Rcode == UserData?.RcodeNum);
+
+                if (SelectedRegion != null)
+                {
+                    await LoadProvincesAsync();
+                    SelectedProvince = Provinces.FirstOrDefault(p => p.ProvCode == UserData?.PcodeNum);
+                }
+
+                if (SelectedProvince != null)
+                {
+                    await LoadMunicipalitiesAsync();
+                    SelectedMunicipality = Municipalities.FirstOrDefault(m => m.MunCode == UserData?.McodeNum);
+                }
+
+                if (SelectedMunicipality != null)
+                {
+                    await LoadBarangaysAsync();
+                    SelectedBarangay = Barangays.FirstOrDefault(b => b.Bcode == UserData?.Bcode);
+                }
             }
             catch (Exception ex)
             {
@@ -116,7 +140,7 @@ namespace BAIPetRegMobileApp.ViewModels
                     UserData.RcodeNum = SelectedRegion?.Rcode;
                     UserData.Region = SelectedRegion?.RegionName;
                     UserData.PcodeNum = SelectedProvince?.ProvCode;
-                    UserData.PcodeNum = SelectedProvince?.ProvinceName;
+                    UserData.ProvinceName = SelectedProvince?.ProvinceName;
                     UserData.McodeNum = SelectedMunicipality?.MunCode;
                     UserData.MunicipalitiesCities = SelectedMunicipality?.MunCity;
                     UserData.Bcode = SelectedBarangay?.Bcode;
@@ -128,7 +152,8 @@ namespace BAIPetRegMobileApp.ViewModels
 
                 if (response.IsSuccessStatusCode)
                 {
-                    await Shell.Current.GoToAsync(nameof(ProfilePage));
+                    _profilePageViewModel.InitializeProfilePage();
+                    await Shell.Current.GoToAsync("//profile");
                 }
             }
             catch (Exception ex)

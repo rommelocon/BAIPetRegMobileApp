@@ -6,6 +6,44 @@
     xmlns:viewmodels="clr-namespace:BAIPetRegMobileApp.ViewModels"
     Title="Edit Profile">
 
+    <ContentPage.Resources>
+        <!--  Define common styles  -->
+        <Style x:Key="CommonLabelStyle" TargetType="Label">
+            <Setter Property="FontAttributes" Value="Bold" />
+            <Setter Property="FontSize" Value="20" />
+            <Setter Property="TextColor" Value="Black" />
+            <Setter Property="Margin" Value="40,20,0,0" />
+        </Style>
+
+        <Style x:Key="EntryBorderStyle" TargetType="Border">
+            <Setter Property="Margin" Value="20,0,20,0" />
+            <Setter Property="BackgroundColor" Value="#DCF4DA" />
+            <Setter Property="Padding" Value="10" />
+            <Setter Property="StrokeShape">
+                <Setter.Value>
+                    <RoundRectangle CornerRadius="15" />
+                </Setter.Value>
+            </Setter>
+            <Setter Property="StrokeThickness" Value="0" />
+            <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+        </Style>
+
+        <Style x:Key="CommonEntryStyle" TargetType="Entry">
+            <Setter Property="BackgroundColor" Value="Transparent" />
+            <Setter Property="FontSize" Value="20" />
+            <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+            <Setter Property="IsSpellCheckEnabled" Value="False" />
+            <Setter Property="IsTextPredictionEnabled" Value="False" />
+            <Setter Property="VerticalOptions" Value="Center" />
+        </Style>
+
+        <Style x:Key="CommonPickerStyle" TargetType="Picker">
+            <Setter Property="FontSize" Value="20" />
+            <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+            <Setter Property="TitleColor" Value="Black" />
+        </Style>
+    </ContentPage.Resources>
+
     <Grid x:DataType="viewmodels:EditProfilePageViewModel">
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
@@ -13,220 +51,140 @@
         <ScrollView Grid.Row="0">
             <VerticalStackLayout>
                 <!--  firstname  -->
-                <Label
-                    Margin="20,0,0,0"
-                    FontSize="20"
-                    HorizontalTextAlignment="Start"
-                    Text="First Name"
-                    TextColor="Black" />
-                <Entry
-                    Margin="20,0,20,40"
-                    BackgroundColor="#e2f2e1"
-                    FontSize="20"
-                    HorizontalTextAlignment="Start"
-                    Placeholder="Enter First Name"
-                    PlaceholderColor="#808080"
-                    Text="{Binding UserData.Firstname}"
-                    TextColor="Black" />
+                <Label Style="{StaticResource CommonLabelStyle}" Text="First Name" />
+                <Border Style="{StaticResource EntryBorderStyle}">
+                    <Entry
+                        Placeholder="Enter First Name"
+                        Style="{StaticResource CommonEntryStyle}"
+                        Text="{Binding UserData.Firstname}" />
+                </Border>
 
                 <!--  middlename  -->
-                <Label
-                    Margin="20,0,0,0"
-                    FontSize="20"
-                    HorizontalTextAlignment="Start"
-                    Text="Middle Name"
-                    TextColor="Black" />
-                <Entry
-                    Margin="20,0,20,40"
-                    BackgroundColor="#e2f2e1"
-                    FontSize="20"
-                    HorizontalTextAlignment="Start"
-                    Placeholder="Enter Middle Name"
-                    PlaceholderColor="#808080"
-                    Text="{Binding UserData.MiddleName}"
-                    TextColor="Black" />
+                <Label Style="{StaticResource CommonLabelStyle}" Text="Middle Name" />
+                <Border Style="{StaticResource EntryBorderStyle}">
+                    <Entry
+                        Placeholder="Enter Middle Name"
+                        Style="{StaticResource CommonEntryStyle}"
+                        Text="{Binding UserData.MiddleName}" />
+                </Border>
 
                 <!--  lastname  -->
-                <Label
-                    Margin="20,0,0,0"
-                    FontSize="20"
-                    HorizontalTextAlignment="Start"
-                    Text="Last Name"
-                    TextColor="Black" />
-                <Entry
-                    Margin="20,0,20,40"
-                    BackgroundColor="#e2f2e1"
-                    FontSize="20"
-                    HorizontalTextAlignment="Start"
-                    Placeholder="Enter Last Name"
-                    PlaceholderColor="#808080"
-                    Text="{Binding UserData.Lastname}"
-                    TextColor="Black" />
+                <Label Style="{StaticResource CommonLabelStyle}" Text="Last Name" />
+                <Border Style="{StaticResource EntryBorderStyle}">
+                    <Entry
+                        Placeholder="Enter Last Name"
+                        Style="{StaticResource CommonEntryStyle}"
+                        Text="{Binding UserData.Lastname}" />
+                </Border>
 
                 <!--  extension name  -->
-                <Label
-                    Margin="20,0,0,0"
-                    FontSize="20"
-                    HorizontalTextAlignment="Start"
-                    Text="Extension Name"
-                    TextColor="Black" />
-                <Entry
-                    Margin="20,0,20,40"
-                    BackgroundColor="#e2f2e1"
-                    FontSize="20"
-                    HorizontalTextAlignment="Start"
-                    Placeholder="Enter Extension Name"
-                    PlaceholderColor="#808080"
-                    Text="{Binding UserData.ExtensionName}"
-                    TextColor="Black" />
+                <Label Style="{StaticResource CommonLabelStyle}" Text="Extension Name" />
+                <Border Style="{StaticResource EntryBorderStyle}">
+                    <Entry
+                        Placeholder="Enter Extension Name"
+                        Style="{StaticResource CommonEntryStyle}"
+                        Text="{Binding UserData.ExtensionName}" />
+                </Border>
 
                 <!--  birthday  -->
-                <Label
-                    Margin="20,0,0,0"
-                    FontSize="20"
-                    HorizontalTextAlignment="Start"
-                    Text="Birthday"
-                    TextColor="Black" />
-                <DatePicker
-                    Margin="20,0,20,40"
-                    BackgroundColor="#e2f2e1"
-                    Date="{Binding UserData.Birthday}"
-                    FontSize="20"
-                    Format="dd/MM/yyyy"
-                    TextColor="Black" />
+                <Label Style="{StaticResource CommonLabelStyle}" Text="Birthday" />
+                <Border Style="{StaticResource EntryBorderStyle}">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <DatePicker
+                            Date="{Binding UserData.Birthday}"
+                            Format="dd/MM/yyyy"
+                            Style="{StaticResource CommonPickerStyle}" />
+                        <Label
+                            Grid.Column="1"
+                            Margin="0,0,10,0"
+                            FontFamily="MaterialIconsOutlined-Regular"
+                            FontSize="30"
+                            HorizontalOptions="End"
+                            Text="calendar_today"
+                            TextColor="Black"
+                            VerticalOptions="Center" />
+                    </Grid>
+                </Border>
 
                 <!--  sex  -->
-                <Label
-                    Margin="20,0,0,0"
-                    FontSize="20"
-                    HorizontalTextAlignment="Start"
-                    Text="Sex"
-                    TextColor="Black" />
-                <Picker
-                    x:Name="sexTypePicker"
-                    Title="Gender"
-                    Margin="20,0,20,40"
-                    BackgroundColor="#e2f2e1"
-                    FontSize="20"
-                    HorizontalTextAlignment="Start"
-                    ItemDisplayBinding="{Binding SexDescription}"
-                    ItemsSource="{Binding SexType}"
-                    SelectedItem="{Binding SelectedSexType, Mode=TwoWay}"
-                    TextColor="Black" />
+                <Label Style="{StaticResource CommonLabelStyle}" Text="Gender" />
+                <Border Style="{StaticResource EntryBorderStyle}">
+                    <Picker
+                        Title="{Binding UserData.SexDescription, TargetNullValue='Select Gender'}"
+                        ItemDisplayBinding="{Binding SexDescription}"
+                        ItemsSource="{Binding SexType}"
+                        SelectedItem="{Binding SelectedSexType, Mode=TwoWay}"
+                        Style="{StaticResource CommonPickerStyle}" />
+                </Border>
 
                 <!--  email  -->
-                <Label
-                    Margin="20,0,0,0"
-                    FontSize="20"
-                    HorizontalTextAlignment="Start"
-                    Text="Email"
-                    TextColor="Black" />
-                <Entry
-                    Margin="20,0,20,40"
-                    BackgroundColor="#e2f2e1"
-                    FontSize="20"
-                    HorizontalTextAlignment="Start"
-                    Placeholder="Enter Email"
-                    PlaceholderColor="#808080"
-                    Text="{Binding UserData.Email}"
-                    TextColor="Black" />
+                <Label Style="{StaticResource CommonLabelStyle}" Text="Email" />
+                <Border Style="{StaticResource EntryBorderStyle}">
+                    <Entry
+                        Placeholder="Enter Email"
+                        Style="{StaticResource CommonEntryStyle}"
+                        Text="{Binding UserData.Email}" />
+                </Border>
 
                 <!--  Contact Number  -->
-                <Label
-                    Margin="20,0,0,0"
-                    FontSize="20"
-                    HorizontalTextAlignment="Start"
-                    Text="Contact Number"
-                    TextColor="Black" />
-                <Entry
-                    Margin="20,0,20,40"
-                    BackgroundColor="#e2f2e1"
-                    FontSize="20"
-                    HorizontalTextAlignment="Start"
-                    Placeholder="Enter Contact Number"
-                    PlaceholderColor="#808080"
-                    Text="{Binding UserData.MobileNumber}"
-                    TextColor="Black" />
+                <Label Style="{StaticResource CommonLabelStyle}" Text="Contact Number" />
+                <Border Style="{StaticResource EntryBorderStyle}">
+                    <Entry
+                        Placeholder="Enter Contact Number"
+                        Style="{StaticResource CommonEntryStyle}"
+                        Text="{Binding UserData.MobileNumber}" />
+                </Border>
 
                 <!--  Region  -->
-                <Label
-                    Margin="20,0,0,0"
-                    FontSize="20"
-                    HorizontalTextAlignment="Start"
-                    Text="Region"
-                    TextColor="Black" />
-                <Picker
-                    x:Name="regionPicker"
-                    Title="Select Region"
-                    Margin="20,0,20,40"
-                    BackgroundColor="#e2f2e1"
-                    FontSize="20"
-                    HorizontalTextAlignment="Start"
-                    ItemDisplayBinding="{Binding RegionName}"
-                    ItemsSource="{Binding Regions}"
-                    SelectedItem="{Binding SelectedRegion, Mode=TwoWay}"
-                    TextColor="Black" />
+                <Label Style="{StaticResource CommonLabelStyle}" Text="Region" />
+                <Border Style="{StaticResource EntryBorderStyle}">
+                    <Picker
+                        Title="{Binding UserData.Region, TargetNullValue='Select Region'}"
+                        ItemDisplayBinding="{Binding RegionName}"
+                        ItemsSource="{Binding Regions}"
+                        SelectedItem="{Binding SelectedRegion, Mode=TwoWay}"
+                        Style="{StaticResource CommonPickerStyle}" />
+                </Border>
 
                 <!--  Province  -->
-                <Label
-                    Margin="20,0,0,0"
-                    FontSize="20"
-                    HorizontalTextAlignment="Start"
-                    Text="Province"
-                    TextColor="Black" />
-                <Picker
-                    x:Name="provincePicker"
-                    Title="Select Province"
-                    Margin="20,0,20,40"
-                    BackgroundColor="#e2f2e1"
-                    FontSize="20"
-                    HorizontalTextAlignment="Start"
-                    ItemDisplayBinding="{Binding ProvinceName}"
-                    ItemsSource="{Binding Provinces}"
-                    SelectedItem="{Binding SelectedProvince, Mode=TwoWay}"
-                    TextColor="Black" />
+                <Label Style="{StaticResource CommonLabelStyle}" Text="Province" />
+                <Border Style="{StaticResource EntryBorderStyle}">
+                    <Picker
+                        Title="{Binding UserData.ProvinceName, TargetNullValue='Select Province'}"
+                        ItemDisplayBinding="{Binding ProvinceName}"
+                        ItemsSource="{Binding Provinces}"
+                        SelectedItem="{Binding SelectedProvince, Mode=TwoWay}"
+                        Style="{StaticResource CommonPickerStyle}" />
+                </Border>
 
                 <!--  Municipality  -->
-                <Label
-                    Margin="20,0,0,0"
-                    FontSize="20"
-                    HorizontalTextAlignment="Start"
-                    Text="Municipality"
-                    TextColor="Black" />
-                <Picker
-                    x:Name="municipalityPicker"
-                    Title="Select Municipality"
-                    Margin="20,0,20,40"
-                    BackgroundColor="#e2f2e1"
-                    FontSize="20"
-                    HorizontalTextAlignment="Start"
-                    ItemDisplayBinding="{Binding MunCity}"
-                    ItemsSource="{Binding Municipalities}"
-                    SelectedItem="{Binding SelectedMunicipality, Mode=TwoWay}"
-                    TextColor="Black" />
+                <Label Style="{StaticResource CommonLabelStyle}" Text="Municipality" />
+                <Border Style="{StaticResource EntryBorderStyle}">
+                    <Picker
+                        Title="{Binding UserData.MunicipalitiesCities, TargetNullValue='Select Municipality'}"
+                        ItemDisplayBinding="{Binding MunCity}"
+                        ItemsSource="{Binding Municipalities}"
+                        SelectedItem="{Binding SelectedMunicipality, Mode=TwoWay}"
+                        Style="{StaticResource CommonPickerStyle}" />
+                </Border>
 
                 <!--  Barangay  -->
-                <Label
-                    Margin="20,0,0,0"
-                    FontSize="20"
-                    HorizontalTextAlignment="Start"
-                    Text="Barangay"
-                    TextColor="Black" />
-                <Picker
-                    x:Name="barangayPicker"
-                    Title="Select Barangay"
-                    Margin="20,0,20,40"
-                    BackgroundColor="#e2f2e1"
-                    FontSize="20"
-                    HorizontalTextAlignment="Start"
-                    ItemDisplayBinding="{Binding BarangayName}"
-                    ItemsSource="{Binding Barangays}"
-                    SelectedItem="{Binding SelectedBarangay, Mode=TwoWay}"
-                    TextColor="Black" />
+                <Label Style="{StaticResource CommonLabelStyle}" Text="Barangay" />
+                <Border Style="{StaticResource EntryBorderStyle}">
+                    <Picker
+                        Title="{Binding UserData.BarangayName, TargetNullValue='Select Barangay'}"
+                        ItemDisplayBinding="{Binding BarangayName}"
+                        ItemsSource="{Binding Barangays}"
+                        SelectedItem="{Binding SelectedBarangay, Mode=TwoWay}"
+                        Style="{StaticResource CommonPickerStyle}" />
+                </Border>
 
                 <Button
-                    x:Name="SaveProfile"
-                    Margin="10"
+                    Margin="20"
                     Padding="20"
                     BackgroundColor="#096B00"
                     Command="{Binding SaveProfileCommand}"
