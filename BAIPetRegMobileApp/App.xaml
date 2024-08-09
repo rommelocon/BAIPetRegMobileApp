@@ -35,6 +35,95 @@
                     </Setter.Value>
                 </Setter>
             </Style>
+
+            <!--  Style Label and Entry  -->
+
+            <!--  Common Label Style  -->
+            <Style x:Key="DetailLabelStyle" TargetType="Label">
+                <Setter Property="BackgroundColor" Value="Transparent" />
+                <Setter Property="FontSize" Value="20" />
+                <Setter Property="TextColor" Value="Black" />
+                <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+                <Setter Property="VerticalOptions" Value="Center" />
+            </Style>
+
+            <!--  Common Border Style  -->
+            <Style x:Key="CommonBorderStyle" TargetType="Border">
+                <Setter Property="Margin" Value="20,0,20,20" />
+                <Setter Property="BackgroundColor" Value="#DCF4DA" />
+                <Setter Property="Padding" Value="10" />
+                <Setter Property="StrokeShape">
+                    <Setter.Value>
+                        <RoundRectangle CornerRadius="15" />
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="StrokeThickness" Value="0" />
+                <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+            </Style>
+
+            <!--  Section Header Style  -->
+            <Style x:Key="SectionHeaderStyle" TargetType="Label">
+                <Setter Property="FontSize" Value="24" />
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="TextColor" Value="White" />
+                <Setter Property="BackgroundColor" Value="#096B00" />
+                <Setter Property="Padding" Value="20" />
+                <Setter Property="HorizontalTextAlignment" Value="Center" />
+            </Style>
+
+            <!--  Image Frame Style  -->
+            <Style x:Key="ImageFrameStyle" TargetType="Frame">
+                <Setter Property="Padding" Value="0" />
+                <Setter Property="BackgroundColor" Value="White" />
+                <Setter Property="BorderColor" Value="Gray" />
+                <Setter Property="CornerRadius" Value="10" />
+            </Style>
+
+            <!--  Common Header Label Style  -->
+            <Style x:Key="CommonHeaderLabelStyle" TargetType="Label">
+                <Setter Property="Margin" Value="25,0,25,0" />
+                <Setter Property="FontSize" Value="22" />
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="HorizontalTextAlignment" Value="Start" />
+                <Setter Property="TextColor" Value="Black" />
+            </Style>
+
+            <Style x:Key="CommonTextLabelStyle" TargetType="Label">
+                <Setter Property="BackgroundColor" Value="Transparent" />
+                <Setter Property="FontSize" Value="20" />
+                <Setter Property="TextColor" Value="Black" />
+                <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+                <Setter Property="VerticalOptions" Value="Center" />
+            </Style>
+
+            <Style x:Key="LabelBaseStyle" TargetType="Label">
+                <Setter Property="FontSize" Value="20" />
+                <Setter Property="TextColor" Value="Black" />
+                <Setter Property="HorizontalTextAlignment" Value="Start" />
+            </Style>
+
+            <Style x:Key="ProfileLabelStyle" TargetType="Label">
+                <Setter Property="FontSize" Value="20" />
+                <Setter Property="TextColor" Value="Black" />
+                <Setter Property="BackgroundColor" Value="#e2f2e1" />
+                <Setter Property="Padding" Value="5" />
+                <Setter Property="Margin" Value="20,0,20,40" />
+            </Style>
+
+            <Style x:Key="BoldLabelStyle" TargetType="Label">
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="TextColor" Value="#096B00" />
+            </Style>
+
+            <Style x:Key="EditButtonStyle" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="#096B00" />
+                <Setter Property="CornerRadius" Value="10" />
+                <Setter Property="FontSize" Value="20" />
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="TextColor" Value="White" />
+                <Setter Property="Padding" Value="20" />
+                <Setter Property="Margin" Value="10" />
+            </Style>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

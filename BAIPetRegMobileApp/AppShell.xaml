@@ -29,31 +29,6 @@
             ContentTemplate="{DataTemplate view:PetRegisterPage}"
             Icon="pawprint.png"
             Route="register_pet" />
-        <ShellContent
-            Title="Edit Profile"
-            ContentTemplate="{DataTemplate view:EditProfilePage}"
-            IsVisible="False"
-            Route="edit_profile" />
-        <ShellContent
-            Title="Succesfully Registered Pet"
-            ContentTemplate="{DataTemplate view:FinalCheckingPage}"
-            IsVisible="False"
-            Route="final_checking" />
-        <ShellContent
-            Title="Terms of Agreement"
-            ContentTemplate="{DataTemplate view:TOAPage}"
-            IsVisible="False"
-            Route="TOA" />
-        <ShellContent
-            Title="Details"
-            ContentTemplate="{DataTemplate view:PetInformationPage}"
-            IsVisible="False"
-            Route="pet_information" />
-        <ShellContent
-            Title="Login"
-            ContentTemplate="{DataTemplate view:LoginPage}"
-            IsVisible="False"
-            Route="login" />
 
         <!--  Tab within FlyoutItem  -->
         <Tab Title="Species" Icon="animals.png">
@@ -69,6 +44,33 @@
                 Route="catbreed" />
         </Tab>
     </FlyoutItem>
+
+    <ShellContent
+        Title="Edit Profile"
+        ContentTemplate="{DataTemplate view:EditProfilePage}"
+        IsVisible="False"
+        Route="edit_profile" />
+    
+    <ShellContent
+        Title="Succesfully Registered Pet"
+        ContentTemplate="{DataTemplate view:FinalCheckingPage}"
+        IsVisible="False"
+        Route="final_checking" />
+    <ShellContent
+        Title="Terms of Agreement"
+        ContentTemplate="{DataTemplate view:TOAPage}"
+        IsVisible="False"
+        Route="TOA" />
+    <ShellContent
+        Title="Details"
+        ContentTemplate="{DataTemplate view:PetInformationPage}"
+        IsVisible="False"
+        Route="pet_information" />
+    <ShellContent
+        Title="Login"
+        ContentTemplate="{DataTemplate view:LoginPage}"
+        IsVisible="False"
+        Route="login" />
 
     <Shell.ItemTemplate>
         <DataTemplate>

@@ -8,40 +8,6 @@
 
     <ContentPage.Resources>
         <ResourceDictionary>
-            <!--  Common Styles  -->
-            <Style x:Key="LabelBaseStyle" TargetType="Label">
-                <Setter Property="FontSize" Value="20" />
-                <Setter Property="TextColor" Value="Black" />
-                <Setter Property="HorizontalTextAlignment" Value="Start" />
-            </Style>
-            <Style x:Key="SectionHeaderStyle" TargetType="Label">
-                <Setter Property="FontSize" Value="24" />
-                <Setter Property="FontAttributes" Value="Bold" />
-                <Setter Property="TextColor" Value="White" />
-                <Setter Property="BackgroundColor" Value="#096B00" />
-                <Setter Property="Padding" Value="20" />
-                <Setter Property="HorizontalTextAlignment" Value="Center" />
-            </Style>
-            <Style x:Key="ProfileLabelStyle" TargetType="Label">
-                <Setter Property="FontSize" Value="20" />
-                <Setter Property="TextColor" Value="Black" />
-                <Setter Property="BackgroundColor" Value="#e2f2e1" />
-                <Setter Property="Padding" Value="5" />
-                <Setter Property="Margin" Value="20,0,20,40" />
-            </Style>
-            <Style x:Key="BoldLabelStyle" TargetType="Label">
-                <Setter Property="FontAttributes" Value="Bold" />
-                <Setter Property="TextColor" Value="#096B00" />
-            </Style>
-            <Style x:Key="EditButtonStyle" TargetType="Button">
-                <Setter Property="BackgroundColor" Value="#096B00" />
-                <Setter Property="CornerRadius" Value="10" />
-                <Setter Property="FontSize" Value="20" />
-                <Setter Property="FontAttributes" Value="Bold" />
-                <Setter Property="TextColor" Value="White" />
-                <Setter Property="Padding" Value="20" />
-                <Setter Property="Margin" Value="10" />
-            </Style>
             <DataTemplate x:Key="ProfileInfoTemplate">
                 <ViewCell>
                     <StackLayout Padding="10">
@@ -165,214 +131,73 @@
 
                     <StackLayout Margin="10" x:DataType="viewmodels:ProfilePageViewModel">
                         <!--  User Information  -->
+
                         <!--  firstname  -->
-                        <Label
-                            Margin="20,0,0,0"
-                            FontSize="20"
-                            HorizontalTextAlignment="Start"
-                            Text="First Name"
-                            TextColor="Black" />
-                        <Label
-                            Margin="20,0,20,40"
-                            Padding="5"
-                            Background="#e2f2e1"
-                            FontSize="20"
-                            HorizontalTextAlignment="Start"
-                            Text="{Binding UserData.Firstname}"
-                            TextColor="Black" />
+                        <Label Style="{StaticResource CommonHeaderLabelStyle}" Text="First Name" />
+                        <Border Style="{StaticResource CommonBorderStyle}">
+                            <Label Style="{StaticResource CommonTextLabelStyle}" Text="{Binding UserData.Firstname}" />
+                        </Border>
                         <!--  middlename  -->
-                        <Label
-                            Margin="20,0,0,0"
-                            FontSize="20"
-                            HorizontalTextAlignment="Start"
-                            Text="Middle Name"
-                            TextColor="Black" />
-                        <Label
-                            Margin="20,0,20,40"
-                            Padding="5"
-                            Background="#e2f2e1"
-                            FontSize="20"
-                            HorizontalTextAlignment="Start"
-                            Text="{Binding UserData.MiddleName}"
-                            TextColor="Black" />
+                        <Label Style="{StaticResource CommonHeaderLabelStyle}" Text="Middle Name" />
+                        <Border Style="{StaticResource CommonBorderStyle}">
+                            <Label Style="{StaticResource CommonTextLabelStyle}" Text="{Binding UserData.MiddleName}" />
+                        </Border>
                         <!--  lastname  -->
-                        <Label
-                            Margin="20,0,0,0"
-                            FontSize="20"
-                            HorizontalTextAlignment="Start"
-                            Text="Last Name"
-                            TextColor="Black" />
-                        <Label
-                            Margin="20,0,20,40"
-                            Padding="5"
-                            Background="#e2f2e1"
-                            FontSize="20"
-                            HorizontalTextAlignment="Start"
-                            Text="{Binding UserData.Lastname}"
-                            TextColor="Black" />
+                        <Label Style="{StaticResource CommonHeaderLabelStyle}" Text="Last Name" />
+                        <Border Style="{StaticResource CommonBorderStyle}">
+                            <Label Style="{StaticResource CommonTextLabelStyle}" Text="{Binding UserData.Lastname}" />
+                        </Border>
                         <!--  extension name  -->
-                        <Label
-                            Margin="20,0,0,0"
-                            FontSize="20"
-                            HorizontalTextAlignment="Start"
-                            Text="Extension Name"
-                            TextColor="Black" />
-                        <Label
-                            Margin="20,0,20,40"
-                            Padding="5"
-                            Background="#e2f2e1"
-                            FontSize="20"
-                            HorizontalTextAlignment="Start"
-                            Text="{Binding UserData.ExtensionName, TargetNullValue='N/A'}"
-                            TextColor="Black" />
+                        <Label Style="{StaticResource CommonHeaderLabelStyle}" Text="Extension Name" />
+                        <Border Style="{StaticResource CommonBorderStyle}">
+                            <Label Style="{StaticResource CommonTextLabelStyle}" Text="{Binding UserData.ExtensionName, TargetNullValue='N/A'}" />
+                        </Border>
                         <!--  birthday  -->
-                        <Label
-                            Margin="20,0,0,0"
-                            FontSize="20"
-                            HorizontalTextAlignment="Start"
-                            Text="Birthday"
-                            TextColor="Black" />
-                        <Label
-                            Margin="20,0,20,40"
-                            Padding="5"
-                            Background="#e2f2e1"
-                            FontSize="20"
-                            HorizontalTextAlignment="Start"
-                            Text="{Binding UserData.Birthday}"
-                            TextColor="Black" />
+                        <Label Style="{StaticResource CommonHeaderLabelStyle}" Text="Birthday" />
+                        <Border Style="{StaticResource CommonBorderStyle}">
+                            <Label Style="{StaticResource CommonTextLabelStyle}" Text="{Binding UserData.Birthday, StringFormat='{0:MMMM dd yyyy}'}" />
+                        </Border>
                         <!--  sex  -->
-                        <Label
-                            Margin="20,0,0,0"
-                            FontSize="20"
-                            HorizontalTextAlignment="Start"
-                            Text="Sex"
-                            TextColor="Black" />
-                        <Label
-                            Margin="20,0,20,40"
-                            Padding="5"
-                            Background="#e2f2e1"
-                            FontSize="20"
-                            HorizontalTextAlignment="Start"
-                            Text="{Binding UserData.SexDescription}"
-                            TextColor="Black" />
+                        <Label Style="{StaticResource CommonHeaderLabelStyle}" Text="Sex" />
+                        <Border Style="{StaticResource CommonBorderStyle}">
+                            <Label Style="{StaticResource CommonTextLabelStyle}" Text="{Binding UserData.SexDescription}" />
+                        </Border>
                         <!--  email  -->
-                        <Label
-                            Margin="20,0,0,0"
-                            FontSize="20"
-                            HorizontalTextAlignment="Start"
-                            Text="Email"
-                            TextColor="Black" />
-                        <Label
-                            Margin="20,0,20,40"
-                            Padding="5"
-                            Background="#e2f2e1"
-                            FontSize="20"
-                            HorizontalTextAlignment="Start"
-                            Text="{Binding UserData.Email}"
-                            TextColor="Black" />
-
+                        <Label Style="{StaticResource CommonHeaderLabelStyle}" Text="Email" />
+                        <Border Style="{StaticResource CommonBorderStyle}">
+                            <Label Style="{StaticResource CommonTextLabelStyle}" Text="{Binding UserData.Email}" />
+                        </Border>
                         <!--  Contact Number  -->
-                        <Label
-                            Margin="20,0,0,0"
-                            FontSize="20"
-                            HorizontalTextAlignment="Start"
-                            Text="Contact Number"
-                            TextColor="Black" />
-                        <Label
-                            Margin="20,0,20,40"
-                            Padding="5"
-                            Background="#e2f2e1"
-                            FontAttributes="Italic"
-                            FontSize="20"
-                            HorizontalTextAlignment="Start"
-                            Text="{Binding UserData.MobileNumber}"
-                            TextColor="Black" />
-
+                        <Label Style="{StaticResource CommonHeaderLabelStyle}" Text="Contact Number" />
+                        <Border Style="{StaticResource CommonBorderStyle}">
+                            <Label Style="{StaticResource CommonTextLabelStyle}" Text="{Binding UserData.MobileNumber}" />
+                        </Border>
                         <!--  Region  -->
-                        <Label
-                            Margin="20,0,0,0"
-                            FontSize="20"
-                            HorizontalTextAlignment="Start"
-                            Text="Region"
-                            TextColor="Black" />
-                        <Label
-                            Margin="20,0,20,40"
-                            Padding="5"
-                            Background="#e2f2e1"
-                            FontAttributes="Italic"
-                            FontSize="20"
-                            HorizontalTextAlignment="Start"
-                            Text="{Binding UserData.Region}"
-                            TextColor="Black" />
-
+                        <Label Style="{StaticResource CommonHeaderLabelStyle}" Text="Region" />
+                        <Border Style="{StaticResource CommonBorderStyle}">
+                            <Label Style="{StaticResource CommonTextLabelStyle}" Text="{Binding UserData.Region}" />
+                        </Border>
                         <!--  Province  -->
-                        <Label
-                            Margin="20,0,0,0"
-                            FontSize="20"
-                            HorizontalTextAlignment="Start"
-                            Text="Province"
-                            TextColor="Black" />
-                        <Label
-                            Margin="20,0,20,40"
-                            Padding="5"
-                            Background="#e2f2e1"
-                            FontAttributes="Italic"
-                            FontSize="20"
-                            HorizontalTextAlignment="Start"
-                            Text="{Binding UserData.ProvinceName}"
-                            TextColor="Black" />
-
+                        <Label Style="{StaticResource CommonHeaderLabelStyle}" Text="Province" />
+                        <Border Style="{StaticResource CommonBorderStyle}">
+                            <Label Style="{StaticResource CommonTextLabelStyle}" Text="{Binding UserData.ProvinceName}" />
+                        </Border>
                         <!--  Municapality  -->
-                        <Label
-                            Margin="20,0,0,0"
-                            FontSize="20"
-                            HorizontalTextAlignment="Start"
-                            Text="Municipality"
-                            TextColor="Black" />
-                        <Label
-                            Margin="20,0,20,40"
-                            Padding="5"
-                            Background="#e2f2e1"
-                            FontAttributes="Italic"
-                            FontSize="20"
-                            HorizontalTextAlignment="Start"
-                            Text="{Binding UserData.MunicipalitiesCities}"
-                            TextColor="Black" />
-
+                        <Label Style="{StaticResource CommonHeaderLabelStyle}" Text="Municipality" />
+                        <Border Style="{StaticResource CommonBorderStyle}">
+                            <Label Style="{StaticResource CommonTextLabelStyle}" Text="{Binding UserData.MunicipalitiesCities}" />
+                        </Border>
                         <!--  Barangay  -->
-                        <Label
-                            Margin="20,0,0,0"
-                            FontSize="20"
-                            HorizontalTextAlignment="Start"
-                            Text="Barangay"
-                            TextColor="Black" />
-                        <Label
-                            Margin="20,0,20,40"
-                            Padding="5"
-                            Background="#e2f2e1"
-                            FontAttributes="Italic"
-                            FontSize="20"
-                            HorizontalTextAlignment="Start"
-                            Text="{Binding UserData.BarangayName}"
-                            TextColor="Black" />
-
+                        <Label Style="{StaticResource CommonHeaderLabelStyle}" Text="Barangay" />
+                        <Border Style="{StaticResource CommonBorderStyle}">
+                            <Label Style="{StaticResource CommonTextLabelStyle}" Text="{Binding UserData.BarangayName}" />
+                        </Border>
                         <!--  Full Address  -->
-                        <Label
-                            Margin="20,0,0,0"
-                            FontSize="20"
-                            HorizontalTextAlignment="Start"
-                            Text="Full Address"
-                            TextColor="Black" />
-                        <Label
-                            Margin="20,0,20,40"
-                            Padding="5"
-                            Background="#e2f2e1"
-                            FontAttributes="Italic"
-                            FontSize="20"
-                            HorizontalTextAlignment="Start"
-                            Text="{Binding UserData.FullAddress}"
-                            TextColor="Black" />
-
+                        <Label Style="{StaticResource CommonHeaderLabelStyle}" Text="Full Address" />
+                        <Border Style="{StaticResource CommonBorderStyle}">
+                            <Label Style="{StaticResource CommonTextLabelStyle}" Text="{Binding UserData.FullAddress}" />
+                        </Border>
+                        <!--  Edit Profile  -->
                         <Button
                             x:Name="EditProfile"
                             Command="{Binding EditProfileButtonCommand}"
